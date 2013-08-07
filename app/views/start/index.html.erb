@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	
+<div id="wrapper">
+	
+<%= render 'header/header' %>
+
+    <div id="home-slider">
+        <div class="md-slide-items md-slider" id="md-slider-1" data-thumb-width="105" data-thumb-height="70">
+			<div class="md-slide-item slide-0" data-timeout="6000">
+				<div class="md-mainimg"> <%= image_tag "ex/th-slide0.jpg" %> </div>
+				<div class="md-objects">
+					<div class="md-object rs slide-title" data-x="20" data-y="38" data-width="480" data-height="30" data-start="700" data-stop="5500" data-easein="random" data-easeout="keep">
+						<p>Are You Looking For Something To Do?</p>
+					</div>
+					<div class="md-object rs slide-description" data-x="20" data-y="160" data-width="480" data-height="90" data-start="1400" data-stop="7500" data-easein="random" data-easeout="keep">
+						<p>WooMatch is all about connecting people in real life. Find activities with one or many members. Connect with new interesting people everyday.</p>
+					</div>
+					<div class="md-object rs" data-x="20" data-y="260" data-width="120" data-height="23" data-padding-top="9" data-padding-bottom="7" data-padding-left="10" data-padding-right="10" data-start="1800" data-stop="7500" data-easein="random" data-easeout="keep">
+						<a href="#" class="btn btn-gray">Learn more</a>
+					</div>
+					<div class="md-object" data-x="495" data-y="0" data-width="612" data-height="365" data-start="1800" data-stop="7500" data-easein="fadeInRight" data-easeout="keep" style=""> <%= (image_tag "ex/th-slide-man.png", :size => "612x365") %> </div>
+				</div>
+			</div>
+			<div class="md-slide-item slide-1" data-timeout="6000">
+				<div class="md-mainimg"><%= image_tag 'ex/th-slide1.jpg' %> </div>
+				<div class="md-objects">
+					<div class="md-object rs slide-title" data-x="20" data-y="188" data-width="390" data-height="30" data-start="700" data-stop="5500" data-easein="random" data-easeout="random">
+						<p>Meet Real People</p>
+					</div>
+					<div class="md-object rs slide-description2" data-x="20" data-y="250" data-width="390" data-height="100" data-start="1400" data-stop="4500" data-easein="random" data-easeout="random">
+						<p>Find people in your area that wants to go out and meet new people</p>
+					</div>
+					<div class="md-object" data-x="454" data-y="44" data-width="327" data-height="268" data-start="1000" data-stop="5500" data-easein="random" data-easeout="random" style=""><%= (image_tag "ex/slide1_1.png", :size => "327x268") %></div>
+					<div class="md-object" data-x="628" data-y="142" data-width="298" data-height="176" data-start="1600" data-stop="5100" data-easein="random" data-easeout="random" style=""><%= (image_tag "ex/slide1_2.png", :size => "298x176") %> </div>
+					<div class="md-object" data-x="837" data-y="169" data-width="119" data-height="149" data-start="2200" data-stop="4800" data-easein="random" data-easeout="random" style=""><%= (image_tag "ex/slide1_3.png", :size => "119x149") %></div>
+					<div class="md-object" data-x="809" data-y="208" data-width="59" data-height="114" data-start="2800" data-stop="4500" data-easein="random" data-easeout="random" style=""><%= (image_tag "ex/slide1_4.png", :size => "59x114") %></div>
+				</div>
+			</div>
+			<div class="md-slide-item slide-2" data-timeout="4000">
+				<div class="md-mainimg"><%= (image_tag "ex/th-slide2.jpg") %></div>
+				<div class="md-objects">
+					<div class="md-object slide-with-background" data-x="20" data-y="58" data-width="500" data-height="170" data-padding-top="30" data-padding-bottom="30" data-padding-left="35" data-padding-right="35" data-start="300" data-stop="3600" data-easein="random" data-easeout="keep">
+						<h2 class="rs slide-title">Start Going Out Today</h2>
+						<p class="rs slide-description2">You need to meet one person or a group to do something? Woomatch will help you find common interest </p>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div><!--end: #home-slider -->
+    <div class="home-popular-project">
+        <div class="container_12">
+            <div class="grid_12 wrap-title">
+	
+                <h2 class="common-title">Popular in <%= @result.data['city'] %>,	<%= @result.data['region_name'] %>   
+	
+	<!-- Time: <%= @timenowuser %> --> </h2>
+
+    <div class="form-search2">
+	<div class="form2">
+        <form  action="#">
+           
+                <input id="sys_txt_keyword" class="txt-keyword" type="text" placeholder="Change my city"/>
+           
+            <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
+            <button class="btn-reset-keyword" type="reset"><i class="icon iXHover"></i></button>
+        </form>
+</br>
+</div>
+    </div>
+
+                <a class="be-fc-orange" href="category.html"> <h3>Registered Activities: &nbsp;&nbsp;&nbsp; <%= render 'start/counter' %></a></h3>
+            </div>
+            <div class="clear"></div>
+            <div class="lst-popular-project clearfix">
+ <%= render 'start/grid' %> 
+              <%= render 'start/grid' %> 
+     <div class="clear clear-2col"></div>
+ <%= render 'start/grid' %> 
+ <%= render 'start/grid' %> 
+         </div>
+        </div>
+    </div><!--end: .home-popular-project -->
+    <div class="home-discover-friends">
+        <div class="container_12">
+            <div class="row-friends">
+                <a class="thumb-avatar" href="#">	<%= (image_tag "ex/th-119x119-1.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-2.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-3.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-4.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-5.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-6.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-7.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-8.jpg") %>  </a>
+                <div class="clear"></div>
+            </div>
+            <div class="row-friends row-connect-fb">
+                <a class="thumb-avatar t-first" href="#"><%= (image_tag "ex/th-119x119-17.jpg") %>  </a>
+                <div class="connect-fb">
+                    <p class="rs description">Discover great activities with your friends!</p>
+                    <a href="#" class="btn btn-fb">Connect With Facebook</a>
+
+                </div>
+                <a class="thumb-avatar t-last" href="#"><%= (image_tag "ex/th-119x119-1.jpg") %>  </a>
+                <div class="clear"></div>
+            </div>
+            <div class="row-friends">
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-9.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-10.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-11.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-12.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-13.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-14.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-15.jpg") %>  </a>
+                <a class="thumb-avatar" href="#"><%= (image_tag "ex/th-119x119-16.jpg") %>  </a>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div><!--end: .home-discover-friends -->
+
+    <div class="additional-info-line">
+        <div class="container_12">
+            <div class="grid_9">
+                <h2 class="rs title">The best way to meet people and socialize is to go out and meet our members.</h2>
+                <p class="rs description">Get out and meet new exiting people now. Making new friends has never been that easy. Simply reply to the activity that interests you and go have fun. If you have an activity to promote, do it now.<strong> It's Free!</strong> </p>
+            </div>
+            <div class="grid_3 ta-r">
+                <a class="btn bigger btn-red" href="#">Learn more</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div><!--end: .additional-info-line -->
+    <footer id="footer">
+        <div class="container_12 main-footer">
+            <div class="grid_3 about-us">
+                <h3 class="rs title">Want help to promote your event?</h3>
+                <p class="rs description">Woomatch can help you promote your activity or event. Just contact us and we will help you contact thousands of real members ready to join you. </p>
+                <p class="rs email"><a class="fc-default  be-fc-orange" href="mailto:info@megadrupal.com">info@Woomatch.com</a></p>
+                <p class="rs">+1 (800) 555-5555 </p>
+            </div><!--end: .contact-info -->
+            <div class="grid_3 recent-tweets">
+                <h3 class="rs title">Recent Tweets</h3>
+                <div class="lst-tweets" id="sys_lst_tweets">
+                    <p class="rs ta-c fc-white">
+                        loading Twitter <br />
+                        <img src="images/ajax-loader.gif" alt="loading"/>
+                    </p>
+                </div>
+            </div><!--end: .recent-tweets -->
+            <div class="clear clear-2col"></div>
+            <div class="grid_3 email-newsletter">
+                <h3 class="rs title">Newsletter Signup</h3>
+                <div class="inner">
+                    <p class="rs description">Signup for new promotions and activities in your area.</p>
+                    <form action="#">
+                        <div class="form form-email">
+                            <label class="lbl" for="txt-email">
+                                <input id="txt-email" type="text" class="txt fill-width" placeholder="Enter your e-mail address"/>
+                            </label>
+                            <button class="btn btn-green" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!--end: .email-newsletter -->
+            <div class="grid_3">
+                <h3 class="rs title">Discover &amp; Promote new activities</h3>
+                <div class="footer-menu">
+                    <ul class="rs">
+                        <li><a class="be-fc-orange" href="#">What is WooMatch</a></li>
+                        <li><a class="be-fc-orange" href="#">Start an Activity</a></li>
+                        <li><a class="be-fc-orange" href="#">Project Guidlines</a></li>
+                        <li><a class="be-fc-orange" href="#">Press</a></li>
+                        <li><a class="be-fc-orange" href="#">Stats</a></li>
+                    </ul>
+                    <ul class="rs">
+                        <li><a class="be-fc-orange" href="#">Staff Picks</a></li>
+                        <li><a class="be-fc-orange" href="#">Popular</a></li>
+                        <li><a class="be-fc-orange" href="#">Recent</a></li>
+
+                        <li><a class="be-fc-orange" href="#">Most Credible Activities </a></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="copyright">
+            <div class="container_12">
+                <div class="grid_12">
+                    <a class="logo-footer" href="index.html"><img src="images/logo-2.png" alt="$SITE_NAME"/></a>
+                    <p class="rs term-privacy">
+                        <a class="fw-b be-fc-orange" href="single.html">Terms & Conditions</a>
+                        <span class="sep">/</span>
+                        <a class="fw-b be-fc-orange" href="single.html">Privacy Policy</a>
+                        <span class="sep">/</span>
+                        <a class="fw-b be-fc-orange" href="#">FAQ</a>
+                    </p>
+                    <p class="rs ta-c fc-gray-dark site-copyright">Copyright by <a href="http://megadrupal.com" title="Drupal Developers" target="_blank">Woomatch</a>. Designed by <a href="http://bestwebsoft.com/" title="Web development company" target="_blank">Woomatch</a>.</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </footer><!--end: #footer -->
+
+</div>
+
+<div class="popup-common" id="sys_popup_common">
+    <div class="overlay-bl-bg"></div>
+    <div class="container_12 pop-content">
+        <div class="grid_12 wrap-btn-close ta-r">
+            <i class="icon iBigX closePopup"></i>
+        </div>
+        <div class="grid_6 prefix_1">
+<%= render "devise/registrations/new" %>
+      </div>
+        <div class="grid_4">
+            <div class="form login-form">
+	<%= render "devise/sessions/new" %>
+            
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="../assets/jquery-ui-1.10.3.custom.js"></script>
+<script src="../assets/jquery.ui.addresspicker.js"></script>
+
+
+<script>
+$(function() {
+
+	var addresspickerMap = $( ".form2 #sys_txt_keyword" ).addresspicker({
+		regionBias: "fr",
+	  elements: {
+	    map:      "#map",
+	    lat:      "#lat",
+	    lng:      "#lng",
+	    locality: '#user_city',
+	    administrative_area_level_2: '#administrative_area_level_2',
+	    administrative_area_level_1: '#user_province',
+	    country:  '#user_country',
+	    postal_code: '#postal_code',
+    type:    '#type' 
+	  }
+	});
+	var gmarker = addresspickerMap.addresspicker( "marker");
+	gmarker.setVisible(true);
+	addresspickerMap.addresspicker( "updatePosition");
+	
+});
+</script>
+
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+
+ 
+</body>
+</html>

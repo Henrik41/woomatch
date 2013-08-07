@@ -1,0 +1,73 @@
+
+<%= @mytime %>
+
+<%= @timenow %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @activity.user_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @activity.title %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @activity.location %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @activity.start_date %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%= @activity.start_time %>
+</p>
+
+<%= image_tag @activity.avatar.url %>
+<%= image_tag @activity.avatar.url(:medium) %>
+
+<p>
+  <b>End date:</b>
+  <%= @activity.end_date %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%= @activity.end_time %>
+</p>
+
+<p>
+  <b>About:</b>
+  <%= @activity.about %>
+</p>
+
+<p>
+  <b>Numpart:</b>
+  <%= @activity.numpart %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @activity.website %>
+</p>
+
+<p>
+  <b>Recurrent:</b>
+  <%= @activity.recurrent %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @activity.price %>
+</p>
+
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>

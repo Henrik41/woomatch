@@ -1,0 +1,247 @@
+
+
+<body>
+	
+<div id="wrapper">
+    <%= render "header/header" %>
+<%= render 'activities/navbar' %>	
+         <div class="clear"></div>
+
+	
+	
+  <div class="home-popular-project">
+        <div class="container_12">
+            <div class="grid_12 wrap-title">
+
+          
+		
+                <a class="be-fc-orange" href="category.html">View all</a>
+
+	  
+		  <h2 class="common-title">Add my Activity</h2></div>
+
+  				<div id="myModal" class="reveal-modal">
+				     <h1>Email Your Friends</h1>
+				     <a href="/contacts/gmail"><%= image_tag "Gmail.png", :width => '100', :height => '70' %> </a>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/contacts/yahoo"><%= image_tag "Yahoo.png", :width => '100', :height => '70' %></a>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/contacts/hotmail"><%= image_tag "Hotmail.png", :width => '150', :height => '100' %></a>
+
+				     <a class="close-reveal-modal">&#215;</a>
+				</div>
+            <div class="clear"></div>
+            <div class="lst-popular-project clearfix">
+                <div class="grid_3">
+<%= render 'activities/picactivity'%> 
+
+
+	<%= render 'activities/myfriends'%>
+
+		
+                </div><!--end: .grid_3 > .project-short-->
+
+
+                <div class="grid_6">
+                    <div class="project-short sml-thumb">
+                        <div class="top-project-info">
+                            <div class="content-info-short clearfix">
+<h2>	Edit my activity</h2>
+  								<div class="form form-profile">
+   <%= render 'activities/form2'%>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bottom-project-info clearfix">
+								<a href="#" class="btn btn-red" data-reveal-id="myModal">
+									Email Friends 
+								</a>
+							
+								 <div class="btn btn-blue"><a href="#" >
+                               <%= image_tag 'thumbup.png'%>
+                            </a>Facebook</div>
+                            <div class="line-progress">
+                                <div class="bg-progress">
+                                    <span class="success" style="width: 98%"></span>
+                                </div>
+                            </div>
+                            <div class="group-fee clearfix">
+
+                                <div class="fee-item">
+                                    <p class="rs lbl">Credibility</p>
+                                    <span class="val">98%</span>
+                                </div>
+                                <div class="sep"></div>
+                                <div class="fee-item">
+                                    <p class="rs lbl">Interested</p>
+                                    <span class="val">100</span>
+                                </div>
+                                <div class="sep"></div>
+                                <div class="fee-item">
+                                    <p class="rs lbl">Days Left</p>
+                                    <span class="val">18</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end: .grid_3 > .project-short-->
+                <div class="clear clear-2col"></div>
+
+<%= render 'activities/grid3'%>
+<%= render 'activities/grid3'%>
+<%= render 'activities/grid3'%>
+<%= render 'activities/grid3'%>
+<%= render 'activities/grid3'%>
+
+</div>
+        </div>
+    </div><!--end: .home-popular-project -->
+
+
+<footer id="footer">
+        <div class="container_12 main-footer">
+            <div class="grid_3 about-us">
+                <h3 class="rs title">Want help to promote your event?</h3>
+                <p class="rs description">Woomatch can help you promote your activity or event. Just contact us and we will help you contact thousands of real member ready to go out. </p>
+                <p class="rs email"><a class="fc-default  be-fc-orange" href="mailto:info@megadrupal.com">info@Woomatch.com</a></p>
+                <p class="rs">+1 (800) 555-5555 </p>
+            </div><!--end: .contact-info -->
+            <div class="grid_3 recent-tweets">
+                <h3 class="rs title">Recent Tweets</h3>
+                <div class="lst-tweets" id="sys_lst_tweets">
+                    <p class="rs ta-c fc-white">
+                        loading Twitter <br />
+                        <img src="images/ajax-loader.gif" alt="loading"/>
+                    </p>
+                </div>
+            </div><!--end: .recent-tweets -->
+            <div class="clear clear-2col"></div>
+            <div class="grid_3 email-newsletter">
+                <h3 class="rs title">Newsletter Signup</h3>
+                <div class="inner">
+                    <p class="rs description">Signup for new promotions and activities in your area.</p>
+                    <form action="#">
+                        <div class="form form-email">
+                            <label class="lbl" for="txt-email">
+                                <input id="txt-email" type="text" class="txt fill-width" placeholder="Enter your e-mail address"/>
+                            </label>
+                            <button class="btn btn-green" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!--end: .email-newsletter -->
+            <div class="grid_3">
+                <h3 class="rs title">Discover &amp; Promote new activities</h3>
+                <div class="footer-menu">
+                    <ul class="rs">
+                        <li><a class="be-fc-orange" href="#">What is WooMatch</a></li>
+                        <li><a class="be-fc-orange" href="#">Start an Activity</a></li>
+                        <li><a class="be-fc-orange" href="#">Project Guidlines</a></li>
+                        <li><a class="be-fc-orange" href="#">Press</a></li>
+                        <li><a class="be-fc-orange" href="#">Stats</a></li>
+                    </ul>
+                    <ul class="rs">
+                        <li><a class="be-fc-orange" href="#">Staff Picks</a></li>
+                        <li><a class="be-fc-orange" href="#">Popular</a></li>
+                        <li><a class="be-fc-orange" href="#">Recent</a></li>
+
+                        <li><a class="be-fc-orange" href="#">Most Credible Activities </a></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="copyright">
+            <div class="container_12">
+                <div class="grid_12">
+                    <a class="logo-footer" href="index.html"><img src="images/logo-2.png" alt="$SITE_NAME"/></a>
+                    <p class="rs term-privacy">
+                        <a class="fw-b be-fc-orange" href="single.html">Terms & Conditions</a>
+                        <span class="sep">/</span>
+                        <a class="fw-b be-fc-orange" href="single.html">Privacy Policy</a>
+                        <span class="sep">/</span>
+                        <a class="fw-b be-fc-orange" href="#">FAQ</a>
+                    </p>
+                    <p class="rs ta-c fc-gray-dark site-copyright">HTML by <a href="http://megadrupal.com" title="Drupal Developers" target="_blank">Woomatch</a>. Designed by <a href="http://bestwebsoft.com/" title="Web development company" target="_blank">HenriDesign</a>.</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+</footer><!--end: #footer -->
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        // find the input fields and apply the time select to them.
+        $('input[name="s1Time2"]').ptTimeSelect();
+    });
+</script>
+
+<script>
+	//enter the count down date using the format year/month/day
+	$(".ccounter").ccountdown(2013,07,05);
+</script>
+
+
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="/assets/jquery-ui-1.10.3.custom.js"></script>
+
+<script src="/assets/jquery.ui.addresspicker.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        // find the input fields and apply the time select to them.
+        $('input[name="s1Time2"]').ptTimeSelect();
+    });
+</script>
+
+
+
+
+<script>
+$(function() {
+  $(".datepicker").datepicker();
+});
+</script>
+
+
+
+
+
+
+<script>
+$(function() {
+
+	var addresspickerMap = $( "#txt_location" ).addresspicker({
+		regionBias: "fr",
+	  elements: {
+	    map:      "#map",
+	    lat:      "#lat",
+	    lng:      "#lng",
+	    locality: '#user_city',
+	    administrative_area_level_2: '#administrative_area_level_2',
+	    administrative_area_level_1: '#user_province',
+	    country:  '#user_country',
+	    postal_code: '#postal_code',
+    type:    '#type' 
+	  }
+	});
+
+});
+</script>
+
+			
+			<script type="text/javascript">
+			$(document).ready(function() {
+			     $('#myButton').click(function(e) {
+			          e.preventDefault();
+				  $('#myModal').reveal();
+			     });
+			});
+			</script>
+
+</body>
+</html>
+
+
+

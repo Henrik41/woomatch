@@ -1,0 +1,69 @@
+<%= form_for @activity, :html => { :multipart => true }, :id => 'form' do |f| %>
+  <% if @activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+      <ul>
+      <% @activity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="project-short sml-thumb">
+    <div class="top-project-info">
+        <div class="content-info-short clearfix">
+			<h3>Activity Pic </h3>
+			<% if  !@activity.avatar.exists? %>
+                <a class="thumb-avatar" href="#"><img src="/assets/ex/th-292x204-1.jpg" width="250" height="250"alt="$USER_NAME"/></a>
+				<% else %>
+
+					<%= image_tag @activity.avatar.url(:medium) %>
+
+				<% end %>
+		</div>
+	</div>
+  
+   
+    <div class="bottom-project-info clearfix">
+
+    <%= f.file_field :avatar, :class => 'btn2 btn-red', :id => 'file' %> </br> </br> 
+	
+       <div class="btn btn-blue">
+	    <%= f.submit %> 
+
+	   </div> 
+	</br> </br> </br>
+	 Activity Completion
+		<div class="line-progress">
+            <div class="bg-progress">
+                <span  style="width: 50%"></span>
+            </div>
+        </div>
+        <div class="group-fee clearfix">
+            <div class="fee-item">
+                <p class="rs lbl">Price</p>
+                <span class="val">Free</span>
+            </div>
+            <div class="sep"></div>
+            <div class="fee-item">
+                <p class="rs lbl">Like</p>
+                <span class="val">7</span>
+            </div>
+            <div class="sep"></div>
+            <div class="fee-item">
+                <p class="rs lbl">Time Left</p>
+                <span class="val">25</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% end %>
+<script>
+document.getElementById("file").onchange = function() {
+    document.getElementById("edit_activity_"+ <%= @activity.to_s %>).submit();
+}
+</script>

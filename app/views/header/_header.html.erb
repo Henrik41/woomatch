@@ -1,0 +1,87 @@
+<% if user_signed_in? %>
+
+<header id="header">
+  <div class="wrap-top-menu">
+<i id="sys_btn_toggle_search" class="icon iBtnRed make-right"></i>
+</div>
+     <div class="container_12 clearfix">
+        <div class="grid_12 header-content">
+            <div id="sys_header_right" class="header-right">
+				                 <div class="account-panel">
+					<div class="nav-title">
+
+				                        <span class="pink"> 2 </span><a  href="#">&nbsp;Inbox</a><span class="sep"></span>
+				                        <a href="#">Profile</a><span class="sep"></span>
+				                        <a href="#">Settings</a><span class="sep"></span>
+										<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+				
+				                       <span class="sep"></span>
+				  						 <a href="#"> <%= image_tag 'me.png' %> </a>
+				</div>
+				                    </div>
+           <div class="form-search">
+                    <form action="#">
+                        <label for="sys_txt_keyword">
+                            <input id="sys_txt_keyword" class="txt-keyword" type="text" placeholder="Search projects"/>
+                        </label>
+                        <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
+                        <button class="btn-reset-keyword" type="reset"><i class="icon iXHover"></i></button>
+                    </form>
+           </div>
+            </div>
+            <div class="header-left">
+                <h1 id="logo">
+                  <a href="index.html"><%= image_tag 'logo.png' %> </a>
+                </h1>
+
+            </div>
+        </div>
+    </div>
+</header><!--end: #header -->
+
+
+
+<% else %>
+
+    <header id="header">
+	  <div class="wrap-top-menu">
+   <i id="sys_btn_toggle_search" class="icon iBtnRed make-right"></i>
+</div>
+         <div class="container_12 clearfix">
+            <div class="grid_12 header-content">
+                <div id="sys_header_right" class="header-right">
+                    <div class="account-panel">
+                        <a href="#" class="btn btn-red sys_show_popup_login">Promote Your Activity</a>
+                        <a href="#" class="btn btn-black sys_show_popup_login">Login</a>
+                    </div>
+                    <div class="form-search">
+                        <form action="#">
+                            <label for="sys_txt_keyword">
+                                <input id="sys_txt_keyword" class="txt-keyword" type="text" placeholder="Search projects"/>
+                            </label>
+                            <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
+                            <button class="btn-reset-keyword" type="reset"><i class="icon iXHover"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <h1 id="logo">
+                        <a href="index.html"><%= image_tag 'logo.png' %> </a>
+                    </h1>
+                    <div class="main-nav clearfix">
+                        <div class="nav-item">
+                            <a href="searchnotlog.html" class="nav-title">Discover</a>
+                            <p class="rs nav-description">Great Activities</p>
+                        </div>
+                        <span class="sep"></span>
+                        <div class="nav-item">
+                            <a href="#" class="nav-title">Promote</a>
+                            <p class="rs nav-description">Your Activity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header><!--end: #header -->
+
+<% end %>

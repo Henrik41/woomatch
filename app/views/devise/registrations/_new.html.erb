@@ -1,0 +1,52 @@
+
+<div class="form login-form">
+
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	  <%= devise_error_messages! %>
+	
+        <h3 class="rs title-form">Register</h3>
+        <div class="box-white">
+            <h4 class="rs title-box">Create or view Activities Now!</h4>
+            <p class="rs">A Woomatch account is required to continue.</p>
+            <div class="form-action">
+                <label for="txt_name">
+	 <%= f.text_field :username, :id => "txt_name", :class => "txt fill-width", :placeholder => "Enter a screen name" %>
+
+                </label>
+                <div class="wrap-2col clearfix">
+                    <div class="col">
+                        <label for="txt_email">
+					
+						  <%= f.email_field :email, :id => "txt_email", :class => "txt fill-width", :placeholder => "Enter your e-mail address" %>
+						
+                        </label>
+                      
+                    </div>
+                    <div class="col">
+                        <label for="txt_password">
+	
+
+
+				
+						  <%= f.password_field :password,  :id => "txt_password", :class => "txt fill-width", :placeholder => "Enter password" %>
+
+                        </label>
+                        <label for="txt_re_password">
+	
+						  <%= f.password_field :password_confirmation, :id => "txt_re_password", :class => "txt fill-width", :placeholder => "Re-enter password" %>
+
+                        </label>
+                    </div>
+                </div>
+                <p class="rs pb10">By signing up, you agree to our <a href="#" class="fc-orange">terms of use</a> and <a href="#" class="fc-orange">privacy policy</a>.</p>
+                <p class="rs ta-c">
+                    
+  <div><%= f.submit "Sign up", :class => "btn btn-red btn-submit"  %>  <a href="#" class="btn btn-blue btn-submit">Connect With Facebook</a> </div> 
+                </p>
+            </div>
+        </div>
+<% end %>
+</div>
+
+
+<%= render "devise/shared/links" %>
