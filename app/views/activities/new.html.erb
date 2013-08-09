@@ -3,7 +3,7 @@
 <body>
 	
 <div id="wrapper">
-    <%= render "header/header" %>
+<%= render "header/header" %>
 <%= render 'activities/navbar' %>	
          <div class="clear"></div>
 
@@ -31,7 +31,8 @@
             <div class="clear"></div>
             <div class="lst-popular-project clearfix">
                 <div class="grid_3">
-<%= render 'activities/picactivity'%> 
+
+					<%= render 'activities/picactivity', locals:{activityavatar: @activityavatar, activity: @activity} %>
 
 
 	<%= render 'activities/myfriends'%>
@@ -176,6 +177,14 @@
         $('input[name="s1Time2"]').ptTimeSelect();
     });
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        // find the input fields and apply the time select to them.
+        $('input[name="s1Time1"]').ptTimeSelect();
+    });
+</script>
+
 
 <script>
 	//enter the count down date using the format year/month/day

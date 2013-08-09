@@ -1,0 +1,21 @@
+<%= form_for(@activityavatar) do |f| %>
+  <% if @activityavatar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@activityavatar.errors.count, "error") %> prohibited this activityavatar from being saved:</h2>
+
+      <ul>
+      <% @activityavatar.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :activity_id %><br />
+    <%= f.number_field :activity_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

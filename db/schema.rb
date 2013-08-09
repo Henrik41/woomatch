@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130805182644) do
+ActiveRecord::Schema.define(:version => 20130809021539) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
     t.string   "location"
     t.date     "start_date"
-    t.time     "start_time"
+    t.datetime "start_time"
     t.date     "end_date"
-    t.time     "end_time"
+    t.datetime "end_time"
     t.text     "about"
     t.integer  "numpart"
     t.string   "website"
@@ -34,6 +34,26 @@ ActiveRecord::Schema.define(:version => 20130805182644) do
     t.datetime "avatar_updated_at"
     t.float    "longitude"
     t.float    "latitude"
+  end
+
+  create_table "activityavatars", :force => true do |t|
+    t.integer  "activity_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
+  create_table "albums", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "interests", :force => true do |t|

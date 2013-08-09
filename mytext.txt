@@ -103,3 +103,15 @@ _________
 
 contacts are working for gmail and yahoo
 redirect url has to be defined properly (/invites/...)
+
+
+_________
+aug 7/2013
+Had crazy problems with time saving to the database and not passing in the parameters
+The problem was that having a textfield for time cannot save the time.
+I had to pass separate parameters vis jquery and finally got it to work.
+
+_________
+
+
+

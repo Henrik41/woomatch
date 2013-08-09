@@ -23,7 +23,8 @@
             <div class="lst-popular-project clearfix">
 	
 			               <div class="grid_3">
-				<%= render 'picactivity' %>
+
+<%= render 'activities/picactivity' %> 
 	
 <%= render 'activities/myfriends'%>
 
@@ -129,9 +130,15 @@
 <script type="text/javascript">
     $(document).ready(function(){
         // find the input fields and apply the time select to them.
-        $('input[name="s1Time2"]').ptTimeSelect();
+        $('input[name="s1Time1"]').ptTimeSelect();
     });
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        // find the input fields and apply the time select to them.
+        $('input[name="s1Time2"]').ptTimeSelect();
+    });
 
 
 

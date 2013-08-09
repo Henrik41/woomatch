@@ -1,10 +1,10 @@
-<%= form_for @activity, :html => { :multipart => true }, :id => 'form' do |f| %>
-  <% if @activity.errors.any? %>
+<%= form_for @activityavatar, :html => { :multipart => true } do |f| %>
+  <% if @activityavatar.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+      <h2><%= pluralize(@activityavatar.errors.count, "error") %> prohibited this activity from being saved:</h2>
 
       <ul>
-      <% @activity.errors.full_messages.each do |msg| %>
+      <% @activityavatar.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -16,11 +16,11 @@
     <div class="top-project-info">
         <div class="content-info-short clearfix">
 			<h3>Activity Pic </h3>
-			<% if  !@activity.avatar.exists? %>
+			<% if  !@activityavatar.avatar.exists? %>
                 <a class="thumb-avatar" href="#"><img src="/assets/ex/th-292x204-1.jpg" width="250" height="250"alt="$USER_NAME"/></a>
 				<% else %>
 
-					<%= image_tag @activity.avatar.url(:medium) %>
+					<%= image_tag @activityavatar.avatar.url(:medium) %>
 
 				<% end %>
 		</div>
@@ -62,8 +62,9 @@
 </div>
 
 <% end %>
+
 <script>
 document.getElementById("file").onchange = function() {
-    document.getElementById("edit_activity_"+ <%= @activity.to_s %>).submit();
+    document.getElementById("edit_activity_"+ <%= @activityavatar.to_s %>).submit();
 }
 </script>

@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
     @activities = Activity.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @activities }
@@ -28,8 +28,8 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   # GET /activities/new.json
   def new
-    @activity = Activity.new
-
+    @activity = current_user.activities.new
+    @activityavatar = @activity.activityavatars.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @activity }
@@ -38,14 +38,18 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/1/edit
   def edit
-    @activity = Activity.find(params[:id])
+    @activity = current_user.activities.find(params[:id])
+    @activityavatar = current_user.activityavatars.find(params[:id])
   end
 
   # POST /activities
   # POST /activities.json
   def create
     @activity = Activity.create(params[:activity])
- 
+    
+    @activity.start_time = params[:s1Time1]
+    @activity.end_time = params[:s1Time2]
+    
     respond_to do |format|
       if @activity.save
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
@@ -61,7 +65,10 @@ class ActivitiesController < ApplicationController
   # PUT /activities/1.json
   def update
     @activity = Activity.find(params[:id])
-
+    
+    @activity.start_time = params[:s1Time1]
+    @activity.end_time = params[:s1Time2]
+    
     respond_to do |format|
       if @activity.update_attributes(params[:activity])
         format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }

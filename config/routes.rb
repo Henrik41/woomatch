@@ -1,4 +1,10 @@
 Woo::Application.routes.draw do
+  resources :activityavatars
+
+
+  resources :albums
+
+
   resources :activities
 
   get "photos/index"
@@ -59,6 +65,7 @@ Woo::Application.routes.draw do
    #root :to => 'activities#index'
    get "/invites/:provider/contact_callback" => "invites#index"
    get "/contacts/failure" => "invites#failure"
+   get "/activities/back_to_edit" 
    root :to => "invites#index"
   # See how all your routes lay out with "rake routes"
 

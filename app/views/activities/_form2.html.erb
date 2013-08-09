@@ -28,7 +28,11 @@
                                     <div class="row-item clearfix">
                                         <label class="lbl" for="txt_location">Location:</label>
                                         <div class="val">
-                                     
+										 
+										<% unless !@activity.errors.has_key?(:location) %>
+										            <span class="help-inline"><%= @activity.errors[:location].join(", ")%></span>  
+								<%end%>	
+									        
 <%= f.text_field :location, :class => 'txt', :id => 'txt_location', :placeholder => 'Where is your event?' %>                                       
                                         </div>
                                     </div>
@@ -49,7 +53,7 @@
                                         <label class="lbl">Starting Time:</label>
                                         <div class="val">
 <div class='txt2'>
-	    <%= f.text_field :start_time, :name => 's1Time2' %>
+	    <%= f.text_field :start_time, :name => 's1Time1' %>
                                           <br/>
 					</div>
 						

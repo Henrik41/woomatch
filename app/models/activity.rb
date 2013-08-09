@@ -7,8 +7,9 @@ class Activity < ActiveRecord::Base
   accepts_nested_attributes_for :interests, 
                                    :allow_destroy => true
                                   
-
+  has_many :activityavatars, :dependent => :destroy
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   after_validation :geocode
-  before_save { self.start_time = Time.parse(self.start_time.to_s) }
+  validates_presence_of  :location, :start_time, :end_time
+
 end
