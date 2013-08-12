@@ -7,6 +7,8 @@
 <%= render 'activities/navbar' %>	
          <div class="clear"></div>
 
+								
+                               	<%= nested_form_for @activity, :html => { :multipart => true } do |f| %>
 	
 	
   <div class="home-popular-project">
@@ -37,9 +39,7 @@
 					        <div class="content-info-short clearfix">
 								<h3>Activity Pic </h3>
 								
-								
-                               	<%= nested_form_for @activity, :html => { :multipart => true } do |f| %>
-
+				
 								<% if  !@activity.avatar? %>
 					                <a class="thumb-avatar" href="#"><img src="/assets/ex/th-292x204-1.jpg" width="250" height="250"alt="$USER_NAME"/></a>
 									<% else %>
@@ -55,10 +55,6 @@
 
 					    <%= f.file_field :avatar, :class => 'btn2 btn-red' %> </br> </br> 
 
-					       <div class="btn btn-blue">
-						    <%= f.submit %> 
-					
-						   </div> 
 						</br> </br> </br>
 						 Activity Completion
 							<div class="line-progress">
@@ -236,7 +232,7 @@
 									                                    </div>
 									                                    <p class="wrap-btn-submit rs ta-r">
 									                                           <%= f.submit 'Save all settings', :class =>'btn btn-red btn-submit-all' %>
-									           <% end %>                         </p>
+									                         </p>
 
                                 </div>
                             </div>
@@ -358,7 +354,7 @@
             </div>
         </div>
 </footer><!--end: #footer -->
-
+      <% end %>     
 </div>
 
 <script type="text/javascript">
