@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809021539) do
+ActiveRecord::Schema.define(:version => 20130809222406) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20130809021539) do
     t.datetime "avatar_updated_at"
     t.float    "longitude"
     t.float    "latitude"
+    t.string   "avatar"
   end
 
   create_table "activityavatars", :force => true do |t|

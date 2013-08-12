@@ -15,7 +15,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/1
   # GET /activities/1.json
   def show
-    @activity = Activity.find(params[:id])
+    @activity = current_user.activities.find(params[:id])
     @user = current_user
     @mytime = NearestTimeZone.to( @activity.latitude, @activity.longitude)
     @timenow = Time.now.in_time_zone(@mytime)
@@ -29,7 +29,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new.json
   def new
     @activity = current_user.activities.new
-    @activityavatar = @activity.activityavatars.new
+    @album = Album.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @activity }
@@ -39,13 +39,13 @@ class ActivitiesController < ApplicationController
   # GET /activities/1/edit
   def edit
     @activity = current_user.activities.find(params[:id])
-    @activityavatar = current_user.activityavatars.find(params[:id])
+    @album = Album.new
   end
 
   # POST /activities
   # POST /activities.json
   def create
-    @activity = Activity.create(params[:activity])
+    @activity = current_user.activities.create(params[:activity])
     
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
@@ -64,7 +64,7 @@ class ActivitiesController < ApplicationController
   # PUT /activities/1
   # PUT /activities/1.json
   def update
-    @activity = Activity.find(params[:id])
+    @activity = current_user.activities.find(params[:id])
     
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
@@ -83,7 +83,7 @@ class ActivitiesController < ApplicationController
   # DELETE /activities/1
   # DELETE /activities/1.json
   def destroy
-    @activity = Activity.find(params[:id])
+    @activity = current_user.activities.find(params[:id])
     @activity.destroy
 
     respond_to do |format|

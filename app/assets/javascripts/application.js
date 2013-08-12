@@ -38,5 +38,4 @@
 //= require js/jquery.ptTimeSelect
 //= require jquery_nested_form
 //= require jquery.reveal
-
 //= require jquery.counter

@@ -23,13 +23,14 @@ end
 gem 'jquery-rails'
 gem 'devise'
 gem 'geocoder'
-gem "paperclip", "~> 3.0"
 gem "flickraw", "~> 0.9.6"
 gem 'nearest_time_zone'
 gem 'detect_timezone_rails'
 gem "nested_form"
 gem "omnicontacts"
 gem "localtunnel"
+gem 'carrierwave'
+gem 'mini_magick' 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
