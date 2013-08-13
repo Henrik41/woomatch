@@ -40,22 +40,21 @@
 								<h3>Activity Pic </h3>
 								
 				
-								<% if  !@activity.avatar? %>
-					                <a class="thumb-avatar" href="#"><img src="/assets/ex/th-292x204-1.jpg" width="250" height="250"alt="$USER_NAME"/></a>
-									<% else %>
-
-										<%= image_tag @activity.avatar.url(:medium) %>
-
-									<% end %>
+							<div class="upload-preview">
+						
+					                <a  href="#"><img src="/assets/ex/th-292x204-1.jpg" width="250" height="250"alt="$USER_NAME"/></a>
+								
+							
+							</div>	
 							</div>
 						</div>
 
 
 					    <div class="bottom-project-info clearfix">
 
-					    <%= f.file_field :avatar, :class => 'btn2 btn-red' %> </br> </br> 
+					    <%= f.file_field :avatar, :class => 'file' %> </br> </br> 
 
-						</br> </br> </br>
+						</br> 
 						 Activity Completion
 							<div class="line-progress">
 					            <div class="bg-progress">
@@ -230,6 +229,7 @@
 
 									                                        </div>
 									                                    </div>
+									
 									                                    <p class="wrap-btn-submit rs ta-r">
 									                                           <%= f.submit 'Save all settings', :class =>'btn btn-red btn-submit-all' %>
 									                         </p>
@@ -237,8 +237,10 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="bottom-project-info clearfix">
 								<a href="#" class="btn btn-red" data-reveal-id="myModal">
+									
 									Email Friends 
 								</a>
 							
@@ -434,6 +436,7 @@ $(function() {
 			     });
 			});
 			</script>
+
 
 </body>
 </html>
