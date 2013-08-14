@@ -8,7 +8,7 @@
 
 
 6. my profile
-7. edit profile
+7. edit profile  -- done
 
 8.search activities
 9.search not logged
@@ -144,6 +144,8 @@ will change upload button
 http://stackoverflow.com/questions/6461252/custom-upload-button
 
 __________
+
+aug 14... I actually did the edit form of the profile page
 
 
 

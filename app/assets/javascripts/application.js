@@ -29,7 +29,7 @@
 //= require js/pie
 //= require js/md_slider.min
 //= require js/jquery-migrate-1.2.1.min
-
+//= require js/jquery.touchwipe.min
 //= require js/responsiveslides.min
 //= require js/jquery.form
 //= require js/bootstrap

@@ -5,6 +5,8 @@ class ProfileController < ApplicationController
   end
   
   def show
+    @user = current_user
+    @userview = User.find(params[:id])
   end
   
   def update

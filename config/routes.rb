@@ -16,6 +16,8 @@ Woo::Application.routes.draw do
   get "test/index"
 
   get "start/index"
+
+  get '/profile/:id', to: 'profile#show'
  put "profile/update"
  devise_for :users
   # The priority is based upon order of creation:

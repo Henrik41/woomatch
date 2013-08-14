@@ -20,12 +20,18 @@
 						  <%= f.email_field :email, :id => "txt_email", :class => "txt fill-width", :placeholder => "Enter your e-mail address" %>
 						
                         </label>
-                      
+                      </br>
+						<label for="txt_re_email">
+                            <%= f.select :sex, [['male'],['Female']],:class => "txt" %>
+                        </label>
+
+
                     </div>
+
                     <div class="col">
+	
                         <label for="txt_password">
 	
-
 
 				
 						  <%= f.password_field :password,  :id => "txt_password", :class => "txt fill-width", :placeholder => "Enter password" %>
