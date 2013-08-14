@@ -1,3 +1,23 @@
+1. start page     ------ done
+2. activity - edit ----- done
+3. activity - new  ----- done
+4. activity - view (activity.html)
+5. activity index - all (my activity)
+5.5 small activity partial ---
+
+
+
+6. my profile
+7. edit profile
+
+8.search activities
+9.search not logged
+
+10. 
+
+
+
+
 Some setup you must do manually if you haven't yet:
 
   1. Ensure you have defined default url options in your environments files. Here 
@@ -112,6 +132,20 @@ The problem was that having a textfield for time cannot save the time.
 I had to pass separate parameters vis jquery and finally got it to work.
 
 _________
+
+aug 11/2013
+
+had a hard time figuing out how to preview image before uploading. It does not work with safari 5. But works with other browsers.
+
+_________
+
+will change upload button
+
+http://stackoverflow.com/questions/6461252/custom-upload-button
+
+__________
+
+
 
 
 

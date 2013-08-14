@@ -1,0 +1,621 @@
+
+
+<body>
+	
+<div id="wrapper">
+<%= render "header/header" %>
+<%= render 'activities/navbar' %>	
+         <div class="clear"></div>
+
+								
+                               	<%= nested_form_for @user, :url => 'update', :html => { :multipart => true } do |f| %>
+	
+									         <div class="clear"></div>
+
+
+
+								  <div class="home-popular-project">
+								        <div class="container_12">
+								            <div class="grid_12 wrap-title">
+
+
+
+
+								                <a class="be-fc-orange" href="category.html">View all</a>
+
+
+										  <h2 class="common-title">Welcome Back Mike</h2></div>
+
+
+								            <div class="clear"></div>
+								            <div class="lst-popular-project clearfix">
+								                <div class="grid_3">
+								                    <div class="project-short sml-thumb">
+								                        <div class="top-project-info">
+								                            <div class="content-info-short clearfix">
+																<h3>My Picture:</h3>
+								      				                <a class="thumb-avatar" href="#"><img src="images/ex/116-small.jpg" width="250" height="350"alt="$USER_NAME"/></a>
+
+								</div>
+								</div>
+
+
+								                        <div class="bottom-project-info clearfix">           <div class="btn btn-blue"> Change my Pic </div>  </br> </br>  Profile Completion
+								                            <div class="line-progress">
+								                                <div class="bg-progress">
+								                                    <span  style="width: 50%"></span>
+								                                </div>
+								                            </div>
+								                            <div class="group-fee clearfix">
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Credibility</p>
+								                                    <span class="val">50%</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Interested</p>
+								                                    <span class="val">7</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Days Left</p>
+								                                    <span class="val">25</span>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </div>
+								  <div class="project-short sml-thumb">
+													 <div class="top-project-info">
+								                            <div class="content-info-short clearfix">
+																<h3>Hey Mike look wOO's here?</h3>
+												                <a class="thumb-avatar " href="#"><img src="images/ex/th-119x119-9.jpg" width="75" height="75" alt="$USER_NAME"/></a>
+												                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-10.jpg" width="75" height="75"alt="$USER_NAME"/></a>
+												                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-11.jpg" width="75" height="75"alt="$USER_NAME"/></a>
+												                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-12.jpg" width="75" height="75"alt="$USER_NAME"/></a>
+												                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-13.jpg" width="75" height="75"alt="$USER_NAME"/></a>
+												                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-14.jpg" width="75" height="75"alt="$USER_NAME"/></a>
+												                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-15.jpg" width="75" height="75"alt="$USER_NAME"/></a>
+												                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-16.jpg" width="75" height="75"alt="$USER_NAME"/></a>
+																                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-7.jpg" width="75" height="75"alt="$USER_NAME"/></a>
+															</div>
+															</div>
+									</div>				
+
+								                </div><!--end: .grid_3 > .project-short-->
+
+
+								                <div class="grid_6">
+								                    <div class="project-short sml-thumb">
+								                        <div class="top-project-info">
+								                            <div class="content-info-short clearfix">
+								<h2>	My Profile</h2>
+								  								<div class="form form-profile">
+								                                    <form action="#">
+								                                        <div class="row-item clearfix">
+								                                            <label class="lbl" for="txt_name1">Name:</label>
+								                                            <div class="val">
+								                                                <input class="txt" type="text" id="txt_name1" value="John Doe">
+								                                                <p class="rs description-input">Your screen name is displayed on your profile.</p>
+								                                            </div>
+								                                        </div>
+								                                        <div class="row-item clearfix">
+								                                            <label class="lbl" for="txt_location">Location:</label>
+								                                            <div class="val">
+								                                                <input class="txt" type="text" id="txt_location" value="United Kingdon, London">
+
+								                                            </div>
+								                                        </div>
+
+								                                        <div class="row-item clearfix">
+								                                            <label class="lbl" for="txt_time_zone">Status:</label>
+								                                            <div class="val">
+
+																			<select>
+																			  <option value="Single">Single</option>
+																			  <option value="Married">Married</option>
+																			  <option value="Not Single but Not married">Not Single but not married</option>
+																			  <option value="Other">Other</option>
+																			</select>
+								                                            </div>
+								                                        </div>
+								                                        <div class="row-item clearfix">
+								                                            <label class="lbl" for="txt_bio">About me:</label>
+								                                            <div class="val">
+								                                                <textarea class="txt fill-width" name="txt_bio" id="txt_bio" cols="10" rows="6"></textarea>
+								                                                <p class="rs description-input">We suggest a short bio. If it’s 300 characters or less it’ll look great on your profile.</p>
+								                                            </div>
+								                                        </div>
+								                                        <div class="row-item clearfix">
+								                                            <label class="lbl" for="txt_name2">Profile URL:</label>
+								                                            <div class="val">
+
+								                                                <input class="txt" type="text" id="txt_name2" value="www.">
+								                                                <p class="rs description-input">You can enter a link to your website.</p>
+								                                            </div>
+								                                        </div>
+								                                        <div class="row-item clearfix">
+								                                            <label class="lbl" for="txt_web">Interests:</label>
+								                                            <div class="val">
+								                                                <input class="txt txt-website" type="text" id="txt_web" value=""></br>
+								                                                <button class="btn btn-white">Add Interests</button>
+								                                            </div>
+								                                        </div>
+								                                        <p class="wrap-btn-submit rs ta-r">
+								                                            <button class="btn btn-red btn-submit-all">Save all settings</button>
+								                                        </p>
+								                                    </form>
+								                                </div>
+								                            </div>
+								                        </div>
+								                        <div class="bottom-project-info clearfix">
+										<div class="btn btn-red"> Email Friends </div> <div class="btn btn-blue"><a href="#" >
+								                                <img src="images/thumbup.png" alt="$TITLE">
+								                            </a>Facebook</div>
+								                            <div class="line-progress">
+								                                <div class="bg-progress">
+								                                    <span class="success" style="width: 98%"></span>
+								                                </div>
+								                            </div>
+								                            <div class="group-fee clearfix">
+
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Credibility</p>
+								                                    <span class="val">98%</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Interested</p>
+								                                    <span class="val">100</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Days Left</p>
+								                                    <span class="val">18</span>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </div>
+								                </div><!--end: .grid_3 > .project-short-->
+								                <div class="clear clear-2col"></div>
+								                <div class="grid_3">
+								                    <div class="project-short sml-thumb">
+								                        <div class="top-project-info">
+								                            <div class="content-info-short clearfix">
+								                                <a href="#" class="thumb-img">
+								                                    <img src="images/ex/th-192x135-2.jpg" alt="$TITLE">
+								                                </a>
+								                                <div class="wrap-short-detail">
+								                                    <h3 class="rs acticle-title"><a class="be-fc-orange" href="project.html">Coffee and Books</a></h3>
+								                                    <p class="rs tiny-desc">by <a href="profile.html" class="fw-b fc-gray be-fc-orange">Henrik</a></p>
+								                                    <p class="rs title-description">We are inviting you at Java coffee for fun and book reading. Come and join us and discover new exiting books.</p>
+								                                    <p class="rs project-location">
+								                                        <i class="icon iLocation"></i>
+								                                        Montreal, Qc, Canada
+								                                    </p>
+								                                </div>
+								                            </div>
+								                        </div>
+								                        <div class="bottom-project-info clearfix">
+															<div class="btn btn-red"> Email Friends </div> <div class="btn btn-blue"><a href="#" >
+													                                <img src="images/thumbup.png" alt="Thumb">
+													                            </a>Facebook</div>
+								                            <div class="line-progress">
+								                                <div class="bg-progress">
+								                                    <span  style="width: 21%"></span>
+								                                </div>
+								                            </div>
+								                            <div class="group-fee clearfix">
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Credibility</p>
+								                                    <span class="val">21%</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Interested</p>
+								                                    <span class="val">9</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Days Left</p>
+								                                    <span class="val">2</span>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </div>
+								                </div><!--end: .grid_3 > .project-short-->
+								                <div class="grid_3">
+								                    <div class="project-short sml-thumb">
+								                        <div class="top-project-info">
+								                            <div class="content-info-short clearfix">
+								                                <a href="#" class="thumb-img">
+								                                    <img src="images/ex/th-192x135-3.jpg" alt="Thumb">
+								                                </a>
+								                                <div class="wrap-short-detail">
+								                                    <h3 class="rs acticle-title"><a class="be-fc-orange" href="project.html">Hiking Group</a></h3>
+								                                    <p class="rs tiny-desc">by <a href="profile.html" class="fw-b fc-gray be-fc-orange">Zara</a></p>
+								                                    <p class="rs title-description">We are a small group of people that regularly hike along the trails in Montreal and surroundings. </p>
+								                                    <p class="rs project-location">
+								                                        <i class="icon iLocation"></i>
+								                                        Montreal, Qc, canada
+								                                    </p>
+								                                </div>
+								                            </div>
+								                        </div>
+								                        <div class="bottom-project-info clearfix">
+															<div class="btn btn-red"> Email Friends </div> <div class="btn btn-blue"><a href="#" >
+													                                <img src="images/thumbup.png" alt="Thumb">
+													                            </a>Facebook</div>
+								                            <div class="line-progress">
+								                                <div class="bg-progress">
+								                                    <span  style="width: 50%"></span>
+								                                </div>
+								                            </div>
+								                            <div class="group-fee clearfix">
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Credibility</p>
+								                                    <span class="val">50%</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Interested</p>
+								                                    <span class="val">12</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Days Left</p>
+								                                    <span class="val">44</span>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </div>
+								                </div><!--end: .grid_3 > .project-short-->
+
+								                <div class="grid_3">
+								                    <div class="project-short sml-thumb">
+								                        <div class="top-project-info">
+								                            <div class="content-info-short clearfix">
+								                                <a href="#" class="thumb-img">
+								                                    <img src="images/ex/th-192x135-2.jpg" alt="$TITLE">
+								                                </a>
+								                                <div class="wrap-short-detail">
+								                                    <h3 class="rs acticle-title"><a class="be-fc-orange" href="project.html">Coffee and Books</a></h3>
+								                                    <p class="rs tiny-desc">by <a href="profile.html" class="fw-b fc-gray be-fc-orange">Henrik</a></p>
+								                                    <p class="rs title-description">We are inviting you at Java coffee for fun and book reading. Come and join us and discover new exiting books.</p>
+								                                    <p class="rs project-location">
+								                                        <i class="icon iLocation"></i>
+								                                        Montreal, Qc, Canada
+								                                    </p>
+								                                </div>
+								                            </div>
+								                        </div>
+								                        <div class="bottom-project-info clearfix">
+															<div class="btn btn-red"> Email Friends </div> <div class="btn btn-blue"><a href="#" >
+													                                <img src="images/thumbup.png" alt="Thumb">
+													                            </a>Facebook</div>
+								                            <div class="line-progress">
+								                                <div class="bg-progress">
+								                                    <span  style="width: 21%"></span>
+								                                </div>
+								                            </div>
+								                            <div class="group-fee clearfix">
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Credibility</p>
+								                                    <span class="val">21%</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Interested</p>
+								                                    <span class="val">9</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Days Left</p>
+								                                    <span class="val">2</span>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </div>
+								                </div><!--end: .grid_3 > .project-short-->
+								                <div class="grid_3">
+								                    <div class="project-short sml-thumb">
+								                        <div class="top-project-info">
+								                            <div class="content-info-short clearfix">
+								                                <a href="#" class="thumb-img">
+								                                    <img src="images/ex/th-192x135-3.jpg" alt="Thumb">
+								                                </a>
+								                                <div class="wrap-short-detail">
+								                                    <h3 class="rs acticle-title"><a class="be-fc-orange" href="project.html">Hiking Group</a></h3>
+								                                    <p class="rs tiny-desc">by <a href="profile.html" class="fw-b fc-gray be-fc-orange">Zara</a></p>
+								                                    <p class="rs title-description">We are a small group of people that regularly hike along the trails in Montreal and surroundings. </p>
+								                                    <p class="rs project-location">
+								                                        <i class="icon iLocation"></i>
+								                                        Montreal, Qc, canada
+								                                    </p>
+								                                </div>
+								                            </div>
+								                        </div>
+								                        <div class="bottom-project-info clearfix">
+															<div class="btn btn-red"> Email Friends </div> <div class="btn btn-blue"><a href="#" >
+													                                <img src="images/thumbup.png" alt="Thumb">
+													                            </a>Facebook</div>
+								                            <div class="line-progress">
+								                                <div class="bg-progress">
+								                                    <span  style="width: 50%"></span>
+								                                </div>
+								                            </div>
+								                            <div class="group-fee clearfix">
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Credibility</p>
+								                                    <span class="val">50%</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Interested</p>
+								                                    <span class="val">12</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Days Left</p>
+								                                    <span class="val">44</span>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </div>
+								                </div><!--end: .grid_3 > .project-short-->
+
+								               <div class="grid_3">
+								                    <div class="project-short sml-thumb">
+								                        <div class="top-project-info">
+								                            <div class="content-info-short clearfix">
+								                                <a href="#" class="thumb-img">
+								                                    <img src="images/ex/th-192x135-2.jpg" alt="$TITLE">
+								                                </a>
+								                                <div class="wrap-short-detail">
+								                                    <h3 class="rs acticle-title"><a class="be-fc-orange" href="project.html">Coffee and Books</a></h3>
+								                                    <p class="rs tiny-desc">by <a href="profile.html" class="fw-b fc-gray be-fc-orange">Henrik</a></p>
+								                                    <p class="rs title-description">We are inviting you at Java coffee for fun and book reading. Come and join us and discover new exiting books.</p>
+								                                    <p class="rs project-location">
+								                                        <i class="icon iLocation"></i>
+								                                        Montreal, Qc, Canada
+								                                    </p>
+								                                </div>
+								                            </div>
+								                        </div>
+								                        <div class="bottom-project-info clearfix">
+															<div class="btn btn-red"> Email Friends </div> <div class="btn btn-blue"><a href="#" >
+													                                <img src="images/thumbup.png" alt="Thumb">
+													                            </a>Facebook</div>
+								                            <div class="line-progress">
+								                                <div class="bg-progress">
+								                                    <span  style="width: 21%"></span>
+								                                </div>
+								                            </div>
+								                            <div class="group-fee clearfix">
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Credibility</p>
+								                                    <span class="val">21%</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Interested</p>
+								                                    <span class="val">9</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Days Left</p>
+								                                    <span class="val">2</span>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </div>
+								                </div><!--end: .grid_3 > .project-short-->
+								                <div class="grid_3">
+								                    <div class="project-short sml-thumb">
+								                        <div class="top-project-info">
+								                            <div class="content-info-short clearfix">
+								                                <a href="#" class="thumb-img">
+								                                    <img src="images/ex/th-192x135-3.jpg" alt="Thumb">
+								                                </a>
+								                                <div class="wrap-short-detail">
+								                                    <h3 class="rs acticle-title"><a class="be-fc-orange" href="project.html">Hiking Group</a></h3>
+								                                    <p class="rs tiny-desc">by <a href="profile.html" class="fw-b fc-gray be-fc-orange">Zara</a></p>
+								                                    <p class="rs title-description">We are a small group of people that regularly hike along the trails in Montreal and surroundings. </p>
+								                                    <p class="rs project-location">
+								                                        <i class="icon iLocation"></i>
+								                                        Montreal, Qc, canada
+								                                    </p>
+								                                </div>
+								                            </div>
+								                        </div>
+								                        <div class="bottom-project-info clearfix">
+															<div class="btn btn-red"> Email Friends </div> <div class="btn btn-blue"><a href="#" >
+													                                <img src="images/thumbup.png" alt="Thumb">
+													                            </a>Facebook</div>
+								                            <div class="line-progress">
+								                                <div class="bg-progress">
+								                                    <span  style="width: 50%"></span>
+								                                </div>
+								                            </div>
+								                            <div class="group-fee clearfix">
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Credibility</p>
+								                                    <span class="val">50%</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Interested</p>
+								                                    <span class="val">12</span>
+								                                </div>
+								                                <div class="sep"></div>
+								                                <div class="fee-item">
+								                                    <p class="rs lbl">Days Left</p>
+								                                    <span class="val">44</span>
+								                                </div>
+								                            </div>
+								                        </div>
+								                    </div>
+								                </div><!--end: .grid_3 > .project-short-->
+
+								</div>
+								        </div>
+								    </div><!--end: .home-popular-project -->
+								<footer id="footer">
+								        <div class="container_12 main-footer">
+								            <div class="grid_3 about-us">
+								                <h3 class="rs title">Want help to promote your event?</h3>
+								                <p class="rs description">Woomatch can help you promote your activity or event. Just contact us and we will help you contact thousands of real member ready to go out. </p>
+								                <p class="rs email"><a class="fc-default  be-fc-orange" href="mailto:info@megadrupal.com">info@Woomatch.com</a></p>
+								                <p class="rs">+1 (800) 555-5555 </p>
+								            </div><!--end: .contact-info -->
+								            <div class="grid_3 recent-tweets">
+								                <h3 class="rs title">Recent Tweets</h3>
+								                <div class="lst-tweets" id="sys_lst_tweets">
+								                    <p class="rs ta-c fc-white">
+								                        loading Twitter <br />
+								                        <img src="images/ajax-loader.gif" alt="loading"/>
+								                    </p>
+								                </div>
+								            </div><!--end: .recent-tweets -->
+								            <div class="clear clear-2col"></div>
+								            <div class="grid_3 email-newsletter">
+								                <h3 class="rs title">Newsletter Signup</h3>
+								                <div class="inner">
+								                    <p class="rs description">Signup for new promotions and activities in your area.</p>
+								                    <form action="#">
+								                        <div class="form form-email">
+								                            <label class="lbl" for="txt-email">
+								                                <input id="txt-email" type="text" class="txt fill-width" placeholder="Enter your e-mail address"/>
+								                            </label>
+								                            <button class="btn btn-green" type="submit">Submit</button>
+								                        </div>
+								                    </form>
+								                </div>
+								            </div><!--end: .email-newsletter -->
+								            <div class="grid_3">
+								                <h3 class="rs title">Discover &amp; Promote new activities</h3>
+								                <div class="footer-menu">
+								                    <ul class="rs">
+								                        <li><a class="be-fc-orange" href="#">What is WooMatch</a></li>
+								                        <li><a class="be-fc-orange" href="#">Start an Activity</a></li>
+								                        <li><a class="be-fc-orange" href="#">Project Guidlines</a></li>
+								                        <li><a class="be-fc-orange" href="#">Press</a></li>
+								                        <li><a class="be-fc-orange" href="#">Stats</a></li>
+								                    </ul>
+								                    <ul class="rs">
+								                        <li><a class="be-fc-orange" href="#">Staff Picks</a></li>
+								                        <li><a class="be-fc-orange" href="#">Popular</a></li>
+								                        <li><a class="be-fc-orange" href="#">Recent</a></li>
+
+								                        <li><a class="be-fc-orange" href="#">Most Credible Activities </a></li>
+								                    </ul>
+								                    <div class="clear"></div>
+								                </div>
+								            </div>
+								            <div class="clear"></div>
+								        </div>
+								        <div class="copyright">
+								            <div class="container_12">
+								                <div class="grid_12">
+								                    <a class="logo-footer" href="index.html"><img src="images/logo-2.png" alt="$SITE_NAME"/></a>
+								                    <p class="rs term-privacy">
+								                        <a class="fw-b be-fc-orange" href="single.html">Terms & Conditions</a>
+								                        <span class="sep">/</span>
+								                        <a class="fw-b be-fc-orange" href="single.html">Privacy Policy</a>
+								                        <span class="sep">/</span>
+								                        <a class="fw-b be-fc-orange" href="#">FAQ</a>
+								                    </p>
+								                    <p class="rs ta-c fc-gray-dark site-copyright">HTML by <a href="http://megadrupal.com" title="Drupal Developers" target="_blank">Woomatch</a>. Designed by <a href="http://bestwebsoft.com/" title="Web development company" target="_blank">HenriDesign</a>.</p>
+								                </div>
+								                <div class="clear"></div>
+								            </div>
+								        </div>
+								    </footer><!--end: #footer -->
+
+								</div>
+
+								<div class="popup-common" id="sys_popup_common">
+								    <div class="overlay-bl-bg"></div>
+								    <div class="container_12 pop-content">
+								        <div class="grid_12 wrap-btn-close ta-r">
+								            <i class="icon iBigX closePopup"></i>
+								        </div>
+								        <div class="grid_6 prefix_1">
+								            <div class="form login-form">
+								                <form action="#">
+								                    <h3 class="rs title-form">Register</h3>
+								                    <div class="box-white">
+								                        <h4 class="rs title-box">Create or view Activities Now!</h4>
+								                        <p class="rs">A Woomatch account is required to continue.</p>
+								                        <div class="form-action">
+								                            <label for="txt_name">
+								                                <input id="txt_name" class="txt fill-width" type="text" placeholder="Enter a screen name"/>
+								                            </label>
+								                            <div class="wrap-2col clearfix">
+								                                <div class="col">
+								                                    <label for="txt_email">
+								                                        <input id="txt_email" class="txt fill-width" type="email" placeholder="Enter your e-mail address"/>
+								                                    </label>
+								                                    <label for="txt_re_email">
+								                                        <input id="txt_re_email" class="txt fill-width" type="email" placeholder="Re-enter your e-mail adress"/>
+								                                    </label>
+								                                </div>
+								                                <div class="col">
+								                                    <label for="txt_password">
+								                                        <input id="txt_password" class="txt fill-width" type="password" placeholder="Enter password"/>
+								                                    </label>
+								                                    <label for="txt_re_password">
+								                                        <input id="txt_re_password" class="txt fill-width" type="password" placeholder="Re-enter password"/>
+								                                    </label>
+								                                </div>
+								                            </div>
+								                            <p class="rs pb10">By signing up, you agree to our <a href="#" class="fc-orange">terms of use</a> and <a href="#" class="fc-orange">privacy policy</a>.</p>
+								                            <p class="rs ta-c">
+								                                <button class="btn btn-red btn-submit" type="submit">Register</button>
+								                            </p>
+								                        </div>
+								                    </div>
+								                </form>
+								            </div>
+								        </div>
+								        <div class="grid_4">
+								            <div class="form login-form">
+								                <form action="#">
+								                    <h3 class="rs title-form">Login</h3>
+								                    <div class="box-white">
+								                        <h4 class="rs title-box">Already Have an Account?</h4>
+								                        <p class="rs">Please log in to continue.</p>
+								                        <div class="form-action">
+								                            <label for="txt_email_login">
+								                                <input id="txt_email_login" class="txt fill-width" type="email" placeholder="Enter your e-mail address"/>
+								                            </label>
+								                            <label for="txt_password_login">
+								                                <input id="txt_password_login" class="txt fill-width" type="password" placeholder="Enter password"/>
+								                            </label>
+
+								                            <label for="chk_remember" class="rs pb20 clearfix">
+								                                <input id="chk_remember" type="checkbox" class="chk-remember"/>
+								                                <span class="lbl-remember">Remember me</span>
+								                            </label>
+								                            <p class="rs ta-c pb10">
+								                                <button class="btn btn-red btn-submit" type="submit">Login</button>
+								                            </p>
+								                            <p class="rs ta-c">
+								                                <a href="#" class="fc-orange">I forgot my password</a>
+								                            </p>
+								                        </div>
+								                    </div>
+								                </form>
+								            </div>
+								        </div>
+								        <div class="clear"></div>
+								    </div>
+								</div>
+
+								<script>
+									//enter the count down date using the format year/month/day
+									$(".ccounter").ccountdown(2013,07,05);
+								</script>
+<%end%>
+
+								</body>
+								</html>

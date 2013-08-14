@@ -1,4 +1,9 @@
 Woo::Application.routes.draw do
+  get "profile/index"
+
+  resources :profiles
+
+
   resources :activityavatars
 
 
@@ -11,7 +16,7 @@ Woo::Application.routes.draw do
   get "test/index"
 
   get "start/index"
-
+ put "profile/update"
  devise_for :users
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -66,7 +71,7 @@ Woo::Application.routes.draw do
    get "/invites/:provider/contact_callback" => "invites#index"
    get "/contacts/failure" => "invites#failure"
    get "/activities/back_to_edit" 
-   root :to => "invites#index"
+   root :to => "activities#index"
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
