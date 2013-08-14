@@ -6,10 +6,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :activities, :dependent => :destroy
   has_one :profile, :dependent => :destroy
+  has_many :userinterests, :dependent => :destroy
+  accepts_nested_attributes_for :userinterests, 
+                                    :allow_destroy => true
+  
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :email, :password, :password_confirmation, :time_zone
-  # attr_accessible :title, :body
-  has_many :albums, :dependent => :destroy
+  attr_accessible :username, :location, :status, :about, :web, :email, :password, :password_confirmation, :time_zone, :avatar,  :userinterests_attributes
+  mount_uploader :avatar, AvatarUploader
   validates_presence_of :username
   validates_uniqueness_of :username
  

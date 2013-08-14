@@ -29,7 +29,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new.json
   def new
     @activity = current_user.activities.new
-    @album = Album.new
+   
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @activity }
@@ -39,7 +39,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/1/edit
   def edit
     @activity = current_user.activities.find(params[:id])
-    @album = Album.new
+
   end
 
   # POST /activities
