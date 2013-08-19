@@ -34,12 +34,14 @@
 		</div>
 
 
-		                        <div class="bottom-project-info clearfix">           <div class="btn btn-blue"><img src="../assets/ex/mail-icon.png" width="25" height="25"alt="$USER_NAME"/> Email <%= @userview.username %> </div></br> </br>  
+<%= link_to "Email", :controller => "conversation", :action => "index", :id => @userview.id %>		
+
+                        <div class="bottom-project-info clearfix">           <div class="btn btn-blue"><img src="../assets/ex/mail-icon.png" width="25" height="25"alt="$USER_NAME"/> Email <%= @userview.username %> </div></br> </br>  
 		
 
-		            <%=  @userview.age  %>
+		           <%=@userview.sex%></br> Age: <%=  @userview.age  %> 
 		
-		  <% @userview.status %></br>Montreal, Qc, Canada
+		  <% @userview.status %></br>
 		                            <div class="line-progress">
 		                                <div class="bg-progress">
 		                                    <span  style="width: 50%"></span>
@@ -63,22 +65,9 @@
 		                            </div>
 		                        </div>
 		                    </div>
-		  <div class="project-short sml-thumb">
-							 <div class="top-project-info">
-		                            <div class="content-info-short clearfix">
-										<h3>Hey Mike look wOO's here?</h3>
-						                <a class="thumb-avatar " href="#"><img src="images/ex/th-119x119-9.jpg" width="75" height="75" alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-10.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-11.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-12.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-13.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-14.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-15.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-16.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-										                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-7.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-									</div>
-									</div>
-			</div>				
+
+							<%= render 'activities/myfriends'%>
+				
 
 		                </div><!--end: .grid_3 > .project-short-->
 
@@ -90,8 +79,6 @@
 
 		  								<div class="form form-profile">
 		                            <h2> About me:</h2>   
-		                            <h3>Hi Everyone. I am interested in tennis, yoga and gym. I love to run at least twice a day. I am a member of the hiking team and would like to connect with more members via this amazing website.    </h3>        
-
 
 		</br>
 
@@ -99,7 +86,9 @@
 		         <h2> Interests:</h2>  
 		                               <a class="btn btn-white" href="profile.html">Tennis</a>&nbsp;<a class="btn btn-white" href="profile.html">Hiking</a>&nbsp;<a class="btn btn-white" href="profile.html">Coffee</a>&nbsp;<a class="btn btn-white" href="profile.html">Dancing</a>
 
-		                            </div>
+									<h3>Where is <%=@userview.username%>?</h3> <%= @myip %>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@userview.latitude}%2C#{@userview.longitude}" %>  
+				                   </div>
 
 		                        <div class="bottom-project-info clearfix">
 			<div class="btn btn-red"> Follow Henri </div> 	<div class="btn btn-red"> Henri's Groups </div> <div class="btn btn-blue"><a href="#" >
@@ -132,55 +121,11 @@
 		                    </div>
 		                </div><!--end: .grid_3 > .project-short-->
 		                <div class="clear clear-2col"></div>
-
-		                <div class="grid_3">
-			Hey Mike check this activity near you:
-		                    <div class="project-short sml-thumb">
-		                        <div class="top-project-info">
-		                            <div class="content-info-short clearfix">
-		                                <a href="#" class="thumb-img">
-		                                    <img src="images/ex/th-192x135-2.jpg" alt="$TITLE">
-		                                </a>
-		                                <div class="wrap-short-detail">
-		                                    <h3 class="rs acticle-title"><a class="be-fc-orange" href="project.html">Coffee and Books</a></h3>
-		                                    <p class="rs tiny-desc">by <a href="profile.html" class="fw-b fc-gray be-fc-orange">Henrik</a></p>
-		                                    <p class="rs title-description">We are inviting you at Java coffee for fun and book reading. Come and join us and discover new exiting books.</p>
-		                                    <p class="rs project-location">
-		                                        <i class="icon iLocation"></i>
-		                                        Montreal, Qc, Canada
-		                                    </p>
-		                                </div>
-		                            </div>
-		                        </div>
-		                        <div class="bottom-project-info clearfix">
-									<div class="btn btn-red"> Email Friends </div> <div class="btn btn-blue"><a href="#" >
-							                                <img src="images/thumbup.png" alt="Thumb">
-							                            </a>Facebook</div>
-		                            <div class="line-progress">
-		                                <div class="bg-progress">
-		                                    <span  style="width: 21%"></span>
-		                                </div>
-		                            </div>
-		                            <div class="group-fee clearfix">
-		                                <div class="fee-item">
-		                                    <p class="rs lbl">Credibility</p>
-		                                    <span class="val">21%</span>
-		                                </div>
-		                                <div class="sep"></div>
-		                                <div class="fee-item">
-		                                    <p class="rs lbl">Interested</p>
-		                                    <span class="val">9</span>
-		                                </div>
-		                                <div class="sep"></div>
-		                                <div class="fee-item">
-		                                    <p class="rs lbl">Days Left</p>
-		                                    <span class="val">2</span>
-		                                </div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                </div><!--end: .grid_3 > .project-short-->
-
+		<center>	<h3>	Featured Activity Near You</h3>	</center>
+		<center>
+		<%= image_tag 'arrowdown.png', :width => '250', :height => '30'%>
+		</center>
+<%= render 'activities/grid3'%>
 					    <div class="layout-2cols">
 					        <div class="content grid_8">
 					            <div class="project-detail">

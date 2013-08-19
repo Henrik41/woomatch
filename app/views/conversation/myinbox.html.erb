@@ -1,0 +1,17 @@
+This is your inbox
+</br>
+<%= image_tag User.find(10).avatar_url(:thumb) %>
+
+Conversation:
+<% @conversations.each do |c| %>
+</br>
+</br>
+
+subject: <%= c.subject %> </br>
+
+		<% c.messages.each do |x|%>
+			<%= image_tag User.find(x.receipts.first.receiver_id).avatar.url(:mini) %>
+			This is your body: <%= x.body %> <br567>
+		<% end %>
+		
+<%end%>

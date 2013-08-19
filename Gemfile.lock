@@ -50,21 +50,25 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    daemons (1.1.9)
     debug_inspector (0.0.2)
     detect_timezone_rails (0.0.5)
       railties (>= 3.1)
-    devise (3.0.0)
+    devise (3.0.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       warden (~> 1.2.3)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     flickraw (0.9.6)
+    foreigner (1.4.2)
+      activerecord (>= 3.0.0)
     geocoder (1.1.8)
     hike (1.2.3)
-    i18n (0.6.4)
+    i18n (0.6.5)
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -79,14 +83,18 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    meta_request (0.2.7)
+    mailboxer (0.10.3)
+      carrierwave (>= 0.5.8)
+      foreigner (>= 0.9.1)
+      rails (> 3.0.0)
+    meta_request (0.2.8)
       callsite
       rack-contrib
       railties
-    mime-types (1.23)
+    mime-types (1.24)
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
-    multi_json (1.7.7)
+    multi_json (1.7.9)
     nearest_time_zone (0.0.2)
       andand
       kdtree
@@ -128,6 +136,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     require_all (1.2.1)
+    rmagick (2.13.2)
     sass (3.2.10)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -138,11 +147,15 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.7)
+    sqlite3 (1.3.8)
     subexec (0.2.3)
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.18.1)
     tilt (1.4.1)
-    treetop (1.4.14)
+    treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)
@@ -166,12 +179,15 @@ DEPENDENCIES
   geocoder
   jquery-rails
   localtunnel
+  mailboxer
   meta_request
   mini_magick
   nearest_time_zone
   nested_form
   omnicontacts
   rails (= 3.2.12)
+  rmagick
   sass-rails (~> 3.2.3)
   sqlite3
+  thin
   uglifier (>= 1.0.3)

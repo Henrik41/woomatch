@@ -146,6 +146,41 @@ http://stackoverflow.com/questions/6461252/custom-upload-button
 __________
 
 aug 14... I actually did the edit form of the profile page
+_________\
+I used mailboxer
+
+seems to work great.
+however added this to the mailler config:
+
+You need to add the following line at every environment:
+
+config.action_mailer.default_url_options = { :host => "yourhost" }
+
+that way it can works in all the environments and could be different for anyone, for example:
+
+development.rb
+
+config.action_mailer.default_url_options = { :host => "dev.yourhost.com" }
+test.rb
+
+config.action_mailer.default_url_options = { :host => "test.yourhost.com" }
+production.rb
+
+config.action_mailer.default_url_options = { :host => "www.yourhost.com" }
+
+
+_____
+
+How to use mailboxer
+
+sender = User.find(1)
+receiver = User.find(2)
+
+send a message: 
+sender.send_message(receiver,body,subject)
+
+check all messages:
+
 
 
 

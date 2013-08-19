@@ -1,4 +1,10 @@
 Woo::Application.routes.draw do
+  get "conversation/index"
+
+  get "conversation/new"
+
+  get "conversation/show"
+
   get "profile/index"
 
   resources :profiles
@@ -16,10 +22,15 @@ Woo::Application.routes.draw do
   get "test/index"
 
   get "start/index"
-
+  get '/conversation/index/:id', to: 'conversation#index'
   get '/profile/:id', to: 'profile#show'
- put "profile/update"
+  put "profile/update"
+  post 'conversation/index/:id', to: 'conversation#sendmail'
+  get 'conversation/myinbox'
  devise_for :users
+ 
+
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
