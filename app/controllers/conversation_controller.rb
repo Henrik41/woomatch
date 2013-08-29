@@ -1,6 +1,6 @@
 class ConversationController < ApplicationController
 
-  before_filter :setuser
+before_filter :get_mailbox
 
   def index
  
@@ -10,20 +10,28 @@ class ConversationController < ApplicationController
   
   def sendmail
     
-    @para1 = params[:user][:subject]
+    @para1 = params[:user][:body]
     @para2 = params[:id]
     @user_receiver = User.find(@para2)
-    @user_sender.send_message(@user_receiver, @para1, 'sujet')
+    current_user.send_message(@user_receiver, @para1, 'sujet')
     redirect_to :action => :myinbox  
      
   end
   
   
   def myinbox
-    @conversations = @user_sender.mailbox.inbox
+    
+    @conversations =  @mailbox.inbox
+    @messages_count = @mailbox.inbox({:read => false}).count
+ 
   end
   
+  def show
+     @conversation = @mailbox.conversations.find(params[:id])
+     current_user.mark_as_read(@conversation)
+  end
   
+
   def create
     recipient_emails = conversation_params(:recipients).split(',')
     recipients = User.where(email: recipient_emails).all
@@ -35,8 +43,9 @@ class ConversationController < ApplicationController
   end
 
   def reply
-    current_user.reply_to_conversation(conversation, *message_params(:body, :subject))
-    redirect_to conversation
+    conversation = Conversation.find(params[:user][:conversation_id])
+    current_user.reply_to_conversation(conversation, params[:user][:body], 'this is a reply')
+    redirect_to conversation_myinbox_path
   end
 
   def trash
@@ -79,8 +88,14 @@ class ConversationController < ApplicationController
   
   private
   
-  def setuser
-     @user_sender = current_user
+
+  def get_mailbox
+      @mailbox = current_user.mailbox
+    end
+   
+  def get_actor
+       @actor = current_user
   end
+  
   
 end

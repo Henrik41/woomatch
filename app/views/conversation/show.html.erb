@@ -1,0 +1,19 @@
+This is your conversation:
+
+</br>
+	<% @conversation.messages.each do |x| %>
+	
+	    <%= image_tag User.find(x.sender_id).avatar.url(:mini) %>
+	    <%= User.find(x.sender_id).username %>
+	    <%= x.body %>
+	</br>
+</br>
+<% end %>
+
+Reply:
+
+<%= form_for :user,  :url => {:controller => 'conversation', :action => 'reply'} do |f| %>
+	<%= f.text_field :body %>
+	<%= f.hidden_field :conversation_id, :value => @conversation.id %>
+	<%= f.submit %>
+<% end %>

@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :location, :dob, :age, :sex, :status, :about, :web, :email, :password, :password_confirmation, :time_zone, :avatar,  :userinterests_attributes
   attr_accessible :longitude, :latitude
-  attr_accessible :subject
+  attr_accessible :body, :conversation_id
   geocoded_by :location
   mount_uploader :avatar, AvatarUploader
    acts_as_messageable

@@ -2,6 +2,6 @@ Say something to <%= @user_receiver.username %>:
 </br>
 </br>
 <%= form_for :user, :controller => 'conversation', :action => 'sendmail' do |f| %>
-	<%= f.text_field :subject %>
+	<%= f.text_field :body %>
 	<%= f.submit %>
 <% end %>

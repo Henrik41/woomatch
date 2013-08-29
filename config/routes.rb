@@ -6,7 +6,7 @@ Woo::Application.routes.draw do
   get "conversation/show"
 
   get "profile/index"
-
+  post "conversation/reply"
   resources :profiles
 
 
@@ -84,7 +84,7 @@ Woo::Application.routes.draw do
    get "/invites/:provider/contact_callback" => "invites#index"
    get "/contacts/failure" => "invites#failure"
    get "/activities/back_to_edit" 
-   root :to => "activities#index"
+   root :to => "start#index"
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

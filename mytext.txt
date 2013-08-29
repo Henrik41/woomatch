@@ -181,6 +181,12 @@ sender.send_message(receiver,body,subject)
 
 check all messages:
 
+Check your inbox
+
+sender.mailbox.inbox --- this gives you all the conversations in your inbox
+You check your inbox
+
+receiver.reply_to_conversation(conversation, "Reply body") 
 
 
 

@@ -10,6 +10,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
 
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -19,7 +22,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
    end
-  process :resize_to_fit => [800, 800]
+  process :resize_to_fit => [250, 250]
 
 
   # Process files as they are uploaded:
@@ -31,15 +34,16 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
    version :thumb do
-     process :resize_to_fit => [50, 50]
+     process :resize_to_fit => [200, 200]
    end
 
    version :medium do
-       process :resize_to_fit => [100, 100]
+       process :resize_to_fit => [250, 250]
     end
     
     version :mini do
-        process :resize_to_fit => [30, 30]
+        process :resize_to_fit => [100, nil]
+        process crop: '100x100+0+0'
      end
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -53,5 +57,29 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
   
+  private
+
+    # Simplest way
+    def crop(geometry)
+      manipulate! do |img|      
+        img.crop(geometry)
+        img
+      end    
+    end
+
+    # Resize and crop square from Center
+    def resize_and_crop(size)  
+      manipulate! do |image|                 
+        if image[:width] < image[:height]
+          remove = ((image[:height] - image[:width])/2).round 
+          image.shave("0x#{remove}") 
+        elsif image[:width] > image[:height] 
+          remove = ((image[:width] - image[:height])/2).round
+          image.shave("#{remove}x0")
+        end
+        image.resize("#{size}x#{size}")
+        image
+      end
+    end
 
 end

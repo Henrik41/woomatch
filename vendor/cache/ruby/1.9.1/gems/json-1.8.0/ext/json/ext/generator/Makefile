@@ -38,8 +38,8 @@ sbindir = $(exec_prefix)/sbin
 bindir = $(exec_prefix)/bin
 rubylibdir = $(rubylibprefix)/$(ruby_version)
 archdir = $(rubylibdir)/$(arch)
-sitelibdir = $(DESTDIR)/Users/henriknafo/Sites/woo/vendor/cache/ruby/1.9.1/gems/json-1.8.0/ext/json/ext/generator/.gem.20130805-6388-welviv
-sitearchdir = $(DESTDIR)/Users/henriknafo/Sites/woo/vendor/cache/ruby/1.9.1/gems/json-1.8.0/ext/json/ext/generator/.gem.20130805-6388-welviv
+sitelibdir = $(DESTDIR)/Users/henriknafo/Sites/woo/vendor/cache/ruby/1.9.1/gems/json-1.8.0/ext/json/ext/generator/.gem.20130828-51362-mjas6a
+sitearchdir = $(DESTDIR)/Users/henriknafo/Sites/woo/vendor/cache/ruby/1.9.1/gems/json-1.8.0/ext/json/ext/generator/.gem.20130828-51362-mjas6a
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 
