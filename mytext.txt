@@ -181,12 +181,32 @@ sender.send_message(receiver,body,subject)
 
 check all messages:
 
-Check your inbox
+------------
 
-sender.mailbox.inbox --- this gives you all the conversations in your inbox
-You check your inbox
+28 AOUT 2013
 
-receiver.reply_to_conversation(conversation, "Reply body") 
+1. Inbox -- accept user/friend who wants to participate to your activity
+2. Recherche 
+3.recurrent --- pas recurrent, tous les jours, semaine, 2 semaines, tous les mois, tous les ans.
+4. complete --- nb of people
+5. place de libre plutot que nb user inscrit
+6. settings:
+
+	1. changer le mot de passe
+	3. changer ta date de naissance
+	4. changer ton sexe
+	5. changer ton email
+	6. delete le profile
+	7. blocquer les usagers dans chaque email recu
+
+7. following activities
+
+_____________
+
+
+
+
+
 
 
 
