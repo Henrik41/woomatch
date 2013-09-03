@@ -3,7 +3,7 @@ require "bundler/capistrano"
 server "66.228.34.47", :web, :app, :db, primary: true
 
 set :application, "woomatch"
-set :user, "root"
+set :user, "henrik41"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
