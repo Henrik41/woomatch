@@ -47,6 +47,9 @@ end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
+group :production, :test do
+  gem 'mysql2'
+end
 
 # Use unicorn as the app server
  gem 'unicorn'
