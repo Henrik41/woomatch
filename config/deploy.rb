@@ -11,7 +11,7 @@ set :test_log, "log/capistrano-unit-test.log"
 set :scm, "git"
 set :repository, "git@github.com:Henrik41/woomatch.git"
 set :branch, "master"
-
+set :copy_exclude, [".git", "spec"]
 
 
 default_run_options[:pty] = true
