@@ -10,11 +10,27 @@ before_filter :get_mailbox
   
   def sendmail
     
+    
     @para1 = params[:user][:body]
     @para2 = params[:id]
+
+    
     @user_receiver = User.find(@para2)
-    current_user.send_message(@user_receiver, @para1, 'sujet')
-    redirect_to :action => :myinbox  
+    
+    conv_check_1 = Conversation.participant(@user_receiver)
+    conv_check_2 = Conversation.participant(current_user)
+    
+    @dialog = (conv_check_1 & conv_check_2).first
+    
+    if @dialog.nil? or !@dialog.is_participant?(current_user)
+       current_user.send_message(@user_receiver, @para1, 'subject')
+    else
+      current_user.reply_to_conversation(@dialog, @para1)
+    end
+
+    redirect_to :action => :myinbox
+    
+    
      
   end
   
