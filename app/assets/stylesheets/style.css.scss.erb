@@ -925,12 +925,12 @@ a.fc-gray-dark,.fc-gray-dark{color: #999}
 		background: #356AA0;}
 	#menu_wrapper.blue a {color: #fff;}
 	#menu_wrapper.blue li a:hover, #menu_wrapper.blue li.active a {color: #90CDFF; background: #3D7BBB; border-bottom: 2px solid #356AA0;}
-	#menu_wrapper.blue {background: url(<%= asset_path 'blue.png' %>) no-repeat right;}
-	#menu_wrapper.blue div {background: url(<%= asset_path 'blue.png' %>) no-repeat left;}
+	#menu_wrapper.blue {background: url(asset_path('blue.png',images)) no-repeat right;}
+	#menu_wrapper.blue div {background: url(asset_path('blue.png',images)) no-repeat left;}
 
 /* 6.	Icon
 --------------------------------------------------------------------------------*/
-.icon{background: transparent url(<%= asset_path "icon.png" %>) no-repeat;border: none;display: inline-block;*display: inline;*zoom: 1;}
+.icon{background: transparent url(asset_path('icon.png', image)) no-repeat;border: none;display: inline-block;*display: inline;*zoom: 1;}
 
   .iMagnifier        {width:16px;height:16px;background-position: 0 0}
     .iCalendar         {width:16px;height:16px;background-position: -16px 0}
