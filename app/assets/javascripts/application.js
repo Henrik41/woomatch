@@ -16,7 +16,6 @@
 //= require jquery_ujs
 //= require jquery-1.9.1.min
 
-
 //= require js/md_slider.min
 //= require detect_timezone
 //= require jquery.detect_timezone

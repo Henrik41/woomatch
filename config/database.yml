@@ -22,6 +22,6 @@ production:
     adapter: mysql2
     database: woomatch
     user: root
-    password: K1n2a3f4o5&
+    password: root
     pool: 5
     timeout: 5000
