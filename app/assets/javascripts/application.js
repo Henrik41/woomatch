@@ -16,18 +16,19 @@
 //= require jquery_ujs
 //= require jquery-1.9.1.min
 //= require detect_timezone
+//= require js/md_slider.min
 //= require jquery.detect_timezone
 
 //= require jquery.ui.addresspicker
 
-
+//= require jquery.counter
 //= require js/selectnav.min
 //= require js/jquery.sidr.min
 
 //= require js/raphael-min
 //= require js/lte-ie7
 //= require js/pie
-//= require js/md_slider.min
+
 //= require js/jquery-migrate-1.2.1.min
 //= require js/jquery.touchwipe.min
 //= require js/responsiveslides.min
@@ -38,4 +39,4 @@
 //= require js/jquery.ptTimeSelect
 //= require jquery_nested_form
 //= require jquery.reveal
-//= require jquery.counter
+
