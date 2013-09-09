@@ -15,16 +15,15 @@
 //= require js/script
 //= require jquery_ujs
 //= require jquery-1.9.1.min
-//= require detect_timezone
+
+//= require jquery.ui.addresspicker
 //= require js/md_slider.min
+//= require detect_timezone
 //= require jquery.detect_timezone
 
 
 
 //= require jquery.counter
-//= require jquery.ui.addresspicker
-
-
 //= require js/selectnav.min
 //= require js/jquery.sidr.min
 
