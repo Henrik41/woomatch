@@ -22,6 +22,9 @@
 
 
 //= require jquery.counter
+//= require jquery.ui.addresspicker
+
+
 //= require js/selectnav.min
 //= require js/jquery.sidr.min
 
@@ -39,4 +42,4 @@
 //= require js/jquery.ptTimeSelect
 //= require jquery_nested_form
 //= require jquery.reveal
-//= require jquery.ui.addresspicker
+
