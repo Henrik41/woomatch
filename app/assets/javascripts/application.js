@@ -19,7 +19,7 @@
 //= require js/md_slider.min
 //= require jquery.detect_timezone
 
-//= require jquery.ui.addresspicker
+
 
 //= require jquery.counter
 //= require js/selectnav.min
@@ -39,4 +39,4 @@
 //= require js/jquery.ptTimeSelect
 //= require jquery_nested_form
 //= require jquery.reveal
-
+//= require jquery.ui.addresspicker
