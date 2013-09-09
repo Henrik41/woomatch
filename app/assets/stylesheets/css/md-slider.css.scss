@@ -39,7 +39,7 @@
   float: right;
   width: 66px;
   height: 22px;
-  background: transparent url(asset_path('slider/closelabel.gif',images)) no-repeat 0 0;
+  background: transparent image-url("slider/closelabel.gif") no-repeat 0 0;
 }
 /* slideshow */
 .md-slide-wrap {

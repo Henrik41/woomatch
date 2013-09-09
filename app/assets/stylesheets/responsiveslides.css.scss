@@ -43,7 +43,7 @@
     text-indent: -9999px;
     overflow: hidden;
     text-decoration: none;
-    background: transparent url(asset_path('icon.png',images)) no-repeat -98px -16px;
+    background: transparent image-url("icon.png") no-repeat -98px -16px;
     margin-top: -45px;
     width: 11px;
     height: 16px;

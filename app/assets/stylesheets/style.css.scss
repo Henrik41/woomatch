@@ -930,7 +930,7 @@ a.fc-gray-dark,.fc-gray-dark{color: #999}
 
 /* 6.	Icon
 --------------------------------------------------------------------------------*/
-.icon{background: transparent url(asset_path('icon.png', images)) no-repeat;border: none;display: inline-block;*display: inline;*zoom: 1;}
+.icon{background: transparent image-url("icon.png") no-repeat;border: none;display: inline-block;*display: inline;*zoom: 1;}
 
   .iMagnifier        {width:16px;height:16px;background-position: 0 0}
     .iCalendar         {width:16px;height:16px;background-position: -16px 0}
