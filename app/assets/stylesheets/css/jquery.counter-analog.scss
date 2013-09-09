@@ -25,9 +25,7 @@
     margin: 0;
 }
 
-.counter-analog span.part span.digit {
-    background: transparent image-url("jquery.counter-analog.png") 0 0 repeat-y;
-}
+
 
 .counter-analog span.part span.digit0 { background-position: 0     0; }
 .counter-analog span.part span.digit1 { background-position: 0  -240px; }
