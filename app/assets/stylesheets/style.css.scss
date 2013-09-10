@@ -1018,6 +1018,33 @@ a.fc-gray-dark,.fc-gray-dark{color: #999}
     *zoom: 1;
     vertical-align: middle;
 }
+
+
+.form-search2 .address-picker-input{
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+    padding: 7px 32px 9px 43px;
+    width: 210px;
+    display: inline-block;
+    outline: none;
+    background-color: #f9f9f9;
+    border: 1px solid #d9d9d9;
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+    -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+}
+
 .form-search .txt-keyword:focus{
     border-color:#52A8EC;
     outline: 0;
@@ -1038,6 +1065,15 @@ a.fc-gray-dark,.fc-gray-dark{color: #999}
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 
+.form-search2 .address-picker-input:focus{
+    border-color:#52A8EC;
+    outline: 0;
+    outline: thin dotted \9;
+    /* IE6-9 */
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
 
 .form-search .btn-search{
     position: absolute;
@@ -1078,7 +1114,7 @@ a.fc-gray-dark,.fc-gray-dark{color: #999}
 .form-search2 .btn-reset-keyword{
     position: absolute;
     top: 12px;
-    right: 18px;
+    right: 70px;
     width: 9px;
     height: 9px;
     border: none;
@@ -1867,7 +1903,7 @@ a.fc-gray-dark,.fc-gray-dark{color: #999}
 	color: #fff
 }
 .slide-with-background {
-	background:url(../images/slide-item-bg.png) repeat 0 0;	
+	background:image-url("slide-item-bg.png") repeat 0 0;	
 }
 #home-slider .md-bullet{
     cursor: pointer;

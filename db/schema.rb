@@ -11,32 +11,50 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130815003261) do
+ActiveRecord::Schema.define(:version => 20130910014317) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
     t.string   "location"
     t.date     "start_date"
-    t.time     "start_time"
+    t.datetime "start_time"
     t.date     "end_date"
-    t.time     "end_time"
+    t.datetime "end_time"
     t.text     "about"
     t.integer  "numpart"
     t.string   "website"
     t.boolean  "recurrent"
     t.string   "price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.float    "longitude"
     t.float    "latitude"
     t.string   "avatar"
   end
 
+  create_table "activityavatars", :force => true do |t|
+    t.integer  "activity_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
   create_table "albums", :force => true do |t|
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "conversations", :force => true do |t|
@@ -71,6 +89,26 @@ ActiveRecord::Schema.define(:version => 20130815003261) do
   end
 
   add_index "notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
+
+  create_table "ponds", :force => true do |t|
+    t.string   "address"
+    t.string   "address_latitude"
+    t.string   "address_longitude"
+    t.string   "address_locality"
+    t.string   "address_country"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "location"
+    t.string   "status"
+    t.text     "about"
+    t.string   "web"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "receipts", :force => true do |t|
     t.integer  "receiver_id"
@@ -121,9 +159,5 @@ ActiveRecord::Schema.define(:version => 20130815003261) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  add_foreign_key "notifications", "conversations", :name => "notifications_on_conversation_id"
-
-  add_foreign_key "receipts", "notifications", :name => "receipts_on_notification_id"
 
 end

@@ -57,16 +57,34 @@
                 <h2 class="common-title">Popular in <%= @result.data['city'] %>,	<%= @result.data['region_name'] %>   
 	
 	<!-- Time: <%= @timenowuser %> --> </h2>
-
     <div class="form-search2">
 	<div class="form2">
-        <form  action="#">
-           
-                <input id="sys_txt_keyword" class="txt-keyword" type="text" placeholder="Change my city"/>
+<%= form_for @pond do |f| %>
+
+
+  <%= f.text_field :address,  :class => 'address-picker-input', :placeholder => 'Change my city' %>
+
+
+<script type="text/javascript">
+    AddressPickerRails.Pickers.apply({
+        'onLoad':function (railsPicker) {
+            console.debug("callback for a single pond with ID '%s'", railsPicker.getIdPrefix());
+        }
+    });
+</script>
+
+
+     <%= f.submit 'Search' %>
+
+
+<% end %>
+
+       
+   
            
             <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
             <button class="btn-reset-keyword" type="reset"><i class="icon iXHover"></i></button>
-        </form>
+  
 </br>
 </div>
     </div>
@@ -145,7 +163,7 @@
                 <div class="lst-tweets" id="sys_lst_tweets">
                     <p class="rs ta-c fc-white">
                         loading Twitter <br />
-                        <img src="images/ajax-loader.gif" alt="loading"/>
+                        <%= (image_tag "ajax-loader.gif") %>
                     </p>
                 </div>
             </div><!--end: .recent-tweets -->
@@ -170,7 +188,7 @@
                     <ul class="rs">
                         <li><a class="be-fc-orange" href="#">What is WooMatch</a></li>
                         <li><a class="be-fc-orange" href="#">Start an Activity</a></li>
-                        <li><a class="be-fc-orange" href="#">Project Guidlines</a></li>
+                        <li><a class="be-fc-orange" href="#">Project Guidelines</a></li>
                         <li><a class="be-fc-orange" href="#">Press</a></li>
                         <li><a class="be-fc-orange" href="#">Stats</a></li>
                     </ul>
@@ -189,7 +207,7 @@
         <div class="copyright">
             <div class="container_12">
                 <div class="grid_12">
-                    <a class="logo-footer" href="index.html"><img src="images/logo-2.png" alt="$SITE_NAME"/></a>
+                    <a class="logo-footer" href="index.html"><%= (image_tag "images/logo-2.png") %></a>
                     <p class="rs term-privacy">
                         <a class="fw-b be-fc-orange" href="single.html">Terms & Conditions</a>
                         <span class="sep">/</span>
@@ -225,34 +243,6 @@
     </div>
 </div>
 
-<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script src="assets/jquery-ui-1.10.3.custom.js"></script>
-<script src="assets/jquery.ui.addresspicker.js"></script>
-
-
-<script>
-$(function() {
-
-	var addresspickerMap = $( ".form2 #sys_txt_keyword" ).addresspicker({
-		regionBias: "fr",
-	  elements: {
-	    map:      "#map",
-	    lat:      "#lat",
-	    lng:      "#lng",
-	    locality: '#user_city',
-	    administrative_area_level_2: '#administrative_area_level_2',
-	    administrative_area_level_1: '#user_province',
-	    country:  '#user_country',
-	    postal_code: '#postal_code',
-    type:    '#type' 
-	  }
-	});
-	var gmarker = addresspickerMap.addresspicker( "marker");
-	gmarker.setVisible(true);
-	addresspickerMap.addresspicker( "updatePosition");
-	
-});
-</script>
 
 <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 

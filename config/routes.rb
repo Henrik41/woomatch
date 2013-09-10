@@ -7,8 +7,10 @@ Woo::Application.routes.draw do
 
   get "profile/index"
   post "conversation/reply"
-  resources :profiles
+  
 
+  resources :profiles
+  resources :ponds
 
   resources :activityavatars
 

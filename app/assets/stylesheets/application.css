@@ -19,8 +19,11 @@
  *= require jquery.counter-analog
  *= require normalize
  *= require responsive
- *= responsiveslides
+ *= require responsiveslides
+
  *= require_tree ./css/
  *= require style
  *= require_tree .
+ *
+ *= require jquery-ui/start
  */

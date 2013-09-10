@@ -15,7 +15,8 @@
 //= require script
 //= require jquery_ujs
 //= require jquery-1.9.1.min
-//= require jquery-ui-1.10.3.custom
+//= require address_picker-rails
+
 //= require md_slider.min
 //= require detect_timezone
 //= require jquery.detect_timezone
@@ -34,4 +35,6 @@
 //= require jquery.ptTimeSelect
 //= require jquery_nested_form
 //= require jquery.reveal
+//= require twitter.min
+
 
