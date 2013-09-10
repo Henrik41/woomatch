@@ -32,6 +32,7 @@
   <% end -%>
 	<p class="rs ta-c pb10">
 		<%= f.submit "Login", :class => 'btn btn-red btn-submit' %>
+		<%= link_to "Login With Facebook", user_omniauth_authorize_path(:facebook),  :class => 'btn btn-blue btn-submit'  %> 
       
   </p>
   <p class="rs ta-c">

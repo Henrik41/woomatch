@@ -47,7 +47,7 @@
                 <p class="rs pb10">By signing up, you agree to our <a href="#" class="fc-orange">terms of use</a> and <a href="#" class="fc-orange">privacy policy</a>.</p>
                 <p class="rs ta-c">
                     
-  <div><%= f.submit "Sign up", :class => "btn btn-red btn-submit"  %>  <a href="#" class="btn btn-blue btn-submit">Connect With Facebook</a> </div> 
+  <div><%= f.submit "Sign up", :class => "btn btn-red btn-submit"  %> <%= link_to "Connect With Facebook", user_omniauth_authorize_path(:facebook),  :class => 'btn btn-blue btn-submit'  %>   </div> 
                 </p>
             </div>
         </div>

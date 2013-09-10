@@ -357,6 +357,12 @@ a.fc-gray-dark,.fc-gray-dark{color: #999}
 .btn-green2:hover{
     background: #4ba220;
 }
+input.btn  {
+	height: 38px;
+   
+}
+
+
 .btn-red{
     border: 1px solid #b53b2c;
     color: #FFF;
@@ -415,7 +421,7 @@ a.fc-gray-dark,.fc-gray-dark{color: #999}
     background: #3068b5;
 }
 .btn-blue{
-     border: 1px solid #326bb9;
+    border: 1px solid #326bb9;
     color: #FFF;
     background: #4392ec; /* Old browsers */
     background: -moz-linear-gradient(top,  #4392ec 0%, #377ae8 100%); /* FF3.6+ */
@@ -426,6 +432,8 @@ a.fc-gray-dark,.fc-gray-dark{color: #999}
     background: linear-gradient(top,  #4392ec 0%,#377ae8 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4392ec', endColorstr='#377ae8',GradientType=0 ); /* IE6-9 */
 }
+
+
 .btn-blue:hover{
     background: #377ae8;
 }

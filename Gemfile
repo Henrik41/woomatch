@@ -35,6 +35,8 @@ gem 'carrierwave'
 gem 'mini_magick' 
 gem 'rmagick'
 gem 'mailboxer'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development do
   gem 'better_errors'

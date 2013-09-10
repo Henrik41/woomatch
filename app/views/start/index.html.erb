@@ -118,8 +118,8 @@
                 <a class="thumb-avatar t-first" href="#"><%= (image_tag "ex/th-119x119-17.jpg") %>  </a>
                 <div class="connect-fb">
                     <p class="rs description">Discover great activities with your friends!</p>
-                    <a href="#" class="btn btn-fb">Connect With Facebook</a>
-
+                   
+<%= link_to "Connect With Facebook", user_omniauth_authorize_path(:facebook),  :class => 'btn btn-fb'  %>
                 </div>
                 <a class="thumb-avatar t-last" href="#"><%= (image_tag "ex/th-119x119-1.jpg") %>  </a>
                 <div class="clear"></div>

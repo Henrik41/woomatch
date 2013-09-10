@@ -29,10 +29,9 @@ Woo::Application.routes.draw do
   put "profile/update"
   post 'conversation/index/:id', to: 'conversation#sendmail'
   get 'conversation/myinbox'
- devise_for :users
- 
 
  
+devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
