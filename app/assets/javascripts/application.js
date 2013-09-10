@@ -12,32 +12,26 @@
 //
 
 //= require jquery
-//= require js/script
+//= require script
 //= require jquery_ujs
 //= require jquery-1.9.1.min
-
-//= require js/md_slider.min
+//= require jquery-ui-1.10.3.custom
+//= require md_slider.min
 //= require detect_timezone
 //= require jquery.detect_timezone
-
-
-
 //= require jquery.counter
-//= require js/selectnav.min
-//= require js/jquery.sidr.min
-
-//= require js/raphael-min
-//= require js/lte-ie7
-//= require js/pie
-
-//= require js/jquery-migrate-1.2.1.min
-//= require js/jquery.touchwipe.min
-//= require js/responsiveslides.min
-//= require js/jquery.form
-//= require js/bootstrap
-//= require js/twitter.min
-//= require js/jquery.sidr.min
-//= require js/jquery.ptTimeSelect
+//= require selectnav.min
+//= require jquery.sidr.min
+//= require raphael-min
+//= require lte-ie7
+//= require pie
+//= require jquery-migrate-1.2.1.min
+//= require jquery.touchwipe.min
+//= require responsiveslides.min
+//= require jquery.form
+//= require bootstrap
+//= require jquery.sidr.min
+//= require jquery.ptTimeSelect
 //= require jquery_nested_form
 //= require jquery.reveal
 
