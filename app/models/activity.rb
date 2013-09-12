@@ -11,4 +11,6 @@ class Activity < ActiveRecord::Base
   after_validation :geocode
   validates_presence_of  :location, :start_time, :end_time
   mount_uploader :avatar, AvatarUploader
+  
+
 end

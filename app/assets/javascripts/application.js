@@ -13,10 +13,10 @@
 
 //= require jquery
 //= require script
+
 //= require jquery_ujs
 //= require jquery-1.9.1.min
 //= require address_picker-rails
-
 //= require md_slider.min
 //= require detect_timezone
 //= require jquery.detect_timezone
@@ -26,6 +26,7 @@
 //= require raphael-min
 //= require lte-ie7
 //= require pie
+//= require videopopup
 //= require jquery-migrate-1.2.1.min
 //= require jquery.touchwipe.min
 //= require responsiveslides.min

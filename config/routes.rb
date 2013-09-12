@@ -1,4 +1,6 @@
 Woo::Application.routes.draw do
+
+
   get "conversation/index"
 
   get "conversation/new"
@@ -19,7 +21,7 @@ Woo::Application.routes.draw do
 
 
   resources :activities
-
+  
   get "photos/index"
   get "test/index"
 
@@ -85,6 +87,7 @@ devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_call
    get "/invites/:provider/contact_callback" => "invites#index"
    get "/contacts/failure" => "invites#failure"
    get "/activities/back_to_edit" 
+   get "start/dashboard"
    root :to => "start#index"
   # See how all your routes lay out with "rake routes"
 

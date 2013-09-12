@@ -20,7 +20,7 @@
  *= require normalize
  *= require responsive
  *= require responsiveslides
-
+ *= require videopopup
  *= require_tree ./css/
  *= require style
  *= require_tree .
