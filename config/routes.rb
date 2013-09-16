@@ -1,6 +1,8 @@
 Woo::Application.routes.draw do
 
 
+  post "search/searchactivities"
+  post "search/searchbycity"
   get "conversation/index"
 
   get "conversation/new"
@@ -18,6 +20,8 @@ Woo::Application.routes.draw do
 
 
   resources :albums
+  
+get 'start/autocomplete_activity_title'
 
 
   resources :activities

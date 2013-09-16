@@ -1,4 +1,6 @@
 class ProfileController < ApplicationController
+  
+
   def index
     @user = current_user
     @activity = @user.activities.all

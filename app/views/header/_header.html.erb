@@ -7,6 +7,7 @@
      <div class="container_12 clearfix">
         <div class="grid_12 header-content">
             <div id="sys_header_right" class="header-right">
+	
 				                 <div class="account-panel">
 					<div class="nav-title">
 <% if @message_count and !@message_count.nil %>
@@ -22,16 +23,18 @@
 				  						 <a href="#"> <%= image_tag 'me.png' %> </a>
 				</div>
 			                    </div>
-           <div class="form-search">
-                    <form action="#">
-                        <label for="sys_txt_keyword">
-                            <input id="sys_txt_keyword" class="txt-keyword" type="text" placeholder="Search projects"/>
-                        </label>
-                        <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
-                        <button class="btn-reset-keyword" type="reset"><i class="icon iXHover"></i></button>
-                    </form>
+
+           <div class="form-search3">
+                 	<%=	form_tag '/search/searchactivities', :class => 'txt-keyword', :id =>'sys_txt_keyword' do %>
+						 <%= autocomplete_field_tag 'activity_title', '',  start_autocomplete_activity_title_path, :id_element => '#some_element', :size => '16', :placeholder => 'Search Activities' %>
+
+						           <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
+		                            <button class="btn-reset-keyword" type="reset"><i class="icon iXHover"></i></button>
+
+					<% end %>
            </div>
             </div>
+
             <div class="header-left">
                 <h1 id="logo">
                   <a href="/"><%= image_tag 'logo.png' %> </a>
@@ -57,14 +60,19 @@
                         <a href="#" class="btn btn-red sys_show_popup_login">Promote Your Activity</a>
                         <a href="#" class="btn btn-black sys_show_popup_login">Login</a>
                     </div>
-                    <div class="form-search">
-                        <form action="#">
-                            <label for="sys_txt_keyword">
-                                <input id="sys_txt_keyword" class="txt-keyword" type="text" placeholder="Search projects"/>
-                            </label>
-                            <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
-                            <button class="btn-reset-keyword" type="reset"><i class="icon iXHover"></i></button>
-                        </form>
+<div class="form-search">
+	<div class="form">
+
+				<%=	form_tag 'search/searchactivities', :class => 'txt-keyword', :id =>'sys_txt_keyword' do %>
+					 <%= autocomplete_field_tag 'activity_title', '',  start_autocomplete_activity_title_path, :id_element => '#some_element', :size => '16', :placeholder => 'Search Activities' %>
+		
+					           <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
+	                            <button class="btn-reset-keyword" type="reset"><i class="icon iXHover"></i></button>
+					
+				<% end %>
+					
+					</div>
+                   
                     </div>
                 </div>
                 <div class="header-left">

@@ -1,15 +1,13 @@
+<body>
 
 <div id="wrapper">
 <%= render "header/header" %>
 <%= render 'activities/navbar' %>	
          <div class="clear"></div>
-	     <div class="clear"></div>
 
-
+  <div class="home-popular-project">
 		<div class="layout-2cols">
 		        <div class="content grid_8">
-			
-
 					        <h2 class="rs project-title">Hey <%= current_user.username %> you have <%=@messages_count%> NEW mails</h2>
 			</br>
 		 <!--          <div class="project-detail">
@@ -48,7 +46,7 @@
 		-->
 		
 <% @conversations.each do |c| %>		
-				  <div class="box-gray">
+				<div class="box-gray">
 		          		    <h3 class="title-box">From</h3>
 							 <div class="media">
 				                 <a href="#" class="thumb-left">
@@ -86,7 +84,7 @@
 				  </div>
 <% end %>
 
-		       </div><!--end: .content -->
+		        </div><!--end: .content -->
 		        <div class="sidebar grid_4">
 		            <div class="project-runtime">
 		                <div class="box-gray">
@@ -251,61 +249,8 @@
 		        </div><!--end: .sidebar -->
 		        <div class="clear"></div>
 		</div>
-
-
-
-<!--			  <div class="home-popular-project">
-			        <div class="container_12">
-			            <div class="grid_12 wrap-title">
-
-
-<h2 class="common-title">Hey <%= current_user.username %> you have <%=@messages_count%> unread messages</h2></div>
-
-
-	</br>	</br>
-	
-<div id='conversation'>	
-<% @conversations.each do |c| %>
-</br>
-</br>
- 
-	<div id="leftcontent">
-    <% whois = c.participants - Array(current_user) %>
- <% if whois.empty? %>
-
-  <%= image_tag current_user.avatar.url(:mini) %>
-<% else %>
-	<%= image_tag whois[0].avatar.url(:mini) %>
-<% end %>
-	</div>
-	
-	<div id="centerleftcontent">
-		<% if whois.empty? %>
-		  <%= current_user.username %>
-		<% else %>
-	<%= whois[0].username %>
-	<% end%>
-	</div>
-	
-	<div id="centerrightcontent">
-	<%= link_to c.subject, :controller => 'conversation', :action => 'show', :id => c.id %> 
-	</div>
-		 
-	<div id="rightcontent"> 
-	<%= link_to "delete" %> 
-	</div>
-	
-		</br>	</br>	</br>	</br>
-
-
-<%end%>
 </div>
 
-						</div>
-					</div>
-			  </div>
-				
--->				
 <footer id="footer">
         <div class="container_12 main-footer">
             <div class="grid_3 about-us">
@@ -382,3 +327,4 @@
 
 </div>
 
+</body>

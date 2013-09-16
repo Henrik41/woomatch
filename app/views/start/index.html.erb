@@ -59,22 +59,21 @@
 	<!-- Time: <%= @timenowuser %> --> </h2>
     <div class="form-search2">
 	<div class="form2">
-<%= form_for @pond do |f| %>
 
-
-  <%= f.text_field :address,  :class => 'address-picker-input', :placeholder => 'Change my city' %>
+<%= form_tag('search/searchbycity') do %>
+  <%= text_field_tag "q",nil, :class => 'address-picker-input', :placeholder => 'Change my city' %>
 
 
 <script type="text/javascript">
-    AddressPickerRails.Pickers.apply({
-        'onLoad':function (railsPicker) {
-            console.debug("callback for a single pond with ID '%s'", railsPicker.getIdPrefix());
-        }
-    });
+    AddressPickerRails.Pickers.applyOnReady({
+	  'onLoad':function (picker) {
+	    console.debug("callback for a single pond with ID '%s'", picker.getIdPrefix());
+	  }
+	});
 </script>
 
 
-     <%= f.submit 'Search' %>
+     <%= submit_tag 'Search' %>
 
 
 <% end %>

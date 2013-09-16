@@ -1,37 +1,18 @@
 <div class="grid_12 top-info">
-	<div id="menu_wrapper" class="blue">
-		<div class="left"></div>
-	
-                <ul id="menu" >	
-	                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-                    <li class="sep"></li>
-	  <li class="sep"></li>
-	  <li class="sep"></li>
-	  <li class="sep"></li>
-                    <li><a href="/start/dashboard">Dashboard</a></li>
-                    <li class="sep"></li>
-						
-                    <li><a href="#">My Activities</a></li>
-                    <li class="sep"></li>
-                    <li><%= link_to 'Add an Activity', new_activity_path %></li>
-                    <li class="sep"></li>
-                    <li><a href="#">Promote my Activity</a></li>
-             
-                    <li class="sep"></li>
-                    <li><a href="#">Favorites</a></li>
-             <li class="btn btn-red"> Advanced Search </li>
-                </ul>
+	<div id="menu_wrapper" >
+		<nav>
+            <ul id="appleNav">
+                <li><a href="/start/dashboard" title="Apple"><%= image_tag 'logowoo2.png' %></a></li>
+                <li><a href="/start/dashboard" title="Store">Home</a></li>
+                <li><a href="http://www.apple.com/mac/" title="Mac">My Activities</a></li>
+                <li><a href="/activities/new" title="iPod">Add An Activity</a></li>
+                <li><a href="http://www.apple.com/iphone/" title="iPhone">Favorites</a></li>
 
+          <li><a href="http://www.apple.com/ipad/" title="iPad">Promote Activities</a></li>
+                <li><a href="http://www.apple.com/ipad/" title="iPad">Advanced Search</a></li>
+
+
+            </ul>
+        </nav>
 </div>
-
-                <ul id="sys-nav-menu-blog" class="alternate-menu-blog">
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">My Activities</a></li>
-                   
-                    <li><a href="#">Add an Activity</a></li>
-                    <li><a href="#">Promote my Activity</a></li>
- 		
-					<li><a href="#">Favorites</a></li>
-					 <li><a href="#">Advanced Search</a></li>
-                </ul>
 </div>

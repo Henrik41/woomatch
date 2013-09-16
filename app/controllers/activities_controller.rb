@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
   
  before_filter :authenticate_user!
+
   # GET /activities
   # GET /activities.json
   def index

@@ -1,0 +1,8 @@
+here is a search by activity
+
+<% @searchs.each do |s| %>
+	<%= image_tag s.avatar.url(:thumb) %>
+	<%= s.title %>
+	<%= s.location %>
+	</br>
+<% end %>

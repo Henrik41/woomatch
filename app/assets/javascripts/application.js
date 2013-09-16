@@ -14,8 +14,13 @@
 //= require jquery
 //= require script
 
-//= require jquery_ujs
 //= require jquery-1.9.1.min
+//= require jquery_ujs
+//= require jquery-ui
+//= require autocomplete-rails
+
+
+
 //= require address_picker-rails
 //= require md_slider.min
 //= require detect_timezone

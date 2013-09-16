@@ -2,6 +2,8 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
     before_filter :get_current_user
+    autocomplete :userinterest, :interest, :extra_data => [:id],  :full => true
+    
   def index
     @profiles = Profile.all
 

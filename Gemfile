@@ -37,6 +37,7 @@ gem 'rmagick'
 gem 'mailboxer'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'rails3-jquery-autocomplete'
 
 group :development do
   gem 'better_errors'
