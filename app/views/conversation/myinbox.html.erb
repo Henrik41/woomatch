@@ -8,42 +8,11 @@
   <div class="home-popular-project">
 		<div class="layout-2cols">
 		        <div class="content grid_8">
-					        <h2 class="rs project-title">Hey <%= current_user.username %> you have <%=@messages_count%> NEW mails</h2>
+					        <h2 class="rs project-title">Hey <%= current_user.username %> you have <%=@messages_count%> NEW mails</h2> <a class="btn btn-red" href="#">Check my Outbox</a> 
+					
+					
 			</br>
-		 <!--          <div class="project-detail">
-		                <h2 class="rs project-title">Good Morning Henri. You have 21 NEW mails</h2>
-
-
-		              <div class="project-short big-thumb">
-
-		                    <div class="bottom-project-info clearfix">
-
-		                        <div class="project-progress sys_circle_progress" data-percent="87">
-
-		                            <div class="sys_holder_sector"></div>
-		                        </div>
-		                        <div class="group-fee clearfix">
-		                            <div class="fee-item">
-		                                <p class="rs lbl">Price</p>
-		                                <span class="val">Free</span>
-		                            </div>
-		                            <div class="sep"></div>
-		                            <div class="fee-item">
-		                                <p class="rs lbl">Liked</p>
-		                                <span class="val">25</span>
-		                            </div>
-		                            <div class="sep"></div>
-		                            <div class="fee-item">
-		                                <p class="rs lbl">Time Left</p>
-		                                <span class="val">25 days 45 mins</span>
-		                            </div>
-		                        </div>
-		                        <div class="clear"></div>
-		                    </div>
-		              </div>
-
-		            </div>
-		-->
+	
 		
 <% @conversations.each do |c| %>		
 				<div class="box-gray">

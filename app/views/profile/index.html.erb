@@ -145,11 +145,9 @@
 								
 																					<%= f.fields_for :userinterests do |f| %>
 
+									<%= f.text_field :interest, :class => "txt txt-website", :id => "txt_web" %>
 
-																						<%= f.text_field :interest, :class => "txt txt-website", :id => "txt_web" %>
-
-
-																								<%= f.link_to_remove "Remove" %>
+												<%= f.link_to_remove "Remove" %>
 																					<% end %>
 
 																								<%= f.link_to_add "Add Interest", :userinterests, :class => "btn btn-white" %>
