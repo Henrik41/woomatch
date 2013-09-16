@@ -8,7 +8,7 @@
   <div class="home-popular-project">
 		<div class="layout-2cols">
 		        <div class="content grid_8">
-					        <h2 class="rs project-title">Hey <%= current_user.username %> you have <%=@messages_count%> NEW mails</h2> <a class="btn btn-red" href="#">Check my Outbox</a> 
+					 <div class= "topmessage">      <div class='topmessageleft'>  <h2 class="rs project-title">Hey <%= current_user.username %> you have <%=@messages_count%> NEW mails</h2></div> <div class='topmessageright'><a class="btn btn-red" href="/conversation/myoutbox">Check my Outbox</a> </div></div> 
 					
 					
 			</br>
@@ -47,7 +47,8 @@
 					<div class="thumb-right">
 
 					                     <div class="btn btn-blue" ><%= link_to 'Read', {:controller => 'conversation', :action => 'show', :id => c.id}, {:style =>'color:#ffffff'}    %></div>
-					                     <a class="btn btn-red" href="#">Delete</a>
+<div class = 'btn btn-red'>				                   
+<%= link_to 'Delete', trash_path(:conversation_id => c.id), { :method => :post , :style =>'color:#ffffff' } %></div>
 					</div>
 							</div>
 				  </div>

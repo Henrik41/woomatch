@@ -35,8 +35,10 @@ get 'start/autocomplete_activity_title'
   put "profile/update"
   post 'conversation/index/:id', to: 'conversation#sendmail'
   get 'conversation/myinbox'
+  get 'conversation/myoutbox'
 
- 
+ post 'conversation', to: 'conversation#trash', as: :trash   
+    
 devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation:
   # first created -> highest priority.

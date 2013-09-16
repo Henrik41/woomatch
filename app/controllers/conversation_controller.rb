@@ -42,6 +42,12 @@ before_filter :get_mailbox
  
   end
   
+  def myoutbox
+    
+    @conversations =  @mailbox.sentbox
+    @messages_count = @mailbox.sentbox.count
+ 
+  end
   def show
      @conversation = @mailbox.conversations.find(params[:id])
      current_user.mark_as_read(@conversation)
@@ -65,8 +71,9 @@ before_filter :get_mailbox
   end
 
   def trash
+    conversation = Conversation.find(params[:conversation_id])
     conversation.move_to_trash(current_user)
-    redirect_to :conversations
+    redirect_to :action => :myinbox
   end
 
   def untrash
