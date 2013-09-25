@@ -5,6 +5,13 @@ autocomplete :userinterest, :interest
   def index
     @user = current_user
     @activity = @user.activities.all
+      @result = request.location    
+      if @result
+      @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
+      @activitygrid = Activity.near(@loc, 200000).last(7)
+      else
+      @activitygrid = Activity.find(:all).last(4)
+    end
   end
   
   def show

@@ -2,16 +2,18 @@
             <div class="project-short sml-thumb">
                 <div class="top-project-info">
                     <div class="content-info-short clearfix">
+
                         <a href="#" class="thumb-img">
-                          	<%= (image_tag "ex/th-192x135-2.jpg") %>  
+                      <%= image_tag a.avatar.url(:grid) %>
                         </a>
+
                         <div class="wrap-short-detail">
-                            <h3 class="rs acticle-title"><a class="be-fc-orange" href="project.html">Coffee and Books</a></h3>
-                            <p class="rs tiny-desc">by <a href="profile.html" class="fw-b fc-gray be-fc-orange">Henrik</a></p>
-                            <p class="rs title-description">We are inviting you at Java coffee for fun and book reading. Come and join us and discover new exiting books.</p>
+                            <h3 class="rs acticle-title"><a class="be-fc-orange" href="project.html"><%= a.title.capitalize %></a></h3>
+                            <p class="rs tiny-desc">by <a href="profile.html" class="fw-b fc-gray be-fc-orange"><%= User.find(a.user_id).username.capitalize%></a></p>
+                            <p class="rs title-description"><%=a.about.capitalize[0,90]%>...(more)</p>
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
-                                Montreal, Qc, Canada  &nbsp; &nbsp;&nbsp; 2.7&nbsp;km
+                                <%= a.location %>  &nbsp; &nbsp;&nbsp; 2.7&nbsp;km
                             </p>
                         </div>
                     </div>

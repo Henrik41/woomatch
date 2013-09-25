@@ -18,8 +18,15 @@ class ActivitiesController < ApplicationController
   def show
     @activity = current_user.activities.find(params[:id])
     @user = current_user
-    @mytime = NearestTimeZone.to( @activity.latitude, @activity.longitude)
+    
+      if NearestTimeZone.to( @activity.latitude, @activity.longitude)
+        @mytime = NearestTimeZone.to( @activity.latitude, @activity.longitude)
+      else
+        @mytime = Time.now
+      end
+    
     @timenow = Time.now.in_time_zone(@mytime)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @activity }
@@ -46,8 +53,8 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
-    @activity = current_user.activities.create(params[:activity])
     
+    @activity = current_user.activities.create(params[:activity])    
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
     
@@ -65,8 +72,8 @@ class ActivitiesController < ApplicationController
   # PUT /activities/1
   # PUT /activities/1.json
   def update
-    @activity = current_user.activities.find(params[:id])
     
+    @activity = current_user.activities.find(params[:id])    
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
     

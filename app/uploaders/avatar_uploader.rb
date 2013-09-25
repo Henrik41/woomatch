@@ -3,7 +3,7 @@
 class AvatarUploader < CarrierWave::Uploader::Base
 
    #Include RMagick or MiniMagick support:
-  include CarrierWave::RMagick
+  #include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -22,8 +22,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
    end
-  process :resize_to_fit => [250, 250]
-
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -45,6 +43,12 @@ class AvatarUploader < CarrierWave::Uploader::Base
         process :resize_to_fit => [100, nil]
         process crop: '100x100+0+0'
      end
+     
+     version :grid do    
+         process :resize_to_fill => [192, 135]
+         process crop: '192x135+0+0'
+      end
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list
@@ -67,17 +71,20 @@ class AvatarUploader < CarrierWave::Uploader::Base
       end    
     end
 
+
+    
+    
     # Resize and crop square from Center
     def resize_and_crop(size)  
       manipulate! do |image|                 
         if image[:width] < image[:height]
-          remove = ((image[:height] - image[:width])/2).round 
+          remove = (image[:height] - 135).round 
           image.shave("0x#{remove}") 
         elsif image[:width] > image[:height] 
           remove = ((image[:width] - image[:height])/2).round
           image.shave("#{remove}x0")
         end
-        image.resize("#{size}x#{size}")
+        image.resize("#{size}")
         image
       end
     end

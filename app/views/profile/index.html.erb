@@ -198,11 +198,9 @@
 								                    </div>
 								                </div><!--end: .grid_3 > .project-short-->
 								                <div class="clear clear-2col"></div>
-								         		<%= render 'activities/grid3'%>
-												<%= render 'activities/grid3'%>
-												<%= render 'activities/grid3'%>
-												<%= render 'activities/grid3'%>
-												<%= render 'activities/grid3'%>
+								         	<% @activitygrid.each do |a| %>
+												 <%= render :partial => "/start/grid", :locals => {:a => a} %> 
+												<% end %>
 
 												</div>
 												        </div>

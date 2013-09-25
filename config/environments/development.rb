@@ -36,5 +36,5 @@ Woo::Application.configure do
   config.assets.debug = true
   config.action_mailer.default_url_options = { :host => "dev.yourhost.com" }
   
-config.middleware.use('SpoofIp', '41.137.80.225')
+config.middleware.use('SpoofIp', '76.68.253.209')
 end

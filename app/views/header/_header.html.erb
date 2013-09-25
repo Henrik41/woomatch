@@ -25,7 +25,7 @@
 			                    </div>
 
            <div class="form-search3">
-                 	<%=	form_tag '/search/searchactivities', :class => 'txt-keyword', :id =>'sys_txt_keyword' do %>
+                 <%=	form_tag( {:action=> 'searchactivities', :controller =>'search'},  :id =>'sys_txt_keyword', :class => 'txt-keyword')  do %>
 						 <%= autocomplete_field_tag 'activity_title', '',  start_autocomplete_activity_title_path, :id_element => '#some_element', :size => '16', :placeholder => 'Search Activities' %>
 
 						           <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
@@ -63,7 +63,7 @@
 <div class="form-search">
 	<div class="form">
 
-				<%=	form_tag 'search/searchactivities', :class => 'txt-keyword', :id =>'sys_txt_keyword' do %>
+					<%=	form_tag( {:action=> 'searchactivities', :controller =>'search'}, :id =>'sys_txt_keyword', :class => 'txt-keyword')  do %>
 					 <%= autocomplete_field_tag 'activity_title', '',  start_autocomplete_activity_title_path, :id_element => '#some_element', :size => '16', :placeholder => 'Search Activities' %>
 		
 					           <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
@@ -94,6 +94,7 @@
                 </div>
             </div>
         </div>
+
     </header><!--end: #header -->
 
 <% end %>
