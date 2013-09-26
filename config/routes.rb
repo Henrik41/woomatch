@@ -25,10 +25,11 @@ get 'start/autocomplete_activity_title'
 
 
   resources :activities
-  
+  get "follow/ifollow"
   get "photos/index"
   get "test/index"
-
+  get "search/activitysearch"
+  get "search/peoplesearch"
   get "start/index"
   get '/conversation/index/:id', to: 'conversation#index'
   get '/profile/:id', to: 'profile#show'
@@ -42,7 +43,12 @@ get 'start/autocomplete_activity_title'
 devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation:
   # first created -> highest priority.
-
+  resources :profile do
+    member do
+      get :follow
+      get :unfollow
+    end
+  end
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

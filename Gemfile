@@ -38,6 +38,7 @@ gem 'mailboxer'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'rails3-jquery-autocomplete'
+gem "acts_as_follower", '~> 0.1.1'
 
 group :development do
   gem 'better_errors'

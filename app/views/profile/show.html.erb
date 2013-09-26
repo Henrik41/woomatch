@@ -37,7 +37,12 @@
 <%= link_to "Email", :controller => "conversation", :action => "index", :id => @userview.id %>		
 
                         <div class="bottom-project-info clearfix">           <div class="btn btn-blue"><img src="../assets/ex/mail-icon.png" width="25" height="25"alt="$USER_NAME"/> Email <%= @userview.username %> </div></br> </br>  
-		
+
+<% if current_user.following?(@userview) %>
+<div class="btn btn-red"> <%= link_to "Unfollow", unfollow_profile_path(@userview.id) %> </div>
+<% else %>		
+<div class="btn btn-red"> <%= link_to "Follow", follow_profile_path(@userview.id) %> </div>
+<% end %>
 
 		           <%=@userview.sex%></br> Age: <%=  @userview.age  %> 
 		

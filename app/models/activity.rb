@@ -1,4 +1,5 @@
 class Activity < ActiveRecord::Base
+
   attr_accessible :about, :end_date, :end_time, :location, :numpart, :price, :recurrent, :start_date, :start_time, :title, :user_id, :website
   attr_accessible :avatar, :longitude, :latitude, :interests_attributes
   geocoded_by :location
@@ -11,6 +12,6 @@ class Activity < ActiveRecord::Base
   after_validation :geocode
   validates_presence_of  :location, :start_time, :end_time
   mount_uploader :avatar, AvatarUploader
-  
+  acts_as_follower
 
 end

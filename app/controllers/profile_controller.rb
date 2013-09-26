@@ -17,6 +17,7 @@ autocomplete :userinterest, :interest
   def show
     @user = current_user
     @userview = User.find(params[:id])
+    @activity = Activity.first
   end
   
   def update
@@ -33,4 +34,32 @@ autocomplete :userinterest, :interest
     end
   end
   
+  def follow
+    @user = User.find(params[:id])
+
+    if current_user
+      if current_user == @user
+        flash[:error] = "You cannot follow yourself."
+      else
+        current_user.follow(@user)
+      
+        flash[:notice] = "You are now following #{@user.username}."
+        redirect_to :back
+      end
+    else
+      flash[:error] = "You must <a href='/users/sign_in'>login</a> to follow #{@user.monniker}.".html_safe
+    end
+  end
+
+  def unfollow
+    @user = User.find(params[:id])
+
+    if current_user
+      current_user.stop_following(@user)
+      flash[:notice] = "You are no longer following #{@user.username}."
+      redirect_to :back
+    else
+      flash[:error] = "You must <a href='/users/sign_in'>login</a> to unfollow #{@user.monniker}.".html_safe
+    end
+  end
 end

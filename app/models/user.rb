@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+
+
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
@@ -20,6 +23,8 @@ class User < ActiveRecord::Base
   geocoded_by :location
   mount_uploader :avatar, AvatarUploader
    acts_as_messageable
+     acts_as_followable
+     acts_as_follower
 
   after_validation :geocode, :if => :location_changed?
   def age
