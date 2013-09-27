@@ -13,5 +13,10 @@ class Activity < ActiveRecord::Base
   validates_presence_of  :location, :start_time, :end_time
   mount_uploader :avatar, AvatarUploader
   acts_as_follower
+  
+  def avatar_url
+   self.avatar.url(:supermini)
+  end
+  
 
 end

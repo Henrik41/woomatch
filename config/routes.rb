@@ -23,7 +23,7 @@ Woo::Application.routes.draw do
   
 get 'start/autocomplete_activity_title'
 
-
+  
   resources :activities
   get "follow/ifollow"
   get "photos/index"
@@ -93,6 +93,7 @@ devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_call
   #     resources :products
   #   end
    match 'show' => 'photos#show', :as => :photo
+   match 'follow/list' => 'follow#list'
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
    #root :to => 'activities#index'
@@ -100,6 +101,7 @@ devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_call
    get "/contacts/failure" => "invites#failure"
    get "/activities/back_to_edit" 
    get "start/dashboard"
+  
    root :to => "start#index"
   # See how all your routes lay out with "rake routes"
 

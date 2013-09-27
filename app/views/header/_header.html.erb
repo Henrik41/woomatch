@@ -63,8 +63,11 @@
 <div class="form-search">
 	<div class="form">
 
-					<%=	form_tag( {:action=> 'searchactivities', :controller =>'search'}, :id =>'sys_txt_keyword', :class => 'txt-keyword')  do %>
-					 <%= autocomplete_field_tag 'activity_title', '',  start_autocomplete_activity_title_path, :id_element => '#some_element', :size => '16', :placeholder => 'Search Activities' %>
+		<%=	form_tag( {:action=> 'searchactivities', :controller =>'search'}, :id =>'sys_txt_keyword', :class => 'txt-keyword')  do %>
+		<%= text_field_tag :search, '', :size => '16', :placeholder => 'Search Activities' %> 
+	
+
+
 		
 					           <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
 	                            <button class="btn-reset-keyword" type="reset"><i class="icon iXHover"></i></button>
@@ -98,6 +101,32 @@
     </header><!--end: #header -->
 
 <% end %>
+
+
+
+<script type="text/javascript">
+$(function() {
+	$('#search').autocomplete({
+		source: '/follow/list',
+		 focus: function(event, ui){
+		   $('#search').val(ui.item.title);
+		   return false;
+		 },
+		 select: function(event, ui){
+		 $('#search').val(ui.item.title);
+		 return false;
+		 }
+		})
+
+		.data("uiAutocomplete")._renderItem = function(ul,item){
+		   return $("<li></li>")
+		  .data("item.uiAutocomplete",item)
+		  .append("<a>"+"<div class='list_item_container_holder'>"+"<div class='image_holder'>"+"<img src='" + item.avatar_url +"'>" +"</div>" + "<div class='label'>" + item.title + "</div>" + "<div class='description_holder'>" + item.about + "</div>"+"</div>" +"</a>")
+  .appendTo(ul);
+		  };
+});
+</script>
+
 
 <script type="text/javascript">
 	$(function(){

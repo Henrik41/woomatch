@@ -1,0 +1,73 @@
+<div id="wrapper">
+<%= render "header/header" %>
+<%= render 'activities/navbar' %>	
+
+
+<div class="layout-2cols">
+	<div class="grid_6">
+		<div class="project-short sml-thumb">
+			<div class="top-project-info">
+				<div class="content-info-short clearfix">
+					<h2>People I follow</h2>
+					<% @userfollowing.each do |f| %>
+						<%= image_tag f.avatar.url(:mini) %> <%= f.username %>
+						<% if current_user.following?(f) %>
+						<div class="btn btn-red"> <%= link_to "Unfollow", unfollow_profile_path(f.id) %> </div>
+						<% else %>		
+						<div class="btn btn-red"> <%= link_to "Follow", follow_profile_path(f.id) %> </div>
+						<% end %>
+						</br>
+						</br>
+						<% end %>
+				</div> <!--content-info-short clearfix -->
+			</div><!--top-project-info-->
+		</div><!-- project-short sml-thumb-->
+	</div><!--grid_6-->
+
+	<div class="grid_6">
+        <div class="project-short sml-thumb">
+			<div class="top-project-info">
+               <div class="content-info-short clearfix">
+				<h2> Activities I follow </h2>
+					<% @userfollowing.each do |f| %>
+					<%= f.username %>
+					</br>
+					<% end %>
+				</div> <!--content-info-short clearfix-->
+			</div><!--top-project-info-->
+		</div><!--project-short sml-thumb-->
+	</div><!--grid_6-->
+</div><!--layout-2cols-->
+
+<!-- add autocomplete with pic -->
+<%=	form_tag( {:action=> 'searchactivities', :controller =>'search'}, :id =>'sys_txt_keyword', :class => 'txt-keyword')  do %>
+<%= text_field_tag :search %>
+<%= submit_tag "Find Activity" %>
+<% end %>
+
+
+<script type="text/javascript">
+$(function() {
+	$('#search').autocomplete({
+		source: '/follow/list',
+		 focus: function(event, ui){
+		   $('#search').val(ui.item.title);
+		   return false;
+		 },
+		 select: function(event, ui){
+		 $('#search').val(ui.item.title);
+		 return false;
+		 }
+		})
+		
+		.data("uiAutocomplete")._renderItem = function(ul,item){
+		   return $("<li></li>")
+		  .data("item.uiAutocomplete",item)
+		  .append("<a>"+"<div class='list_item_container_holder'>"+"<div class='image_holder'>"+"<img src='" + item.avatar_url +"'>" +"</div>" + "<div class='label'>" + item.title + "</div>" + "<div class='description_holder'>" + item.about + "</div>"+"</div>" +"</a>")
+  .appendTo(ul);
+		  };
+});
+</script>
+
+</div> <!-- div wrapper>
+

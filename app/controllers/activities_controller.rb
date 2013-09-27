@@ -9,7 +9,6 @@ class ActivitiesController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @activities }
     end
   end
 
