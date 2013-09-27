@@ -25,8 +25,10 @@
 			                    </div>
 
            <div class="form-search3">
-                 <%=	form_tag( {:action=> 'searchactivities', :controller =>'search'},  :id =>'sys_txt_keyword', :class => 'txt-keyword')  do %>
-						 <%= autocomplete_field_tag 'activity_title', '',  start_autocomplete_activity_title_path, :id_element => '#some_element', :size => '16', :placeholder => 'Search Activities' %>
+          	<%=	form_tag( {:action=> 'searchactivities', :controller =>'search'}, :id =>'sys_txt_keyword', :class => 'txt-keyword')  do %>
+			<%= text_field_tag :search, '', :size => '16', :placeholder => 'Search Activities' %> 
+
+		
 
 						           <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
 		                            <button class="btn-reset-keyword" type="reset"><i class="icon iXHover"></i></button>

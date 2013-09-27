@@ -39,35 +39,5 @@
 	</div><!--grid_6-->
 </div><!--layout-2cols-->
 
-<!-- add autocomplete with pic -->
-<%=	form_tag( {:action=> 'searchactivities', :controller =>'search'}, :id =>'sys_txt_keyword', :class => 'txt-keyword')  do %>
-<%= text_field_tag :search %>
-<%= submit_tag "Find Activity" %>
-<% end %>
-
-
-<script type="text/javascript">
-$(function() {
-	$('#search').autocomplete({
-		source: '/follow/list',
-		 focus: function(event, ui){
-		   $('#search').val(ui.item.title);
-		   return false;
-		 },
-		 select: function(event, ui){
-		 $('#search').val(ui.item.title);
-		 return false;
-		 }
-		})
-		
-		.data("uiAutocomplete")._renderItem = function(ul,item){
-		   return $("<li></li>")
-		  .data("item.uiAutocomplete",item)
-		  .append("<a>"+"<div class='list_item_container_holder'>"+"<div class='image_holder'>"+"<img src='" + item.avatar_url +"'>" +"</div>" + "<div class='label'>" + item.title + "</div>" + "<div class='description_holder'>" + item.about + "</div>"+"</div>" +"</a>")
-  .appendTo(ul);
-		  };
-});
-</script>
-
 </div> <!-- div wrapper>
 

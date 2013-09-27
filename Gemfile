@@ -37,7 +37,6 @@ gem 'rmagick'
 gem 'mailboxer'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'rails3-jquery-autocomplete', :git => 'git://github.com/Henrik41/rails3-jquery-autocomplete.git'
 gem "acts_as_follower", '~> 0.1.1'
 
 group :development do

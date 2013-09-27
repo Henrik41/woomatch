@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/Henrik41/rails3-jquery-autocomplete.git
-  revision: 0513abfd2e6a4d68e72740dbf9913b3dd8112503
-  specs:
-    rails3-jquery-autocomplete (1.0.11)
-      rails (~> 3.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -251,7 +244,6 @@ DEPENDENCIES
   omniauth-facebook
   omnicontacts
   rails (= 3.2.12)
-  rails3-jquery-autocomplete!
   rmagick
   sass-rails (~> 3.2.3)
   sqlite3
