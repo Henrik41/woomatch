@@ -213,6 +213,9 @@ sept
 The slider is over the autocomplete
 need to change the z-index of slider
 
+getting 500 error on server
+
+
 
 
 
