@@ -7,7 +7,7 @@
  *
  * http://docs.jquery.com/UI/Autocomplete#theming
  */
-.ui-autocomplete { position: absolute; cursor: default; }	
+.ui-autocomplete { position: absolute; cursor: default;z-index:30 !important;}  }	
 
 /* workarounds */
 * html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
@@ -64,6 +64,7 @@
 
 .list_item_container_holder {
 	display:block;
+	z-index: 9999;
     width:300px;
     height: 60px;
     padding: 5px 0;

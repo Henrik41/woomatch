@@ -1,6 +1,5 @@
 class ProfileController < ApplicationController
   
-autocomplete :userinterest, :interest
 
   def index
     @user = current_user

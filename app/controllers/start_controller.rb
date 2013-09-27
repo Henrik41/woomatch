@@ -1,6 +1,5 @@
 class StartController < ApplicationController
   
-   autocomplete :activity, :title, :extra_data => [:id],  :full => true
    
   def index
     if request.location == nil

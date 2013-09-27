@@ -206,7 +206,12 @@ _____________
 
 date de message
 set up like activities 5
+____________
 
+sept 
+
+The slider is over the autocomplete
+need to change the z-index of slider
 
 
 

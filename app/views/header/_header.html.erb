@@ -110,6 +110,7 @@
 $(function() {
 	$('#search').autocomplete({
 		source: '/follow/list',
+		
 		 focus: function(event, ui){
 		   $('#search').val(ui.item.title);
 		   return false;

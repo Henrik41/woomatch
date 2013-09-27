@@ -21,7 +21,6 @@ Woo::Application.routes.draw do
 
   resources :albums
   
-get 'start/autocomplete_activity_title'
 
   
   resources :activities
