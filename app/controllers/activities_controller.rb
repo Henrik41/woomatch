@@ -12,6 +12,17 @@ class ActivitiesController < ApplicationController
     end
   end
 
+ 
+  def myactivities
+     @activity = current_user.activities.all
+       @result = request.location    
+       if @result
+       @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
+       @activitygrid = Activity.near(@loc, 200).last(3)
+       else
+       @activitygrid = Activity.find(:all).last(4)
+     end
+  end
   # GET /activities/1
   # GET /activities/1.json
   def show
@@ -99,6 +110,7 @@ class ActivitiesController < ApplicationController
     end
   end
   
+
 
   
 end

@@ -9,13 +9,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
   has_many :activities, :dependent => :destroy
-  has_one :profile, :dependent => :destroy
   has_many :userinterests, :dependent => :destroy
+  has_one :profile, :dependent => :destroy
   accepts_nested_attributes_for :userinterests, 
                                     :allow_destroy => true
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :location, :dob, :age, :sex, :status, :about, :web, :email, :password, :password_confirmation, :time_zone, :avatar,  :userinterests_attributes
+  attr_accessible :username, :location, :realage, :dob, :age, :sex, :status, :about, :web, :email, :password, :password_confirmation, :time_zone, :avatar,  :userinterests_attributes
   attr_accessible :longitude, :latitude
   attr_accessible :provider, :uid, :name
   
@@ -27,6 +27,9 @@ class User < ActiveRecord::Base
      acts_as_follower
 
   after_validation :geocode, :if => :location_changed?
+  
+
+  
   def age
       now = Time.now.utc.to_date
       if dob 
@@ -35,6 +38,10 @@ class User < ActiveRecord::Base
     end
   end
   
+
+
+
+
   def name
      username
    end

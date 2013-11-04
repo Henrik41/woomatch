@@ -13,6 +13,7 @@ gem 'address_picker-rails'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'activeadmin'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -38,6 +39,7 @@ gem 'mailboxer'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "acts_as_follower", '~> 0.1.1'
+gem 'ransack'
 
 group :development do
   gem 'better_errors'

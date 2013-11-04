@@ -9,8 +9,8 @@
 
                         <div class="wrap-short-detail">
                             <h3 class="rs acticle-title"><a class="be-fc-orange" href="project.html"><%= a.title.capitalize %></a></h3>
-                            <p class="rs tiny-desc">by <a href="profile.html" class="fw-b fc-gray be-fc-orange"><%= User.find(a.user_id).username.capitalize%></a></p>
-                            <p class="rs title-description"><%=a.about.capitalize[0,90]%>...(more)</p>
+                            <p class="rs tiny-desc">by <a href="profile.html" class="fw-b fc-gray be-fc-orange"><%= User.find(a.user_id).username.capitalize%></a>  </br><%= image_tag User.find(a.user_id).avatar.url(:superminimini) %></p>
+                    <p class="rs title-description"><%=a.about.capitalize[0,90]%>...(more)</p>
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
                                 <%= a.location %>  &nbsp; &nbsp;&nbsp; 2.7&nbsp;km
@@ -39,8 +39,11 @@
                         <div class="fee-item">
                             <p class="rs lbl">Time Left</p>
                             <span class="val">2</span>
+
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </div><!--end: .grid_3 > .project-short-->

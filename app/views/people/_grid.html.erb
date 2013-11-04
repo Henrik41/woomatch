@@ -1,0 +1,26 @@
+        <div class="grid_3">
+            <div class="project-short sml-thumb">
+                <div class="top-project-info">
+                    <div class="content-info-short clearfix">
+
+                        <a href="#" class="thumb-img">
+                      <% if image_tag a.avatar.url %>
+<%= image_tag a.avatar.url(:grid) %>
+					<% else %>
+					<a class="thumb-avatar" href="#"><img src="/assets/ex/blank.jpg" width="250" height="350"alt="$USER_NAME"/></a>
+					<% end %>
+                        </a>
+
+                        <div class="wrap-short-detail">
+                            <h3 class="rs acticle-title"><a class="be-fc-orange" href="project.html"><%= a.name.capitalize %></a></h3>
+                           
+                  
+                            <p class="rs project-location">
+                                <i class="icon iLocation"></i>
+                                <%= a.location %>  &nbsp; &nbsp;&nbsp; 2.7&nbsp;km
+                            </p>
+                        </div>
+                    </div>
+                </div>
+         </div>
+        </div><!--end: .grid_3 > .project-short-->

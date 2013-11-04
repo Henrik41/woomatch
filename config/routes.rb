@@ -1,53 +1,79 @@
 Woo::Application.routes.draw do
 
+  get "activity/:id", to: 'general#activity'
 
+  get "people/index"
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+
+#general
+
+
+#search routes
   post "search/searchactivities"
   post "search/searchbycity"
-  get "conversation/index"
-
-  get "conversation/new"
-
-  get "conversation/show"
-
-  get "profile/index"
-  post "conversation/reply"
-  
-
-  resources :profiles
-  resources :ponds
-
-  resources :activityavatars
-
-
-  resources :albums
-  
-
-  
-  resources :activities
-  get "follow/ifollow"
-  get "photos/index"
-  get "test/index"
   get "search/activitysearch"
   get "search/peoplesearch"
-  get "start/index"
+ 
+  
+#conversation
+  get "conversation/index"
+  get "conversation/new"
+  get "conversation/show"
+  post "conversation/reply"
   get '/conversation/index/:id', to: 'conversation#index'
+  get 'conversation/myinbox'
+  get 'conversation/myoutbox'  
+  post 'conversation', to: 'conversation#trash', as: :trash 
+  post 'conversation/index/:id', to: 'conversation#sendmail'
+  get "/contacts/failure" => "invites#failure"
+  
+#profile
+  get 'activities/myactivities'
+  get "profile/index"
   get '/profile/:id', to: 'profile#show'
   put "profile/update"
-  post 'conversation/index/:id', to: 'conversation#sendmail'
-  get 'conversation/myinbox'
-  get 'conversation/myoutbox'
 
- post 'conversation', to: 'conversation#trash', as: :trash   
-    
-devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-  resources :profile do
-    member do
-      get :follow
-      get :unfollow
+
+# Follow
+  
+  match 'follow/list' => 'follow#list'
+  get "follow/ifollow"
+
+#show all photos
+  
+  get "photos/index"
+  match 'show' => 'photos#show', :as => :photo
+
+#starting page
+  get "start/index"
+  get "start/dashboard"
+
+#to check
+  get "/activities/back_to_edit" 
+  #get emails from gmail/others
+    get "/invites/:provider/contact_callback" => "invites#index"
+
+    root :to => "start#index"
+   
+devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } 
+
+
+  # resources
+
+    resources :profile do
+      member do
+        get :follow
+        get :unfollow
+      end
     end
-  end
+
+
+    resources :albums 
+    resources :activities
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
@@ -91,17 +117,13 @@ devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_call
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-   match 'show' => 'photos#show', :as => :photo
-   match 'follow/list' => 'follow#list'
-  # You can have the root of your site routed with "root"
+ 
+# You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
    #root :to => 'activities#index'
-   get "/invites/:provider/contact_callback" => "invites#index"
-   get "/contacts/failure" => "invites#failure"
-   get "/activities/back_to_edit" 
-   get "start/dashboard"
+
   
-   root :to => "start#index"
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

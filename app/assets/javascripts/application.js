@@ -25,9 +25,10 @@
 //= require jquery.counter
 //= require selectnav.min
 //= require jquery.sidr.min
+//= require pie
 //= require raphael-min
 //= require lte-ie7
-//= require pie
+
 //= require videopopup
 //= require jquery-migrate-1.2.1.min
 //= require jquery.touchwipe.min

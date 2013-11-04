@@ -16,35 +16,38 @@
 				 <form action="#">
                         <div class="form form-email">
                       
-                                <input  type="text" class="txt" placeholder="Enter your location">
-                            
-                           
+    
                         
-              
+ 								<%= search_form_for @search do |f| %>
+							
+								    
+								    <%= f.text_field :location_cont, :class => "txt", :placeholder => 'Enter a Location' %>
+															  
+								  <%= f.text_field :start_date_gteq, :class => "txt datepicker", :placeholder => 'Starting Date' %>
+								  <%= f.text_field :start_date_lteq, :class => "txt datepicker",  :placeholder => 'Ending Date'   %>
+								
+								  <%= f.text_field :interests_interest_cont,  :class => "txt",  :placeholder => 'Enter your interest'  %>
+								
+								<%= f.select :user_sex_eq, [nil,['male'],['female']], :class => "txt" %>
+							   
+							       
+				between
+						<%= f.select :user_realage_gteq, (13..95), :class => "txt2" %> and
+											<%= f.select :user_realage_lteq, (13..95), :class => "txt2" %>		
+					     <%= f.submit "Search", :class=> "btn btn-green2" %>	
+								<% end %>             
+		
+	
 		
 		
-		
-		&nbsp;&nbsp; 	From: <input type="text" class="txt datepicker" > 	&nbsp;&nbsp; To:	&nbsp;&nbsp; <input type="text"  class="txt datepicker"  > <input type="text" class="txt" name="Interest" size="20" placeholder='Enter your Interest'> 	
-		&nbsp;&nbsp; 	Sex:	&nbsp;&nbsp;
-		           <select  class="txt">
-					  <option value="Male">Male</option>
-					  <option value="Female">Female</option>
 
-					</select>
-					&nbsp;&nbsp; 	Age:	&nbsp;&nbsp; 
-						           <select  class="txt">
-							 <option value="all">All</option>
-									  <option value="18-25">18-25</option>
-									  <option value="26-35">26-35</option>
-													  <option value="36-45">36-45</option>
-													  <option value="46-56">46-55</option>
-													  <option value="56-65">56-65</option>
-													  <option value=">66">>66</option>
-									</select>
-</br>
-				 <button class="btn btn-green2" type="submit">Submit</button></div></br>
+	</div></br>
       </form>
 
+
+		 <% @activities.each do |act| %>
+		 <%= act.title %>
+		 <% end %>
 </div></div>
                 <a class="be-fc-orange" href="category.html">View all</a>
 
@@ -399,3 +402,13 @@
     </div><!--end: .home-popular-project -->
 
 </div>
+
+
+
+
+<script>
+$(function() {
+  $(".datepicker").datepicker({ dateFormat: "yy-mm-dd"
+ 	});
+});
+</script>

@@ -20,7 +20,7 @@
 										<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
 				
 				                       <span class="sep"></span>
-				  						 <a href="#"> <%= image_tag 'me.png' %> </a>
+				  						 <a href="#"> <%= image_tag current_user.avatar.url(:supermini) %> </a>
 				</div>
 			                    </div>
 

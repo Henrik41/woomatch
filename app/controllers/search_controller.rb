@@ -1,4 +1,7 @@
 class SearchController < ApplicationController
+  
+  
+
   def searchactivities
     param = params[:search]
     @searchs = Activity.where("title like ?", "%#{param}%" )
@@ -15,6 +18,10 @@ class SearchController < ApplicationController
   end
   
   def activitysearch
+    
+    @search = Activity.search(params[:q])
+    @activities = @search.result
+
   end
   
   def peoplesearch
@@ -36,5 +43,7 @@ class SearchController < ApplicationController
     
     
   end
+
+  
   
 end

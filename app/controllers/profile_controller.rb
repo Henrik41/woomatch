@@ -1,5 +1,5 @@
 class ProfileController < ApplicationController
-  
+ 
 
   def index
     @user = current_user
@@ -21,9 +21,11 @@ class ProfileController < ApplicationController
   
   def update
     @user = User.find(current_user)
-
+    
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        @user.realage = @user.age.to_i
+        @user.save
         format.html { redirect_to '/start/index', notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
@@ -61,4 +63,5 @@ class ProfileController < ApplicationController
       flash[:error] = "You must <a href='/users/sign_in'>login</a> to unfollow #{@user.monniker}.".html_safe
     end
   end
+
 end
