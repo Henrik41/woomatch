@@ -10,7 +10,13 @@ Woo::Application.routes.draw do
 
 #general
 
+post "general/follow/:id", to: 'general#follow'
+get "general/follow/:id", to: 'general#follow'
+post "general/unfollow/:id", to: 'general#unfollow'
 
+post "general/follow2/:id", to: 'general#follow2'
+get "general/follow2/:id", to: 'general#follow2'
+post "general/unfollow2/:id", to: 'general#unfollow2'
 #search routes
   post "search/searchactivities"
   post "search/searchbycity"

@@ -12,11 +12,15 @@ class Activity < ActiveRecord::Base
   after_validation :geocode
   validates_presence_of  :location, :start_time, :end_time
   mount_uploader :avatar, AvatarUploader
-  acts_as_follower
+  acts_as_followable
   
   def avatar_url
    self.avatar.url(:supermini)
   end
   
 
+end
+
+class Activityapply < Activity
+  acts_as_followable
 end

@@ -39,6 +39,7 @@ before_filter :get_mailbox
     
     @conversations =  @mailbox.inbox
     @messages_count = @mailbox.inbox({:read => false}).count
+    
  
   end
   
