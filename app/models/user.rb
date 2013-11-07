@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
    acts_as_messageable
      acts_as_followable
      acts_as_follower
+      acts_as_voter
 
   after_validation :geocode, :if => :location_changed?
   

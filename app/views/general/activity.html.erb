@@ -1,11 +1,9 @@
 
-<body>
-
 <div id="wrapper">
 <%= render "header/header" %>
 <%= render 'activities/navbar' %>
 
-    <div class="layout-2cols">
+  <div class="layout-2cols">
         <div class="content grid_8">
             <div class="project-detail">
 			<div class="totalfollow">
@@ -249,7 +247,7 @@
 
 					<% @num2 = 'followid2' + @activity2.id.to_s %>
 					<div id =<%= @num2 %>>
-					 	<% if @user.following?(@activity2) %>
+					 	<% if @user.liked? @activity2 %>
 
 						<%= form_tag({:action => 'unfollow2', :id => @activity2.id}, :remote => true) do %>
 						<%= button_tag(type: 'submit', class: "a btn btn-green btn-buck-project") do %>
@@ -549,7 +547,7 @@
     </div>
 </div>
 
-</body>
+
 
 
 <%= @mytime %>

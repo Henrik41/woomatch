@@ -36,7 +36,7 @@ class ActivitiesController < ApplicationController
       end
     
     @timenow = Time.now.in_time_zone(@mytime)
-    
+    @userparticipating = current_user.following_by_type('Activityapply')
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @activity }

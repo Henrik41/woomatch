@@ -13,6 +13,7 @@ class Activity < ActiveRecord::Base
   validates_presence_of  :location, :start_time, :end_time
   mount_uploader :avatar, AvatarUploader
   acts_as_followable
+  acts_as_votable
   
   def avatar_url
    self.avatar.url(:supermini)
@@ -21,6 +22,3 @@ class Activity < ActiveRecord::Base
 
 end
 
-class Activityapply < Activity
-  acts_as_followable
-end
