@@ -39,7 +39,7 @@ before_filter :get_mailbox
     
     @conversations =  @mailbox.inbox
     @messages_count = @mailbox.inbox({:read => false}).count
-    
+    @checkuser = current_user.nearbys(100,:order => :distance).find(:all, :limit => 2)
  
   end
   

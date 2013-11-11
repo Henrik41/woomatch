@@ -41,6 +41,7 @@ gem 'omniauth-facebook'
 gem "acts_as_follower", '~> 0.1.1'
 gem 'acts_as_votable', '~> 0.7.1'
 gem 'ransack'
+gem "kaminari"
 
 group :development do
   gem 'better_errors'
