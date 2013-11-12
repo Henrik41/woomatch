@@ -42,12 +42,13 @@ gem "acts_as_follower", '~> 0.1.1'
 gem 'acts_as_votable', '~> 0.7.1'
 gem 'ransack'
 gem "kaminari"
+gem 'client_side_validations'
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
-  
+ 
 end
 
 # To use ActiveModel has_secure_password

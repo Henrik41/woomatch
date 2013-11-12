@@ -8,7 +8,7 @@
          <div class="clear"></div>
 
 								
-                               	<%= nested_form_for @user, :url => 'update', :html => { :multipart => true } do |f| %>
+                               	<%= nested_form_for @user, :url => 'update',  :validate => true, :html => { :multipart => true } do |f| %>
 	
 									         <div class="clear"></div>
 
@@ -24,6 +24,7 @@
 
 
 										  <h2 class="common-title">Welcome Back <%= @user.username %> </h2></div>
+									
 													<div id="myModal" class="reveal-modal">
 													     <h1>Email Your Friends</h1>
 													     <a href="/contacts/gmail"><%= image_tag "Gmail.png", :width => '100', :height => '70' %> </a>
@@ -42,7 +43,7 @@
 																<h3>My Picture:</h3>
 								      				         
 																<% if f.object.avatar? %>
-															<%= image_tag f.object.avatar.url(:medium) %>
+														 <div id="mypic">	<%= image_tag f.object.avatar.url(:medium) %></div>
 																<%else%>
        <a class="thumb-avatar" href="#"><img src="/assets/ex/blank.jpg" width="250" height="350"alt="$USER_NAME"/></a>
 <%end%>
@@ -51,26 +52,28 @@
 
 
 								                        <div class="bottom-project-info clearfix">           
-													    <%= f.file_field :avatar %> </br> </br>  </br> </br>  Profile Completion
-								                            <div class="line-progress">
+													   <%= f.file_field :avatar %> </br> </br>  </br> </br>  Profile Completion
+<%= @completion %> %									                            <div class="line-progress">
 								                                <div class="bg-progress">
-								                                    <span  style="width: 50%"></span>
+							                                    <span style="width: <%= @completion %>%;"></span>
 								                                </div>
 								                            </div>
 								                            <div class="group-fee clearfix">
+									
+								
 								                                <div class="fee-item">
-								                                    <p class="rs lbl">Credibility</p>
-								                                    <span class="val">50%</span>
+								                                    <p class="rs lbl">Nb Activities</p>
+								                                    <span class="val"><%= @activitiescount %></span>
 								                                </div>
 								                                <div class="sep"></div>
 								                                <div class="fee-item">
-								                                    <p class="rs lbl">Interested</p>
-								                                    <span class="val">7</span>
+								                                    <p class="rs lbl">Interests</p>
+								                                    <span class="val"><%= @interestcount  %> </span>
 								                                </div>
 								                                <div class="sep"></div>
 								                                <div class="fee-item">
-								                                    <p class="rs lbl">Days Left</p>
-								                                    <span class="val">25</span>
+								                                    <p class="rs lbl">Since</p>
+								                                    <span class="val"><%=distance_of_time_in_words(f.object.created_at,Time.now)%></span>
 								                                </div>
 								                            </div>
 								                        </div>
@@ -102,8 +105,7 @@
 								
 								
 								                                            <div class="val">
-		<%= f.text_field :location, :class => 'txt', :id => 'txt_location', :placeholder => 'Where are you from?' %>    
-									                                            </div>
+ <%= f.text_field :location, :class => 'txt', :id => 'txt_location', :placeholder => 'Where are you from?' %>  	                                            </div>
 								                                        </div>
 																		 <div class="row-item clearfix">
 									                                            <label class="lbl" for="txt_dob">Date of Birth:</label>
@@ -168,9 +170,8 @@
 																	Email Friends 
 																</a>
 
-																 <div class="btn btn-blue"><a href="#" >
-								                               <%= image_tag 'thumbup.png'%>
-								                            </a>Facebook</div>
+																 <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="60" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+																
 								                          
 								                            <div class="line-progress">
 								                                <div class="bg-progress">
@@ -393,6 +394,22 @@ $(function() {
 });
 </script>
 
+			<script>
+			$(document).ready(function(){
+			    var preview = $(".mypic img");
+
+			    $("#user_avatar").change(function(event){
+			       var input = $(event.currentTarget);
+			       var file = input[0].files[0];
+			       var reader = new FileReader();
+			       reader.onload = function(e){
+			           image_base64 = e.target.result;
+			           preview.attr("src", image_base64);
+			       };
+			       reader.readAsDataURL(file);
+			    });
+			});
+			</script>
 			
 			<script type="text/javascript">
 			$(document).ready(function() {
@@ -402,7 +419,14 @@ $(function() {
 			     });
 			});
 			</script>
+				<div id="fb-root"></div>
+				<script>(function(d, s, id) {
+				  var js, fjs = d.getElementsByTagName(s)[0];
+				  if (d.getElementById(id)) return;
+				  js = d.createElement(s); js.id = id;
+				  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=516849445076378";
+				  fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));</script>
 
-
-								</body>
+						</body>
 								</html>

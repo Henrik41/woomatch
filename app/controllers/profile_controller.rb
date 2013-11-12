@@ -1,8 +1,12 @@
 class ProfileController < ApplicationController
  
 
-  def index
-    @user = current_user
+  def edit
+   @user = current_user
+   @interestcount = @user.userinterests.find(:all).count
+   @activitiescount = @user.activities.where(:user_id => @user.id).count
+   @completion = @user.completion 
+   
     @activity = @user.activities.all
       @result = request.location    
       if @result
@@ -21,7 +25,17 @@ class ProfileController < ApplicationController
   
   def update
     @user = User.find(current_user)
-    
+    @interestcount = @user.userinterests.find(:all).count
+    @activitiescount = @user.activities.where(:user_id => @user.id).count
+    @completion = @user.completion
+     @activity = @user.activities.all
+        @result = request.location    
+        if @result
+        @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
+        @activitygrid = Activity.near(@loc, 200000).last(7)
+        else
+        @activitygrid = Activity.find(:all).last(4)
+      end
     respond_to do |format|
       if @user.update_attributes(params[:user])
         @user.realage = @user.age.to_i

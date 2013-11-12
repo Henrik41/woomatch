@@ -40,7 +40,7 @@ post "general/unfollow2/:id", to: 'general#unfollow2'
   
 #profile
   get 'activities/myactivities'
-  get "profile/index"
+  get "profile/edit"
   get '/profile/:id', to: 'profile#show'
   put "profile/update"
 
