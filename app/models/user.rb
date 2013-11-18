@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :location, :realage, :dob, :age, :sex, :status, :about, :web, :email, :password, :password_confirmation, :time_zone, :avatar,  :userinterests_attributes
   attr_accessible :longitude, :latitude
-  attr_accessible :provider, :uid, :name
+  attr_accessible :provider, :uid, :name, :completion
   
   attr_accessible :body, :conversation_id
   geocoded_by :location
@@ -25,10 +25,16 @@ class User < ActiveRecord::Base
    acts_as_messageable
      acts_as_followable
      acts_as_follower
-
+      acts_as_voter
+  validates_presence_of :location, :username
+  validates_length_of :username, :minimum => 3, :maximum => 20
+   validates_length_of :about, :minimum => 5, :maximum => 300, :allow_blank => true
+    validates_length_of :web, :minimum => 0, :maximum => 45, :allow_blank => true
+    
   after_validation :geocode, :if => :location_changed?
-  
 
+  
+PROFILE_COMPLETENESS = %w[username dob location status about web]
   
   def age
       now = Time.now.utc.to_date
@@ -38,7 +44,27 @@ class User < ActiveRecord::Base
     end
   end
   
-
+  def completion
+    progression = 0
+    PROFILE_COMPLETENESS.each do |c|
+      if !self.attributes[c].blank?
+        progression += 1 
+      else
+      end      
+    end
+     progression
+     if !self.userinterests.empty? 
+       progression += 1
+     else
+     end
+     
+     if !self.avatar.to_s.include? "blank.jpg"
+        progression += 1
+      else
+      end
+            
+      progression*100/8
+  end
 
 
 

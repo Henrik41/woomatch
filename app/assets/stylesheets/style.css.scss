@@ -617,7 +617,7 @@ input.btn  {
 }
 .media > .thumb-left{
     float: left;
-    margin-right:20px;
+    margin-right:18px;
     margin-top: 2px;
 }
 
@@ -1639,7 +1639,7 @@ background: none;
     padding: 0;
 }
 .project-short.sml-thumb .group-fee .fee-item{
-    padding-left: 16px;
+    padding-left: 10px;
 }
 .project-short.sml-thumb .group-fee .fee-item:first-child{
     padding-left: 0;
@@ -3053,4 +3053,62 @@ margin: 15px;}
 
 .ui-slider{
     z-index:1
+}
+
+.leftfollow {float:left;}
+.rightfollow {float:right;}
+
+
+
+.tooltip-validate {
+  position: absolute;
+  z-index: 1030;
+  display: inline;
+  padding: 5px;
+  font-size: 13px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  visibility: visible;
+}
+
+.tooltip-validate.in {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+
+
+
+.tooltip-validate.right {
+  margin-left: 227px;
+  margin-top: -43px;
+}
+
+
+.tooltip-validate-inner {
+  max-width: 450px;
+  padding: 3px 8px;
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+  background-color: #ea503d;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+.tooltip-validate-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+
+.tooltip-validate.right .tooltip-validate-arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -5px;
+  border-right-color: #000000;
+  border-width: 5px 5px 5px 0;
 }

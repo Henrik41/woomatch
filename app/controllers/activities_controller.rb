@@ -14,14 +14,22 @@ class ActivitiesController < ApplicationController
 
  
   def myactivities
-     @activity = current_user.activities.all
-       @result = request.location    
-       if @result
-       @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
-       @activitygrid = Activity.near(@loc, 200).last(3)
-       else
-       @activitygrid = Activity.find(:all).last(4)
-     end
+     @user = current_user
+    
+     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
+      Time.zone = mytimezone
+      @mytime = Time.zone.now
+     
+     
+     
+     @activity = @user.activities.all
+        @result = @user.location    
+        if @result
+        @activitygrid = Activity.near(@result, 200000).first(7)
+        else
+        @activitygrid = Activity.find(:all).last(4)
+      end
+      
   end
   # GET /activities/1
   # GET /activities/1.json
@@ -36,7 +44,7 @@ class ActivitiesController < ApplicationController
       end
     
     @timenow = Time.now.in_time_zone(@mytime)
-    
+    @userparticipating = @activity.votes.map(&:voter)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @activity }
@@ -56,8 +64,20 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/1/edit
   def edit
+    
+    @user = current_user
     @activity = current_user.activities.find(params[:id])
-
+    mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
+     Time.zone = mytimezone
+     @mytime = Time.zone.now
+     
+       @result = @user.location    
+       if @result
+       @activitygrid = Activity.near(@result, 200000).first(7)
+       else
+       @activitygrid = Activity.find(:all).last(4)
+     end
+  
   end
 
   # POST /activities
@@ -86,9 +106,11 @@ class ActivitiesController < ApplicationController
     @activity = current_user.activities.find(params[:id])    
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
-    
+   
+   
     respond_to do |format|
       if @activity.update_attributes(params[:activity])
+     
         format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
         format.json { head :no_content }
       else
@@ -112,5 +134,8 @@ class ActivitiesController < ApplicationController
   
 
 
-  
+
+
+
+
 end

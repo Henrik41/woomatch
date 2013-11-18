@@ -1,6 +1,7 @@
 class FollowController < ApplicationController
   def ifollow
-    @userfollowing = current_user.all_following
+    @userfollowing = current_user.following_by_type('User')
+    @activityfollowing = current_user.following_by_type('Activity')
   end
   
   def list

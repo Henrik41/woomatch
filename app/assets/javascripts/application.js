@@ -15,6 +15,11 @@
 //= require script
 //= require jquery-1.9.1.min
 //= require jquery_ujs
+<<<<<<< HEAD
+=======
+
+//= require rails.validations
+>>>>>>> halfworking
 //= require address_picker-rails
 //= require md_slider.min
 //= require detect_timezone
@@ -23,6 +28,8 @@
 //= require selectnav.min
 //= require jquery.sidr.min
 //= require raphael-min
+//= require pie
+
 //= require lte-ie7
 //= require pie
 //= require videopopup

@@ -10,6 +10,14 @@ Woo::Application.routes.draw do
 
 #general
 
+post "general/follow/:id", to: 'general#follow'
+
+post "general/unfollow/:id", to: 'general#unfollow'
+
+post "general/follow2/:id", to: 'general#follow2'
+
+post "general/unfollow2/:id", to: 'general#unfollow2'
+
 
 #search routes
   post "search/searchactivities"
@@ -32,7 +40,7 @@ Woo::Application.routes.draw do
   
 #profile
   get 'activities/myactivities'
-  get "profile/index"
+  get "profile/edit"
   get '/profile/:id', to: 'profile#show'
   put "profile/update"
 

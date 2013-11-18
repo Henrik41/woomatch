@@ -3,42 +3,59 @@
                 <div class="top-project-info">
                     <div class="content-info-short clearfix">
 
-                        <a href="#" class="thumb-img">
+                        <a href="/activities/<%= a.id %>" class="thumb-img">
                       <%= image_tag a.avatar.url(:grid) %>
                         </a>
 
+
                         <div class="wrap-short-detail">
-                            <h3 class="rs acticle-title"><a class="be-fc-orange" href="project.html"><%= a.title.capitalize %></a></h3>
-                            <p class="rs tiny-desc">by <a href="profile.html" class="fw-b fc-gray be-fc-orange"><%= User.find(a.user_id).username.capitalize%></a>  </br><%= image_tag User.find(a.user_id).avatar.url(:superminimini) %></p>
+                            <h3 class="rs acticle-title"><a class="be-fc-orange" href="/activities/<%= a.id %>" ><%= a.title.capitalize %></a></h3>
+                            <p class="rs tiny-desc">by 
+	
+	 <%= link_to(image_tag(User.find(a.user_id).avatar.url(:superminimini)),
+							    { :controller => :profile, :action => :show,  :id => a.user_id }) %>
+</p>
                     <p class="rs title-description"><%=a.about.capitalize[0,90]%>...(more)</p>
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
-                                <%= a.location %>  &nbsp; &nbsp;&nbsp; 2.7&nbsp;km
+                                <%= a.location %>  &nbsp; &nbsp;&nbsp; <%= User.find(a.user_id).distance_from([a.latitude, a.longitude]).round(1)%>&nbsp;km
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="bottom-project-info clearfix">
-% of registered people   
+registered people: <%= a.completion %>%   
                     <div class="line-progress">
                         <div class="bg-progress">
-                            <span  style="width: 21%"></span>
+                            <span <% if a.completion < 51 %> 
+	<%else%>
+								class="success" 
+								<%end%>	
+									style="width: <%= a.completion %>%;"></span>
                         </div>
                     </div>
                     <div class="group-fee clearfix">
                         <div class="fee-item">
                             <p class="rs lbl">Price</p>
-                            <span class="val">21$</span>
+                            <span class="val"><%= a.price %></span>
                         </div>
                         <div class="sep"></div>
                         <div class="fee-item">
                             <p class="rs lbl">Liked</p>
-                            <span class="val">9</span>
+                            <span class="val"><%= a.followers_count %></span>
                         </div>
                         <div class="sep"></div>
                         <div class="fee-item">
                             <p class="rs lbl">Time Left</p>
-                            <span class="val">2</span>
+                            <span class="val">
+
+<% if a.end_time < @mytime %>
+											Ended
+											<% else %>
+											
+	<%= distance_of_time_in_words(@mytime, a.enddate) %>
+	<% end %>
+	 </span>
 
                         </div>
 
