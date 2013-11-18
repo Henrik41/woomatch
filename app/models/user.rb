@@ -27,7 +27,10 @@ class User < ActiveRecord::Base
      acts_as_follower
       acts_as_voter
   validates_presence_of :location, :username
-  
+  validates_length_of :username, :minimum => 3, :maximum => 20
+   validates_length_of :about, :minimum => 5, :maximum => 300, :allow_blank => true
+    validates_length_of :web, :minimum => 0, :maximum => 45, :allow_blank => true
+    
   after_validation :geocode, :if => :location_changed?
 
   

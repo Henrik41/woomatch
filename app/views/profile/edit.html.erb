@@ -136,7 +136,7 @@
 								                                            <label class="lbl" for="txt_name2">Profile URL:</label>
 								                                            <div class="val">
 
-								                                                                  <%= f.text_field :web, :class => 'txt', :id => 'txt_name2', :value => 'www.'	 %>
+								                                                                  <%= f.text_field :web, :class => 'txt', :id => 'txt_name2'	 %>
 								                                                <p class="rs description-input">You can enter a link to your website.</p>
 								                                            </div>
 								                                        </div>
@@ -175,27 +175,34 @@
 								                          
 								                            <div class="line-progress">
 								                                <div class="bg-progress">
-								                                    <span class="success" style="width: 98%"></span>
+								              
 								                                </div>
 								                            </div>
-								                            <div class="group-fee clearfix">
+															 Profile Completion
+		<%= @completion %> %									                            <div class="line-progress">
+										                                <div class="bg-progress">
+									                                    <span class="success" style="width: <%= @completion %>%;"></span>
+										                                </div>
+										                            </div>
+										                            <div class="group-fee clearfix">
 
-								                                <div class="fee-item">
-								                                    <p class="rs lbl">Credibility</p>
-								                                    <span class="val">98%</span>
-								                                </div>
-								                                <div class="sep"></div>
-								                                <div class="fee-item">
-								                                    <p class="rs lbl">Interested</p>
-								                                    <span class="val">100</span>
-								                                </div>
-								                                <div class="sep"></div>
-								                                <div class="fee-item">
-								                                    <p class="rs lbl">Days Left</p>
-								                                    <span class="val">18</span>
-								                                </div>
-								                            </div>
-								                        </div>
+
+										                                <div class="fee-item">
+										                                    <p class="rs lbl">Nb Activities</p>
+										                                    <span class="val"><%= @activitiescount %></span>
+										                                </div>
+										                                <div class="sep"></div>
+										                                <div class="fee-item">
+										                                    <p class="rs lbl">Interests</p>
+										                                    <span class="val"><%= @interestcount  %> </span>
+										                                </div>
+										                                <div class="sep"></div>
+										                                <div class="fee-item">
+										                                    <p class="rs lbl">Since</p>
+										                                    <span class="val"><%=distance_of_time_in_words(f.object.created_at,Time.now)%></span>
+										                                </div>
+										                            </div>
+										                        </div>								                        
 								                    </div>
 								                </div><!--end: .grid_3 > .project-short-->
 								                <div class="clear clear-2col"></div>
@@ -206,7 +213,7 @@
 												</div>
 												        </div>
 								    </div><!--end: .home-popular-project -->
-								<footer id="footer">
+							<footer id="footer">
 								        <div class="container_12 main-footer">
 								            <div class="grid_3 about-us">
 								                <h3 class="rs title">Want help to promote your event?</h3>
@@ -276,7 +283,7 @@
 								                <div class="clear"></div>
 								            </div>
 								        </div>
-								    </footer><!--end: #footer -->
+							 
 
 								</div>
 
@@ -357,7 +364,7 @@
 								        <div class="clear"></div>
 								    </div>
 								</div>
-
+ </footer><!--end: #footer -->
 								<script>
 									//enter the count down date using the format year/month/day
 									$(".ccounter").ccountdown(2013,07,05);

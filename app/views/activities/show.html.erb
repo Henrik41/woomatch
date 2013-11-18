@@ -218,7 +218,7 @@
                         <i class="icon iClock"></i>
                         <span class="val"><span class="fw-b">Be there at: </span>15:30 pm</span>
                     </div>
-                    <a class="btn btn-green btn-buck-project" href="#">
+                    <a class="btn btn-green btn-buck-project" href="/activities/<%=@activity.id%>/edit">
                         <span class="lbl">Edit My Activity</span>
                         <span class="desc">Participant will be informed</span>
                     </a>
@@ -229,8 +229,8 @@
                 <div class="box-gray">
                     <h3 class="title-box">Want to Participate</h3>
 
-<%= @userparticipating.each do |f| %>
-<%= f %>
+<% @userparticipating.each do |f| %>
+<%= f.username %>
 <% end%>
                     <div class="media">
 	 <a href="#" class="thumb-left">

@@ -122,7 +122,7 @@
 									                                        <label class="lbl" for="Datepicker">Starting Day:</label>
 									                                        <div class="val">
 
-									<%= f.text_field :start_date, :class => 'txt datepicker', :id => 'txt', :placeholder => 'Give us a date' %>     											</br>
+									<%= f.text_field :start_date, :class => 'txt datepicker',  :value => f.object.start_date %>     											</br>
 
 									                                            <p class="rs description-input">What date is your event?</p>
 									                                        </div>
@@ -134,7 +134,7 @@
 									                                        <label class="lbl">Starting Time:</label>
 									                                        <div class="val">
 									<div class='txt2'>
-										    <%= f.text_field :start_time, :name => 's1Time1', :value => f.object.start_time.strftime("%I:%M %p")  %>
+										    <%= f.text_field :start_time, :name => 's1Time1', :value => f.object.start_time.in_time_zone(f.object.timezone).strftime("%I:%M %p")  %>
 									                                          <br/>
 														</div>
 
@@ -150,7 +150,7 @@
 									                                  <div class="row-item clearfix">
 									                                        <label class="lbl" for="Datepicker">Ending Day:</label>
 									                                        <div class="val">
-									                                           <%= f.text_field :end_date, :class => 'txt datepicker' %>		</br>
+									                                           <%= f.text_field :end_date, :class => 'txt datepicker', :value => f.object.end_date %>		</br>
 
 
 
@@ -164,7 +164,7 @@
 									                                        <label class="lbl">Ending Time:</label>
 									                                        <div class="val">
 									<div class='txt2'>
-									                                                <%= f.text_field :end_time, :name => 's1Time2', :value => f.object.end_time.strftime("%I:%M %p")  %> <br/>
+									                                                <%= f.text_field :end_time, :name => 's1Time2', :value => f.object.end_time.in_time_zone(f.object.timezone).strftime("%I:%M %p")  %> <br/>
 														</div>
 
 
@@ -209,7 +209,7 @@
 																					<div class="row-item clearfix">
 																																What is the price?	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-																																  <%= f.select :recurrent, [['Free'], ['0-10$'], ['11$-20$'], ['21$-30$']], :class =>"txt" %>
+																																  <%= f.select :price, [['Free'], ['0-10$'], ['11$-20$'], ['21$-30$']], :class =>"txt" %>
 
 																																		</div>
 									                                    <div class="row-item clearfix">
@@ -277,11 +277,12 @@
                 </div><!--end: .grid_3 > .project-short-->
                 <div class="clear clear-2col"></div>
 
-<%= render 'activities/grid3'%>
-<%= render 'activities/grid3'%>
-<%= render 'activities/grid3'%>
-<%= render 'activities/grid3'%>
-<%= render 'activities/grid3'%>
+				    <div class="clear clear-2col"></div>
+	         	<% @activitygrid.each do |a| %>
+					 <%= render :partial => "/start/grid", :locals => {:a => a} %> 
+					<% end %>
+
+					</div>
 
 </div>
         </div>
@@ -400,7 +401,7 @@
 
 <script>
 $(function() {
-  $(".datepicker").datepicker();
+  $(".datepicker").datepicker({ dateFormat: 'D, dd M yy' });
 });
 </script>
 
