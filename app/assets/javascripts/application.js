@@ -15,11 +15,7 @@
 //= require script
 //= require jquery-1.9.1.min
 //= require jquery_ujs
-<<<<<<< HEAD
-=======
-
 //= require rails.validations
->>>>>>> halfworking
 //= require address_picker-rails
 //= require md_slider.min
 //= require detect_timezone
