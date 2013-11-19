@@ -1,4 +1,3 @@
-  require 'activeadmin'
 ActiveAdmin.setup do |config|
 
 
