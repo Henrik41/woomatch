@@ -13,7 +13,7 @@ gem 'address_picker-rails'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'activeadmin', github: 'gregbell/active_admin'
+  gem 'activeadmin'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
