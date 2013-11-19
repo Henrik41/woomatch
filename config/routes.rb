@@ -4,8 +4,6 @@ Woo::Application.routes.draw do
 
   get "people/index"
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
 
 
 #general
@@ -69,6 +67,8 @@ post "general/unfollow2/:id", to: 'general#unfollow2'
 devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } 
 
 
+devise_for :admin_users, ActiveAdmin::Devise.config
+ActiveAdmin.routes(self)
   # resources
 
     resources :profile do
