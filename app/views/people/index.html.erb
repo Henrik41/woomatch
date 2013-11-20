@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
 
-<body>
-	
 <div id="wrapper">
 	
 <%= render 'header/header' %>
+<%= render 'activities/navbar' %>
+
 
    <div class="home-popular-project">
         <div class="container_12">
@@ -41,22 +39,28 @@
 </div>
     </div>
 
-                <a class="be-fc-orange" href="category.html"> <h3>Registered Activities: &nbsp;&nbsp;&nbsp; <%= render 'start/counter' %></a></h3>
+                <a class="be-fc-orange" href="category.html"> <h3>Registered Users: &nbsp;&nbsp;&nbsp; <%= render 'start/counter' %></a></h3>
             </div>
             <div class="clear"></div>
             <div class="lst-popular-project clearfix">
+
 <% @people.each do |a| %>
  <%= render :partial => "grid", :locals => {:a => a} %> 
 <% end %>
-
-<center> <a href="#" class="btn btn-green">View More Things To Do In Your Area</a> </center>
 </br>
+</br>
+
+	</br></br></br>
+<center> <a href="#" class="btn btn-green">View More Things To Do In Your Area</a> </center>
+
+</br>
+<center>	<%= paginate @people %> </center>
          </div>
 
        </div>
     </div><!--end: .home-popular-project -->
 
-<%= render 'footer/footer'%>
+<%= render 'footer/footer' %>
 
 </div>
 
@@ -78,8 +82,3 @@
         <div class="clear"></div>
     </div>
 </div>
-
-
-
-</body>
-</html>

@@ -5,6 +5,7 @@ class SearchController < ApplicationController
   def searchactivities
     param = params[:search]
     @searchs = Activity.where("title like ?", "%#{param}%" )
+
     respond_to do |format|    
       format.html
                 
@@ -18,9 +19,20 @@ class SearchController < ApplicationController
   end
   
   def activitysearch
-    
+       @user = current_user
+
+       mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
+        Time.zone = mytimezone
+        @mytime = Time.zone.now
     @search = Activity.search(params[:q])
     @activities = @search.result
+    @activitiesrecent = @activities.order('created_at DESC')
+    @activitiesnear = @activities.near(@user.location)
+    @activitiespop =  @activities.order('end_time DESC')
+    @loc = current_user.location
+    @people = User.near(@loc)
+    
+    
 
   end
   

@@ -17,6 +17,8 @@ class Activity < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   acts_as_followable
   acts_as_votable
+  
+
 
   def avatar_url
    self.avatar.url(:supermini)
