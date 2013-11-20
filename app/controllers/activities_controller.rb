@@ -20,9 +20,10 @@ class ActivitiesController < ApplicationController
       Time.zone = mytimezone
       @mytime = Time.zone.now
      
+     @activitypast = @user.activities.where("end_time <= ?", @mytime)
+     @activitynow = @user.activities.where("end_time > ?", @mytime)
      
-     
-     @activity = @user.activities.all
+  
         @result = @user.location    
         if @result
         @activitygrid = Activity.near(@result, 200000).first(7)

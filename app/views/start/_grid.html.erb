@@ -18,7 +18,7 @@
                     <p class="rs title-description"><%=a.about.capitalize[0,90]%>...(more)</p>
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
-                                <%= a.location %>  &nbsp; &nbsp;&nbsp; <%= User.find(a.user_id).distance_from([a.latitude, a.longitude]).round(1)%>&nbsp;km
+                                <%= a.location %>  &nbsp; &nbsp;&nbsp; <%= a.distance_from(@loc).round(1)%>&nbsp;km
                             </p>
                         </div>
                     </div>

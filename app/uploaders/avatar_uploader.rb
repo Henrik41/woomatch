@@ -42,7 +42,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
      end
    
    version :medium do
-       process :resize_to_fit => [250, 250]
+       process :resize_to_fit => [292, 204]
+             process crop: '292x204+0+0'
     end
     
     version :mini do

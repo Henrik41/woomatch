@@ -25,16 +25,13 @@
 //= require jquery.sidr.min
 //= require raphael-min
 //= require pie
-
 //= require lte-ie7
-//= require pie
 //= require videopopup
 //= require jquery-migrate-1.2.1.min
 //= require jquery.touchwipe.min
 //= require responsiveslides.min
 //= require jquery.form
 //= require bootstrap
-//= require jquery.sidr.min
 //= require jquery.ptTimeSelect
 //= require jquery_nested_form
 //= require jquery.reveal
