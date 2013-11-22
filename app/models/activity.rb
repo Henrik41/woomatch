@@ -1,6 +1,8 @@
 
 class Activity < ActiveRecord::Base
-
+  include PublicActivity::Model
+  tracked
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
   attr_accessible :about, :end_date, :end_time, :location, :numpart, :price, :recurrent, :start_date, :start_time, :title, :user_id, :website
   attr_accessible :avatar, :longitude, :latitude, :interests_attributes
   geocoded_by :location
@@ -9,7 +11,7 @@ class Activity < ActiveRecord::Base
   accepts_nested_attributes_for :interests, 
                                    :allow_destroy => true
                                   
-  
+
   after_validation :geocode, :if => :location_changed?
 
   before_save :startdate, :enddate

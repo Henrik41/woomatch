@@ -23,5 +23,10 @@ class StartController < ApplicationController
     @timenowuser = DateTime.now.in_time_zone(@mytimezone)
    
   end
+  
+  def dashboard
+    @events = PublicActivity::Activity.order('created_at DESC')
+  end
+  
 
 end

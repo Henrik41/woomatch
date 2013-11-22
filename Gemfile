@@ -21,7 +21,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
 end
-
 gem 'public_activity'
 gem 'activeadmin'
 gem 'jquery-ui-themes'

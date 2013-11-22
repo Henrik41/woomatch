@@ -81,7 +81,8 @@ ActiveAdmin.routes(self)
 
     resources :albums 
     resources :activities
-
+resources :events
+match '/users/:id' => 'profile#show', :via => [:get], :as => "user" 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
