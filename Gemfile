@@ -13,7 +13,8 @@ gem 'address_picker-rails'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
+   gem 'jquery-ui-rails'
+gem 'jquery-modal-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -21,6 +22,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
 end
+gem "raphael-rails", "~> 2.1.2"
 gem 'public_activity'
 gem 'activeadmin'
 gem 'jquery-ui-themes'
@@ -45,6 +47,7 @@ gem 'acts_as_votable', '~> 0.7.1'
 gem 'ransack'
 gem "kaminari"
 gem 'client_side_validations'
+
 
 group :development do
   gem 'better_errors'

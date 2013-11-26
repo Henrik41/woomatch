@@ -25,7 +25,16 @@ class StartController < ApplicationController
   end
   
   def dashboard
-    @events = PublicActivity::Activity.order('created_at DESC')
+    if request.location == nil
+       @loc = 'Paris, France'  
+     else
+       @result = request.location        
+       mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
+
+        Time.zone = mytimezone
+        @mytime = Time.zone.now
+      end
+    @events = PublicActivity::Activity.order('created_at DESC').page(params[:page]).per(5)
   end
   
 

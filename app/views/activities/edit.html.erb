@@ -1,6 +1,6 @@
 
 
-<body>
+
 	
 <div id="wrapper">
 <%= render "header/header" %>
@@ -114,7 +114,9 @@
 																			            <span class="help-inline"><%= @activity.errors[:location].join(", ")%></span>  
 																	<%end%>	
 
-									<%= f.text_field :location, :class => 'txt', :id => 'txt_location', :placeholder => 'Where is your event?' %>                                       
+									<%= f.text_field :location, :class => 'txt', :id => 'txt_location', :placeholder => 'Where is your event?' %>      
+									
+																                                
 									                                        </div>
 									                                    </div>
 
@@ -363,12 +365,6 @@
       <% end %>     
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        // find the input fields and apply the time select to them.
-        $('input[name="s1Time2"]').ptTimeSelect();
-    });
-</script>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -378,16 +374,7 @@
 </script>
 
 
-<script>
-	//enter the count down date using the format year/month/day
-	$(".ccounter").ccountdown(2013,07,05);
-</script>
 
-
-<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script src="/assets/jquery-ui-1.10.3.custom.js"></script>
-
-<script src="/assets/jquery.ui.addresspicker.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -440,10 +427,5 @@ $(function() {
 			     });
 			});
 			</script>
-
-
-</body>
-</html>
-
 
 

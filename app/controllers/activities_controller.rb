@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  
+ require 'flickraw'
  before_filter :authenticate_user!
 
   # GET /activities
@@ -56,7 +56,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new.json
   def new
     @activity = current_user.activities.new
-   
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @activity }

@@ -21,6 +21,8 @@
  *= require responsive
  *= require responsiveslides
  *= require videopopup
+ *= require jquery.ui.all
+ *= require jquery.modal
  *= require jquery.ui.autocomplete
  *= require_tree ./css/
  *= require style

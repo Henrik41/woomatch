@@ -53,7 +53,20 @@
 					    <div class="bottom-project-info clearfix">
 
 					    <%= f.file_field :avatar %> </br> </br> 
+					
+					
+						<div id="demo-form" class="demo-description" style="display: none; ">
+						  <p>
+				
+					Please press choose file. Select a picture and save all settings.  
+		
+			
+						  </p>
+						</div>
 
+						<%=  link_to_modal "Instructions", "#demo-form", :class=>"button" %>
+						
+						
 						</br> </br> </br>
 						 Activity Completion
 							<div class="line-progress">
@@ -382,13 +395,6 @@
 </script>
 
 
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        // find the input fields and apply the time select to them.
-        $('input[name="s1Time2"]').ptTimeSelect();
-    });
-</script>
 
 
 

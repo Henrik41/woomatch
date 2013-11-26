@@ -56,10 +56,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
          process crop: '192x135+0+0'
       end
       
-         version :supermini do    
-             process :resize_to_fill => [60, 60]
-             process crop: '60x60+0+0'
-          end
+     version :supermini do    
+      process :resize_to_fill => [60, 60]
+      process crop: '60x60+0+0'
+     end
 
           version :superminimini do    
               process :resize_to_fill => [30, 30]

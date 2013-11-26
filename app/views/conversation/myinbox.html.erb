@@ -1,4 +1,4 @@
-<body>
+
 
 <div id="wrapper">
 <%= render "header/header" %>
@@ -8,7 +8,8 @@
   <div class="home-popular-project">
 		<div class="layout-2cols">
 		        <div class="content grid_8">
-					 <div class= "topmessage">      <div class='topmessageleft'>  <h2 class="rs project-title">Hey <%= current_user.username %> you have <%=@messages_count%> NEW mails</h2></div> <div class='topmessageright'><a class="btn btn-red" href="/conversation/myoutbox">Check my Outbox</a> </div></div> 
+					 <div class= "topmessage">      
+						<div class='topmessageleft'>  <h2 class="rs project-title">Hey <%= current_user.username %> you have <%=@messages_count%> NEW mails</h2></div> <div class='topmessageright'><a class="btn btn-red" href="/conversation/myoutbox">Check my Outbox</a> </div></div> 
 					
 					
 			</br>
@@ -138,4 +139,3 @@
 
 </div>
 
-</body>

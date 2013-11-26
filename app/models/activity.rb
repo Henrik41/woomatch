@@ -1,10 +1,11 @@
 
 class Activity < ActiveRecord::Base
+  
   include PublicActivity::Model
-  tracked
   tracked owner: Proc.new{ |controller, model| controller.current_user }
+  
   attr_accessible :about, :end_date, :end_time, :location, :numpart, :price, :recurrent, :start_date, :start_time, :title, :user_id, :website
-  attr_accessible :avatar, :longitude, :latitude, :interests_attributes
+  attr_accessible :avatar, :longitude, :latitude, :interests_attributes, :url
   geocoded_by :location
   belongs_to :user
   has_many :interests, :dependent => :destroy

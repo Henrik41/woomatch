@@ -4,7 +4,12 @@
                     <div class="content-info-short clearfix">
 
                         <a href="/activities/<%= a.id %>" class="thumb-img">
+	<% if a.avatar.url.present? %>
                       <%= image_tag a.avatar.url(:grid) %>
+    <% else %>
+    					<%= image_tag 'ex/blankevent.jpg'%>
+     <% end %>
+
                         </a>
 
 

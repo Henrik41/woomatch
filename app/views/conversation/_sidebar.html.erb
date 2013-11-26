@@ -37,10 +37,17 @@
                     <h3 class="title-box">Check These New Members</h3>
 	<% @checkuser.each do |u| %>
                     <div class="media">
-                        <a href="#" class="thumb-left">
-                             <%= image_tag u.avatar.url(:supermini) %>
-                        </a>
+                        
+                 
+                      
+					<% if image_tag(u.avatar.url(:supermini)).present?  %>
+					          <%= link_to image_tag(u.avatar.url(:supermini)), url_for({:controller => 'profile', :action =>'show', :id => u.id }), :class => 'thumb-left' %>
 					
+							<% else %>
+					<%= image_tag 'ex/blanksupermini.jpg'%>
+			
+					  
+					<% end %>
 
                         <div class="media-body">
 
@@ -48,11 +55,12 @@
                             <h4 class="rs "><a href="#" class="be-fc-orange fw-b"><%= u.username %></a></h4>
                             <h4 class="rs pb10"><a href="#" class="be-fc-orange fw-b">From: <%= u.location %></a></h4>
 
-                            <a class="btn btn-red" href="#">View Profile</a>
-
+                            <a class="btn btn-red" href="/profile/<%= u.id %>">View Profile</a>
+</br>
                         </div>
 
                     </div>
+</br>
 	<% end%>
 
                     <div class="media">

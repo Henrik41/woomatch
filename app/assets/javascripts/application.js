@@ -36,5 +36,6 @@
 //= require jquery_nested_form
 //= require jquery.reveal
 //= require twitter.min
+//= require jquery.modal
 
 

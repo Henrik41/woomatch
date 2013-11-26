@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   require 'flickraw'
 
   def index
-  render
+
   end
 
   def show
