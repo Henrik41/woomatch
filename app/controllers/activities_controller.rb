@@ -56,7 +56,18 @@ class ActivitiesController < ApplicationController
   # GET /activities/new.json
   def new
     @activity = current_user.activities.new
-    
+    @useronline = User.online
+    @user = current_user
+    mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
+     Time.zone = mytimezone
+     @mytime = Time.zone.now
+ 
+     @result = @user.location    
+     if @result
+     @activitygrid = Activity.near(@result, 200000).first(7)
+     else
+     @activitygrid = Activity.find(:all).last(4)
+   end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @activity }
@@ -67,6 +78,7 @@ class ActivitiesController < ApplicationController
   def edit
     
     @user = current_user
+    @useronline = User.online
     @activity = current_user.activities.find(params[:id])
     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
      Time.zone = mytimezone

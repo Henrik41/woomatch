@@ -3,6 +3,8 @@ class ProfileController < ApplicationController
 
   def edit
    @user = current_user
+   @useronline = User.online
+   @loc = @user.location
    @interestcount = @user.userinterests.find(:all).count
    @activitiescount = @user.activities.where(:user_id => @user.id).count
    @completion = @user.completion 
@@ -24,6 +26,7 @@ class ProfileController < ApplicationController
     @user = current_user
     @userview = User.find(params[:id])
     @activity = Activity.first
+    @useronline = User.online
   end
   
   def update

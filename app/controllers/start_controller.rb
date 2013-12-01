@@ -35,6 +35,7 @@ class StartController < ApplicationController
         @mytime = Time.zone.now
       end
     @events = PublicActivity::Activity.order('created_at DESC').page(params[:page]).per(5)
+    @useronline = User.online
   end
   
 

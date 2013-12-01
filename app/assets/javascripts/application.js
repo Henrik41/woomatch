@@ -23,7 +23,6 @@
 //= require jquery.counter
 //= require selectnav.min
 //= require jquery.sidr.min
-//= require raphael-min
 //= require pie
 //= require lte-ie7
 //= require videopopup

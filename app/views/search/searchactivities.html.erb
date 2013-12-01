@@ -1,8 +1,20 @@
-here is a search by activity
 
-<% @searchs.each do |s| %>
-	<%= image_tag s.avatar.url(:thumb) %>
-	<%= s.title %>
-	<%= s.location %>
-	</br>
+<div id="wrapper">
+<%= render "header/header" %>
+<%= render 'activities/navbar' %>	
+         <div class="clear"></div>
+		<div class="home-popular-project">
+		        <div class="container_12">
+		            <div class="grid_12 wrap-title">
+
+</br>
+<h2 class="common-title">Here is what you are looking for:</h2></div>
+<% @searchs.each do |a| %>
+ <%= render :partial => "/start/grid", :locals => {:a => a} %> 
 <% end %>
+
+     </div> </div>
+    </div>
+   <div class="clear"></div>
+<%= render 'footer/footer'%>
+</div>

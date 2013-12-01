@@ -65,22 +65,7 @@
 		                            </div>
 		                        </div>
 		                    </div>
-		  <div class="project-short sml-thumb">
-							 <div class="top-project-info">
-		                            <div class="content-info-short clearfix">
-										<h3>Hey Mike look wOO's here?</h3>
-						                <a class="thumb-avatar " href="#"><img src="images/ex/th-119x119-9.jpg" width="75" height="75" alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-10.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-11.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-12.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-13.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-14.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-15.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-						                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-16.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-										                <a class="thumb-avatar" href="#"><img src="images/ex/th-119x119-7.jpg" width="75" height="75"alt="$USER_NAME"/></a>
-									</div>
-									</div>
-			</div>				
+	<%= render 'activities/myfriends'%>						
 
 		                </div><!--end: .grid_3 > .project-short-->
 	<div class='mypanel'>	
@@ -88,13 +73,13 @@
 	</br>
 							<center>	<%= paginate @events %> </center>
 								<% @events.each do |activity| %>
-				<% if activity.owner %>
+				<% if !activity.trackable.nil? & !activity.owner.nil? %>
 						<%= image_tag activity.owner.avatar.url(:supermini) %>	
-				<%end%>
-						<%= link_to activity.owner.name, activity.owner if activity.owner %>	
+			
+						<%= link_to activity.owner.name, activity.owner %>	
 				    		<%= render_activity activity %> </br>
-				</br>
-								<% end %>
+				</br><% end%>
+				<% end %>
 </div> 						
 		</div>
 		        </div> </div>

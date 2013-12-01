@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
     
   after_validation :geocode, :if => :location_changed?
 
+  scope :online, lambda{ where("updated_at > ?", 1000.minutes.ago) }
   
 PROFILE_COMPLETENESS = %w[username dob location status about web]
   
@@ -101,4 +102,8 @@ PROFILE_COMPLETENESS = %w[username dob location status about web]
        end
      end
    
+     def online?
+       updated_at > 1000.minutes.ago
+     end
+     
 end

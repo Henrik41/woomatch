@@ -17,13 +17,12 @@
                             <h3 class="rs acticle-title"><a class="be-fc-orange" href="/activities/<%= a.id %>" ><%= a.title.capitalize %></a></h3>
                             <p class="rs tiny-desc">by 
 	
-	 <%= link_to(image_tag(User.find(a.user_id).avatar.url(:superminimini)),
-							    { :controller => :profile, :action => :show,  :id => a.user_id }) %>
-</p>
-                    <p class="rs title-description"><%=a.about.capitalize[0,90]%>...(more)</p>
+<a class="be-fc-orange" href="/profile/<%= a.user_id %>" >	 <%= image_tag(User.find(a.user_id).avatar.url(:superminimini)) %>
+</a>
+                    <p class="rs title-description"><div class="description_space"><%=a.about.capitalize[0,90]%>...(more)</div></p>
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
-                                <%= a.location %>  &nbsp; &nbsp;&nbsp; <%= a.distance_from(@loc).round(1)%>&nbsp;km
+                                <%= a.location[0..24] %>  &nbsp; &nbsp;&nbsp; <%= a.distance_from(@loc).round(1)%>&nbsp;km
                             </p>
                         </div>
                     </div>

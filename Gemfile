@@ -22,7 +22,7 @@ gem 'jquery-modal-rails'
   gem 'uglifier', '>= 1.0.3'
 
 end
-gem "raphael-rails", "~> 2.1.2"
+
 gem 'public_activity'
 gem 'activeadmin'
 gem 'jquery-ui-themes'

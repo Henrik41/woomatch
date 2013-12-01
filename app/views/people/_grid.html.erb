@@ -20,6 +20,16 @@
                                 <%= a.location %>  &nbsp; &nbsp;&nbsp; 2.7&nbsp;km
                             </p>
                         </div>
+
+						<%=  link_to_modal "Email Me", "#demo-form", :class=>"btn btn-red" %>
+ <div class="btn btn-blue"> Follow Me</div>
+	
+
+	<div id="demo-form" class="demo-description" style="display: none; ">
+		Say something to <%= a.name %>:
+		</br>
+
+	</div>
                     </div>
                 </div>
          </div>
