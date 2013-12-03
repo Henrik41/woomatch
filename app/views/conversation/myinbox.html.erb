@@ -1,22 +1,26 @@
-
-
 <div id="wrapper">
 <%= render "header/header" %>
 <%= render 'activities/navbar' %>	
-         <div class="clear"></div>
+<div class="clear"></div>
 
   <div class="home-popular-project">
 		<div class="layout-2cols">
 		        <div class="content grid_8">
-					 <div class= "topmessage">      
-						<div class='topmessageleft'>  <h2 class="rs project-title">Hey <%= current_user.username %> you have <%=@messages_count%> NEW mails</h2></div> <div class='topmessageright'><a class="btn btn-red" href="/conversation/myoutbox">Check my Outbox</a> </div></div> 
+					 <div class= "topmessage">  
+							<div class='topmessageright'>
+								<a class="btn btn-red" href="/conversation/myoutbox">Check my Outbox</a> 
+								</div>    
+						<div class='box-white3'>  <h2 class="rs project-title">Hey <%= current_user.username %> you have <%= @messages_count %> NEW mails</h2> 
+						</div> 
+					
+				</div> 
 					
 					
 			</br>
 	
 		
 <% @conversations.each do |c| %>		
-				<div class="box-gray">
+				<div class="box-white4">
 		          		    <h3 class="title-box">From</h3>
 							 <div class="media">
 				                 <a href="#" class="thumb-left">

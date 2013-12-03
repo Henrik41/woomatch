@@ -2,25 +2,11 @@
 <%= render "header/header" %>
 <%= render 'activities/navbar' %>	
          <div class="clear"></div>
-
-			         <div class="clear"></div>
-
-
-
 		  <div class="home-popular-project">
 		        <div class="container_12">
 		            <div class="grid_12 wrap-title">
-
-
-
-
 		                <a class="be-fc-orange" href="category.html">View all</a>
-
-				  <h2 class="common-title">Welcome Back Mike</h2></div>
-		
-
-
-		            <div class="clear"></div>
+				  <h2 class="common-title">Welcome Back <%= current_user.username%></h2></div>		
 		            <div class="lst-popular-project clearfix">
 		                <div class="grid_3">
 		                    <div class="project-short sml-thumb">
@@ -28,62 +14,78 @@
 		                            <div class="content-info-short clearfix">
 										<h3>You Have:</h3>
 		                                <div class='mypanel'>
-		                                    <h3 ><div class="left-panel"><a class="be-fc-orange" href="project.html"> Followers&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" > &nbsp;&nbsp;5 </span></a></div></div>
+		                                    <h3 ><div class="left-panel"><a class="be-fc-orange" href="project.html"> Followers&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" > &nbsp;&nbsp;<%= current_user.followers_count %></span></a></div></div>
 
 		  <div class='mypanel'>
-		 <h3 ><div class="left-panel"><a class="be-fc-orange" href="project.html"> Following&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" > 10 </span></a></div></div>
+		 <h3 ><div class="left-panel"><a class="be-fc-orange" href="project.html"> Following&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" >&nbsp;&nbsp;<%= current_user.following_by_type_count('User')%> </span></a></div></div>
 
 			 <div class='mypanel'>
-			 <h3 ><div class="left-panel"><a class="be-fc-orange" href="project.html"> Interests&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" > &nbsp;&nbsp;7 </span></a></div></div>
+			 <h3 ><div class="left-panel"><a class="be-fc-orange" href="project.html"> Interests&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" > &nbsp;&nbsp;<%= current_user.userinterests.count %></span></a></div></div>
 				 <div class='mypanel'>
-				 <h3 ><div class="left-panel"><a class="be-fc-orange" href="project.html"> Activities&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" >&nbsp;&nbsp;3 </span></a></div></div></br>
+				 <h3 ><div class="left-panel"><a class="be-fc-orange" href="project.html"> Activities&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" >&nbsp;&nbsp;<%= current_user.activities.count %> </span></a></div></div></br>
 		</div>
 		</div>
-
 
 		                        <div class="bottom-project-info clearfix"> Profile Completion
-		                            <div class="line-progress">
-		                                <div class="bg-progress">
-		                                    <span  style="width: 50%"></span>
-		                                </div>
-		                            </div>
-		                            <div class="group-fee clearfix">
-		                                <div class="fee-item">
-		                                    <p class="rs lbl">Credibility</p>
-		                                    <span class="val">50%</span>
-		                                </div>
-		                                <div class="sep"></div>
-		                                <div class="fee-item">
-		                                    <p class="rs lbl">Interested</p>
-		                                    <span class="val">7</span>
-		                                </div>
-		                                <div class="sep"></div>
-		                                <div class="fee-item">
-		                                    <p class="rs lbl">Days Left</p>
-		                                    <span class="val">25</span>
-		                                </div>
-		                            </div>
+									<%= @completion %> %									                            <div class="line-progress">
+																	                                <div class="bg-progress">
+																                                    <span style="width: <%= @completion %>%;"></span>
+																	                                </div>
+																	                            </div>
+																	
+																	                            <div class="group-fee clearfix">
+
+
+																	                                <div class="fee-item">
+																	                                    <p class="rs lbl">Nb Activities</p>
+																	                                    <span class="val"><%= @activitiescount %></span>
+																	                                </div>
+																	                                <div class="sep"></div>
+																	                                <div class="fee-item">
+																	                                    <p class="rs lbl">Interests</p>
+																	                                    <span class="val"><%= @interestcount  %> </span>
+																	                                </div>
+																	                                <div class="sep"></div>
+																	                                <div class="fee-item">
+																	                                    <p class="rs lbl">Since</p>
+																	                                    <span class="val"><%=distance_of_time_in_words(@user.created_at,Time.now)%></span>
+																	                                </div>
+																	                            </div>
+																	
 		                        </div>
 		                    </div>
 	<%= render 'activities/myfriends'%>						
 
 		                </div><!--end: .grid_3 > .project-short-->
-	<div class='mypanel'>	
+	<div class='mypanel'>	<div class= "wrapper-box">
 <div class="right-panel2">
-	</br>
-							<center>	<%= paginate @events %> </center>
+					
 								<% @events.each do |activity| %>
-				<% if !activity.trackable.nil? & !activity.owner.nil? %>
-						<%= image_tag activity.owner.avatar.url(:supermini) %>	
+								
+		
 			
-						<%= link_to activity.owner.name, activity.owner %>	
-				    		<%= render_activity activity %> </br>
-				</br><% end%>
+				<div class="box-white2">
+			
+		  <div class="section_1">
+						<%= image_tag activity.owner.avatar.url(:supermini) %>	
+    		</div>
+				    		<%= render_activity activity %> 
+			</div>	
+				
+			
+
 				<% end %>
+							
+				
 </div> 						
-		</div>
-		        </div> </div>
+	</div>
+			</div>
+				</div>
+		
+		<div class="clearfix">	<div class="pagme"> <%= paginate @events %></div> </div>
 		    </div><!--end: .home-popular-project -->
 
 <%= render 'footer/footer'%>
+
+
 </div>

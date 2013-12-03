@@ -20,7 +20,12 @@
 										<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
 				
 				                       <span class="sep"></span>
+										
+											<% if current_user.avatar? %>
 				  						 <a href="#"> <%= image_tag current_user.avatar.url(:supermini) %> </a>
+				<% else%>
+				<a href='#'> <%= image_tag '/assets/ex/blankmini.jpg' %> </a>
+				<% end %>
 				</div>
 			                    </div>
 
@@ -80,10 +85,12 @@
                    
                     </div>
                 </div>
-                <div class="header-left">
-                    <h1 id="logo">
-                        <a href=""><%= image_tag 'logo.png' %> </a>
-                    </h1>
+             	<div class="header-left">
+	                <h1 id="logo">
+	                  <a href="/"><%= image_tag 'logo.png' %> </a>
+	                </h1>
+
+	            </div>
 
                     <div class="main-nav clearfix">
                         <div class="nav-item">

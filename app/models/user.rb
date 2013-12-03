@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
 
 
-
+   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
@@ -26,13 +26,13 @@ class User < ActiveRecord::Base
      acts_as_followable
      acts_as_follower
       acts_as_voter
-  validates_presence_of :location, :username
+  validates_presence_of  :username
   validates_length_of :username, :minimum => 3, :maximum => 20
-   validates_length_of :about, :minimum => 5, :maximum => 300, :allow_blank => true
-    validates_length_of :web, :minimum => 0, :maximum => 45, :allow_blank => true
+  validates_length_of :about, :minimum => 5, :maximum => 300, :allow_blank => true
+  validates_length_of :web, :minimum => 0, :maximum => 45, :allow_blank => true
     
   after_validation :geocode, :if => :location_changed?
-
+  
   scope :online, lambda{ where("updated_at > ?", 1000.minutes.ago) }
   
 PROFILE_COMPLETENESS = %w[username dob location status about web]
@@ -105,5 +105,6 @@ PROFILE_COMPLETENESS = %w[username dob location status about web]
      def online?
        updated_at > 1000.minutes.ago
      end
+     
      
 end

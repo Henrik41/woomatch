@@ -1,16 +1,13 @@
 class ConversationController < ApplicationController
-
+before_filter :authenticate_user!
 before_filter :get_mailbox
 
   def index
- 
-    @user_receiver = User.find(params[:id])
-    
+    @user_receiver = User.find(params[:id])    
   end
   
   def sendmail
-    
-    
+   
     @para1 = params[:user][:body]
     @para2 = params[:id]
 
@@ -40,7 +37,8 @@ before_filter :get_mailbox
     @conversations =  @mailbox.inbox.page(params[:page]).per(5)
     @messages_count = @mailbox.inbox({:read => false}).count
     @checkuser = current_user.nearbys(100,:order => :distance).find(:all, :limit => 2)
- 
+    
+    
   end
   
   def myoutbox

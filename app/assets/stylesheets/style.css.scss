@@ -494,6 +494,43 @@ input.btn  {
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
 }
+
+.box-white2{
+    height: 77px;
+    margin-bottom: 10px;
+    background: #FFF;
+    padding: 22px 28px 28px;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+
+.box-white3{
+    width: 60%;
+   
+    margin-bottom: 3px;
+    background: #FFF;
+    padding: 15px 15px 15px;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.box-white4{
+    width: 95%;
+   
+    margin-bottom: 3px;
+    background: #FFF;
+    padding: 10px 10px 10px;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
 .box-gray .title-box,
 .box-white .title-box{
     font-size: 1.384615384615385em;
@@ -3049,15 +3086,17 @@ We also remove the borders, since they don't need them. */
 
 .topmessage {
 
-background-color: white;
 height: 60px;
 width: 100%;
 }
 .topmessageleft{float:left;
 width: 60%;
 margin: 20px;}
-.topmessageright{float:right;
-margin: 15px;}
+.topmessageright{
+margin-top: 10px;
+width: 30%;
+float:right;
+}
 
 .ui-slider{
     z-index:1
@@ -3125,4 +3164,80 @@ float: left;
 width: 100%;
 height: 60px;
 
+}
+
+/* 11.	sections
+--------------------------------------------------------------------------------*/
+
+.section_1{
+  float: left;
+  width: 12%;
+  margin-left: 10px;
+
+}
+
+.section_2{
+  float: left;
+  width: 10%;
+  margin: 5px;
+  margin-top: 5px;
+
+}
+
+.section_3{
+
+ float: left;
+ width: 30%;
+ margin: 5px;
+}
+
+.section_4{
+
+margin: 5px;
+}
+
+
+.pagination a, .pagination span.current, .pagination span.gap {
+	float: left;
+	padding: 0 14px;
+	line-height: 38px;
+	text-decoration: none;
+	background-color: white;
+	border: 1px solid #DDD;
+	border-left-width: 0;
+}
+ 
+.pagination {
+	border-left: 1px solid #ddd;
+	.first{
+		padding : 0;
+		float: none;
+		border: none;
+	}
+	.prev {
+		padding : 0;
+		float: none;
+		border: none;
+	}
+	.page{
+		padding : 0;
+		float: none;
+		border: none;
+	}
+	.next{
+		padding : 0;
+		float: none;
+		border: none;
+	}
+	.last{
+		padding : 0;
+		float: none;
+		border: none;
+	}
+}
+
+.pagme{
+float:right;
+height: 100px;
+margin-right: 220px;
 }

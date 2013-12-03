@@ -3,14 +3,18 @@ class SearchController < ApplicationController
   
 
   def searchactivities
-     @user = current_user
-    param = params[:search]
-    @searchs = Activity.where("title like ?", "%#{param}%" )
-    mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
+     @user = current_user if current_user
+     
+     param = params[:search]
+     @searchs = Activity.where("title like ?", "%#{param}%" )
+    
+     @result = request.location        
+     mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
+     
       Time.zone = mytimezone
       @mytime = Time.zone.now
 
-      @loc = @user.location
+       @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
     respond_to do |format|    
       format.html {}
                 
