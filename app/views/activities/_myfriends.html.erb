@@ -6,10 +6,22 @@
 								<h3>Hey Mike look wOO's here?</h3>
 								
 								<% @useronline.each do |u| %>
-							               <a class="thumb-avatar " href="#"><%= image_tag (u.avatar.url(:mini)), :width => '75', :height => '75' %> </a>
+							               <a class="thumb-avatar " href="#">
+							<% if u.avatar? %>
+							<%= image_tag (u.avatar.url(:mini)), :width => '75', :height => '75' %> 
+							<% else %>
+							
+							<%= image_tag '/assets/ex/blankmini2.jpg', :width => '75', :height => '75' %>
+							
+							<% end%>
+							</a>
+							
+							
 								<% end %>
 								
 
 							</div>
-							</div>
-	</div>				
+							</div>	</div>	
+
+<center> <a href="#" class="btn btn-green">View More wOO Friends</a> </center>		
+	

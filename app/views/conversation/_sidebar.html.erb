@@ -36,10 +36,15 @@
                 <div class="box-gray">
                     <h3 class="title-box">Check These New Members</h3>
 	<% @checkuser.each do |u| %>
-                    <div class="media">               
-					          <%= link_to image_tag(u.avatar.url(:mini)), {:controller => 'profile', :action =>'show', :id => u.id }, :class => "thumb-left" %>
-					
+                    <div class="media">   
+	<% if u.avatar.url(:mini) %>  
+	 <%= link_to image_tag(u.avatar.url(:mini)), {:controller => 'profile', :action =>'show', :id => u.id }, :class => "thumb-left" %>
+	
 
+	<% else %>      	
+					         
+			  <%= image_tag ('/assets/ex/blankmini3.jpg'), :class => "thumb-left" %>		
+<% end %>
 
                         <div class="media-body">
 

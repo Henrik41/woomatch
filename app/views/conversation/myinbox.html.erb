@@ -10,7 +10,19 @@
 							<div class='topmessageright'>
 								<a class="btn btn-red" href="/conversation/myoutbox">Check my Outbox</a> 
 								</div>    
-						<div class='box-white3'>  <h2 class="rs project-title">Hey <%= current_user.username %> you have <%= @messages_count %> NEW mails</h2> 
+						<div class='box-white3'>  <h2 class="rs project-title">
+							
+							Hey <%= current_user.username %> you have 
+							
+							<% if @messages_count >= 1 %>
+						
+						    <div class="blink2">
+							<%= @messages_count %> NEW mail(s)
+							</div>
+							
+							<% else %>
+								no new mails
+								<% end%></h2> 
 						</div> 
 					
 				</div> 
@@ -21,17 +33,25 @@
 		
 <% @conversations.each do |c| %>		
 				<div class="box-white4">
-		          		    <h3 class="title-box">From</h3>
+		          		    <h3 class="title-box2">From</h3>
 							 <div class="media">
 				                 <a href="#" class="thumb-left">
 				         			    <% whois = c.participants - Array(current_user) %>
 									 <% if whois.empty? %>
 
 									  <%= image_tag current_user.avatar.url(:mini) %>
+								
 									<% else %>
-										<%= image_tag whois[0].avatar.url(:mini) %>
+										
+									 <% if whois[0].avatar? %>
+									   <%= image_tag whois[0].avatar.url(:mini) %> 
+									 <% else %>
+									   <%= image_tag '/assets/ex/blankmini2.jpg' %>
+									 <% end %>
+									
 									<% end %>    </a>
-							<div class="thumb-right"> NEW MAIL! </div>
+									
+							
 								<h3 class="rs"><a href="#" class="be-fc-orange fw-b">	<% if whois.empty? %>
 									  <%= current_user.username %>
 									<% else %>
@@ -47,7 +67,7 @@
 					<div class="thumb-middle">
 									    <% whois = c.participants - Array(current_user) %>
   <% if whois[0].online? %>
-is online
+<div class="blink2">Is online!</div>
  <% else %>
  is offline 
 <% end %>
@@ -77,4 +97,20 @@ is online
 
 
 </div>
+<script type="text/javascript">
+	$(function() {
+	    var x;
+	        setInterval(function() {
+	                if(x == 0) {
+	                    $('.blink2').removeAttr('style');
+	                    x = 1;
+	                } else  {
+	                    if(x = 1) {
+	                        $('.blink2').css('color', 'red');
+	                        x = 0;
+	                    }
+	                }
+	        }, 500);
+	});
+	</script>
 

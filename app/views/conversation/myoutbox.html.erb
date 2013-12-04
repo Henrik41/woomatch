@@ -1,4 +1,3 @@
-<body>
 
 <div id="wrapper">
 <%= render "header/header" %>
@@ -8,15 +7,24 @@
   <div class="home-popular-project">
 		<div class="layout-2cols">
 		        <div class="content grid_8">
-					 <div class= "topmessage">      <div class='topmessageleft'>  <h4 class="rs project-title">Hey <%= current_user.username %> you sent <%=@messages_count%> messages to the following users </h4></div> <div class='topmessageright'><a class="btn btn-red" href="/conversation/myinbox">Check my Inbox</a> </div></div> 
-					
+	 
+						
+						
+							 <div class= "topmessage">  
+									<div class='topmessageright'>
+										<a class="btn btn-red" href="/conversation/myinbox">Check my Inbox</a> 
+										</div>    
+								<div class='box-white3'>  <h4 class="rs project-title">Hey <%= current_user.username %> you sent <%=@messages_count%> messages to the following users</h4> 
+								</div> 
+
+						</div> 
 					
 			</br>
 	
 		
 <% @conversations.each do |c| %>		
-				<div class="box-gray">
-		          		    <h3 class="title-box">To</h3>
+				<div class="box-white4">
+		          		    <h3 class="title-box2">To</h3>
 							 <div class="media">
 				                 <a href="#" class="thumb-left">
 				         			    <% whois = c.participants - Array(current_user) %>
@@ -24,9 +32,13 @@
 
 									  <%= image_tag current_user.avatar.url(:mini) %>
 									<% else %>
-										<%= image_tag whois[0].avatar.url(:mini) %>
+										<% if whois[0].avatar? %>
+										   <%= image_tag whois[0].avatar.url(:mini) %> 
+										 <% else %>
+										   <%= image_tag '/assets/ex/blankmini2.jpg' %>
+										 <% end %>
 									<% end %>    </a>
-							<div class="thumb-right"> NEW MAIL! </div>
+							
 								<h3 class="rs"><a href="#" class="be-fc-orange fw-b">	<% if whois.empty? %>
 									  <%= current_user.username %>
 									<% else %>
@@ -40,7 +52,12 @@
 				
 					</br>
 					<div class="thumb-middle">
-
+						 <% whois = c.participants - Array(current_user) %>
+<% if whois[0].online? %>
+<blink>Is online!</blink>
+<% else %>
+is offline 
+<% end %>
 					  <h2 class="rs"><a href="#" class="be-fc-orange fw-b">	<%= link_to c.subject, :controller => 'conversation', :action => 'show', :id => c.id %> </a></h2>
 					</div>
 
@@ -65,5 +82,3 @@
 
 
 </div>
-
-</body>

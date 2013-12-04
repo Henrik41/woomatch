@@ -56,7 +56,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new.json
   def new
     @activity = current_user.activities.new
-    @useronline = User.online
+    @useronline = User.online.find(:all, :limit => 9)
     @user = current_user
     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
      Time.zone = mytimezone
@@ -78,7 +78,7 @@ class ActivitiesController < ApplicationController
   def edit
     
     @user = current_user
-    @useronline = User.online
+    @useronline = User.online.find(:all, :limit => 9)
     @activity = current_user.activities.find(params[:id])
     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
      Time.zone = mytimezone
