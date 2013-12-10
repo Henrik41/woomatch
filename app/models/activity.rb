@@ -16,7 +16,7 @@ class Activity < ActiveRecord::Base
   after_validation :geocode, :if => :location_changed?
 
   before_save :startdate, :enddate
-  validates_presence_of  :location, :start_time, :end_time
+  validates_presence_of  :location, :start_time, :end_time, :start_date, :end_date, :title, :about
   mount_uploader :avatar, AvatarUploader
   acts_as_followable
   acts_as_votable

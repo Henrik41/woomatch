@@ -10,7 +10,6 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-
 //= require jquery
 //= require script
 //= require jquery-1.9.1.min
@@ -24,7 +23,6 @@
 //= require selectnav.min
 //= require jquery.sidr.min
 //= require pie
-//= require lte-ie7
 //= require videopopup
 //= require jquery-migrate-1.2.1.min
 //= require jquery.touchwipe.min
@@ -36,5 +34,6 @@
 //= require jquery.reveal
 //= require twitter.min
 //= require jquery.modal
+
 
 

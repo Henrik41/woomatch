@@ -24,12 +24,17 @@
 			
 			    <h3 class="rs alternate-tab accordion-label">Recent Activities</h3>
 			    <div class="tab-pane accordion-content active">
-				
+				<% if @activitynow.empty? %>
+				<a class="btn btn-green btn-buck-project" href="/activities/new">
+                    <span class="lbl">Add an Activity</span>
+                    <span class="desc">and make more friends</span>
+                </a>
+				<% else%>
 					<% @activitynow.each do |a| %>
 						 <%= render :partial => '/general/myactivityinfo', :locals => {:a => a} %> 
 						<% end %>
 	
-
+<% end%>
 
 	    </div><!--end: .tab-pane -->
 			                        </div>
@@ -37,10 +42,17 @@
 			                            <h3 class="rs alternate-tab accordion-label">Past Activities</h3>
 			                            <div class="tab-pane accordion-content">
 	                                        
-			
+													<% if @activitypast.empty? %>
+													
+													You never registered an activity.</br>
+													<a class="btn btn-green btn-buck-project" href="/activities/new">
+									                    <span class="lbl">Add an Activity</span>
+									                    <span class="desc">and make more friends</span>
+									                </a>
+													<% else%>
 				<% @activitypast.each do |a| %>
 					 <%= render :partial => '/general/myactivityinfo', :locals => {:a => a} %> 
-					<% end %>    
+					<% end %>  <% end%>  
 			 </div><!--end: .tab-pane -->
 			                        </div>
 			                      

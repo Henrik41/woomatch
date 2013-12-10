@@ -76,7 +76,7 @@
 
 					<div class="thumb-right">
 
-					                     <div class="btn btn-blue" ><%= link_to 'Read', {:controller => 'conversation', :action => 'show', :id => c.id}, {:style =>'color:#ffffff'}    %></div>
+					                     <div class="btn btn-blue" ><%= link_to 'Read', {:controller => 'conversation', :action => 'show', :id => c.id, :page => (c.messages.length.to_f/6).ceil}, {:style =>'color:#ffffff'}    %></div>
 <div class = 'btn btn-red'>				                   
 <%= link_to 'Delete', trash_path(:conversation_id => c.id), { :method => :post , :style =>'color:#ffffff' } %></div>
 					</div>

@@ -43,14 +43,23 @@ class ProfileController < ApplicationController
     @interestcount = @user.userinterests.find(:all).count
     @activitiescount = @user.activities.where(:user_id => @user.id).count
     @completion = @user.completion
+    @useronline = User.online.find(:all, :limit => 9)
      @activity = @user.activities.all
         @result = request.location    
         if @result
         @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
+        mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
         @activitygrid = Activity.near(@loc, 200000).last(7)
         else
+         mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)  
         @activitygrid = Activity.find(:all).last(4)
       end
+      
+
+       
+       Time.zone = mytimezone
+       @mytime = Time.zone.now
+       
     respond_to do |format|
       if @user.update_attributes(params[:user])
         @user.realage = @user.age.to_i

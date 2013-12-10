@@ -54,8 +54,15 @@ before_filter :get_mailbox
     end
   end
   def show
-     @conversation = @mailbox.conversations.find(params[:id])
+     @conversation2 =  @mailbox.conversations.find(params[:id])
+     @con = @mailbox.conversations.find(params[:id]).messages
+     @conversation = Kaminari.paginate_array(@con).page(params[:page]).per(6)
      current_user.mark_as_read(@conversation)
+     if current_user.nearbys
+       @checkuser = current_user.nearbys(100,:order => :distance).find(:all, :limit => 3)
+     else
+       @checkuser = User.last(3)
+     end
   end
   
 

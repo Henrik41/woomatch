@@ -17,6 +17,10 @@ post "general/follow2/:id", to: 'general#follow2'
 post "general/unfollow2/:id", to: 'general#unfollow2'
 
 
+post "general/follow3/:id", to: 'general#follow3'
+post "general/follow4/:id", to: 'general#follow4'
+post "general/unfollow3/:id", to: 'general#unfollow3'
+post "general/followall/:id", to: 'general#followall'
 #search routes
   post "search/searchactivities"
   post "search/searchbycity"
