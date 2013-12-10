@@ -22,6 +22,7 @@
 //= require jquery.counter
 //= require selectnav.min
 //= require jquery.sidr.min
+//= require raphael-min
 //= require pie
 //= require videopopup
 //= require jquery-migrate-1.2.1.min
