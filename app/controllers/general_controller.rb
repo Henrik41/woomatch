@@ -4,7 +4,7 @@ class GeneralController < ApplicationController
     @user = User.find(@activity.user_id)
     @useractivity = @user
     @activity2 = Activity.find(params[:id])
-      @whos_following = @activity.followers
+    @whos_following = @activity.followers
     
   end
 
@@ -29,6 +29,7 @@ class GeneralController < ApplicationController
     
     @activity2 = Activity.find(params[:id])
     @activity2.liked_by current_user
+    
     respond_to do |format|
        format.js {}
     end
@@ -45,6 +46,9 @@ class GeneralController < ApplicationController
   
   def follow3
     @useraccepted = User.find(params[:id])
+    
+    UserMailer.send_user_accepted(@useraccepted).deliver
+    
     @activity2 = Activity.find(params[:activity])
     @votes = @activity2.likes.where(:voter_id => @useraccepted)
     @userparticipating = @activity2.votes.where(:vote_scope => nil).map(&:voter)

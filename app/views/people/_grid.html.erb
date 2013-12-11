@@ -4,10 +4,10 @@
                     <div class="content-info-short clearfix">
 
                         <a href="#" class="thumb-img">
-                      <% if image_tag a.avatar.url %>
+                    <% if a.avatar.url %>
 <%= image_tag a.avatar.url(:grid) %>
 					<% else %>
-					<a class="thumb-avatar" href="#"><img src="/assets/ex/blank.jpg" width="250" height="350"alt="$USER_NAME"/></a>
+					<%= image_tag '/assets/ex/peopleblank.jpg', :width => '192', :height => '135' %>
 					<% end %>
                         </a>
 
@@ -17,7 +17,9 @@
                   
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
-                                <%= a.location %>  &nbsp; &nbsp;&nbsp; 2.7&nbsp;km
+<% if a.location %>
+                                <%= a.location[0..20] %>  &nbsp; &nbsp;&nbsp; 2.7&nbsp;km
+<% end%>
                             </p>
                         </div>
 

@@ -47,17 +47,14 @@
 <% @people.each do |a| %>
  <%= render :partial => "grid", :locals => {:a => a} %> 
 <% end %>
-</br>
-</br>
-
-	</br></br></br>
+ <div class="clear"></div>
 <center> <a href="#" class="btn btn-green">View More Things To Do In Your Area</a> </center>
-
-</br>
 <center>	<%= paginate @people %> </center>
          </div>
 
        </div>
+
+
     </div><!--end: .home-popular-project -->
 
 <%= render 'footer/footer' %>
