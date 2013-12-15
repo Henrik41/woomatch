@@ -2,26 +2,22 @@ class StartController < ApplicationController
   
    
   def index
-    if request.location == nil
-      @loc = 'Paris, France'  
+    
+    if request.location.nil?
+      @loc = 'Paris, Ile de france'  
+      @activity = Activity.last(4)
     else
       @result = request.location        
       mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
       
-       Time.zone = mytimezone
-       @mytime = Time.zone.now
+      Time.zone = mytimezone
+      @mytime = Time.zone.now
       
-      @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
-    end
-    
-    if request.location == nil
-      @activity = Activity.find(:all).last(4)
-    else
-      @activity = Activity.near(@loc, 100).order("created_at").last(4)
-    end 
+     @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s + ', ' + @result.data['country_name'].to_s
+     @activity = Activity.near(@loc, 100).order("created_at").last(4)
      
-    @timenowuser = DateTime.now.in_time_zone(@mytimezone)
-   
+    end
+ 
   end
   
   def dashboard

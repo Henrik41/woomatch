@@ -74,7 +74,7 @@ end
 
 # Deploy with Capistrano
  gem 'capistrano', '2.15.5'
-
+ gem 'capistrano-maintenance'
 
 # Use unicorn as the app server
 # gem 'unicorn'

@@ -12,20 +12,26 @@ class ProfileController < ApplicationController
    if request.location == nil
       @loc = 'Paris, France'  
     else
+      
+      if @user.location.nil?
       @result = request.location       
       mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
       @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
+    else
+      @loc = @user.location
+      mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
+    end
     end
    
 
    Time.zone = mytimezone
    @mytime = Time.zone.now
    
-    @activity = @user.activities.all
+   
       @result = @user.location    
       if @result
      
-      @activitygrid = Activity.near(@result, 200000).first(7)
+      @activitygrid = Activity.near(@result, 2000).first(7)
       else
       @activitygrid = Activity.find(:all).last(4)
     end

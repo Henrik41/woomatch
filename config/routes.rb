@@ -1,5 +1,7 @@
 Woo::Application.routes.draw do
 
+  get "setting/index"
+
   get "activity/:id", to: 'general#activity'
 
   get "people/index"
@@ -82,8 +84,8 @@ ActiveAdmin.routes(self)
         get :unfollow
       end
     end
-
-
+   put 'setting/update'
+    resources :settings
     resources :albums 
     resources :activities
 resources :events

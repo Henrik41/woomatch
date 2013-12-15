@@ -981,8 +981,8 @@ input.btn  {
 			color: #999;
 		}
 		#menu_wrapper ul {margin-left: 12px;}
-		#menu_wrapper {padding: 0 16px 0 0; background: url(asset_path('grey.png',images)) no-repeat right;}
-		#menu_wrapper div {float: left; height: 44px; width: 12px; background: url(asset_path('grey.png',images)) no-repeat left;}
+		#menu_wrapper {padding: 0 16px 0 0;}
+		#menu_wrapper div {float: left; height: 44px; width: 12px; }
 
 	#menu_wrapper.blue ul {
 		border-top: 2px solid #356AA0;
@@ -1571,8 +1571,8 @@ background: none;
 }
 .project-short .project-progress{
     margin: 10px 30px;
-    /*background: url("../images/progress.png") no-repeat center center;*/
-    background: url("../images/bg-s-out.png") no-repeat center center;
+    /*background: url(asset_path('progress.png',images)) no-repeat center center;*/
+    background:  url(asset_path('bg-s-out.png',images))  no-repeat center center;
     float: left;
     width: 78px;
     height: 78px;
@@ -1590,7 +1590,7 @@ background: none;
     position: absolute;
     top: 9px;
     left: 8px;
-    background: url("../assets/bg-s-in.png") no-repeat;
+    background: url(asset_path('bg-s-in.png',images)) no-repeat;
     width: 62px;
     height: 62px;
     line-height: 62px;
@@ -2242,7 +2242,7 @@ background: none;
     padding: 50px 0;
 }
 .greensign{
-	   background-image: url('images/greensign.png');
+	   background-image:  url(asset_path('greensign.png',images));
         background-repeat: no-repeat;
         z-index: 105;
 }
@@ -3044,8 +3044,8 @@ background: none;
     border-radius:10px;
 
     /* We use the CSS3 multiple backgrounds for the input field: The magnifier image and the gradient background */    
-    background-image: url("../images/magnifier.png"), -webkit-gradient(linear, left bottom, left top, color-stop(0, #747474), color-stop(0.5, #6E6E6E), color-stop(0.51, #7E7E7E), color-stop(1, #8D8D8D));
-    background-image: url("../images/magnifier.png"), -moz-linear-gradient(center bottom, #747474 0%, #6E6E6E 50%, #7E7E7E 51%, #8D8D8D 100%);
+    background-image:  url(asset_path('magnifier.png',images)), -webkit-gradient(linear, left bottom, left top, color-stop(0, #747474), color-stop(0.5, #6E6E6E), color-stop(0.51, #7E7E7E), color-stop(1, #8D8D8D));
+    background-image: url(asset_path('magnifier.png',images)), -moz-linear-gradient(center bottom, #747474 0%, #6E6E6E 50%, #7E7E7E 51%, #8D8D8D 100%);
     background-repeat: no-repeat;
 
     background-color:#6E6E6E; /* Fallback */

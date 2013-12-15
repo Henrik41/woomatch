@@ -54,15 +54,8 @@
 
 					    <%= f.file_field :avatar %> </br> </br> 
 					
-					
-						<div id="demo-form" class="demo-description" style="display: none; ">
-						  <p>
 				
-					Please press choose file. Select a picture and save all settings.  
-		
-			
-						  </p>
-						</div>
+						
 
 						<%=  link_to_modal "Instructions", "#demo-form", :class=>"button" %>
 						
@@ -306,80 +299,37 @@
         </div>
     </div><!--end: .home-popular-project -->
 
-
-<footer id="footer">
-        <div class="container_12 main-footer">
-            <div class="grid_3 about-us">
-                <h3 class="rs title">Want help to promote your event?</h3>
-                <p class="rs description">Woomatch can help you promote your activity or event. Just contact us and we will help you contact thousands of real member ready to go out. </p>
-                <p class="rs email"><a class="fc-default  be-fc-orange" href="mailto:info@megadrupal.com">info@Woomatch.com</a></p>
-                <p class="rs">+1 (800) 555-5555 </p>
-            </div><!--end: .contact-info -->
-            <div class="grid_3 recent-tweets">
-                <h3 class="rs title">Recent Tweets</h3>
-                <div class="lst-tweets" id="sys_lst_tweets">
-                    <p class="rs ta-c fc-white">
-                        loading Twitter <br />
-                        <img src="images/ajax-loader.gif" alt="loading"/>
-                    </p>
-                </div>
-            </div><!--end: .recent-tweets -->
-            <div class="clear clear-2col"></div>
-            <div class="grid_3 email-newsletter">
-                <h3 class="rs title">Newsletter Signup</h3>
-                <div class="inner">
-                    <p class="rs description">Signup for new promotions and activities in your area.</p>
-                    <form action="#">
-                        <div class="form form-email">
-                            <label class="lbl" for="txt-email">
-                                <input id="txt-email" type="text" class="txt fill-width" placeholder="Enter your e-mail address"/>
-                            </label>
-                            <button class="btn btn-green" type="submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div><!--end: .email-newsletter -->
-            <div class="grid_3">
-                <h3 class="rs title">Discover &amp; Promote new activities</h3>
-                <div class="footer-menu">
-                    <ul class="rs">
-                        <li><a class="be-fc-orange" href="#">What is WooMatch</a></li>
-                        <li><a class="be-fc-orange" href="#">Start an Activity</a></li>
-                        <li><a class="be-fc-orange" href="#">Project Guidlines</a></li>
-                        <li><a class="be-fc-orange" href="#">Press</a></li>
-                        <li><a class="be-fc-orange" href="#">Stats</a></li>
-                    </ul>
-                    <ul class="rs">
-                        <li><a class="be-fc-orange" href="#">Staff Picks</a></li>
-                        <li><a class="be-fc-orange" href="#">Popular</a></li>
-                        <li><a class="be-fc-orange" href="#">Recent</a></li>
-
-                        <li><a class="be-fc-orange" href="#">Most Credible Activities </a></li>
-                    </ul>
-                    <div class="clear"></div>
-                </div>
-            </div>
-            <div class="clear"></div>
-        </div>
-        <div class="copyright">
-            <div class="container_12">
-                <div class="grid_12">
-                    <a class="logo-footer" href="index.html"><img src="images/logo-2.png" alt="$SITE_NAME"/></a>
-                    <p class="rs term-privacy">
-                        <a class="fw-b be-fc-orange" href="single.html">Terms & Conditions</a>
-                        <span class="sep">/</span>
-                        <a class="fw-b be-fc-orange" href="single.html">Privacy Policy</a>
-                        <span class="sep">/</span>
-                        <a class="fw-b be-fc-orange" href="#">FAQ</a>
-                    </p>
-                    <p class="rs ta-c fc-gray-dark site-copyright">HTML by <a href="http://megadrupal.com" title="Drupal Developers" target="_blank">Woomatch</a>. Designed by <a href="http://bestwebsoft.com/" title="Web development company" target="_blank">WoomatchDesign</a>.</p>
-                </div>
-                <div class="clear"></div>
-            </div>
-        </div>
-</footer><!--end: #footer -->
+<%= render 'footer/footer' %>
       <% end %>     
 </div>
+
+		
+			<div id="demo-form" class="demo-description" style="display: none; ">
+			  <p>
+	
+				 Search for <b>cats, dogs, cakes</b>, or anything else that takes your fancy :-)
+				    <br />
+				   
+				    <div id="results"></div>
+		
+					
+													<%= form_tag({:controller => 'photos', :action => 'show'}, :remote => true) do %>
+									<%= text_field_tag :url %>			
+													
+													<%= button_tag(type: 'submit', id: "search") do %>
+								
+													
+<span class="lbl">Select pic</span>
+													<% end%> 
+													<% end%>
+
+
+
+
+		
+			  </p>
+			</div>
+
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -421,7 +371,9 @@ $(function() {
 			     });
 			});
 			</script>
-
+			<script type="text/javascript">
+$("select2").imagepicker()
+</script>
 
 </body>
 </html>

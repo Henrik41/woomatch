@@ -10,7 +10,15 @@ class GeneralController < ApplicationController
 
   def follow
     @activity = Activity.find(params[:id])
+    @user2 = User.find(@activity.user_id)
+    @user = current_user
+    if @user2.followme
+       UserMailer.followme(@user2).deliver
+    else
+    end
+    
     current_user.follow(@activity)
+    
     respond_to do |format|
        format.js {}
     end

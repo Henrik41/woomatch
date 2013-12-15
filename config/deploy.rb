@@ -1,4 +1,5 @@
 require "bundler/capistrano"
+require 'capistrano/maintenance'
 
 server "66.228.34.47", :web, :app, :db, primary: true
 

@@ -12,6 +12,11 @@ class PhotosController < ApplicationController
   url=params[:url]
   info = flickr.photos.search(:text =>url.split('/').last)
   @embed_photo = FlickRaw.url_b(info[0])
+  
+  respond_to do |format|
+
+    format.js { }
+  end
   end
 
 

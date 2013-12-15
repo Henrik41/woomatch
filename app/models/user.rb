@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :location, :realage, :dob, :age, :sex, :status, :about, :web, :email, :password, :password_confirmation, :time_zone, :avatar,  :userinterests_attributes
   attr_accessible :longitude, :latitude
-  attr_accessible :provider, :uid, :name, :completion
+  attr_accessible :provider, :uid, :name, :completion, :nomail, :followme
   
   attr_accessible :body, :conversation_id
   geocoded_by :location
@@ -106,5 +106,12 @@ PROFILE_COMPLETENESS = %w[username dob location status about web]
        updated_at > 1000.minutes.ago
      end
      
+     def mailboxer_email(message)
+         if self.nomail
+             email
+         else
+              nil
+         end
+     end
      
 end

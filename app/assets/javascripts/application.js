@@ -35,6 +35,7 @@
 //= require jquery.reveal
 //= require twitter.min
 //= require jquery.modal
+//= require image-picker
 
 
 
