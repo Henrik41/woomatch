@@ -1,0 +1,63 @@
+		    <div class="box-marked-project project-short inside-tab">			
+		  <div class="top-project-info">
+		    <div class="content-info-short clearfix">
+	
+		          <a href="/activities/<%= a.id %>" >
+			<% if a.avatar.url(:grid) %>
+                <%= image_tag a.avatar.url(:grid) %>
+             <% end %> 
+		    </a>
+		    	<div class="wrap-short-detail">
+		    <h3 class="rs acticle-title"><a class="be-fc-orange" href="#"><%= a.title.capitalize %></a></h3>
+		    <p class="rs tiny-desc">by <a href="#" class="fw-b fc-gray be-fc-orange"><%= User.find(a.user_id).username %></a> in <span class="fw-b fc-gray"><%= User.find(a.user_id).location %></span></p>
+		    <p class="rs title-description"><%=a.about.capitalize[0,90]%>...(more).</p>
+		    	</div>
+		     <p class="rs clearfix comment-view">
+		     <a href="#" class="fc-gray be-fc-orange"> Facebook comments</a>
+<span class="sep">|</span>
+		     <a href="#" class="fc-gray be-fc-orange">  250  views</a>
+		
+		     </p>
+		
+
+		      </div><!-- end wrap-short-detail -->			
+		   </div><!--end: .top-project-info -->
+				
+		 <div class="bottom-project-info clearfix">
+
+		 	<div class="project-progress sys_circle_progress" data-percent="<%= a.completion %>">
+		 			<div class="sys_holder_sector"></div>
+		 	</div>
+		 	<div class="group-fee clearfix">
+				<div class="fee-item">
+			<p class="rs lbl">REGISTERED</p>
+					 <span class="val"> <%= a.completion %>% </span>
+					</div>
+					   <div class="sep"></div>
+		    	<div class="fee-item">
+		    <p class="rs lbl">PRICE</p>
+		    <span class="val"><%= a.price %></span>
+		    	</div>
+		        <div class="sep"></div>
+		        <div class="fee-item">
+		    <p class="rs lbl">LIKED</p>
+		    <span class="val"><%= a.followers_count %></span>
+		        </div>
+		        <div class="sep"></div>
+		        <div class="fee-item">
+		    <p class="rs lbl">TIME LEFT</p>
+		    <span class="val">
+			<% if a.end_time < @mytime %>
+														Ended
+														<% else %>
+
+				<%= distance_of_time_in_words(@mytime, a.enddate) %>
+				<% end %></span>
+		        </div>
+		     </div><!-- end group-fee clearfix -->
+		                                        <div class="clear"></div>
+		  </div><!-- end bottom-project-info clearfix-->
+		 </div><!--end: .box-marked-project -->
+		
+		
+		
