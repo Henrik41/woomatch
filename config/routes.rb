@@ -59,7 +59,7 @@ post "general/followall/:id", to: 'general#followall'
   
   get "photos/index"
   match 'show' => 'photos#show', :as => :photo
-
+  post "start/accept"
 #starting page
   get "start/index"
   get "start/dashboard"

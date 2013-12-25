@@ -60,6 +60,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   # GET /activities/new.json
   def new
+ 
     @activity = current_user.activities.new
     @useronline = User.online.find(:all, :limit => 9)
     if @useronline.empty?
@@ -78,6 +79,8 @@ class ActivitiesController < ApplicationController
      else
      @activitygrid = Activity.find(:all).last(4)
    end
+   
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @activity }

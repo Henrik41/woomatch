@@ -37,15 +37,15 @@
 					<div class="project-short sml-thumb">
 					    <div class="top-project-info">
 					        <div class="content-info-short clearfix">
-								<h3>Activity Pic </h3>
+								<h3>Select an Activity Pic </h3>
 								
 				
-							
+							<div id="remove_image">
 						
-					                <a class="upload-preview" href="#"><img src="/assets/ex/th-292x204-1.jpg" width="250" height="250"alt="$USER_NAME"/></a>
+					                <a class="upload-preview" href="#"><%= image_tag '/assets/ex/th2-292x204.jpg' %></a>
 								
 							
-								
+								</div>
 							</div>
 						</div>
 
@@ -53,13 +53,16 @@
 					    <div class="bottom-project-info clearfix">
 
 					    <%= f.file_field :avatar %> </br> </br> 
-					
-				
-						
 
-						<%=  link_to_modal "Instructions", "#demo-form", :class=>"button" %>
+					
+						<div id="thebutton">
+			</div>
+				<div class="remove_box">
+						<%=  link_to_modal "Select a Picture from the Net", "#demo-form", :class=>"btn btn-blue" %>
 						
-						
+				</div>
+				
+			<div class="put_a_box">	</div> 	
 						</br> </br> </br>
 						 Activity Completion
 							<div class="line-progress">
@@ -307,22 +310,24 @@
 			<div id="demo-form" class="demo-description" style="display: none; ">
 			  <p>
 	
-				 Search for <b>cats, dogs, cakes</b>, or anything else that takes your fancy :-)
+				 Search for <b>activity pictures</b>:
 				    <br />
-				   
-				    <div id="results"></div>
-		
+				  
+
+			
+
 					
+					<div class="theform">
 													<%= form_tag({:controller => 'photos', :action => 'show'}, :remote => true) do %>
 									<%= text_field_tag :url %>			
 													
 													<%= button_tag(type: 'submit', id: "search") do %>
 								
 													
-<span class="lbl">Select pic</span>
+<span class="btn btn-green">Search pic</span> 
 													<% end%> 
 													<% end%>
-
+</div>
 
 
 
@@ -344,7 +349,6 @@
         $('input[name="s1Time1"]').ptTimeSelect();
     });
 </script>
-
 
 
 
@@ -372,9 +376,12 @@ $(function() {
 			});
 			</script>
 			<script type="text/javascript">
-$("select2").imagepicker()
+$("#activity_remote_avatar_url").imagepicker()
 </script>
 
+<script>
+$(".thebutton").hide();
+</script>
 </body>
 </html>
 

@@ -5,7 +5,7 @@ class Activity < ActiveRecord::Base
   tracked owner: Proc.new{ |controller, model| controller.current_user }
   
   attr_accessible :about, :end_date, :end_time, :location, :numpart, :price, :recurrent, :start_date, :start_time, :title, :user_id, :website
-  attr_accessible :avatar, :longitude, :latitude, :interests_attributes, :url
+  attr_accessible :avatar, :longitude, :latitude, :interests_attributes, :url, :remote_avatar_url
   geocoded_by :location
   belongs_to :user
   has_many :interests, :dependent => :destroy
@@ -57,8 +57,10 @@ class Activity < ActiveRecord::Base
     v = self.start_time
     vh = v.hour
     vm = v.min
-    Time.zone =  NearestTimeZone.to(self.latitude,self.longitude)
+    
+    Time.zone =  NearestTimeZone.to(self.latitude,self.longitude)    
     self.start_time = Time.zone.local(y.to_i,m.to_i,d.to_i,vh.to_i,vm.to_i)
+ 
 
   end
   

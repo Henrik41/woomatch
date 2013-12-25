@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   include PublicActivity::StoreController 
   protect_from_forgery
   around_filter :user_time_zone, if: :current_user
-  after_filter :user_activity
+  before_filter :messages_count, if: :current_user
+  before_filter :user_activity
   
 
 
@@ -18,5 +19,12 @@ class ApplicationController < ActionController::Base
   def user_activity
     current_user.try :touch
   end
-
+  
+ 
+  def messages_count
+    @mailbox ||= current_user.mailbox
+    @messages_count = @mailbox.inbox({:read => false}).count
+  end
+  
+  
 end

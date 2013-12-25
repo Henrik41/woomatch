@@ -45,5 +45,12 @@ class StartController < ApplicationController
  
   end
   
-
+  def accept
+    @activity = current_user.activities.create(params[:activity]) 
+    puts "ca marche"
+    render :js => "window.location = '/activities/49/edit'"
+    
+ 
+  
+  end
 end
