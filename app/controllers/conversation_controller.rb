@@ -8,10 +8,9 @@ before_filter :get_mailbox
   
   def sendmail
    
-    @para1 = params[:user][:body]
+    @para1 = params[:body]
     @para2 = params[:id]
 
-    
     @user_receiver = User.find(@para2)
     
     conv_check_1 = Conversation.participant(@user_receiver)
@@ -22,18 +21,17 @@ before_filter :get_mailbox
     if @dialog.nil? or !@dialog.is_participant?(current_user)
        current_user.send_message(@user_receiver, @para1, 'subject')
     else
-      current_user.reply_to_conversation(@dialog, @para1)
+       current_user.reply_to_conversation(@dialog, @para1)
     end
 
-    redirect_to :action => :myinbox
+
+     render :js => "window.location = '/conversation/myinbox'"
     
-    
-     
   end
   
   
   def myinbox
-    
+  
     @conversations =  @mailbox.inbox.page(params[:page]).per(5)
     @messages_count = @mailbox.inbox({:read => false}).count
     if current_user.nearbys

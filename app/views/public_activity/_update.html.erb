@@ -1,6 +1,8 @@
 <div class="section_2"> <%= image_tag 'wooupdate.png' %> </div>
 <div class="section_3">
+	<div class="section_3_1">
 updated	<%= distance_of_time_in_words(@mytime, activity.trackable.updated_at) %> ago 
+	</div>
 <%= link_to activity.owner.name, activity.owner %>
 just updated an activity 
 

@@ -5,7 +5,10 @@
 
                         <a href="#" class="thumb-img">
                     <% if a.avatar.url %>
-<%= image_tag a.avatar.url(:grid) %>
+
+<%= image_tag a.avatar.url(:grid), :class => 'onbottom'%>
+
+
 					<% else %>
 					<%= image_tag '/assets/ex/peopleblank.jpg', :width => '192', :height => '135' %>
 					<% end %>
@@ -23,15 +26,40 @@
                             </p>
                         </div>
 
-						<%=  link_to_modal "Email Me", "#demo-form", :class=>"btn btn-red" %>
+							<%=  link_to_modal "Email Me", "#demo-form", :class=>"btn btn-red" %>
+
+								<div id="demo-form" class="demo-description" style="display: none; ">
+								  <p>
+
+								<b>	 Write me an Email</b>:
+									    <br />
+
+
+
+
+
+										<div class="theform">
+																		<%= form_tag({:controller => 'conversation', :action => 'sendmail', :id => a.id}, :remote => true) do %>
+														<%= text_field_tag :body %>			
+
+																		<%= button_tag(type: 'submit', id: "search") do %>
+
+
+						<span class="btn btn-green">Send it</span> 
+																		<% end%> 
+																		<% end%>
+						</div>
+
+
+
+
+								  </p>
+								</div>
+
+						
  <div class="btn btn-blue"> Follow Me</div>
 	
 
-	<div id="demo-form" class="demo-description" style="display: none; ">
-		Say something to <%= a.name %>:
-		</br>
-
-	</div>
                     </div>
                 </div>
          </div>

@@ -67,7 +67,8 @@
 				<div class="box-white2">
 			
 		  <div class="section_1">
-						<%= image_tag activity.owner.avatar.url(:supermini) %>	
+			<a href="/profile/<%=activity.owner.id %>"> <%= image_tag activity.owner.avatar.url(:supermini) %> </a>
+					
     		</div>
 				    		<%= render_activity activity %> 
 			</div>	

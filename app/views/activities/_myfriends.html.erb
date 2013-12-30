@@ -4,24 +4,28 @@
 					 <div class="top-project-info">
                            <div class="content-info-short clearfix">
 								<h3>Hey Mike look wOO's here?</h3>
-								
+								<div class ="big_box" >
 								<% @useronline.each do |u| %>
-							               <a class="thumb-avatar " href="#">
+							              
 							<% if u.avatar? %>
-							<%= image_tag (u.avatar.url(:mini)), :width => '75', :height => '75' %> 
+						<div class="small_images">
+							<%= image_tag (u.avatar.url(:mini)), :width => '75', :height => '75', :class => 'onbottom' %> 
+							
+							<%= image_tag '/assets/Greenlight2.gif', :class => 'ontop' %>
+						
+							</div>
 							<% else %>
 							
 							<%= image_tag '/assets/ex/blankmini2.jpg', :width => '75', :height => '75' %>
 							
 							<% end%>
-							</a>
+						
 							
 							
 								<% end %>
 								
-
+</div>
 							</div>
 							</div>	</div>	
 
-<center> <a href="#" class="btn btn-green">View More wOO Friends</a> </center>		
-	
+<center> <a href="/people/index" class="btn btn-green">View More wOO Friends</a> </center>	

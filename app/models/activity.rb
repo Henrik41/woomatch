@@ -21,7 +21,7 @@ class Activity < ActiveRecord::Base
   acts_as_followable
   acts_as_votable
   
-
+PROFILE_COMPLETENESS = %w[title about location start_time end_time start_date end_date price recurrent website]
 
   def avatar_url
    self.avatar.url(:supermini)
@@ -66,6 +66,28 @@ class Activity < ActiveRecord::Base
   
   def timezone
     NearestTimeZone.to(self.latitude,self.longitude)
+  end
+  
+  def completion2
+    progression = 0
+    PROFILE_COMPLETENESS.each do |c|
+      if !self.attributes[c].blank?
+        progression += 1 
+      else
+      end      
+    end
+     progression
+     if !self.interests.empty? 
+       progression += 1
+     else
+     end
+     
+     if !self.avatar.to_s.include? "blank.jpg"
+        progression += 1
+      else
+      end
+            
+      progression*100/8
   end
   
 

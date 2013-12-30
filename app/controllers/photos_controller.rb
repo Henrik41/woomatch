@@ -13,10 +13,9 @@ class PhotosController < ApplicationController
   
     begin
   info = flickr.photos.search(:sort => 'relevance', :text =>url.split('/').last)
-
   @embed_photo = [FlickRaw.url_b(info[0]),FlickRaw.url_b(info[1]),FlickRaw.url_b(info[2]),FlickRaw.url_b(info[3]),FlickRaw.url_b(info[4]),FlickRaw.url_b(info[5]),FlickRaw.url_b(info[6]),FlickRaw.url_b(info[7])]
+
 rescue
-  
   @embed_photo = ['http://placekitten.com/180/200', 'http://placekitten.com/180/200' ]
 end
   respond_to do |format|

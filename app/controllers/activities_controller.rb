@@ -60,7 +60,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   # GET /activities/new.json
   def new
- 
+    
     @activity = current_user.activities.new
     @useronline = User.online.find(:all, :limit => 9)
     if @useronline.empty?
@@ -93,6 +93,7 @@ class ActivitiesController < ApplicationController
     @user = current_user
     @useronline = User.online.find(:all, :limit => 9)
     @activity = current_user.activities.find(params[:id])
+    @completion2 = @activity.completion2
     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
      Time.zone = mytimezone
      @mytime = Time.zone.now

@@ -39,7 +39,7 @@ post "general/followall/:id", to: 'general#followall'
   get 'conversation/myinbox'
   get 'conversation/myoutbox'  
   post 'conversation', to: 'conversation#trash', as: :trash 
-  post 'conversation/index/:id', to: 'conversation#sendmail'
+  post 'conversation/sendmail/:id', to: 'conversation#sendmail'
   get "/contacts/failure" => "invites#failure"
   
 #profile
