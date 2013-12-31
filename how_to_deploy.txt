@@ -1,0 +1,43 @@
+cap deploy:cleanup
+cap deploy:cold
+
+ssh root@66.228.34.47
+ps aux | grep unicorn
+kill -9 ...
+
+/etc/init.d/unicorn_woomatch start
+
+
+
+To set the correct permissions
+
+cd ..
+cd ..
+
+chmod 755 yourapp -R
+
+cd woomatch
+cd current
+
+
+To clear you tmp folder
+
+rake tmp:pids:clear             
+rake tmp:sessions:clear
+rake tmp:sockets:clear
+rake tmp:cache:clear
+
+
+check release...
+
+cd woomatch
+ls
+cd release 2013.....
+rake tmp:cache:clear
+
+
+RAILS_ENV=production rake assets:precompile
+
+chmod -R 777 /home/henrik41/apps/woomatch/releases/20131230001227/tmp
+
+
