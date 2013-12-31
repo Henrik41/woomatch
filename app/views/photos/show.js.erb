@@ -1,18 +1,9 @@
-$("#thebutton").append('<select id="activity_remote_avatar_url" name="activity[remote_avatar_url]"><% @embed_photo.each do |p| %><option data-img-src="<%= p %>" value="<%=p%>">Cute Kitten 1</option><% end%></select>').css('width', '240px');
-
 $(".theform").hide();
-
-$(".close-modal").click();
-
-$("#activity_avatar").hide();
-
-$("#remove_image").hide();
-
-$(".remove_box").hide();
-
-$(".put_a_box").append('Select a Picture from above and complete the form');
-
-$("#activity_remote_avatar_url").imagepicker();
+$("#button_out").show();
+$("#select_button").append('<select id="picture" name="picture"><% @embed_photo.each do |p| %><option data-img-src="<%= p %>"  value="<%=p%>" ><%= p %></option><% end%> </select>');
+$("select").imagepicker();
+$("select").css('display','inline-block');
+$("#picture").hide();
 
 
 

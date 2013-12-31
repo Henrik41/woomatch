@@ -12,20 +12,28 @@ class PhotosController < ApplicationController
   url=params[:url]
   
     begin
-  info = flickr.photos.search(:sort => 'relevance', :text =>url.split('/').last)
-  @embed_photo = [FlickRaw.url_b(info[0]),FlickRaw.url_b(info[1]),FlickRaw.url_b(info[2]),FlickRaw.url_b(info[3]),FlickRaw.url_b(info[4]),FlickRaw.url_b(info[5]),FlickRaw.url_b(info[6]),FlickRaw.url_b(info[7])]
+  args = {}
+  args[:sort] = 'relevance'
+  args[:text] = "#{url.split('/').last}"
+  
+  info = flickr.photos.search args
+  @embed_photo = [FlickRaw.url(info[0]),FlickRaw.url(info[1]),FlickRaw.url(info[2]),FlickRaw.url(info[3]),FlickRaw.url(info[4]),FlickRaw.url(info[5]),FlickRaw.url(info[6]),FlickRaw.url(info[7])]
 
 rescue
   @embed_photo = ['http://placekitten.com/180/200', 'http://placekitten.com/180/200' ]
 end
   respond_to do |format|
-
     format.js { }
   end
   end
 
 
+ def show2
 
+ @picture = params[:picture]
+ 
+ 
+ end
 
   
 end

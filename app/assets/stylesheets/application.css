@@ -23,6 +23,7 @@
  *= require jquery.ui.all
  *= require jquery.modal
  *= require jquery.ui.autocomplete
+ *= require image-picker
  *= require_tree ./css/
  *= require style
  *= require_tree .

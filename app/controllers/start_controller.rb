@@ -41,7 +41,7 @@ class StartController < ApplicationController
    
     Time.zone = mytimezone
     @mytime = Time.zone.now  		
-    @events = Kaminari.paginate_array(PublicActivity::Activity.order('created_at DESC').find(:all,  :conditions => ["key != ?", "follow.destroy"]).delete_if {|x| x.trackable == nil}).page(params[:page]).per(4)
+    @events = Kaminari.paginate_array(PublicActivity::Activity.order('created_at DESC').where("key != ?", "follow.destroy").delete_if {|x| x.trackable == nil}).page(params[:page]).per(4)
  
   end
   

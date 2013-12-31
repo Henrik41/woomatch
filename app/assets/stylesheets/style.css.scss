@@ -571,6 +571,17 @@ input.btn  {
 	font-weight: 700;
 
 }
+.common-title2{
+    margin: 0;
+    padding: 0 0 15px 0;
+    color: #3e4b51;
+    line-height: 1.2em;
+    font-size: 1.554em;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+
+}
 .inline-title{ 
 	position: relative;
 	display: inline}
@@ -1312,6 +1323,7 @@ input.btn  {
 
 }
 .form .txt4{
+	display: inline-block;
     border: 1px solid #d9d9d9;
     margin-bottom: 3px;
     padding: 8px 10px;
@@ -1884,8 +1896,8 @@ background: none;
     top: -6px;
     right:-6px;
     padding:5px 10px 5px 15px;
-    background-color:orangered; /* you could use a background image if you'd like as well */
-    color:white;
+
+    color:orangered;
     font-weight:bold;
     font-size:1.2em;
 
@@ -3291,3 +3303,10 @@ top:0px;
 width: 225px;
 
 }
+
+.thumbnail img{width:100px;height:100px;}
+
+#demo-form{width:550px; }
+
+
+
