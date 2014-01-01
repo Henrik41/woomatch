@@ -80,7 +80,7 @@
 			<% @activitiespop.each do |a| %>
 				 <%= render :partial => '/general/myactivityinfo', :locals => {:a => a} %> 
 				<% end %>
-			
+			<center>	<%= paginate @activitiespop %> </center>
 			                  </div><!--end: .tab-pane -->
 			                        </div>
 			                        <div>
@@ -90,7 +90,7 @@
 												 <%= render :partial => '/general/myactivityinfo', :locals => {:a => a} %> 
 												<% end %>
 
-			                           
+			                      <center>	<%= paginate @activitiesnear %> </center>     
 			 </div><!--end: .tab-pane -->
 			                        </div>
 			                      
@@ -101,7 +101,7 @@
 																	 <%= render :partial => '/general/myactivityinfo', :locals => {:a => a} %> 
 																	<% end %>
 
-
+<center>	<%= paginate @activitiesrecent %> </center>
 								 </div><!--end: .tab-pane -->
 			</div>
 			            </div><!--end: .project-tab-detail -->

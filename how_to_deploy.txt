@@ -35,6 +35,9 @@ ls
 cd release 2013.....
 rake tmp:cache:clear
 
+sudo rm /tmp/unicorn.woomatch.sock
+sudo /etc/init.d/unicorn_woomatch start
+
 
 RAILS_ENV=production rake assets:precompile
 

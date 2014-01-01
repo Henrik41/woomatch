@@ -4,8 +4,8 @@ require 'capistrano/maintenance'
 server "66.228.34.47", :web, :app, :db, primary: true
 
 set :application, "woomatch"
-set :user, "root"
-set :deploy_to, "/home/henrik41/apps/#{application}"
+set :user, "bill"
+set :deploy_to, "/home/bill/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 set :test_log, "log/capistrano-unit-test.log"
