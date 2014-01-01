@@ -1,4 +1,4 @@
-root = "/home/henrik41/apps/woomatch/current"
+root = "/home/bill/apps/woomatch/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn-woomatch.pid"
 stderr_path "#{root}/log/unicorn-stderr.log"

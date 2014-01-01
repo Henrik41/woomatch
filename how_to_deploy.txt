@@ -48,4 +48,6 @@ I had to rebuld a user bill
 reinstall rbenv
 etc
 
+don't forget to change unicorn.rb!!!
+
 http://dan.carley.co/blog/2012/02/07/rbenv-and-bundler/
