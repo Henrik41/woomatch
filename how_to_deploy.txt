@@ -44,3 +44,8 @@ RAILS_ENV=production rake assets:precompile
 chmod -R 777 /home/henrik41/apps/woomatch/releases/20131230001227/tmp
 
 
+I had to rebuld a user bill
+reinstall rbenv
+etc
+
+http://dan.carley.co/blog/2012/02/07/rbenv-and-bundler/
