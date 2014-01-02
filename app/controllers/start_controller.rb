@@ -6,6 +6,8 @@ class StartController < ApplicationController
     if request.location.nil?
       @loc = 'Paris, Ile de france'  
       @activity = Activity.last(4)
+      @mytime = Time.now
+      
     else
       @result = request.location        
       mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
