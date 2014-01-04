@@ -72,7 +72,7 @@
 <div class="form-search">
 	<div class="form">
 
-		<%=	form_tag( {:action=> 'searchactivities', :controller =>'search'}, :id =>'sys_txt_keyword', :class => 'txt-keyword')  do %>
+		<%=	form_tag( {:action=> 'searchactivities', :controller =>'/search'}, :id =>'sys_txt_keyword', :class => 'txt-keyword')  do %>
 		<%= text_field_tag :search, '', :size => '16', :placeholder => 'Search Activities' %> 
 	
 
@@ -101,7 +101,11 @@
                         </div>
                         <span class="sep"></span>
                         <div class="nav-item">
-                            <a href="#" class="nav-title">Promote</a>
+								<%=  link_to_modal "Promote", "#demo-form2", :class=>"nav-title" %>
+
+		
+			
+                            
                             <p class="rs nav-description">Your Activity</p>
                         </div>
                     </div>

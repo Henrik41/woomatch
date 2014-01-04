@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
  
-
+ before_filter :authenticate_user!
   def edit
    @user = current_user
    @useronline = User.online.find(:all, :limit => 9)

@@ -36,6 +36,8 @@
 //= require twitter.min
 //= require jquery.modal
 //= require image-picker
+//= require gritter
+//= require jquery.form-validator.min
 
 
 

@@ -1,4 +1,5 @@
 
+
 	
 <div id="wrapper">
 	
@@ -51,11 +52,22 @@
         <div class="container_12">
             <div class="grid_12 wrap-title">
 	
-                <h2 class="common-title">Popular in <%= @loc %> <%= request.location %>
-	
+                <h2 class="common-title">Popular in <%= @loc %> 
 	<!-- Time: <%= @timenowuser %> --> </h2>
     <div class="form-search2">
 	<div class="form2">
+		
+
+<%= js add_gritter("Hey! John just added an activity. Come and join him now.", :title => "Notification!", :image => '/assets/ex/th-119x119-1.jpg',  :time => 4000 ) %>
+
+<%= js extend_gritter :position => :bottom_right, :fade_in_speed => "medium" %>
+
+
+
+<div class-"gritter_action"><div>
+<%= js add_gritter("Hey! Carla just added an activity. Come and join her now.", :title => "Notification!", :image => '/assets/ex/th-119x119-2.jpg' ) %>
+
+
 
 <%= form_tag('search/searchbycity') do %>
   <%= text_field_tag "q",nil, :class => 'address-picker-input', :placeholder => 'Change my city' %>
@@ -71,7 +83,6 @@
 
 
 
-       
    
            
             <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
@@ -146,6 +157,14 @@
     </div><!--end: .additional-info-line -->
 <%= render 'footer/footer'%>
 
+	<div id="demo-form2" class="demo-description" style="display: none; z-index:9999;">
+		
+
+	<h2>	This is the text to promote your activity </h2>
+	
+
+	</div>
+
 </div>
 
 <div class="popup-common" id="sys_popup_common">
@@ -166,4 +185,5 @@
         <div class="clear"></div>
     </div>
 </div>
+
 

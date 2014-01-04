@@ -24,6 +24,7 @@ group :assets do
 
 end
 
+gem "gritter", "1.0.3"
 gem 'public_activity'
 gem 'activeadmin'
 gem 'jquery-ui-themes'

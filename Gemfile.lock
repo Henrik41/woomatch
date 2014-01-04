@@ -101,6 +101,7 @@ GEM
     formtastic (2.2.1)
       actionpack (>= 3.0)
     geocoder (1.1.9)
+    gritter (1.0.3)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -292,6 +293,7 @@ DEPENDENCIES
   devise
   flickraw (~> 0.9.6)
   geocoder
+  gritter (= 1.0.3)
   jquery-modal-rails
   jquery-rails (< 3.0.0)
   jquery-ui-rails

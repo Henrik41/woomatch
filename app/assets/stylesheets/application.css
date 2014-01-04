@@ -24,6 +24,7 @@
  *= require jquery.modal
  *= require jquery.ui.autocomplete
  *= require image-picker
+ *= require gritter
  *= require_tree ./css/
  *= require style
  *= require_tree .

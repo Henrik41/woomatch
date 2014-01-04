@@ -1,4 +1,4 @@
-
+<%= render 'header/header' %>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
  	   <h3 class="rs title-form">Login</h3>
 	<% flash.each do |name, msg| %>
@@ -37,7 +37,7 @@
       
   </p>
   <p class="rs ta-c">
-      <a href="#" class="fc-orange">I forgot my password</a>
+      <a href="/users/password/new" class="fc-orange">I forgot my password</a>
   </p>
 </div>
 </div>
@@ -45,5 +45,27 @@
   <div></div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<center><%= render "devise/shared/links" %> </center>
+</br>
+</br>
 
+<%= render 'footer/footer'%>
+
+<div class="popup-common" id="sys_popup_common">
+    <div class="overlay-bl-bg"></div>
+    <div class="container_12 pop-content">
+        <div class="grid_12 wrap-btn-close ta-r">
+            <i class="icon iBigX closePopup"></i>
+        </div>
+        <div class="grid_6 prefix_1">
+<%= render "devise/registrations/new" %>
+      </div>
+        <div class="grid_4">
+            <div class="form login-form">
+	<%= render "devise/sessions/new" %>
+            
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
