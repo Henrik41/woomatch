@@ -1,6 +1,6 @@
 $(".theform").hide();
 $("#button_out").show();
-$("#select_button").append('<select id="picture" name="picture"><% @embed_photo.each do |p| %><option data-img-src="<%= p %>"  value="<%=p%>" ><%= p %></option><% end%> </select>');
+$("#select_button").empty().append('<select id="picture" name="picture"><% @embed_photo.each do |p| %><option data-img-src="<%= p %>"  value="<%=p%>" ><%= p %></option><% end%> </select>');
 $("select").imagepicker();
 $("select").css('display','inline-block');
 $("#picture").hide();

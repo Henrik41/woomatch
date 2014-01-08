@@ -24,6 +24,7 @@ group :assets do
 
 end
 
+
 gem "gritter", "1.0.3"
 gem 'public_activity'
 gem 'activeadmin'
@@ -48,8 +49,7 @@ gem "acts_as_follower", '~> 0.1.1'
 gem 'acts_as_votable', '~> 0.7.1'
 gem 'ransack'
 gem "kaminari"
-gem 'client_side_validations'
-
+gem 'jQuery-Validation-Engine-rails'
 
 group :development do
   gem 'better_errors'

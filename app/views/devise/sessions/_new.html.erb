@@ -1,5 +1,5 @@
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<%= form_for(resource, :html => {:id => "form_id2"},  :as => resource_name, :url => session_path(resource_name)) do |f| %>
  	   <h3 class="rs title-form">Login</h3>
 
 
@@ -9,10 +9,7 @@
          <p class="rs">Please log in to continue.</p>
 
          <div class="form-action">
-	
-			 
-			 
-			
+
              <label for="txt_email_login">
 	 <%= f.email_field :email, :class => 'txt fill-width', :placeholder => 'Enter your e-mail address' %>
           </label>
@@ -52,3 +49,11 @@ $(document).ready(function(){
     $('#your_input_id').set_timezone();
 })
 </script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#form_id2").validationEngine();
+});
+</script>
+
+

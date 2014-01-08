@@ -1926,7 +1926,7 @@ background: none;
     margin-left: 0;
 }
 
-#header .dropdown-search-result{
+.dropdown-search-result{
     position: absolute;
     top: 100%;
     left: 0;
@@ -3207,7 +3207,7 @@ height: 60px;
 .section_3{
 
  float: left;
- width: 30%;
+ width: 60%;
  margin: 5px;
 }
 
@@ -3216,9 +3216,21 @@ height: 60px;
 margin: 5px;
 }
 
+.pagination span.current {
+float: left;
+color:red;
+font-weight: bold;
+padding: 0 14px;
+line-height: 38px;
+text-decoration: none;
+background-color: white;
+border: 1px solid #DDD;
+border-left-width: 0;
 
-.pagination a, .pagination span.current, .pagination span.gap {
+}
+.pagination a, .pagination span.gap {
 	float: left;
+
 	padding: 0 14px;
 	line-height: 38px;
 	text-decoration: none;
@@ -3304,6 +3316,5 @@ width: 225px;
 .thumbnail img{width:100px;height:100px;}
 
 #demo-form{width:550px; }
-
 
 

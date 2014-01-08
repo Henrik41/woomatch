@@ -1,7 +1,7 @@
 
 <div class="form login-form">
 
-	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name))  do |f| %>
+	<%= form_for(resource, :html => {:id => "form_id"}, :as => resource_name, :url => registration_path(resource_name))  do |f| %>
 	  <%= devise_error_messages! %>
 	
         <h3 class="rs title-form">Register</h3>
@@ -10,14 +10,14 @@
             <p class="rs">A Woomatch account is required to continue.</p>
             <div class="form-action">
                 <label for="txt_name">
-	 <%= f.text_field :username, :id => "txt_name", :class => "txt fill-width", :placeholder => "Enter a screen name" %>
+	 <%= f.text_field :username,  :class => "span2 validate[required,minSize[4],maxSize[20]] text-input txt fill-width",:id => "txt_name",  :placeholder => "Enter a screen name" %>
 
                 </label>
                 <div class="wrap-2col clearfix">
                     <div class="col">
                         <label for="txt_email">
 					
-						  <%= f.email_field :email, :id => "txt_email", :class => "txt fill-width", :placeholder => "Enter your e-mail address" %>
+						  <%= f.email_field :email, :class => "span2 validate[required,custom[email]] text-input txt fill-width", :id => "txt_email", :placeholder => "Enter your e-mail address" %>
 						
                         </label>
                       </br>
@@ -35,12 +35,12 @@
 	
 
 				
-						  <%= f.password_field :password,  :id => "txt_password", :class => "txt fill-width", :placeholder => "Enter password" %>
+						  <%= f.password_field :password,  :class => "span2 validate[required] text-input txt fill-width",  :id => "txt_password", :placeholder => "Enter password" %>
 
                         </label>
                         <label for="txt_re_password">
 	
-						  <%= f.password_field :password_confirmation, :id => "txt_re_password", :class => "txt fill-width", :placeholder => "Re-enter password" %>
+						  <%= f.password_field :password_confirmation,  :class => "span2 validate[required,equals[txt_password]] text-input txt fill-width", :id => "txt_re_password",  :placeholder => "Re-enter password" %>
 
                         </label>
                     </div>
@@ -55,5 +55,10 @@
 <% end %>
 </div>
 
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#form_id").validationEngine();
+});
+</script>
 
-<script> $.validate(); </script>
+

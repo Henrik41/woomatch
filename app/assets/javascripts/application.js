@@ -14,7 +14,6 @@
 //= require script
 //= require jquery-1.9.1.min
 //= require jquery_ujs
-//= require rails.validations
 //= require address_picker-rails
 //= require md_slider.min
 //= require detect_timezone
@@ -37,7 +36,11 @@
 //= require jquery.modal
 //= require image-picker
 //= require gritter
-//= require jquery.form-validator.min
+//= require jquery.validationEngine-zh_CN
+//= require jquery.validationEngine-en.js
+//= require jquery.validationEngine
+
+
 
 
 

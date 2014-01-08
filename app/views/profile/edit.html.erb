@@ -5,7 +5,7 @@
          <div class="clear"></div>
 
 								
-                               	<%= nested_form_for @user, :url => 'update',  :validate => true, :html => { :multipart => true } do |f| %>
+                               	<%= nested_form_for @user, :url => 'update',  :html => { :multipart => true }, :validate => :true do |f| %>
 	
 									         <div class="clear"></div>
 
@@ -102,7 +102,7 @@
 								
 								
 								                                            <div class="val">
- <%= f.text_field :location, :class => 'txt', :id => 'txt_location', :placeholder => 'Where are you from?' %>  	                                            </div>
+ <%= f.text_field :location, :validate => :true, :class => 'txt', :id => 'txt_location', :placeholder => 'Where are you from?' %>  	                                            </div>
 								                                        </div>
 																		 <div class="row-item clearfix">
 									                                            <label class="lbl" for="txt_dob">Date of Birth:</label>

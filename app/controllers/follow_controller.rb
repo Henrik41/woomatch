@@ -6,7 +6,7 @@ class FollowController < ApplicationController
   
   def list
  
-    @activities = Activity.where("title like ?", "%#{params[:term]}%")
+    @activities = Activity.where("title like ?", "%#{params[:term]}%").last(8)
   
       respond_to do |format|
         format.html

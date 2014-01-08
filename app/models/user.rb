@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
 
    
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :validatable, :email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
   devise :omniauthable, :omniauth_providers => [:facebook]
   has_many :activities, :dependent => :destroy
   has_many :userinterests, :dependent => :destroy
@@ -26,7 +27,7 @@ class User < ActiveRecord::Base
      acts_as_followable
      acts_as_follower
       acts_as_voter
-  validates_presence_of  :username
+  validates_presence_of  :username, :location
   validates_length_of :username, :minimum => 3, :maximum => 20
   validates_length_of :about, :minimum => 5, :maximum => 300, :allow_blank => true
   validates_length_of :web, :minimum => 0, :maximum => 45, :allow_blank => true

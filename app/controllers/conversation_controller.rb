@@ -44,7 +44,8 @@ before_filter :get_mailbox
   def myoutbox
     
     @conversations =  @mailbox.sentbox
-    @messages_count = @mailbox.sentbox.count
+    @messages_count = @mailbox.inbox({:read => false}).count
+    @messages_out_count = @mailbox.sentbox.count
     if current_user.nearbys
       @checkuser = current_user.nearbys(100,:order => :distance).find(:all, :limit => 3)
     else

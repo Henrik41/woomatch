@@ -52,7 +52,7 @@
         <div class="container_12">
             <div class="grid_12 wrap-title">
 	
-                <h2 class="common-title">Popular in <%= @loc %> 
+                <h2 class="common-title">Popular in <div id= "location_main" style = "display:inline;"><%= @loc %> </div><div id="location_change" style = "display:inline;"></div>
 	<!-- Time: <%= @timenowuser %> --> </h2>
     <div class="form-search2">
 	<div class="form2">
@@ -62,7 +62,7 @@
 
 
 
-<%= form_tag('search/searchbycity') do %>
+<%= form_tag({:controller => 'search', :action => 'searchbycity'}, :remote => true) do %>
   <%= text_field_tag "q",nil, :class => 'address-picker-input', :placeholder => 'Change my city' %>
 
 
@@ -75,25 +75,32 @@
 
 
 
-
-   
            
             <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
             <button class="btn-reset-keyword" type="reset"><i class="icon iXHover"></i></button>
  <% end %> 
+
+
 </br>
 </div>
     </div>
 
                 <a class="be-fc-orange" href="category.html"> <h3>Registered Activities: &nbsp;&nbsp;&nbsp; <%= render 'start/counter' %></a></h3>
+
             </div>
+
             <div class="clear"></div>
+			
+
             <div class="lst-popular-project clearfix">
+	<div id="select_button"></div>
+	<div id ="thepartial">
+		
 <% @activity.each do |a| %>
  <%= render :partial => "grid", :locals => {:a => a} %> 
 <% end %>
-
-<center> <a href="#" class="btn btn-green">View More Things To Do In Your Area</a> </center>
+	</div>
+<center> <a  class="btn btn-green sys_show_popup_login">View More Things To Do In Your Area</a> </center>
 </br>
          </div>
 
@@ -179,7 +186,9 @@
     </div>
 </div>
 
-<%= js add_gritter("Hey! John just added an activity. Come and join him now.", :title => "Notification!", :image => '/assets/ex/th-119x119-1.jpg',  :time => 4000 ) %>
+<!--
+
+ <%= js add_gritter( "Hey! John just added an activity. Come and join him now.", :title => "Notification!", :image => '/assets/ex/th-119x119-1.jpg',  :time => 4000 ) %>
 
 <%= js extend_gritter :position => :bottom_right, :fade_in_speed => "medium" %>
 
@@ -187,3 +196,6 @@
 
 <div class-"gritter_action"><div>
 <%= js add_gritter("Hey! Carla just added an activity. Come and join her now.", :title => "Notification!", :image => '/assets/ex/th-119x119-2.jpg' ) %>
+
+!-->
+
