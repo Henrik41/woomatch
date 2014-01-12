@@ -11,11 +11,11 @@
          <div class="form-action">
 
              <label for="txt_email_login">
-	 <%= f.email_field :email, :class => 'txt fill-width', :placeholder => 'Enter your e-mail address' %>
+	 <%= f.email_field :email, :class => "span2 validate[required,ajax[ajaxUserCall]] text-input txt fill-width",  :placeholder => 'Enter your e-mail address'%>
           </label>
 
 <label for="txt_password_login">
-		 <%= f.password_field :password, :class => 'txt fill-width', :placeholder => 'Enter password' %>
+		 <%= f.password_field :password, :class => "span2 validate[required] text-input txt fill-width", :placeholder => 'Enter password' %>
 	          </label>
 			<label for="txt_password_login">
 				<div id= 'your_input_field'>

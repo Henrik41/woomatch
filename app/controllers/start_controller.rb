@@ -13,7 +13,10 @@ class StartController < ApplicationController
     @interestcount = @user.userinterests.find(:all).count
     @activitiescount = @user.activities.where(:user_id => @user.id).count
     @completion = @user.completion 	
-    @events = Kaminari.paginate_array(PublicActivity::Activity.order('created_at DESC').where("key <> 'follow.destroy'").delete_if {|x| x.trackable == nil}).page(params[:page]).per(4) 
+    public_destroy = PublicActivity::Activity.order('created_at DESC').where(:key => "follow.destroy")
+    public_array_all = PublicActivity::Activity.order('created_at DESC')
+    public_array = (public_array_all - public_destroy).delete_if {|x| x.trackable == nil}
+    @events = Kaminari.paginate_array(public_array).page(params[:page]).per(4) 
   end
   
   def accept
@@ -23,6 +26,18 @@ class StartController < ApplicationController
 
   end
   
+  def uservalide
+  user = User.find_by_email(params[:user_email])
+  if user.nil?
+      texta = ["user_email",false,"This user doesn't exists"]
+  else
+       texta = ["user_email",true,""]
+  end
+    respond_to do |format|
+    
+      format.json { render :json => texta} # index.html.erb
+    end
+  end
 private
   
   def get_location

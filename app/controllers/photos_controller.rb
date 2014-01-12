@@ -17,7 +17,8 @@ class PhotosController < ApplicationController
   args[:text] = "#{url.split('/').last}"
   
   info = flickr.photos.search args
-  @embed_photo = [FlickRaw.url(info[0]),FlickRaw.url(info[1]),FlickRaw.url(info[2]),FlickRaw.url(info[3]),FlickRaw.url(info[4]),FlickRaw.url(info[5]),FlickRaw.url(info[6]),FlickRaw.url(info[7])]
+  photo_array = (0..52).map { |x| FlickRaw.url(info[x])}
+  @embed_photo = Kaminari.paginate_array(photo_array).page(params[:page]).per(12)
 
 rescue
   @embed_photo = ['http://placekitten.com/180/200', 'http://placekitten.com/180/200' ]
