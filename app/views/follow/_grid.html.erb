@@ -1,0 +1,47 @@
+
+
+        <div class="grid_3">
+            <div class="project-short sml-thumb">
+                <div class="top-project-info">
+                    <div class="content-info-short clearfix">
+
+            <a href="#" class="thumb-img">            
+	<% if f.avatar.url.present? %>
+                      <%= image_tag f.avatar.url(:grid) %>
+    <% else %>
+    					<%= image_tag 'ex/blankevent.jpg'%>
+     <% end %>
+
+                        </a>
+
+
+                        <div class="wrap-short-detail">
+                            <h3 class="rs acticle-title">
+
+	<a class="be-fc-orange" href="" ><%= f.username.capitalize %></a></h3>
+
+
+                            <p class="rs tiny-desc">Activities 
+	
+	
+<a class="sys_show_popup_login" >	
+	<% f.activities.each do |a| %>
+	 <%= image_tag(a.avatar.url(:supermini), :height =>'30', :width => '30') %>
+	<% end %>
+</a>
+                    <p class="rs title-description"><div class="description_space"><%=f.about.capitalize[0,90]%>...(more)</div></p>
+                            <p class="rs project-location">
+                                <i class="icon iLocation"></i>
+                                <%= f.location[0..20] %>  &nbsp; &nbsp;&nbsp; <%= f.distance_from(@loc).round(1)%>&nbsp;km
+                            </p>
+                        </div>
+                    </div>
+                </div>
+					<% if current_user.following?(f) %>
+					<div class="btn btn-red"> <%= link_to "Unfollow", unfollow_profile_path(f.id) %> </div>
+					<% else %>		
+					<div class="btn btn-red"> <%= link_to "Follow", follow_profile_path(f.id) %> </div>
+					<% end %>
+
+   </div>
+        </div><!--end: .grid_6 > .project-short-->

@@ -7,4 +7,4 @@ stdout_path "#{root}/log/unicorn-stdout.log"
 
 listen "/tmp/unicorn.woomatch.sock"
 worker_processes 2
-timeout 30
+timeout 60

@@ -4,7 +4,12 @@
 created	<%= distance_of_time_in_words(@mytime, activity.trackable.created_at) %> ago 
 	</div>
 <%= link_to activity.owner.name, activity.owner %>
-just followed an
+just followed 
+
+
+<% if Follow.find(activity.trackable_id).followable_type == "Activity"   %>
+   
+
 <% if Activity.where(:id => activity.trackable.followable_id.to_i).empty? %>
 <%else%>
 <% if Activity.find(activity.trackable.followable_id.to_i).user_id == current_user.id %>
@@ -22,4 +27,13 @@ just followed an
 	<%else%>	
 <%= image_tag Activity.find(activity.trackable.followable_id.to_i).avatar.url(:supermini) %>
 <% end%>
+
+<% else %>
+
+<%= link_to User.find(activity.trackable.followable_id.to_i).username, {:controller => 'profile', :action => 'show', :id => activity.trackable.followable_id.to_i } %>
+</div>
+<div class="section_4">
+  <%= image_tag User.find(activity.trackable.followable_id.to_i).avatar.url(:supermini) %>
+
+<% end %>
 </div>

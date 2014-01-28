@@ -1,43 +1,75 @@
-<div id="wrapper">
+
 <%= render "header/header" %>
 <%= render 'activities/navbar' %>	
 
+<div class="clear"></div>
 
-<div class="layout-2cols">
-	<div class="grid_6">
-		<div class="project-short sml-thumb">
-			<div class="top-project-info">
-				<div class="content-info-short clearfix">
-					<h2>People I follow</h2>
-					<% @userfollowing.each do |f| %>
-						<%= image_tag f.avatar.url(:mini) %> <%= f.username %>
-						<% if current_user.following?(f) %>
-						<div class="btn btn-red"> <%= link_to "Unfollow", unfollow_profile_path(f.id) %> </div>
-						<% else %>		
-						<div class="btn btn-red"> <%= link_to "Follow", follow_profile_path(f.id) %> </div>
-						<% end %>
-						</br>
-						</br>
-						<% end %>
-				</div> <!--content-info-short clearfix -->
-			</div><!--top-project-info-->
-		</div><!-- project-short sml-thumb-->
-	</div><!--grid_6-->
+<div class="clear clear-2col"></div>
 
-	<div class="grid_6">
-        <div class="project-short sml-thumb">
-			<div class="top-project-info">
-               <div class="content-info-short clearfix">
-				<h2> Activities I follow </h2>
-					<% @activityfollowing.each do |f| %>
-					<%= f.title %>
-					</br>
-					<% end %>
-				</div> <!--content-info-short clearfix-->
-			</div><!--top-project-info-->
-		</div><!--project-short sml-thumb-->
-	</div><!--grid_6-->
-</div><!--layout-2cols-->
 
-</div> <!-- div wrapper>
+   <div class="layout-2cols">
+	
+       <div class="content grid_12">
+           <div class="project-detail">
+	
+               <div class="project-tab-detail tabbable accordion">
 
+			<ul class="nav nav-tabs clearfix">
+			 	<li class="active"><a href="#">People I follow</a></li>
+			    <li><a href="#" class="be-fc-orange">Activity I follow</a></li>
+			</ul>
+						
+			
+		 		<div class="tab-content"> 
+			 <div>
+			
+			    <h3 class="rs alternate-tab accordion-label">People I follow</h3>
+			    <div class="tab-pane accordion-content active">
+			
+		
+					<div class="grid_12">
+						<div class="content-info-short clearfix">
+							<h2>People I follow</h2>
+							<% @userfollowing.each do |f| %>
+
+							<%= render :partial =>'/follow/grid', :locals => {:f => f} %>
+
+							<% end %>
+						 </div> <!--content-info-short clearfix -->
+					</div><!--grid_12-->
+				</div>
+				</div>
+ 
+	   		
+	
+			     <h3 class="rs alternate-tab accordion-label">Past Activities</h3>
+			     <div class="tab-pane accordion-content">
+	              
+								<div class="grid_12">
+									<div class="content-info-short clearfix">
+												<h2> Activities I follow </h2>
+													<% @activityfollowing.each do |f| %>
+
+													<%= render :partial =>'/follow/grid2', :locals => {:a => f} %>
+
+												
+													<% end %>
+									</div> <!--content-info-short clearfix--> 
+			 					</div><!--end: .tab-pane -->
+			     </div>
+			                      
+			
+			 </div>
+				</div>
+
+  						
+				</div>
+			     
+			</div>
+		</div>
+	</div>			
+			
+</br>
+</br>
+   <div class="clear"></div>
+<%= render "footer/footer" %>
