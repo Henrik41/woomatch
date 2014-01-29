@@ -21,7 +21,7 @@ class PhotosController < ApplicationController
   @embed_photo = Kaminari.paginate_array(photo_array).page(params[:page]).per(12)
 
 rescue
-  @embed_photo = ['http://placekitten.com/180/200', 'http://placekitten.com/180/200' ]
+  @embed_photo = ['http://placekitten.com/180/200.jpg', 'http://placekitten.com/180/200.jpg' ]
 end
   respond_to do |format|
     format.js { }

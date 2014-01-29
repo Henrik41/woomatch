@@ -43,7 +43,7 @@ before_filter :get_mailbox
   
   def myoutbox
     
-    @conversations =  @mailbox.sentbox
+    @conversations =  @mailbox.sentbox.page(params[:page]).per(5)
     @messages_count = @mailbox.inbox({:read => false}).count
     @messages_out_count = @mailbox.sentbox.count
     if current_user.nearbys

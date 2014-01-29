@@ -530,7 +530,17 @@ input.btn  {
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
 }
-
+.box-white5{
+    width: 95%;
+   
+    margin-bottom: 3px;
+    background: PaleTurquoise;
+    padding: 10px 10px 10px;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
 .box-gray .title-box,
 .box-white .title-box{
     font-size: 1.384615384615385em;
@@ -3024,7 +3034,7 @@ background: none;
 }
 
 /* Set the states when hovering, except for the last item in the list (the search bar), since it doesn't need to change */
-#appleNav li:hover {
+#appleNav li:hover, #appleNav li:active {
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #376DC4), color-stop(0.5, #376DC4), color-stop(0.51, #376DC4), color-stop(1, #376DC4));
     background-image: -moz-linear-gradient(center bottom, #376DC4 0%, #376DC4 50%, #376DC4 51%, #376DC4 100% );
     background-color:#376DC4; /* Fallback */
@@ -3035,18 +3045,21 @@ background: none;
     box-shadow: inset 0 0 5px 5px #376DC4;
 }
 
-/* When the user clicks the button, we simply change the box inset (compared to the "hover") */
-#appleNav li:not(:last-child):active {
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #3F3F3F), color-stop(0.5, #383838), color-stop(0.51, #434343), color-stop(1, #555555));
-    background-image: -moz-linear-gradient(center bottom, #3F3F3F 0%, #383838 50%, #434343 51%, #555555 100% );
-    background-color:#92999d; /* Fallback */
 
-    -moz-box-shadow: inset 0 1px 2px 2px #000;
-    -webkit-box-shadow: inset 0 1px 2px 2px #000;
-    box-shadow: inset 0 1px 2px 2px #000;
+#appleNav li.current {
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #376DC4), color-stop(0.5, #376DC4), color-stop(0.51, #376DC4), color-stop(1, #376DC4));
+    background-image: -moz-linear-gradient(center bottom, #376DC4 0%, #376DC4 50%, #376DC4 51%, #376DC4 100% );
+    background-color:#376DC4; /* Fallback */
+
+    /* We use the inset of the box shadow to create a subtle inner glow when hovering */
+    -moz-box-shadow: inset 0 0 5px 5px #376DC4;
+    -webkit-box-shadow: inset 0 0 5px 5px #376DC4;
+    box-shadow: inset 0 0 5px 5px #376DC4;
 }
 
+
 #appleNav li a { color:white; text-decoration:none; text-align:center; display:block; line-height:34px; outline:none; }
+
 
 /* Styling of the search field */
 #appleNav form input { width:76px; height:20px; margin-left:9px; margin-top:8px; border:none; padding-left:20px; padding-right:10px; color:#eee;
@@ -3289,6 +3302,9 @@ position: relative; top: 0; left: 0;
 position: absolute; top: 3px; left: 60px; 
 }
 
+.ontop2{
+position: absolute; top: 3px; left: 80px; 
+}
 
 
 .small_images{
@@ -3303,6 +3319,14 @@ position: relative;
 top: 0px;left:0px;
 width:192px;
 height:135px;
+float:left;
+}
+
+.medium_images2{
+position: relative;
+top: 0px;left:0px;
+width:120px;
+height:100px;
 float:left;
 }
 

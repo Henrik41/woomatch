@@ -26,15 +26,20 @@
 				<div class="box-white4">
 		          		    <h3 class="title-box2">To</h3>
 							 <div class="media">
-				                 <a href="#" class="thumb-left">
+				                 <a href="#" class="medium_images2">
 				         			    <% whois = c.participants - Array(current_user) %>
+				
+				
 									 <% if whois.empty? %>
-
+<% if whois.online? %> 	<%= image_tag '/assets/Greenlight2.gif', :class => 'ontop2' %><% end %>
 									  <%= image_tag current_user.avatar.url(:mini) %>
 									<% else %>
 										<% if whois[0].avatar? %>
+										<% if whois[0].online? %> 	<%= image_tag '/assets/Greenlight2.gif', :class => 'ontop2' %><% end %>
+										
 										   <%= image_tag whois[0].avatar.url(:mini) %> 
 										 <% else %>
+										
 										   <%= image_tag '/assets/ex/blankmini2.jpg' %>
 										 <% end %>
 									<% end %>    </a>
@@ -53,11 +58,7 @@
 					</br>
 					<div class="thumb-middle">
 						 <% whois = c.participants - Array(current_user) %>
-<% if whois[0].online? %>
-<div class="blink2">Is online!</div>
-<% else %>
-is offline 
-<% end %>
+
 					  <h2 class="rs"><a href="#" class="be-fc-orange fw-b">	<%= link_to c.subject, :controller => 'conversation', :action => 'show', :id => c.id %> </a></h2>
 					</div>
 
@@ -69,9 +70,9 @@ is offline
 							</div>
 				  </div>
 <% end %>
-
+	<%= paginate @conversations %>
 		        </div><!--end: .content -->
-	
+
 				<%= render "sidebar" %>
 
 						        <div class="clear"></div>

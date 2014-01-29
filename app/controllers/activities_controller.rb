@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  
  require 'flickraw'
  before_filter :authenticate_user!
 

@@ -5,7 +5,7 @@
 		  <div class="home-popular-project">
 		        <div class="container_12">
 		            <div class="grid_12 wrap-title">
-		                <a class="be-fc-orange" href="category.html">View all</a>
+		                <h4><a class="be-fc-orange" href="">Hey check up what new today <%= @mytime.strftime("%B %d, %Y") %></a><h4>
 				  <h2 class="common-title2">Welcome Back <%= current_user.username%></h2></div>		
 		            <div class="lst-popular-project clearfix">
 		                <div class="grid_3">
@@ -14,15 +14,15 @@
 		                            <div class="content-info-short clearfix">
 										<h3>You Have:</h3>
 		                                <div class='mypanel'>
-		                                    <h3 ><div class="left-panel"><a class="be-fc-orange" href="project.html"> Followers&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" > &nbsp;&nbsp;<%= current_user.followers_count %></span></a></div></div>
+		                                    <h3 ><div class="left-panel"><a class="be-fc-orange" href="/follow/ifollow"> Followers&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" > &nbsp;&nbsp;<%= current_user.followers_count %></span></a></div></div>
 
 		  <div class='mypanel'>
-		 <h3 ><div class="left-panel"><a class="be-fc-orange" href="project.html"> Following&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" >&nbsp;&nbsp;<%= current_user.following_by_type_count('User')%> </span></a></div></div>
+		 <h3 ><div class="left-panel"><a class="be-fc-orange" href="/follow/ifollow"> Following&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" >&nbsp;&nbsp;<%= current_user.following_by_type_count('User')%> </span></a></div></div>
 
 			 <div class='mypanel'>
-			 <h3 ><div class="left-panel"><a class="be-fc-orange" href="project.html"> Interests&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" > &nbsp;&nbsp;<%= current_user.userinterests.count %></span></a></div></div>
+			 <h3 ><div class="left-panel"><a class="be-fc-orange" href="/profile/edit"> Interests&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" > &nbsp;&nbsp;<%= current_user.userinterests.count %></span></a></div></div>
 				 <div class='mypanel'>
-				 <h3 ><div class="left-panel"><a class="be-fc-orange" href="project.html"> Activities&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" >&nbsp;&nbsp;<%= current_user.activities.count %> </span></a></div></div></br>
+				 <h3 ><div class="left-panel"><a class="be-fc-orange" href="/activities/myactivities"> Activities&nbsp; &nbsp;</div><div class="right-panel"><span class="orange2" >&nbsp;&nbsp;<%= current_user.activities.count %> </span></a></div></div></br>
 		</div>
 		</div>
 

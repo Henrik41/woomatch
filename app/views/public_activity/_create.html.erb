@@ -9,5 +9,9 @@ just added an activity
 <%= link_to activity.trackable.title %>
 </div>
 <div class="section_4">
+	<% if activity.trackable.avatar.url(:supermini) %>
 <%= image_tag (activity.trackable.avatar.url(:supermini))%>  
+    <% else %>
+ 	No image available
+<% end %>
 </div>
