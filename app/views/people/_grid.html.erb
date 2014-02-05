@@ -3,17 +3,20 @@
                 <div class="top-project-info">
                     <div class="content-info-short clearfix">
 
-                        <a href="#" class="thumb-img">
-                    <% if a.avatar.url %>
+                        <a href="#" class="big_box">
+       <% if a.avatar.url %>
 
-<%= image_tag a.avatar.url(:grid), :class => 'onbottom'%>
+<%= image_tag a.avatar.url(:grid) %>
+
 
 
 					<% else %>
+					
+					
 					<%= image_tag '/assets/ex/peopleblank.jpg', :width => '192', :height => '135' %>
 					<% end %>
                         </a>
-
+<% if a.online? %> 	<%= image_tag '/assets/Greenlight2.gif', :class => 'ontop3' %><% end %>
                         <div class="wrap-short-detail">
                             <h3 class="rs acticle-title"><a class="be-fc-orange" href="project.html"><%= a.name.capitalize %></a></h3>
                            

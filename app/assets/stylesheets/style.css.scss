@@ -3306,6 +3306,11 @@ position: absolute; top: 3px; left: 60px;
 position: absolute; top: 3px; left: 80px; 
 }
 
+.ontop3{
+position: absolute; top: 3px; left: 200px; 
+}
+
+
 
 .small_images{
 position: relative;
@@ -3330,10 +3335,25 @@ height:100px;
 float:left;
 }
 
-.big_box{
+.medium_images3{
+position: relative;
+top: 0px;left:0px;
+width:223px;
+height:156px;
+float:left;
+}
+
+
+.big_box img{
 position: relative;
 top:0px;
 width: 225px;
+
+}
+
+.big_box2 .img{
+
+width: 100%;
 
 }
 
