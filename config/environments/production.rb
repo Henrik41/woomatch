@@ -54,7 +54,7 @@ config.assets.precompile += %w( *.js *.css )
 config.assets.precompile = [/^[a-z0-9\/]*[a-z0-9]\w+.(css|js)$/]
 config.assets.precompile += Dir[Rails.root + "vendor/assets/javascripts/*"].map { |path| File.basename(path).slice(/.*\.js/) }
 config.assets.precompile += Dir[Rails.root + "vendor/assets/stylesheets/*"].map { |path| File.basename(path).slice(/.*\.css/) }
-
+config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif] 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 

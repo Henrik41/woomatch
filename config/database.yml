@@ -25,4 +25,4 @@ production:
     user: root
     password: K1n2a3f4o5&
     pool: 5
-    timeout: 5000
+    timeout: 2147483
