@@ -107,5 +107,6 @@ class ProfileController < ApplicationController
       flash[:error] = "You must <a href='/users/sign_in'>login</a> to unfollow #{@user.monniker}.".html_safe
     end
   end
+  
 
 end

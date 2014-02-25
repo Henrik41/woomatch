@@ -1,8 +1,13 @@
 require "bundler/capistrano"
 require 'capistrano/maintenance'
 
-server "66.228.34.47", :web, :app, :db, primary: true
 
+server "173.255.237.221", :web, :app, :db, primary: true
+
+
+
+
+set :bundle_flags, "--deployment --quiet --binstubs"
 set :application, "woomatch"
 set :user, "bill"
 set :deploy_to, "/home/bill/apps/#{application}"
