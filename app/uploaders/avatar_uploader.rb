@@ -7,9 +7,13 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  storage :aws
+#  storage :file
 
+
+  include CarrierWave::MimeTypes
+  process :set_content_type
+  
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
@@ -18,9 +22,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Provide a default URL as a default if there hasn't been a file uploaded:
    def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
-  # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  #
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+   ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
    end
 
   # Process files as they are uploaded:
