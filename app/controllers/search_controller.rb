@@ -27,10 +27,16 @@ class SearchController < ApplicationController
     #if Geocoder.search("%#{@param}%").empty?
     #  @param =  'We do not have ' + @param + ' in our database' 
     #end
-  
-    @activity = Activity.near("%#{@param}%", 400).last(4)
+    mycoord = Geocoder.coordinates(@param)
+    puts mycoord[0],mycoord[1]
+    @activity = Activity.near([mycoord[0],mycoord[1]], 70).last(4)
+    @loc = @param
     
-    if  @activity=[]
+    mytimezone = NearestTimeZone.to(mycoord[0],mycoord[1])
+    Time.zone = mytimezone
+    @mytime = Time.zone.now
+    
+    if  @activity.empty?
         if request.location.nil?
           @loc = 'Paris, Ile de france'  
           @activity = Activity.last(4)
@@ -44,7 +50,7 @@ class SearchController < ApplicationController
           @mytime = Time.zone.now
 
          @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s + ', ' + @result.data['country_name'].to_s
-         @activity = Activity.near(@loc, 400).order("created_at").last(4)
+         @activity = Activity.near(@loc, 400, :order => :distance).order("created_at").last(4)
 
         end
     end

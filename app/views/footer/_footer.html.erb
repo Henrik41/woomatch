@@ -20,14 +20,16 @@
             <h3 class="rs title">Newsletter Signup</h3>
             <div class="inner">
                 <p class="rs description">Signup for new promotions and activities in your area.</p>
-                <form action="#">
-                    <div class="form form-email">
-                        <label class="lbl" for="txt-email">
-                            <input id="txt-email" type="text" class="txt fill-width" placeholder="Enter your e-mail address"/>
-                        </label>
-                        <button class="btn btn-green" type="submit">Submit</button>
-                    </div>
-                </form>
+
+
+				<%= form_tag({:controller => 'general', :action => 'newsletter'},  :class => 'form form-email',  :remote => true) do %>
+				<label class="lbl" for="txt-email">
+					<%= text_field_tag :email, '', :id => 'txt-email', :class=>'txt fill-width', :size => '16', :placeholder => 'Enter your e-mail address' %> 
+   </label>
+				     <%= submit_tag 'Submit',  :class=>"btn btn-green" %>
+
+
+               <% end %>
             </div>
         </div><!--end: .email-newsletter -->
         <div class="grid_3">
@@ -64,7 +66,7 @@
                     <span class="sep">/</span>
                     <a class="fw-b be-fc-orange" href="#">FAQ</a>
                 </p>
-                <p class="rs ta-c fc-gray-dark site-copyright">Copyright by <a href="http://megadrupal.com" title="Drupal Developers" target="_blank">Woomatch</a>. Designed by <a href="http://bestwebsoft.com/" title="Web development company" target="_blank">Woomatch</a>.</p>
+                <p class="rs ta-c fc-gray-dark site-copyright">Copyright by <a href="http://woomatch.com" title="Activity near you" target="_blank">Woomatch</a>. Designed by <a href="http://woomatch.com/" title="Meet people near you" target="_blank">Woomatch</a>.</p>
             </div>
             <div class="clear"></div>
         </div>

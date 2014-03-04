@@ -10,6 +10,7 @@ Woo::Application.routes.draw do
 
 #general
 
+post "general/newsletter", to: 'general#newsletter'
 post "general/follow/:id", to: 'general#follow'
 
 post "general/unfollow/:id", to: 'general#unfollow'
@@ -48,7 +49,7 @@ post "general/followall/:id", to: 'general#followall'
 
   get '/profile/:id', to: 'profile#show'
   put "profile/update"
-
+  
 
 # Follow
   
