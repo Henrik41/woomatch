@@ -7,8 +7,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-#  storage :aws
-  storage :file
+  storage :aws
+#  storage :file
 
 
   include CarrierWave::MimeTypes

@@ -114,7 +114,7 @@
 																			            <span class="help-inline"><%= @activity.errors[:location].join(", ")%></span>  
 																	<%end%>	
 
-									<%= f.text_field :location, :class => 'txt', :id => 'txt_location', :placeholder => 'Where is your event?' %>      
+									<%= f.text_field :location, :class => 'address-picker-input', :id => 'txt_location', :placeholder => 'Where is your event?' %>      
 									
 																                                
 									                                        </div>
@@ -397,26 +397,10 @@ $(function() {
 
 
 
-<script>
-$(function() {
-
-	var addresspickerMap = $( "#txt_location" ).addresspicker({
-		regionBias: "fr",
-	  elements: {
-	    map:      "#map",
-	    lat:      "#lat",
-	    lng:      "#lng",
-	    locality: '#user_city',
-	    administrative_area_level_2: '#administrative_area_level_2',
-	    administrative_area_level_1: '#user_province',
-	    country:  '#user_country',
-	    postal_code: '#postal_code',
-    type:    '#type' 
-	  }
-	});
-
-});
+<script type="text/javascript">
+    AddressPickerRails.Pickers.applyOnReady();
 </script>
+
 
 			
 			<script type="text/javascript">
