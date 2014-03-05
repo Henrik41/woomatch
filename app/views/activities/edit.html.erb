@@ -38,24 +38,35 @@
 					    <div class="top-project-info">
 					        <div class="content-info-short clearfix">
 								<h3>Activity Pic </h3>
-								
+				<div id="remove_image">					
 				<% if f.object.avatar? %>
 			<%= image_tag f.object.avatar.url(:medium) %>
 				<%else%>
 							<div class="upload-preview">
 						
-					                <a  href="#"><img src="/assets/ex/th-292x204-1.jpg" width="250" height="250"alt="$USER_NAME"/></a>
+					                <aclass="upload-preview"><img src="/assets/ex/th-292x204-1.jpg" width="250" height="250"alt="$USER_NAME"/></a>
 								
 							
 							</div>	
 				<%end%>
+				</div>
+					<div id="add_image">   <img />	</div>
 							</div>
 						</div>
 
-
+<div id="remote_not_visible">	<%= f.text_field :remote_avatar_url %> </div>
 					    <div class="bottom-project-info clearfix">
 
-					    <%= f.file_field :avatar, :class => 'file' %> </br> </br> 
+					    <%= f.file_field :avatar, :class => 'file' %>
+					</br>
+									<div id="thebutton">
+						</div>
+	</br>
+							<div class="remove_box">
+									<%=  link_to_modal "Select a Picture from the Net", "#demo-form", :class=>"btn btn-blue" %>
+
+							</div>
+					 </br> </br> 
 
 						</br> 
 						 Activity Completion <%= @completion2 %> %
@@ -365,6 +376,43 @@
       <% end %>     
 </div>
 
+				<div id="demo-form" class="demo-description" style="display: none; ">
+				  <p>
+
+					 Search for <b>activity pictures</b>:
+					    <br />
+
+
+						<div class="theform">
+														<%= form_tag({:controller => 'photos', :action => 'show'}, :remote => true) do %>
+										<%= text_field_tag :url %>			
+
+														<%= button_tag(type: 'submit', id: "search") do %>
+
+
+	<span class="btn btn-green">Search pic</span> 
+														<% end%> 
+														<% end%>
+	</div>
+
+		
+													<%= form_tag({:controller => 'photos', :action => 'show2'}, :remote => true) do %>
+												
+													
+									<div id="select_button"></div>	
+											
+									<div id="paginator"></div>
+													<%= button_tag(type: 'submit', id: "search") do %>
+
+<div id="button_out">
+<span class="btn btn-green">Accept pic</span> 
+</div>
+													<% end%> 
+													<% end%>
+</div>
+
+			  </p>
+			</div>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -413,3 +461,25 @@ $(function() {
 			</script>
 
 
+			<script>
+			$(".thebutton").hide();
+			$("#remote_not_visible").hide();
+			$("#button_out").hide();
+			</script>
+
+			<script>
+			$(document).ready(function(){
+			    var preview = $("#add_image");
+
+			    $(".file").change(function(event){
+			       var input = $(event.currentTarget);
+			       var file = input[0].files[0];
+			       var reader = new FileReader();
+			       reader.onload = function(e){
+			           image_base64 = e.target.result;
+			           preview.attr("src", image_base64);
+			       };
+			       reader.readAsDataURL(file);
+			    });
+			});
+			</script>
