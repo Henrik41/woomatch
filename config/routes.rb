@@ -76,10 +76,10 @@ post "general/followall/:id", to: 'general#followall'
     get "/contacts/hotmail/callback" => "invites#index"
     
 
-    root :to => "start#index"
+devise_for :users 
    
 devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } 
-
+devise_for :users, :controllers => { :registrations => "users/registrations" }
 
 devise_for :admin_users, ActiveAdmin::Devise.config
 ActiveAdmin.routes(self)
@@ -133,7 +133,7 @@ match '/users/:id' => 'profile#show', :via => [:get], :as => "user"
   #       get 'recent', :on => :collection
   #     end
   #   end
-
+   root :to => "start#index"
   # Sample resource route within a namespace:
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController

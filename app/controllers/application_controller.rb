@@ -12,9 +12,7 @@ class ApplicationController < ActionController::Base
     Time.use_zone(current_user.time_zone, &block)
   end
   
-  def after_sign_in_path_for(resource_or_scope)
-    '/start/dashboard'
-  end
+
   
   def user_activity
     current_user.try :touch
@@ -25,6 +23,15 @@ class ApplicationController < ActionController::Base
     @mailbox ||= current_user.mailbox
     @messages_count = @mailbox.inbox({:read => false}).count
   end
+
+
+   def after_sign_up_path_for(resource)
+     '/profile/edit'
+   end
   
-  
+   def after_sign_in_path_for(resource_or_scope)
+     '/start/dashboard'
+   end
+   
+
 end

@@ -3,3 +3,9 @@ $("#remove_image").hide();
 $("#add_image").empty();
 $("#add_image").append('<%= image_tag @picture %>').css('width','212');
 $("#activity_remote_avatar_url").val('<%= @picture %>');
+$("#spinner, #search_button").toggle();
+$("#button_out").hide();
+$("#select_button").hide();
+$(".theform").show();
+$('#paginator').hide();
+

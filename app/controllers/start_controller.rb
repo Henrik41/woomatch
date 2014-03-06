@@ -16,7 +16,7 @@ class StartController < ApplicationController
     public_destroy = PublicActivity::Activity.order('created_at DESC').where(:key => "follow.destroy")
     public_array_all = PublicActivity::Activity.order('created_at DESC')
     public_array = (public_array_all - public_destroy).delete_if {|x| x.trackable == nil}
-    @events = Kaminari.paginate_array(public_array).page(params[:page]).per(4) 
+    @events = Kaminari.paginate_array(public_array).page(params[:page]).per(5) 
   end
   
   def accept
