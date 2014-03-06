@@ -325,11 +325,17 @@
 							<div class="theform">
 															<%= form_tag({:controller => 'photos', :action => 'show'}, :remote => true) do %>
 											<%= text_field_tag :url %>			
-
-															<%= button_tag(type: 'submit', id: "search") do %>
+<span id="search_button"></span>
+															<%= button_tag(type: 'submit', id: "search") do %> 
 
 
 		<span class="btn btn-green">Search pic</span> 
+	
+
+	 <span id="spinner"  style="display:none">
+	    <%= image_tag 'spinner-b.gif' %>
+	  </span>
+
 															<% end%> 
 															<% end%>
 		</div>
@@ -416,6 +422,14 @@ $(document).ready(function(){
     });
 });
 </script>
+<script>
+$(function() {
+  $("form").on("ajax:before", function() {
+    $("#spinner, #search_button").toggle();
+  });
+});
+</script>
+
 </body>
 </html>
 

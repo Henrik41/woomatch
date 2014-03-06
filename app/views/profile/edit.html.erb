@@ -102,7 +102,7 @@
 								
 								
 								                                            <div class="val">
- <%= f.text_field :location, :validate => :true, :class => 'txt', :id => 'txt_location', :placeholder => 'Where are you from?' %>  	                                            </div>
+ <%= f.text_field :location, :validate => :true, :class => 'address-picker-input', :id => 'txt_location', :placeholder => 'Where are you from?' %>  	                                            </div>
 								                                        </div>
 																		 <div class="row-item clearfix">
 									                                            <label class="lbl" for="txt_dob">Date of Birth:</label>
@@ -204,48 +204,21 @@
 								                </div><!--end: .grid_3 > .project-short-->
 								                <div class="clear clear-2col"></div>
 								         	<% @activitygrid.each do |a| %>
-												 <%= render :partial => "/start/grid", :locals => {:a => a} %> 
+												 <%= render :partial => "/start/grid2", :locals => {:a => a} %> 
 												<% end %>
 
 												</div>
 												        </div>
 								    </div><!--end: .home-popular-project -->
 <%= render 'footer/footer'%>
-								<script>
-									//enter the count down date using the format year/month/day
-									$(".ccounter").ccountdown(2013,07,05);
-								</script>
+								
 <%end%>
 
-
-<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-
-
-<script src="/assets/jquery.ui.addresspicker.js"></script>
-
-
-
-
-<script>
-$(function() {
-
-	var addresspickerMap = $( "#txt_location" ).addresspicker({
-		regionBias: "fr",
-	  elements: {
-	    map:      "#map",
-	    lat:      "#lat",
-	    lng:      "#lng",
-	    locality: '#user_city',
-	    administrative_area_level_2: '#administrative_area_level_2',
-	    administrative_area_level_1: '#user_province',
-	    country:  '#user_country',
-	    postal_code: '#postal_code',
-    type:    '#type' 
-	  }
-	});
-
-});
+<script type="text/javascript">
+    AddressPickerRails.Pickers.applyOnReady();
 </script>
+
+
 
 			<script>
 			$(document).ready(function(){

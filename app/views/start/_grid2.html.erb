@@ -31,12 +31,32 @@
 		<a class="sys_show_popup_login" ><%= a.title.capitalize %></a></h3>
 	<% end%>
 				
+	
+                            <div class="rs tiny-desc">by 
+	
+	
+<a class="sys_show_popup_login" >	 <%= image_tag(User.find(a.user_id).avatar.url(:supermini), :height =>'30', :width => '30') %> </a>
+			<% @num = 'followid' + a.id.to_s %>
 			
-                            <p class="rs tiny-desc">by 
-	
-	
-<a class="sys_show_popup_login" >	 <%= image_tag(User.find(a.user_id).avatar.url(:supermini), :height =>'30', :width => '30') %>
-</a>
+			<div class= "follow">
+			<div id = <%= @num %>>
+				
+			 	<% if current_user.following?(a) %>
+
+				<%= form_tag({:action => 'unfollow', :id => a.id}, :remote => true) do %>
+				<%= submit_tag 'Unfollow This Activity',  :class => "btn big btn-red" %>
+				
+				
+				 <% end %>
+
+			<% else %>
+					<%= form_tag({:controller => 'general', :action => 'follow', :id => a.id}, :remote => true) do %>
+						<%= submit_tag 'Follow This Activity',  :class => "btn big btn-red" %>
+			 		<% end %>
+			<%end%>
+
+			</div>
+</div> </div>
                     <p class="rs title-description"><div class="description_space"><%=a.about.capitalize[0,90]%>...(more)</div></p>
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
@@ -45,6 +65,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="bottom-project-info clearfix">
 registered people: <%= a.completion %>%   
                     <div class="line-progress">

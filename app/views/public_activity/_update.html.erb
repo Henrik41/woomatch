@@ -10,7 +10,7 @@ just updated an activity
 <% if activity.trackable.user_id == current_user.id %>
 <%= link_to activity.trackable.title, {:id => activity.trackable.id, :controller => 'activities', :action => 'show' } %>
 <% else %>
-<%= link_to activity.trackable.title, {:id => activity.trackable.id, :controller => 'activity', :action => 'show' } %>
+<%= link_to activity.trackable.title, {:id => activity.trackable.id, :controller => 'general', :action => 'activity' } %>
 <% end %>
 
 </div>

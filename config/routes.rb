@@ -72,7 +72,9 @@ post "general/followall/:id", to: 'general#followall'
 #to check
   get "/activities/back_to_edit" 
   #get emails from gmail/others
-    get "/invites/:provider/contact_callback" => "invites#index"
+    get "/contacts/:provider/contact_callback" => "invites#index"
+    get "/contacts/hotmail/callback" => "invites#index"
+    
 
     root :to => "start#index"
    

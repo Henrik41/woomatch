@@ -1567,7 +1567,14 @@ background: none;
     color: #b2b7b9;
     padding-bottom: 15px;
 
+
 }
+
+.content-info-short .tiny-desc .follow{
+    float: right;
+
+}
+
 /*.content-info-short .title-description{}*/
 .content-info-short .comment-view{
     position: absolute;
@@ -2135,6 +2142,8 @@ background: none;
 .slide-with-background {
 	background:image-url("slide-item-bg.png") repeat 0 0;	
 }
+
+
 #home-slider .md-bullet{
     cursor: pointer;
     margin-left: 5px;
@@ -3319,6 +3328,15 @@ width:75px;
 float:left;
 }
 
+.small_images_content
+{
+
+position: relative;
+top: 0px;left:0px;
+width:225px;
+float:left;
+}
+
 .medium_images{
 position: relative;
 top: 0px;left:0px;
@@ -3360,5 +3378,6 @@ width: 100%;
 .thumbnail img{width:100px;height:100px;}
 
 #demo-form{width:550px; }
+
 
 
