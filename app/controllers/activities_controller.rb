@@ -20,8 +20,9 @@ class ActivitiesController < ApplicationController
      mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
       Time.zone = mytimezone
       @mytime = Time.zone.now
+      
      
-     @activitypast = @user.activities.where("end_time <= ?", @mytime)
+     @activitypast = @user.activities.where("end_date <= ? AND end_time <= ?", @mytime.to_date, @mytime.strftime("%I:%M%p"))
      @activitynow = @user.activities.where("end_time > ?", @mytime)
      
   
