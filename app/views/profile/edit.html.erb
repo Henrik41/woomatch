@@ -92,7 +92,7 @@
 								                                            <label class="lbl" for="txt_name1">Name:</label>
 								                                            <div class="val">
 									
-																				<%= f.text_field :username, :class => "span2 validate[required] txt", :id => 'txt_name1', :placeholder => 'Username displayed on your profile.' %>
+																				<%= f.text_field :username, :class => "span2 validate[required,minSize[3],maxSize[20]] txt", :id => 'txt_name1', :placeholder => 'Username displayed on your profile.' %>
 																					                                            								                                                
 								                                                <p class="rs description-input">Your screen name is displayed on your profile.</p>
 								                                            </div>
@@ -102,14 +102,14 @@
 								
 								
 								                                            <div class="val">
- <%= f.text_field :location, :validate => :true, :class => 'address-picker-input', :id => 'txt_location', :placeholder => 'Where are you from?' %>  	                                            </div>
+ <%= f.text_field :location, :validate => :true, :class => 'span2 validate[required]  address-picker-input', :id => 'txt_location', :placeholder => 'Where are you from?' %>  	                                            </div>
 								                                        </div>
 																		 <div class="row-item clearfix">
 									                                            <label class="lbl" for="txt_dob">Date of Birth:</label>
 
 
 									                                            <div class="val">
-			<%= f.date_select :dob, :class => 'txt', :id => 'txt_location', :start_year => Time.now.year - 100, :end_year => Time.now.year - 10  %>    
+			<%= f.date_select :dob, :class => 'txt', :id => 'txt_location', :include_blank => true, :start_year => Time.now.year - 100, :end_year => Time.now.year - 10 %>    
 										                                            </div>
 									                                        </div>
 								                                        <div class="row-item clearfix">
@@ -259,4 +259,6 @@
 				    $("#form_id2").validationEngine();
 				});
 				</script>
+				
+				
 

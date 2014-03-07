@@ -45,11 +45,12 @@ class ActivitiesController < ApplicationController
     
       if NearestTimeZone.to( @activity.latitude, @activity.longitude)
         @mytime = NearestTimeZone.to( @activity.latitude, @activity.longitude)
+        @timenow = Time.now.in_time_zone(@mytime)
       else
-        @mytime = Time.now
+        @timenow = Time.now
       end
     
-    @timenow = Time.now.in_time_zone(@mytime)
+   
     @userparticipating = @activity.votes.where(:vote_scope => nil).map(&:voter)    
     @userparticipating2 = @activity.votes.where(:vote_scope => 'accept').map(&:voter).uniq
 

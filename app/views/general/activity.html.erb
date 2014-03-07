@@ -59,17 +59,22 @@
                         <div class="group-fee clearfix">
                             <div class="fee-item">
                                 <p class="rs lbl">Price</p>
-                                <span class="val">Free</span>
+                                <span class="val"><%= @activity.price %></span>
                             </div>
                             <div class="sep"></div>
                             <div class="fee-item">
                                 <p class="rs lbl">Liked</p>
-                                <span class="val">25</span>
+                                <span class="val"><%= @activity.followers_count %></span>
                             </div>
                             <div class="sep"></div>
                             <div class="fee-item">
                                 <p class="rs lbl">Time Left</p>
-                                <span class="val">25 days 45 mins</span>
+                                <span class="val"><% if @activity.enddate < @mytime %>
+																				Ended
+																				<% else %>
+
+										<%= distance_of_time_in_words(@mytime, @activity.ending) %>
+										<% end %></span>
                             </div>
                         </div>
                         <div class="clear"></div>

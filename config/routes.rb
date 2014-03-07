@@ -45,7 +45,7 @@ post "general/followall/:id", to: 'general#followall'
   
 #profile
   get 'activities/myactivities'
-  get "profile/edit"
+  get "profile/edit", to: 'profile#edit', as: 'profilepage'
 
   get '/profile/:id', to: 'profile#show'
   put "profile/update"
@@ -76,10 +76,9 @@ post "general/followall/:id", to: 'general#followall'
     get "/contacts/hotmail/callback" => "invites#index"
     
 
-devise_for :users 
-   
-devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } 
-devise_for :users, :controllers => { :registrations => "users/registrations" }
+
+
+devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks"  }
 
 devise_for :admin_users, ActiveAdmin::Devise.config
 ActiveAdmin.routes(self)
