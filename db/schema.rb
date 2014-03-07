@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131215004539) do
+ActiveRecord::Schema.define(:version => 20140307055744) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20131215004539) do
     t.float    "longitude"
     t.float    "latitude"
     t.string   "avatar"
+    t.datetime "starting"
+    t.datetime "ending"
   end
 
   create_table "activityapplies", :force => true do |t|

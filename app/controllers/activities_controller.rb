@@ -22,8 +22,8 @@ class ActivitiesController < ApplicationController
       @mytime = Time.zone.now
       
      
-     @activitypast = @user.activities.where("end_date <= ? AND end_time <= ?", @mytime.to_date, @mytime.strftime("%I:%M%p"))
-     @activitynow = @user.activities.where("end_time > ?", @mytime)
+     @activitypast = @user.activities.where("ending < ?", @mytime)
+     @activitynow = @user.activities.where("ending >= ?", @mytime)
      
   
         @result = @user.location    
@@ -97,8 +97,8 @@ class ActivitiesController < ApplicationController
     @activity = current_user.activities.find(params[:id])
     @completion2 = @activity.completion2
     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
-     Time.zone = mytimezone
-     @mytime = Time.zone.now
+    Time.zone = mytimezone
+    @mytime = Time.zone.now
      
        @result = @user.location    
        if @result

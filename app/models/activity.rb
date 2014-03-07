@@ -4,7 +4,7 @@ class Activity < ActiveRecord::Base
   include PublicActivity::Model
   tracked owner: Proc.new{ |controller, model| controller.current_user }
   
-  attr_accessible :about, :end_date, :end_time, :location, :numpart, :price, :recurrent, :start_date, :start_time, :title, :user_id, :website
+  attr_accessible :about, :end_date, :end_time, :location, :numpart, :price, :recurrent, :start_date, :start_time, :title, :user_id, :website, :starting, :ending
   attr_accessible :avatar, :longitude, :latitude, :interests_attributes, :url, :remote_avatar_url
   geocoded_by :location
   belongs_to :user
@@ -45,7 +45,8 @@ PROFILE_COMPLETENESS = %w[title about location start_time end_time start_date en
     vh = v.hour
     vm = v.min
     Time.zone =  NearestTimeZone.to(self.latitude,self.longitude)
-    self.end_time = Time.zone.local(y.to_i,m.to_i,d.to_i,vh.to_i,vm.to_i)
+    self.ending = Time.zone.local(y.to_i,m.to_i,d.to_i,vh.to_i,vm.to_i)
+    
   end
 
   
@@ -59,8 +60,7 @@ PROFILE_COMPLETENESS = %w[title about location start_time end_time start_date en
     vm = v.min
     
     Time.zone =  NearestTimeZone.to(self.latitude,self.longitude)    
-    self.start_time = Time.zone.local(y.to_i,m.to_i,d.to_i,vh.to_i,vm.to_i)
- 
+    self.starting = Time.zone.local(y.to_i,m.to_i,d.to_i,vh.to_i,vm.to_i)
 
   end
   

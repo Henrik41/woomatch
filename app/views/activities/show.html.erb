@@ -149,7 +149,7 @@
                     </div>
                     <div class="project-date clearfix">
                         <i class="icon iClock"></i>
-                        <span class="val"><span class="fw-b">Be there at: </span><%= @activity.start_time.in_time_zone(@activity.timezone).strftime('%I:%M:%S %p') %></span>
+                        <span class="val"><span class="fw-b">Be there at: </span><%= @activity.start_time.strftime('%I:%M:%S %p') %></span>
                     </div>
                     <a class="btn btn-green btn-buck-project" href="/activities/<%=@activity.id%>/edit">
                         <span class="lbl">Edit My Activity</span>
