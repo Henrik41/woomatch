@@ -87,7 +87,7 @@ PROFILE_COMPLETENESS = %w[title about location start_time end_time start_date en
       else
       end
             
-      progression*100/8
+      progression*100/11
   end
   
 

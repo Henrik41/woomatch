@@ -94,20 +94,19 @@ class ActivitiesController < ApplicationController
   def edit
     
     @user = current_user
+      @interestcount = @user.userinterests.find(:all).count
     @useronline = User.online.find(:all, :limit => 9)
     @activity = current_user.activities.find(params[:id])
     @completion2 = @activity.completion2
     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
     Time.zone = mytimezone
-    @mytime = Time.zone.now
-     
-       @result = @user.location    
+    @mytime = Time.zone.now     
+    @result = @user.location    
        if @result
        @activitygrid = Activity.near(@result, 200000).first(7)
        else
        @activitygrid = Activity.find(:all).last(4)
      end
-  
   end
 
   # POST /activities
@@ -143,12 +142,20 @@ class ActivitiesController < ApplicationController
   # PUT /activities/1
   # PUT /activities/1.json
   def update
-    
+      @user = current_user
     @activity = current_user.activities.find(params[:id])    
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
     @useronline = User.online.find(:all, :limit => 9)
-   
+     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
+       Time.zone = mytimezone
+       @mytime = Time.zone.now
+    @result = @user.location    
+          if @result
+          @activitygrid = Activity.near(@result, 200000).first(7)
+          else
+          @activitygrid = Activity.find(:all).last(4)
+        end
     respond_to do |format|
       if @activity.update_attributes(params[:activity])
      

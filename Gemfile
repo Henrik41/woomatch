@@ -41,7 +41,6 @@ gem "omnicontacts"
 gem "localtunnel"
 gem 'carrierwave'
 gem 'mini_magick' 
-gem 'rmagick'
 gem 'mailboxer'
 gem 'omniauth'
 gem 'omniauth-facebook'
