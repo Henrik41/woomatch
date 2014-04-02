@@ -692,6 +692,21 @@ input.btn  {
     margin-top: 2px;
 }
 
+.media > .thumb-left2{
+
+    float: left;
+    margin-right:18px;
+    margin-top: 2px;
+    width: 100px;
+	height: 100px;
+    border: 1px solid #d4d4d4;
+    padding: 4px;
+    background: #FFF;
+    border-radius: 1px;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+}
+
 .media > .thumb-right{
     float: right;
     margin-right:20px;

@@ -38,10 +38,39 @@ class ProfileController < ApplicationController
   end
   
   def show
+    
     @user = current_user
+    @useronline = User.online.find(:all, :limit => 9)
+    @loc = @user.location
+    @interestcount = @user.userinterests.find(:all).count
+    @activitiescount = @user.activities.where(:user_id => @user.id).count
+    @completion = @user.completion
+    
     @userview = User.find(params[:id])
     @activity = Activity.first
     @useronline = User.online.find(:all, :limit => 9)
+    
+    
+    if request.location == nil
+       @loc = 'Paris, France'  
+     else
+
+       if @user.location.nil?
+       @result = request.location       
+       mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
+       @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
+     else
+       @loc = @user.location
+       mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
+     end
+     end
+
+
+    Time.zone = mytimezone
+    @mytime = Time.zone.now
+       
+       @activitygrid = Activity.where("user_id = ?", params[:id])
+     
   end
   
   def update
