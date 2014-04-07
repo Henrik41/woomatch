@@ -1,6 +1,5 @@
 
 
-
 	
 <div id="wrapper">
 <%= render "header/header" %>
@@ -233,7 +232,7 @@
 																					<div class="row-item clearfix">
 																																What is the price?	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-																																  <%= f.select :price, [['Free'], ['0-10$'], ['11$-20$'], ['21$-30$']], :class =>"txt" %>
+																																  <%= f.select :price, [['Free'], ['0-20$'], ['21$-50$'], ['51$-100$'],['101$-500$'],['501$-100$'],['>1000$']], :class =>"txt" %>
 
 																																		</div>
 									                                    <div class="row-item clearfix">
@@ -425,6 +424,7 @@ $(function() {
 			$("#remote_not_visible").hide();
 			$("#button_out").hide();
 			</script>
+			
 
 			<script>
 			$(document).ready(function(){

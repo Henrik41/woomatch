@@ -32,7 +32,8 @@
 
 
                         <div class="bottom-project-info clearfix">       
-
+<% if current_user.id == @userview.id %>
+<% else%>
 	<%=  link_to_modal "Email Me", "#demo-form", :class=>"btn btn-blue" %>
 	
 		<div id="demo-form" class="demo-description" style="display: none; ">
@@ -71,7 +72,9 @@
 <div class="btn btn-red"> <%= link_to "Unfollow", unfollow_profile_path(@userview.id) %> </div>
 <% else %>		
 <div class="btn btn-red"> <%= link_to "Follow me", follow_profile_path(@userview.id) %> </div>
-<% end %></br>
+<% end %>
+<% end %>
+</br>
 
 		           <%=@userview.sex%></br> Age: <%=  @userview.age  %> 
 		

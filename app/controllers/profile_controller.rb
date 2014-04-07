@@ -31,7 +31,7 @@ class ProfileController < ApplicationController
       @result = @user.location    
       if @result
      
-      @activitygrid = Activity.near(@result, 2000).first(7)
+      @activitygrid = Activity.near(@result, 2000).find(:all, :order => "updated_at").first(7)
       else
       @activitygrid = Activity.find(:all).last(4)
     end

@@ -7,9 +7,9 @@
 
             <a href="#" class="thumb-img">            
 	<% if f.avatar.url.present? %>
-                      <%= image_tag f.avatar.url(:grid) %>
+                      <%= link_to image_tag f.avatar.url(:grid), :controller => 'profile', :id =>f.id %>
     <% else %>
-    					<%= image_tag 'ex/blankevent.jpg'%>
+    					<%= link_to image_tag 'ex/blankevent.jpg', :controller => 'profile', :id =>f.id %>
      <% end %>
 
                         </a>
@@ -26,22 +26,24 @@
 	
 <a class="sys_show_popup_login" >	
 	<% f.activities.each do |a| %>
-	 <%= image_tag(a.avatar.url(:supermini), :height =>'30', :width => '30') %>
+	 <%= link_to image_tag(a.avatar.url(:supermini), :height =>'30', :width => '30'), :controller => 'general', :action =>"activity", :id => a.id %>
 	<% end %>
 </a>
                     <p class="rs title-description"><div class="description_space"><%=f.about.capitalize[0,90]%>...(more)</div></p>
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
-                                <%= f.location[0..20] %>  &nbsp; &nbsp;&nbsp; <%= f.distance_from(@loc).round(1)%>&nbsp;km
+                                <%= f.location[0..20] %>  &nbsp; &nbsp;&nbsp;</br> <%= f.distance_from(@loc).round(1)%>&nbsp;miles
                             </p>
                         </div>
                     </div>
                 </div>
+<center>
 					<% if current_user.following?(f) %>
 					<div class="btn btn-red"> <%= link_to "Unfollow", unfollow_profile_path(f.id) %> </div>
 					<% else %>		
 					<div class="btn btn-red"> <%= link_to "Follow", follow_profile_path(f.id) %> </div>
 					<% end %>
-
+</center>
+</br>
    </div>
         </div><!--end: .grid_6 > .project-short-->

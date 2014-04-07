@@ -374,7 +374,10 @@ input.btn  {
    
 }
 
+.itsright{
 
+float: right;
+}
 .btn-red{
     border: 1px solid #b53b2c;
     color: #FFF;
@@ -1585,6 +1588,11 @@ background: none;
 
 }
 
+.tiny-desc{
+height: 42px;
+
+}
+
 .content-info-short .tiny-desc .follow{
     float: right;
 
@@ -1711,6 +1719,7 @@ background: none;
     margin-bottom: 2px;
     font-size: 1.154em;
 }
+.rs.acticle-title{ height: 42px;}
 .sml-thumb .content-info-short .acticle-title a{
     font-family: 'Open Sans', sans-serif;
 	font-weight: 700;
@@ -3310,6 +3319,8 @@ border-left-width: 0;
 height: 100px;
 
 }
+
+.pagme .thumb-img {height:0;width:0;}
 
 .buttonspace{
   float: right;
