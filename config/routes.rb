@@ -7,6 +7,8 @@ Woo::Application.routes.draw do
   get "people/index"
 
   get 'start/uservalide'
+  
+  get "general/activity/:id", to: 'general#activity'
 
 #general
 

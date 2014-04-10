@@ -7,7 +7,7 @@
          <div class="clear"></div>
 
 								
-                               	<%= nested_form_for @activity, :id => "form_id", :html => { :multipart => true} do |f| %>
+                               	<%= nested_form_for @activity, :id => "form_id", :html => { :multipart => true, :id => "form_id2" }, :validate => :true do |f| %>
 	
 	
   <div class="home-popular-project">
@@ -135,7 +135,7 @@
 																			            <span class="help-inline"><%= @activity.errors[:location].join(", ")%></span>  
 																	<%end%>	
 
-									<%= f.text_field :location, :class => 'address-picker-input', :id => 'txt_location', :placeholder => 'Where is your event?' %>      
+									<%= f.text_field :location, :class => 'validate[required] address-picker-input', :id => 'txt_location', :placeholder => 'Where is your event?' %>      
 									
 																                                
 									                                        </div>

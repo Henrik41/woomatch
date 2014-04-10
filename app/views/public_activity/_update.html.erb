@@ -16,9 +16,10 @@ just updated an activity
 </div>
 <div class="section_4">
 	<% if activity.trackable.user_id == current_user.id %>
-<%= link_to image_tag (activity.trackable.avatar.url(:supermini)), :controller => 'activities', :id => activity.trackable.id %>  
+<%= link_to image_tag(activity.trackable.avatar.url(:supermini)), {:id => activity.trackable.id, :controller => 'activities', :action => 'show' }  %>  
 	<% else %>
-				<%= link_to image_tag (activity.trackable.avatar.url(:supermini)), :controller => 'general', :action => 'activity', :id => activity.trackable.id %>  
-	<% end %>
+				<%= link_to image_tag(activity.trackable.avatar.url(:supermini)), {:id => activity.trackable.id, :controller => 'general', :action => 'activity' } %>
+				
+					<% end %>
 
 </div>

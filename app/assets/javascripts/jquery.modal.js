@@ -49,6 +49,7 @@
     constructor: $.modal,
 
     open: function() {
+		$("#spinner").hide();
       var m = this;
       if(this.options.doFade) {
         this.block();
@@ -71,6 +72,13 @@
       this.unblock();
       this.hide();
       $(document).off('keydown.modal');
+
+	$("#search_button").toggle();
+
+	$("#button_out").hide();
+	$("#select_button").hide();
+	$(".theform").show();
+	$('#paginator').hide();
     },
 
     block: function() {
@@ -104,8 +112,8 @@
     show: function() {
       this.$elm.trigger($.modal.BEFORE_OPEN, [this._ctx()]);
       if (this.options.showClose) {
-        this.closeButton = $('<a href="#close-modal" rel="modal:close" class="close-modal">' + this.options.closeText + '</a>');
-        this.$elm.append(this.closeButton);
+        this.closeButton = $('<a href="#close-modal" rel="modal:close" class="close-modal">' + this.options.closeText + '</a>');        
+		this.$elm.append(this.closeButton);
       }
       this.$elm.addClass(this.options.modalClass + ' current');
       this.center();
@@ -119,7 +127,10 @@
 
     hide: function() {
       this.$elm.trigger($.modal.BEFORE_CLOSE, [this._ctx()]);
-      if (this.closeButton) this.closeButton.remove();
+      if (this.closeButton) {
+	this.closeButton.remove();
+	}
+		
       this.$elm.removeClass('current');
 
       if(this.options.doFade) {
@@ -128,6 +139,8 @@
         this.$elm.hide();
       }
       this.$elm.trigger($.modal.CLOSE, [this._ctx()]);
+
+
     },
 
     showSpinner: function() {
