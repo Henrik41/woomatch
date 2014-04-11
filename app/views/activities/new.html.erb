@@ -1,6 +1,12 @@
 
 
 <body>
+	<script type="text/javascript">
+	$(document).ready(function(){
+	    $("#form_id2").validationEngine();
+		<% var2 = Date.today.to_s %>
+	});
+	</script>
 	
 <div id="wrapper">
 <%= render "header/header" %>
@@ -144,7 +150,7 @@
 									                                        <label class="lbl" for="Datepicker">Starting Day:</label>
 									                                        <div class="val">
 
-									<%= f.text_field :start_date, :class => 'validate[required,future[' + Date.today.to_s + ']] text-input txt datepicker', :id => 'txt', :placeholder => 'Give us a date' %>     											</br>
+									<%= f.text_field :start_date, :class => 'validate[required,future[' + Date.today.to_s + ']] text-input txt datepicker', :id => 'txt45', :placeholder => 'Give us a date' %>     											</br>
 
 									                                            <p class="rs description-input">What date is your event?</p>
 									                                        </div>
@@ -172,7 +178,8 @@
 									                                  <div class="row-item clearfix">
 									                                        <label class="lbl" for="Datepicker">Ending Day:</label>
 									                                        <div class="val">
-									                                           <%= f.text_field :end_date, :class => 'validate[required,future[' + Date.today.to_s + ']] text-input txt datepicker' %>		</br>
+										
+									                                           <%= f.text_field :end_date, :class => 'validate[required,future[' + Date.today.to_s + '],funcCall[geThan]] text-input txt datepicker' %>		</br>
 
 
 
@@ -204,7 +211,7 @@
 									                                        <div class="val">
 
 
-									<%= f.text_area :about, :class => 'span2 validate[required,minSize[3],maxSize[300]] txt fill-width', :id => 'txt_bio' %>
+									<%= f.text_area :about, :class => 'span2  txt fill-width', :id => 'txt_bio' %>
 									                                            <p class="rs description-input">We suggest a short description. Talk about what is fun about this activity and why people should join.</p>
 									                                        </div>
 									                                    </div>
@@ -431,12 +438,32 @@ $(function() {
 </script>
 
 
-	<script type="text/javascript">
-	$(document).ready(function(){
-	    $("#form_id2").validationEngine();
-	});
-	</script>
+
+	<script>
+
+	$('#txt45').on('change', function() {
+	  var date2 = this.value ; // or $(this).val()
 	
+
+	});
+	
+function geThan(field, rules, i, options){
+	   var startdate = document.getElementsByName('activity[start_date]')[0].value;
+	   var d1 = startdate.split('-');
+	   d1 = new Date(d1.pop(), d1.pop() - 1, d1.pop());
+	
+	var enddate = field.val();
+	var d2 = enddate.split('-');
+	d2 = new Date(d2.pop(), d2.pop() - 1, d2.pop());
+	
+	   if (d1 > d2){
+	   return "Your ending date has to be later then the starting date"
+}
+	};
+
+
+	</script>
+
 </body>
 </html>
 
