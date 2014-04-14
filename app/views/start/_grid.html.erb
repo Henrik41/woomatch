@@ -73,12 +73,12 @@ registered people: <%= a.completion.round(0) %>%
                             <span class="val">
 
 
-<% if a.end_time < @mytime %>
-											Ended
-											<% else %>
-											
-	<%= distance_of_time_in_words(@mytime, a.ending) %>
-	<% end %>
+									<% if a.enddate < @mytime %>
+																				Ended
+																				<% else %>
+
+										<%= distance_of_time_in_words(@mytime, a.ending) %>
+										<% end %>
 	 </span>
 
                         </div>

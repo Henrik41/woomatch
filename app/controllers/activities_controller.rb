@@ -18,14 +18,13 @@ class ActivitiesController < ApplicationController
      @user = current_user
     
      mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
-      Time.zone = mytimezone
-      @mytime = Time.zone.now
+     Time.zone = mytimezone
+     @mytime = Time.zone.now
       
      
      @activitypast = @user.activities.where("ending < ?", @mytime)
      @activitynow = @user.activities.where("ending >= ?", @mytime)
-     
-  
+       
         @result = @user.location    
         if @result
         @activitygrid = Activity.near(@result, 200000).find(:all, :order => "updated_at").first(7)
@@ -72,6 +71,7 @@ class ActivitiesController < ApplicationController
       @useronline = User.online.find(:all, :limit => 9)
     end
     @user = current_user
+    
     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
     Time.zone = mytimezone
     @mytime = Time.zone.now

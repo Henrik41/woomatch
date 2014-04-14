@@ -6,18 +6,18 @@ created	<%= distance_of_time_in_words(@mytime, activity.trackable.created_at) %>
 <%= link_to activity.owner.name, activity.owner %>
 just added an activity 
 
-<%= link_to activity.trackable.title %>
+<% if activity.trackable.user_id == current_user.id %>
+<%= link_to activity.trackable.title, {:id => activity.trackable.id, :controller => 'activities', :action => 'show' } %>
+<% else %>
+<%= link_to activity.trackable.title, {:id => activity.trackable.id, :controller => 'general', :action => 'activity' } %>
+<% end %>
 </div>
 <div class="section_4">
-	<% if activity.trackable.avatar.url(:supermini) %>
-		<% if activity.trackable.user_id == current_user.id %>
-		<%= link_to image_tag(activity.trackable.avatar.url(:supermini)), {:controller => 'activities', :id => activity.trackable.id} %>  
-			
-		<% else %>
-				<%= link_to image_tag(activity.trackable.avatar.url(:supermini)), {:controller => 'general', :action => 'activity', :id => activity.trackable.id} %>  
-		<% end %>
-	
-    <% else %>
- 	No image available
-<% end %>
+	<% if activity.trackable.user_id == current_user.id %>
+<%= link_to image_tag(activity.trackable.avatar.url(:supermini)), {:id => activity.trackable.id, :controller => 'activities', :action => 'show' }  %>  
+	<% else %>
+				<%= link_to image_tag(activity.trackable.avatar.url(:supermini)), {:id => activity.trackable.id, :controller => 'general', :action => 'activity' } %>
+				
+					<% end %>
+
 </div>

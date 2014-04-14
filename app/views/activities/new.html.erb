@@ -162,7 +162,7 @@
 									                                        <label class="lbl">Starting Time:</label>
 									                                        <div class="val">
 									<div class='txt2'>
-										    <%= f.text_field :start_time, :name => 's1Time1', :class => 'txt' %>
+										    <%= f.text_field :start_time, :name => 's1Time1', :class => 'span2 validate[required] txt', :id => 'txttime1', :placeholder => 'Give us a time' %>
 									                                          <br/>
 														</div>
 
@@ -193,7 +193,7 @@
 									                                        <label class="lbl">Ending Time:</label>
 									                                        <div class="val">
 									<div class='txt2'>
-									                                               <%= f.text_field :end_time, :name => 's1Time2', :class => 'txt' %> <br/>
+									                                               <%= f.text_field :end_time, :name => 's1Time2', :class => 'validate[required,funcCall[geThan2]] txt',  :id => 'txttime2' %> <br/>
 														</div>
 
 
@@ -369,15 +369,32 @@
 <script type="text/javascript">
     $(document).ready(function(){
         // find the input fields and apply the time select to them.
-        $('input[name="s1Time2"]').ptTimeSelect();
-    });
+        $('input[name="s1Time2"]').ptTimeSelect({
+						onClose:  function() {
+				   
+  $('input[name="s1Time2"]').focusout();
+						}
+		        
+		 });
+		 });
+
 </script>
+
+
+
+
 
 <script type="text/javascript">
     $(document).ready(function(){
-        // find the input fields and apply the time select to them.
-        $('input[name="s1Time1"]').ptTimeSelect();
+            // find the input fields and apply the time select to them.
+	        $('input[name="s1Time1"]').ptTimeSelect({
+							onClose:  function() {
+
+	  $('input[name="s1Time1"]').focusout();
+							}
+	   
     });
+  });
 </script>
 
 
@@ -463,6 +480,44 @@ function geThan(field, rules, i, options){
 
 
 	</script>
+
+		<script>
+
+		$('#txt45').on('change', function() {
+		  var date2 = this.value ; // or $(this).val()
+
+
+		});
+
+	function geThan2(field, rules, i, options){
+		   var startdate = document.getElementsByName('activity[start_date]')[0].value;
+		   var starttime = document.getElementsByName('s1Time1')[0].value;
+		
+		   var d1 = startdate.split('-');
+		   var arr = starttime.split(':');
+		   var hour = parseInt(arr[0]);
+		   var min = parseInt(arr[1]);
+		   d1 = new Date(d1.pop(),d1.pop() - 1,d1.pop(),hour,min);	       
+
+			var enddate  = document.getElementsByName('activity[end_date]')[0].value;
+			var endtime = field.val();
+			
+			var e1 = enddate.split('-');
+			var arre = endtime.split(':');
+			var houre = parseInt(arre[0]);
+			var mine = parseInt(arre[1]);
+			d2 = new Date(e1.pop(),e1.pop() - 1,e1.pop(),houre,mine);
+			
+			 if (d1 > d2){
+			   return "Your ending date and time has to be later then the starting date and time"
+		}
+			
+		};
+
+
+
+
+		</script>
 
 </body>
 </html>

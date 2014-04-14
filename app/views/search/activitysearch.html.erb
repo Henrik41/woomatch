@@ -98,6 +98,7 @@
 								                            <h3 class="rs alternate-tab accordion-label">Most Recent</h3>
 								                            <div class="tab-pane accordion-content">
 																<% @activitiesrecent.each do |a| %>
+																<%= a.inspect %>
 																	 <%= render :partial => '/general/myactivityinfo', :locals => {:a => a} %> 
 																	<% end %>
 
