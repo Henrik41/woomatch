@@ -211,7 +211,7 @@
 									                                        <div class="val">
 
 
-									<%= f.text_area :about, :class => 'span2  txt fill-width', :id => 'txt_bio' %>
+									<%= f.text_area :about, :class => 'span2 validate[required] txt fill-width', :id => 'txt_bio' %>
 									                                            <p class="rs description-input">We suggest a short description. Talk about what is fun about this activity and why people should join.</p>
 									                                        </div>
 									                                    </div>
@@ -219,7 +219,7 @@
 									<div class="row-item clearfix">
 									    <label class="lbl" for="txt_name1">Number of participants:</label>
 									    <div class="val">
-									       <%= f.number_field :numpart, :class =>'txt', :id => 'txt-name1' %>
+									       <%= f.number_field :numpart, :class =>'validate[required] txt', :id => 'txt-name1' %>
 									        <p class="rs description-input">Tell us how many people should attend your activity</p>
 									</div>	</div>
 									                                    <div class="row-item clearfix">

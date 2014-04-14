@@ -23,13 +23,17 @@
 
                             <p class="rs tiny-desc">Activities 
 	
-	
+		<div class= "miniactivity">
 <a class="sys_show_popup_login" >	
-	<% f.activities.each do |a| %>
+	<% f.activities[0..9].each do |a| %>
+	
+
 	 <%= link_to image_tag(a.avatar.url(:supermini), :height =>'30', :width => '30'), :controller => 'general', :action =>"activity", :id => a.id %>
+
 	<% end %>
+		
 </a>
-                    <p class="rs title-description"><div class="description_space"><%=f.about.capitalize[0,90]%>...(more)</div></p>
+       </div>             <p class="rs title-description"><div class="description_space"><%=f.about.capitalize[0,90]%>...(more)</div></p>
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
                                 <%= f.location[0..20] %>  &nbsp; &nbsp;&nbsp;</br> <%= f.distance_from(@loc).round(1)%>&nbsp;miles

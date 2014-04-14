@@ -6,7 +6,7 @@
                         <a href="#" class="big_box">
        <% if a.avatar.url %>
 
-<%= image_tag a.avatar.url(:grid) %>
+<%= link_to (image_tag a.avatar.url(:grid)), {:controller => 'profile', :action => 'show', :id => a } %>
 
 
 
@@ -29,39 +29,53 @@
                             </p>
                         </div>
 
-							<%=  link_to_modal "Email Me", "#demo-form", :class=>"btn btn-red" %>
+							<% if current_user.id == a.id %>
+							<%=  link_to_modal "Email Me", "#demo-form2", :class=>"btn btn-blue" %>
+								<div id="demo-form2" class="demo-description" style="display: none; ">
+							<center>		You can't write to yourself!</center>
+							</div>
+							<% else%>
+								<%=  link_to_modal "Email Me", "#demo-form", :class=>"btn btn-blue" %>
 
-								<div id="demo-form" class="demo-description" style="display: none; ">
-								  <p>
+									<div id="demo-form" class="demo-description" style="display: none; ">
+									  <p>
 
-								<b>	 Write me an Email</b>:
-									    <br />
-
-
-
-
-
-										<div class="theform">
-																		<%= form_tag({:controller => 'conversation', :action => 'sendmail', :id => a.id}, :remote => true) do %>
-														<%= text_field_tag :body %>			
-
-																		<%= button_tag(type: 'submit', id: "search") do %>
-
-
-						<span class="btn btn-green">Send it</span> 
-																		<% end%> 
-																		<% end%>
-						</div>
+									<b>	 Write me an Email</b>:
+										    <br />
 
 
 
 
-								  </p>
-								</div>
 
-						
- <div class="btn btn-blue"> Follow Me</div>
-	
+											<div class="theform">
+																			<%= form_tag({:controller => 'conversation', :action => 'sendmail', :id => a.id}, :remote => true) do %>
+															<%= text_area_tag :body, nil, :cols => '50', :rows => '10' %>			
+
+																			<%= button_tag(type: 'submit', id: "search") do %>
+
+
+							<span class="btn btn-green">Send it</span> 
+																			<% end%> 
+																			<% end%>
+							</div>
+
+
+
+
+									  </p>
+									</div>
+
+
+
+
+
+							<% if current_user.following?(a) %>
+							<div class="btn btn-red"> <%= link_to "Unfollow", unfollow_profile_path(a.id) %> </div>
+							<% else %>		
+							<div class="btn btn-red"> <%= link_to "Follow me", follow_profile_path(a.id) %> </div>
+							<% end %>
+							<% end %>
+							</br>
 
                     </div>
                 </div>
