@@ -1,3 +1,9 @@
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#form_id2").validationEngine();
+	<% var2 = Date.today.to_s %>
+});
+</script>
 
 
 	
@@ -137,6 +143,13 @@
 
 									<%= f.text_field :location, :class => 'validate[required] address-picker-input', :id => 'txt_location', :placeholder => 'Where is your event?' %>      
 									
+										<script type="text/javascript">
+										    AddressPickerRails.Pickers.applyOnReady({
+											  'onLoad':function (picker) {
+											    console.debug("callback for a single pond with ID '%s'", picker.getIdPrefix());
+											  }
+											});
+										</script>
 																                                
 									                                        </div>
 									                                    </div>
@@ -145,7 +158,7 @@
 									                                        <label class="lbl" for="Datepicker">Starting Day:</label>
 									                                        <div class="val">
 
-									<%= f.text_field :start_date, :class => 'validate[required,future[' + Date.today.to_s + ']] text-input txt datepicker',  :value => f.object.start_date %>   											</br>
+									<%= f.text_field :start_date, :class => 'validate[required,future[' + Date.today.to_s + ']] text-input txt datepicker', :id => 'txt45',  :value => f.object.start_date %>   											</br>
 
 									                                            <p class="rs description-input">What date is your event?</p>
 									                                        </div>
@@ -157,7 +170,7 @@
 									                                        <label class="lbl">Starting Time:</label>
 									                                        <div class="val">
 									<div class='txt2'>
-										    <%= f.text_field :start_time, :name => 's1Time1', :value => f.object.start_time.strftime("%I:%M %p") %>
+										    <%= f.text_field :start_time, :name => 's1Time1', :class => 'span2 validate[required] txt', :id => 'txttime1', :value => f.object.start_time.strftime("%I:%M %p") %>
 									                                          <br/>
 														</div>
 
@@ -173,7 +186,7 @@
 									                                  <div class="row-item clearfix">
 									                                        <label class="lbl" for="Datepicker">Ending Day:</label>
 									                                        <div class="val">
-									                                           <%= f.text_field :end_date, :class => 'validate[required,future[' + Date.today.to_s + ']] text-input txt datepicker', :value => f.object.end_date %>		</br>
+									                                           <%= f.text_field :end_date, :class => 'validate[required,future[' + Date.today.to_s + '],funcCall[geThan]] text-input txt datepicker', :value => f.object.end_date %>		</br>
 
 
 
@@ -187,7 +200,7 @@
 									                                        <label class="lbl">Ending Time:</label>
 									                                        <div class="val">
 									<div class='txt2'>
-									                                                <%= f.text_field :end_time, :name => 's1Time2', :value => f.object.end_time.strftime("%I:%M %p")  %> <br/>
+									                                                <%= f.text_field :end_time,:class => 'validate[required,funcCall[geThan2]] txt',  :id => 'txttime2',  :value => f.object.end_time.strftime("%I:%M %p")  %> <br/>
 														</div>
 
 
@@ -205,7 +218,7 @@
 									                                        <div class="val">
 
 
-									<%= f.text_area :about, :class => 'span2 validate[required,minSize[3],maxSize[300]] txt fill-width', :id => 'txt_bio' %>
+									<%= f.text_area :about, :class => 'span2 validate[required,minSize[3],maxSize[600]] txt fill-width', :id => 'txt_bio' %>
 									                                            <p class="rs description-input">We suggest a short description. Talk about what is fun about this activity and why people should join.</p>
 									                                        </div>
 									                                    </div>
@@ -365,12 +378,37 @@
 			  </p>
 			</div>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        // find the input fields and apply the time select to them.
-        $('input[name="s1Time1"]').ptTimeSelect();
-    });
-</script>
+
+				<script type="text/javascript">
+				    $(document).ready(function(){
+				        // find the input fields and apply the time select to them.
+				        $('input[name="s1Time2"]').ptTimeSelect({
+										onClose:  function() {
+
+				  $('input[name="s1Time2"]').focusout();
+										}
+
+						 });
+						 });
+
+				</script>
+
+
+
+
+
+				<script type="text/javascript">
+				    $(document).ready(function(){
+				            // find the input fields and apply the time select to them.
+					        $('input[name="s1Time1"]').ptTimeSelect({
+											onClose:  function() {
+
+					  $('input[name="s1Time1"]').focusout();
+											}
+
+				    });
+				  });
+				</script>
 
 
 <script type="text/javascript">
@@ -402,10 +440,6 @@ $(function() {
 
 
 
-
-<script type="text/javascript">
-    AddressPickerRails.Pickers.applyOnReady();
-</script>
 
 
 			
@@ -442,6 +476,73 @@ $(function() {
 			    });
 			});
 			</script>
+			
+			
+			
+				<script>
+
+				$('#txt45').on('change', function() {
+				  var date2 = this.value ; // or $(this).val()
+
+
+				});
+
+			function geThan(field, rules, i, options){
+				   var startdate = document.getElementsByName('activity[start_date]')[0].value;
+				   var d1 = startdate.split('-');
+				   d1 = new Date(d1.pop(), d1.pop() - 1, d1.pop());
+
+				var enddate = field.val();
+				var d2 = enddate.split('-');
+				d2 = new Date(d2.pop(), d2.pop() - 1, d2.pop());
+
+				   if (d1 > d2){
+				   return "Your ending date has to be later then the starting date"
+			}
+				};
+
+
+				</script>
+
+					<script>
+
+					$('#txt45').on('change', function() {
+					  var date2 = this.value ; // or $(this).val()
+
+
+					});
+
+				function geThan2(field, rules, i, options){
+					   var startdate = document.getElementsByName('activity[start_date]')[0].value;
+					   var starttime = document.getElementsByName('s1Time1')[0].value;
+
+					   var d1 = startdate.split('-');
+					   var arr = starttime.split(':');
+					   var hour = parseInt(arr[0]);
+					   var min = parseInt(arr[1]);
+					   d1 = new Date(d1.pop(),d1.pop() - 1,d1.pop(),hour,min);	       
+
+						var enddate  = document.getElementsByName('activity[end_date]')[0].value;
+						var endtime = field.val();
+
+						var e1 = enddate.split('-');
+						var arre = endtime.split(':');
+						var houre = parseInt(arre[0]);
+						var mine = parseInt(arre[1]);
+						d2 = new Date(e1.pop(),e1.pop() - 1,e1.pop(),houre,mine);
+
+						 if (d1 > d2){
+						   return "Your ending date and time has to be later then the starting date and time"
+					}
+
+					};
+
+
+
+
+					</script>
+
+
 			<script>(function(d, s, id) {
 			  var js, fjs = d.getElementsByTagName(s)[0];
 			  if (d.getElementById(id)) return;

@@ -211,7 +211,7 @@
 									                                        <div class="val">
 
 
-									<%= f.text_area :about, :class => 'span2 validate[required] txt fill-width', :id => 'txt_bio' %>
+									<%= f.text_area :about, :class => 'span2 validate[required,minSize[3],maxSize[600]]  txt fill-width', :id => 'txt_bio' %>
 									                                            <p class="rs description-input">We suggest a short description. Talk about what is fun about this activity and why people should join.</p>
 									                                        </div>
 									                                    </div>
