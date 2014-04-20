@@ -12,6 +12,7 @@ class GeneralController < ApplicationController
     @activity2 = Activity.find(params[:id])
     @whos_following = @activity.followers
     Visit.track(@activity,current_user)
+    
   end
 
   def follow

@@ -45,8 +45,8 @@ class ActivitiesController < ApplicationController
 
     end
     @visitor = VisitDetail.where(:visit_id => @activity.visit.id).last   
-
     @visitorob = User.find(@visitor.ip_address)
+    
     @useractivity = @user
     @whos_following = @activity.followers
     
@@ -71,6 +71,10 @@ class ActivitiesController < ApplicationController
   # GET /activities/new.json
   def new
     
+  
+        Visit.track(@activity,current_user) 
+
+
     @activity = current_user.activities.new
     @useronline = User.online.find(:all, :limit => 9)
     if @useronline.empty?

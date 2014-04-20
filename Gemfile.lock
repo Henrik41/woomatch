@@ -5,7 +5,6 @@ GIT
     jQuery-Validation-Engine-rails (0.0.2)
 
 GEM
-
   remote: https://rubygems.org/
   specs:
     actionmailer (3.2.12)

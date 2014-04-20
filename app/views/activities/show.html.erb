@@ -20,10 +20,9 @@
                         </div>
                     </div><!--end: .top-project-info -->
                     <div class="bottom-project-info clearfix">
-<% if @activity.visit.total_visits.nil? %>
-<% else %>
+
                         <div class="project-progress sys_circle_progress" data-percent="<%= @activity.visit.total_visits rescue 0 %>">
-<%end%>
+
                             <div class="sys_holder_sector"></div>
                         </div>
                         <div class="group-fee clearfix">

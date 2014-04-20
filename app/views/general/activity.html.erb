@@ -52,9 +52,8 @@
                         </div>
                     </div><!--end: .top-project-info -->
                     <div class="bottom-project-info clearfix">
-
-                        <div class="project-progress sys_circle_progress" data-percent="87">
-
+<div class="project-progress sys_circle_progress" data-percent="<%= @activity.visit.total_visits rescue 0 %>">
+                   
                             <div class="sys_holder_sector"></div>
                         </div>
                         <div class="group-fee clearfix">
