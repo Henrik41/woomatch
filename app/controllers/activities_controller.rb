@@ -39,6 +39,14 @@ class ActivitiesController < ApplicationController
     @user = current_user
     
     @activity = @user.activities.find(params[:id])
+    
+    if @activity.visit.nil?
+      Visit.track(@activity,current_user) 
+
+    end
+    @visitor = VisitDetail.where(:visit_id => @activity.visit.id).last   
+
+    @visitorob = User.find(@visitor.ip_address)
     @useractivity = @user
     @whos_following = @activity.followers
     
@@ -115,7 +123,8 @@ class ActivitiesController < ApplicationController
   def create
     
     @user = current_user
-    @activity = current_user.activities.create(params[:activity])    
+    @activity = current_user.activities.create(params[:activity])   
+    Visit.track(@activity,current_user) 
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
     @useronline = User.online.find(:all, :limit => 9)
@@ -144,7 +153,8 @@ class ActivitiesController < ApplicationController
   # PUT /activities/1.json
   def update
     @user = current_user
-    @activity = current_user.activities.find(params[:id])   
+    @activity = current_user.activities.find(params[:id])  
+     Visit.track(@activity,current_user) 
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
     @useronline = User.online.find(:all, :limit => 9)

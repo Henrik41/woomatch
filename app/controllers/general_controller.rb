@@ -5,11 +5,13 @@ class GeneralController < ApplicationController
     @mytime = Time.zone.now
     
     @activity = Activity.find(params[:id])
+   
     @user = User.find(@activity.user_id)
+    
     @useractivity = @user
     @activity2 = Activity.find(params[:id])
     @whos_following = @activity.followers
-    
+    Visit.track(@activity,current_user)
   end
 
   def follow

@@ -9,6 +9,7 @@ class Activity < ActiveRecord::Base
   geocoded_by :location
   belongs_to :user
   has_many :interests, :dependent => :destroy
+  has_one :visit, :as => :visitable
   accepts_nested_attributes_for :interests, 
                                    :allow_destroy => true
                                   

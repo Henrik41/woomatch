@@ -53,7 +53,7 @@ just followed
 	
 	
 	<% else %>
-			<%= link_to image_tag( Activity.find(activity.trackable.followable_id.to_i).avatar.url(:supermini)), {:controller => 'general', :action => 'activity', :id => activity.trackable.id} %>  
+			<%= link_to image_tag( Activity.find(activity.trackable.followable_id.to_i).avatar.url(:supermini)), {:controller => 'general', :action => 'activity', :id =>  activity.trackable.followable_id.to_i} %>  
 	
 	<% end %>
 	<% end %>

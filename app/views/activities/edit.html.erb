@@ -200,7 +200,7 @@ $(document).ready(function(){
 									                                        <label class="lbl">Ending Time:</label>
 									                                        <div class="val">
 									<div class='txt2'>
-									                                                <%= f.text_field :end_time,:class => 'validate[required,funcCall[geThan2]] txt',  :id => 'txttime2',  :value => f.object.end_time.strftime("%I:%M %p")  %> <br/>
+									                                                <%= f.text_field :end_time,:class => 'validate[required,funcCall[geThan2]] txt', :name => 's1Time2', :id => 'txttime2',  :value => f.object.end_time.strftime("%I:%M %p")  %> <br/>
 														</div>
 
 

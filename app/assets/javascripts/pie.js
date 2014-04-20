@@ -11,7 +11,7 @@ function a(e,t,n,r,i,u){
             f+=h}u.push(p)};
     for(var h=0;h<r.length;h++){c(h)}return u};
 $(function(){var e=[];$(".sys_circle_progress").each(function(){
-    var t=parseInt($(this).attr("data-percent"));var n=100-t;
+    var t=parseInt($(this).attr("data-percent"));var n=100;
     if(n==0){e[0]=t}else{e[0]=n;e[1]=t}
 Raphael($(this).find(".sys_holder_sector")[0],78,78).pieChart(39,39,39,e,"#cecece");
-$(this).append('<span class="val-progress">'+$(this).attr("data-percent")+"%</span>")})})
+$(this).append('<span class="val-progress">'+'<div class="space1">'+ Math.round($(this).attr("data-percent"))+'&nbsp'+'</div>'+"visits</span>")})})
