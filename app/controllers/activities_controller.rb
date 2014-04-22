@@ -42,8 +42,8 @@ class ActivitiesController < ApplicationController
     
     if @activity.visit.nil?
       Visit.track(@activity,current_user) 
-
     end
+    
     @visitor = VisitDetail.where(:visit_id => @activity.visit.id).last   
     @visitorob = User.find(@visitor.ip_address)
     
@@ -72,7 +72,7 @@ class ActivitiesController < ApplicationController
   def new
     
   
-        Visit.track(@activity,current_user) 
+       
 
 
     @activity = current_user.activities.new
@@ -83,7 +83,7 @@ class ActivitiesController < ApplicationController
       @useronline = User.online.find(:all, :limit => 9)
     end
     @user = current_user
-    
+   
     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
     Time.zone = mytimezone
     @mytime = Time.zone.now
@@ -106,8 +106,8 @@ class ActivitiesController < ApplicationController
   def edit
     
     @user = current_user
-      @interestcount = @user.userinterests.find(:all).count
-      @activitiescount = @user.activities.where(:user_id => @user.id).count      
+    @interestcount = @user.userinterests.find(:all).count
+    @activitiescount = @user.activities.where(:user_id => @user.id).count      
     @useronline = User.online.find(:all, :limit => 9)
     @activity = current_user.activities.find(params[:id])
     @completion2 = @activity.completion2
@@ -127,8 +127,7 @@ class ActivitiesController < ApplicationController
   def create
     
     @user = current_user
-    @activity = current_user.activities.create(params[:activity])   
-    Visit.track(@activity,current_user) 
+    @activity = current_user.activities.create(params[:activity])      
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
     @useronline = User.online.find(:all, :limit => 9)
@@ -158,7 +157,7 @@ class ActivitiesController < ApplicationController
   def update
     @user = current_user
     @activity = current_user.activities.find(params[:id])  
-     Visit.track(@activity,current_user) 
+   
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
     @useronline = User.online.find(:all, :limit => 9)

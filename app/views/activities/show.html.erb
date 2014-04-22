@@ -1,3 +1,6 @@
+<%  @visitor = VisitDetail.where(:visit_id => @activity.visit.id).last %>   
+<% @visitorob = User.find(@visitor.ip_address) %>
+
 <div id="wrapper">
 	<%= render "header/header" %>
 	<%= render 'activities/navbar' %>

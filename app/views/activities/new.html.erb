@@ -455,69 +455,72 @@ $(function() {
 </script>
 
 
-
-	<script>
-
-	$('#txt45').on('change', function() {
-	  var date2 = this.value ; // or $(this).val()
-	
-
-	});
-	
-function geThan(field, rules, i, options){
-	   var startdate = document.getElementsByName('activity[start_date]')[0].value;
-	   var d1 = startdate.split('-');
-	   d1 = new Date(d1.pop(), d1.pop() - 1, d1.pop());
-	
-	var enddate = field.val();
-	var d2 = enddate.split('-');
-	d2 = new Date(d2.pop(), d2.pop() - 1, d2.pop());
-	
-	   if (d1 > d2){
-	   return "Your ending date has to be later then the starting date"
-}
-	};
-
-
-	</script>
-
-		<script>
-
-		$('#txt45').on('change', function() {
-		  var date2 = this.value ; // or $(this).val()
-
-
-		});
-
-	function geThan2(field, rules, i, options){
-		   var startdate = document.getElementsByName('activity[start_date]')[0].value;
-		   var starttime = document.getElementsByName('s1Time1')[0].value;
-		
-		   var d1 = startdate.split('-');
-		   var arr = starttime.split(':');
-		   var hour = parseInt(arr[0]);
-		   var min = parseInt(arr[1]);
-		   d1 = new Date(d1.pop(),d1.pop() - 1,d1.pop(),hour,min);	       
-
-			var enddate  = document.getElementsByName('activity[end_date]')[0].value;
-			var endtime = field.val();
-			
-			var e1 = enddate.split('-');
-			var arre = endtime.split(':');
-			var houre = parseInt(arre[0]);
-			var mine = parseInt(arre[1]);
-			d2 = new Date(e1.pop(),e1.pop() - 1,e1.pop(),houre,mine);
-			
-			 if (d1 > d2){
-			   return "Your ending date and time has to be later then the starting date and time"
-		}
-			
-		};
-
-
-
-
 		</script>
+		
+
+			<script>
+
+			$('#txt45').on('change', function() {
+			  var date2 = this.value ; // or $(this).val()
+
+
+			});
+
+		function geThan(field, rules, i, options){
+ var startdate = document.getElementsByName('activity[start_date]')[0].value;
+			   var d1 = startdate.split('-');
+			   d1a = new Date(d1[0], d1[1]-1, d1[2]);
+
+			var enddate = field.val();
+			var d2 = enddate.split('-');
+			d2a = new Date(d2[0], d2[1]-1, d2[2]);
+
+			   if (d1a > d2a){
+			   return "Your ending date has to be later then the starting date"
+		}
+			};
+
+
+			</script>
+
+				<script>
+
+				$('#txt45').on('change', function() {
+				  var date2 = this.value ; // or $(this).val()
+
+
+				});
+
+			function geThan2(field, rules, i, options){
+				   var startdate = document.getElementsByName('activity[start_date]')[0].value;
+				   var starttime = document.getElementsByName('s1Time1')[0].value;
+
+				   var d1 = startdate.split('-');
+				   var arr = starttime.split(':');
+				   var hour = parseInt(arr[0]);
+				   var min = parseInt(arr[1]);
+				   d1b = new Date(d1[0], d1[1]-1, d1[2],hour,min);	       
+
+					var enddate  = document.getElementsByName('activity[end_date]')[0].value;
+					var endtime = field.val();
+
+					var e1 = enddate.split('-');
+					var arre = endtime.split(':');
+					var houre = parseInt(arre[0]);
+					var mine = parseInt(arre[1]);
+					d2b = new Date(e1[0], e1[1]-1, e1[2],houre,mine);
+
+					 if (d1b > d2b){
+					   return "Your ending date and time has to be later then the starting date and time"
+				}
+
+				};
+
+
+
+
+				</script>
+
 
 </body>
 </html>
