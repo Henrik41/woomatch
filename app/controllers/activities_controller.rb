@@ -121,7 +121,7 @@ class ActivitiesController < ApplicationController
     
     @user = current_user
     @activity = current_user.activities.create(params[:activity])  
-     Visit.track(@activity,current_user) 
+
         
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
@@ -138,6 +138,7 @@ class ActivitiesController < ApplicationController
     
     respond_to do |format|
       if @activity.save
+            Visit.track(@activity,current_user) 
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render json: @activity, status: :created, location: @activity }
       else
