@@ -46,7 +46,7 @@
 				         			    <% whois = c.participants - Array(current_user) %>
 									 <% if whois.empty? %>
 <% if current_user.online? %> 	<%= image_tag '/assets/Greenlight2.gif', :class => 'ontop2' %><% end %>
-									  <%= image_tag current_user.avatar.url(:mini) %>
+									  <%= image_tag current_user.avatar.url(:grid) %>
 								
 									<% else %>
 									

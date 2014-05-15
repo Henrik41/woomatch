@@ -123,11 +123,19 @@
 				                                </div>
 				                            </div><!--end: .tab-pane(Backers) -->
 				                        </div>
+			
+			<%	@userparticipating2.each do |f| %>
+				<% if f.id == current_user %>
 				                        <div>
 				                            <h3 class="rs active alternate-tab accordion-label">Facebook Comments</h3>
 				                            <div class="tab-pane accordion-content">
 				                  <div class="fb-comments" data-href='http://localhost:3000/<%= @activity.id %>' data-numposts="5" data-colorscheme="light"></div>
 				                            </div><!--end: .tab-pane(Comments) -->
+				
+				<% else %>
+				Register here
+				<% end %>
+				<% end %>
 				                        </div>
 				                      </div>
 				                </div><!--end: .project-tab-detail -->

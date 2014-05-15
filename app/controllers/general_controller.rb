@@ -7,6 +7,7 @@ class GeneralController < ApplicationController
     @activity = Activity.find(params[:id])
    
     @user = User.find(@activity.user_id)
+    @userparticipating2 = @activity.votes.where(:vote_scope => 'accept').map(&:voter).uniq
     
     @useractivity = @user
     @activity2 = Activity.find(params[:id])
