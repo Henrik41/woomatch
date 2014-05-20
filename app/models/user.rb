@@ -16,11 +16,11 @@ class User < ActiveRecord::Base
                                     :allow_destroy => true
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :location, :realage, :dob, :age, :sex, :status, :about, :web, :email, :password, :password_confirmation, :time_zone, :avatar,  :userinterests_attributes
+  attr_accessible :username, :location, :realage, :dob, :age, :sex, :status, :about, :web, :email, :password, :password_confirmation, :time_zone, :avatar, :remote_avatar_url, :userinterests_attributes
   attr_accessible :longitude, :latitude
   attr_accessible :provider, :uid, :name, :completion, :nomail, :followme
-  
   attr_accessible :body, :conversation_id
+ 
   geocoded_by :location
   mount_uploader :avatar, AvatarUploader
    acts_as_messageable
@@ -28,8 +28,8 @@ class User < ActiveRecord::Base
      acts_as_follower
       acts_as_voter
   validates_presence_of  :username, :location
-  validates_length_of :username, :minimum => 3, :maximum => 20
-  validates_length_of :about, :minimum => 5, :maximum => 300, :allow_blank => true
+  validates_length_of :username, :minimum => 1, :maximum => 40
+  validates_length_of :about, :minimum => 0, :maximum => 300, :allow_blank => true
   validates_length_of :web, :minimum => 0, :maximum => 45, :allow_blank => true
     
   after_validation :geocode, :if => :location_changed?
@@ -82,18 +82,31 @@ PROFILE_COMPLETENESS = %w[username dob location status about web]
      #return nil
    end
    
+
    def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-     user = User.where(:provider => auth.provider, :uid => auth.uid).first
-     unless user
-       user = User.create(name:auth.extra.raw_info.name,
-                            provider:auth.provider,
-                            uid:auth.uid,
-                            email:auth.info.email,
-                            password:Devise.friendly_token[0,20]
-                            )
+       user = User.where(:provider => auth.provider, :uid => auth.uid).first
+       if user
+         return user
+       else
+         registered_user = User.where(:email => auth.info.email).first
+         if registered_user
+           return registered_user
+         else
+         user = User.create!(username:auth.extra.raw_info.first_name,
+                              email:auth.info.email,
+                              remote_avatar_url:auth.info.image.to_s.split("?")[0]+"?type=large",
+                              location:auth.info.location,  
+                              sex:auth.extra.raw_info.gender,
+                              uid:auth.uid,                           
+                              password:Devise.friendly_token[0,20]
+                              
+           )
+           
+      
+         
+         end    end
+    
      end
-     user
-   end
    
    def self.new_with_session(params, session)
        super.tap do |user|
