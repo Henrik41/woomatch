@@ -1,6 +1,7 @@
 
 <div id="wrapper">
 <%= render "header/header" %>
+
 <%= render 'activities/navbar' %>
 
   <div class="layout-2cols">
@@ -155,7 +156,7 @@
 
 					<% @num2 = 'followid2' + @activity2.id.to_s %>
 					<div id =<%= @num2 %>>
-					 	<% if current_user.liked? @activity2 %>
+					 	<% if @activity2.voted_on_by? current_user  %>
 
 						<%= form_tag({:action => 'unfollow2', :id => @activity2.id}, :remote => true) do %>
 						<%= button_tag(type: 'submit', class: "a btn btn-green btn-buck-project") do %>

@@ -57,7 +57,8 @@ class ActivitiesController < ApplicationController
    
     @userparticipating = @activity.votes.where(:vote_scope => nil).map(&:voter)    
     @userparticipating2 = @activity.votes.where(:vote_scope => 'accept').map(&:voter).uniq
-
+   
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @activity }

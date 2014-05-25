@@ -77,8 +77,9 @@ post "general/followall/:id", to: 'general#followall'
     get "/contacts/:provider/contact_callback" => "invites#index"
     get "/contacts/hotmail/callback" => "invites#index"
     
-
-
+#contact
+    match 'contact' => 'contact#new', :as => 'contact', :via => :get
+    match 'contact' => 'contact#create', :as => 'contact', :via => :post
 
 devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks"  }
 

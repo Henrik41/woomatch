@@ -1,7 +1,11 @@
 class SettingController < ApplicationController
   def index
     @user=current_user
+     @contact = Contact.new
   end
+  
+
+  
   
   def update
     @user = current_user

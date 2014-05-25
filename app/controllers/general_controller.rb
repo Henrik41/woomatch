@@ -61,18 +61,21 @@ class GeneralController < ApplicationController
   end
   
   def follow3
-    @useraccepted = User.find(params[:id])
-    
-    UserMailer.send_user_accepted(@useraccepted).deliver
-    
+    @useraccepted = User.find(params[:id])       
     @activity2 = Activity.find(params[:activity])
+    @current_user2 = current_user
+    UserMailer.send_user_accepted(@useraccepted,@activity2,@current_user2).deliver
+    
     @votes = @activity2.likes.where(:voter_id => @useraccepted)
     @userparticipating = @activity2.votes.where(:vote_scope => nil).map(&:voter)
+   
     
     if @votes.empty?
     else
+
     @votes[0].vote_scope = 'accept'
     @votes[0].save
+ 
     end
     
     

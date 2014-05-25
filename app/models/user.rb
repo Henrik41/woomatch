@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
      acts_as_followable
      acts_as_follower
       acts_as_voter
-  validates_presence_of  :username, :location
+  validates_presence_of  :username
   validates_length_of :username, :minimum => 1, :maximum => 40
   validates_length_of :about, :minimum => 0, :maximum => 300, :allow_blank => true
   validates_length_of :web, :minimum => 0, :maximum => 45, :allow_blank => true
@@ -92,18 +92,20 @@ PROFILE_COMPLETENESS = %w[username dob location status about web]
          if registered_user
            return registered_user
          else
-         user = User.create!(username:auth.extra.raw_info.first_name,
-                              email:auth.info.email,
-                              remote_avatar_url:auth.info.image.to_s.split("?")[0]+"?type=large",
-                              location:auth.info.location,  
-                              sex:auth.extra.raw_info.gender,
-                              uid:auth.uid,                           
-                              password:Devise.friendly_token[0,20]
-                              
-           )
-           
-      
          
+          
+         user = User.create!( username:auth.extra.raw_info.first_name,
+                                email:auth.info.email,
+                                remote_avatar_url:auth.info.image.gsub('http://','https://').to_s.split("?")[0]+"?type=large",
+                                location:auth.info.location,  
+                                sex:auth.extra.raw_info.gender,
+                                uid:auth.uid,   
+                                dob:Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y'),                        
+                                password:Devise.friendly_token[0,20]
+
+             )
+         
+           
          end    end
     
      end
