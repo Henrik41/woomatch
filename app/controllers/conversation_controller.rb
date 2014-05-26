@@ -78,6 +78,7 @@ before_filter :get_mailbox
   def reply
     conversation = Conversation.find(params[:user][:conversation_id])
     current_user.reply_to_conversation(conversation, params[:user][:body], 'Reply')
+    
     redirect_to conversation_myinbox_path
   end
 

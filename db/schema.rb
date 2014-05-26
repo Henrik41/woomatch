@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140420034132) do
+ActiveRecord::Schema.define(:version => 20140526010413) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -232,6 +232,8 @@ ActiveRecord::Schema.define(:version => 20140420034132) do
     t.integer  "realage"
     t.boolean  "nomail"
     t.boolean  "followme"
+    t.boolean  "userfollowme"
+    t.boolean  "acceptme"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
