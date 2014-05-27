@@ -100,6 +100,7 @@ PROFILE_COMPLETENESS = %w[username dob location status about web]
                                 sex:auth.extra.raw_info.gender,
                                 uid:auth.uid,   
                                 nomail:active,
+                                followme: active,
                                 userfollowme:active,
                                 acceptme:active,
                                 dob:Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y'),                        

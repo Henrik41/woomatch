@@ -21,7 +21,7 @@ class GeneralController < ApplicationController
     @user2 = User.find(@activity.user_id)
     @user = current_user
     if @user2.followme
-       UserMailer.followme(@user2).deliver
+       UserMailer.followme(@user2,@activity).deliver
     else
     end
     
@@ -64,8 +64,9 @@ class GeneralController < ApplicationController
     @useraccepted = User.find(params[:id])       
     @activity2 = Activity.find(params[:activity])
     @current_user2 = current_user
+    if @useraccepted.acceptme
     UserMailer.send_user_accepted(@useraccepted,@activity2,@current_user2).deliver
-    
+    end
     @votes = @activity2.likes.where(:voter_id => @useraccepted)
     @userparticipating = @activity2.votes.where(:vote_scope => nil).map(&:voter)
    

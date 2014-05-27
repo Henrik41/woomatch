@@ -12,7 +12,9 @@ class UserMailer < ActionMailer::Base
           ) 
   end
   
-  def followme(user)
+  def followme(user,activity)
+    @activity = activity
+    @current_user = current_user
      mail(:to => user.email, 
           :subject => "Someone is follow your activity!",
           :content_type => "text/html",   
@@ -20,6 +22,19 @@ class UserMailer < ActionMailer::Base
           :template_name => 'send_user_accepted'  
               )
   end
+  
+  def userfollowme(user,userfollowingu)
+    @user = userfollowingu
+     mail(:to => user.email, 
+          :subject => "Someone is follow your activity!",
+          :content_type => "text/html",   
+          :template_path => 'user_mailer',    
+          :template_name => 'userfollowme'  
+              )
+    
+  end
+  
+
   
 
 end

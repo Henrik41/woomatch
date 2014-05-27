@@ -116,7 +116,9 @@ class ProfileController < ApplicationController
         flash[:error] = "You cannot follow yourself."
       else
         current_user.follow(@user)
-      
+      if current_user.userfollowme
+        UserMailer.userfollowme(current_user,@user).deliver
+      end
         flash[:notice] = "You are now following #{@user.username}."
         redirect_to :back
       end
