@@ -14,7 +14,7 @@ class UserMailer < ActionMailer::Base
   
   def followme(user,activity)
     @activity = activity
-    @current_user = current_user
+    @current_user = user
      mail(:to => user.email, 
           :subject => "Someone is follow your activity!",
           :content_type => "text/html",   
@@ -24,8 +24,8 @@ class UserMailer < ActionMailer::Base
   end
   
   def userfollowme(user,userfollowingu)
-    @user = userfollowingu
-     mail(:to => user.email, 
+     @thecurrentuser = user
+     mail(:to => userfollowingu.email, 
           :subject => "Someone is follow your activity!",
           :content_type => "text/html",   
           :template_path => 'user_mailer',    

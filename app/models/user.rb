@@ -92,13 +92,15 @@ PROFILE_COMPLETENESS = %w[username dob location status about web]
          if registered_user
            return registered_user
          else
-         active = true         
+         active = true       
+         emptyst= "".to_s  
          user = User.create!( username:auth.extra.raw_info.first_name,
                                 email:auth.info.email,
                                 remote_avatar_url:auth.info.image.gsub('http://','https://').to_s.split("?")[0]+"?type=large",
                                 location:auth.info.location,  
                                 sex:auth.extra.raw_info.gender,
                                 uid:auth.uid,   
+                                about:emptyst,
                                 nomail:active,
                                 followme: active,
                                 userfollowme:active,
