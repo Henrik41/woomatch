@@ -16,13 +16,15 @@ class GeneralController < ApplicationController
     
   end
 
-  def follow
-    @activity = Activity.find(params[:id])
-    @user2 = User.find(@activity.user_id)
-    @user = current_user
-    if @user2.followme
-       UserMailer.followme(@user2,@activity).deliver
-    else
+ def follow
+
+ 
+     @activity = Activity.find(params[:id])
+     @useraccepted = User.find(@activity.user_id)           
+     @current_user2 = current_user
+     
+    if @useraccepted.followme
+       UserMailer.followme(@current_user2,@useraccepted,@activity).deliver
     end
     
     current_user.follow(@activity)

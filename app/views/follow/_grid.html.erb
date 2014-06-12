@@ -7,25 +7,24 @@
 
             <a href="#" class="thumb-img">            
 	<% if f.avatar.url.present? %>
-                      <%= link_to image_tag f.avatar.url(:grid), :controller => 'profile', :id =>f.id %>
+                      <%= link_to image_tag(f.avatar.url(:grid)), {:controller => 'profile', :action => 'show', :id =>f.id } %>
     <% else %>
-    					<%= link_to image_tag 'ex/blankevent.jpg', :controller => 'profile', :id =>f.id %>
+    					<%= link_to image_tag('ex/blankevent.jpg'), {:controller => 'profile', :action => 'show', :id =>f.id } %>
      <% end %>
-
                         </a>
 
 
                         <div class="wrap-short-detail">
                             <h3 class="rs acticle-title">
 
-	<a class="be-fc-orange" href="" ><%= f.username.capitalize %></a></h3>
+	<a class="be-fc-orange"> <%= f.username.capitalize %> </a></h3>
 
 
                             <p class="rs tiny-desc">Activities 
 	
 		<div class= "miniactivity">
 <a class="sys_show_popup_login" >	
-	<% f.activities[0..9].each do |a| %>
+	<% f.activities[0..4].each do |a| %>
 	
 
 	 <%= link_to image_tag(a.avatar.url(:supermini), :height =>'30', :width => '30'), :controller => 'general', :action =>"activity", :id => a.id %>
@@ -33,7 +32,7 @@
 	<% end %>
 		
 </a>
-       </div>             <p class="rs title-description"><div class="description_space"><%=f.about.capitalize[0,90]%>...(more)</div></p>
+       </div>             <p class="rs title-description"><div class="description_space"><%= link_to f.about.capitalize[0,90], :controller => 'profile', :action =>"show", :id => f.id %>...(more)</div></p>
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
                                 <%= f.location[0..20] %>  &nbsp; &nbsp;&nbsp;</br> <%= f.distance_from(@loc).round(1)%>&nbsp;miles

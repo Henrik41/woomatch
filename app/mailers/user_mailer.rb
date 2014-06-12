@@ -1,33 +1,35 @@
 class UserMailer < ActionMailer::Base
-  default :from => "admin@woomatch.com"
+  default :from => "admin@woomatch.com", content_type: 'multipart/mixed', parts_order: [ "text/html", "text/enriched", "text/plain", "application/pdf" ]
   
   def send_user_accepted(user,activity,current_user)
      @activity = activity
      @current_user = current_user
      mail(:to => user.email, 
           :subject => "You just got accepted!",
-          :content_type => "text/html",
+       
           :template_path => 'user_mailer',    
           :template_name => 'send_user_accepted'  
           ) 
   end
   
-  def followme(user,activity)
+  def followme(current_user,user,activity)
+    @current_user = current_user
     @activity = activity
-    @current_user = user
+    @username = user
+
      mail(:to => user.email, 
           :subject => "Someone is follow your activity!",
-          :content_type => "text/html",   
+             
           :template_path => 'user_mailer',    
-          :template_name => 'send_user_accepted'  
+          :template_name => 'followme'  
               )
   end
   
   def userfollowme(user,userfollowingu)
      @thecurrentuser = user
      mail(:to => userfollowingu.email, 
-          :subject => "Someone is follow your activity!",
-          :content_type => "text/html",   
+          :subject => "Someone is follow you!",
+        
           :template_path => 'user_mailer',    
           :template_name => 'userfollowme'  
               )

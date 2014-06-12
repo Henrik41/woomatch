@@ -8,5 +8,6 @@ ActionMailer::Base.smtp_settings = {
   :authentication       => :login,
   :ssl                  => true,
   :tls                  => true,
+  :content_type         => "text/html",
   :enable_starttls_auto => true
 }
