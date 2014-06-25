@@ -23,11 +23,11 @@ class ActivitiesController < ApplicationController
       
      
      @activitypast = @user.activities.where("ending < ?", @mytime)
-     @activitynow = @user.activities.where("ending >= ?", @mytime)
+     @activitynow = @user.activities.where("ending >= ?", @mytime).reverse_order
        
         @result = @user.location    
         if @result
-        @activitygrid = Activity.near(@result, 200000).find(:all, :order => "updated_at").first(7)
+        @activitygrid = Activity.near(@result, 1000, :order => :ending).reverse_order.first(7)
         else
         @activitygrid = Activity.find(:all).last(4)
       end
@@ -84,7 +84,9 @@ class ActivitiesController < ApplicationController
  
      @result = @user.location    
      if @result
-     @activitygrid = Activity.near(@result, 200000).first(7)
+     
+       @activitygrid = Activity.near(@result, 1000, :order => :ending).reverse_order.first(7)
+     
      else
      @activitygrid = Activity.find(:all).last(4)
    end
@@ -110,7 +112,7 @@ class ActivitiesController < ApplicationController
     @mytime = Time.zone.now     
     @result = @user.location    
        if @result
-       @activitygrid = Activity.near(@result, 200000).first(7)
+       @activitygrid = Activity.near(@result, 1000, :order => :ending).reverse_order.first(7)
        else
        @activitygrid = Activity.find(:all).last(4)
      end
@@ -122,7 +124,7 @@ class ActivitiesController < ApplicationController
     
     @user = current_user
     @activity = current_user.activities.create(params[:activity])  
-
+   
         
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
@@ -132,7 +134,7 @@ class ActivitiesController < ApplicationController
      @mytime = Time.zone.now
       @result = @user.location    
        if @result
-       @activitygrid = Activity.near(@result, 200000).first(7)
+       @activitygrid = Activity.near(@result, 1000, :order => :ending).reverse_order.first(7)
        else
        @activitygrid = Activity.find(:all).last(4)
      end
@@ -140,6 +142,7 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       if @activity.save
             Visit.track(@activity,current_user) 
+            @activity.liked_by @user, :vote_scope => 'accept'
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render json: @activity, status: :created, location: @activity }
       else

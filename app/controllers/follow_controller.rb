@@ -6,9 +6,15 @@ class FollowController < ApplicationController
  
     @user = current_user
     @loc = @user.location
-    mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
-    Time.zone = mytimezone
-    @mytime = Time.zone.now
+
+    
+    
+        if NearestTimeZone.to(@user.latitude,@user.longitude)
+          @mytime = NearestTimeZone.to(@user.latitude,@user.longitude)
+          @timenow = Time.now.in_time_zone(@mytime)
+        else
+          @timenow = Time.now
+        end
 
   end
   

@@ -8,6 +8,7 @@ class GeneralController < ApplicationController
    
     @user = User.find(@activity.user_id)
     @userparticipating2 = @activity.votes.where(:vote_scope => 'accept').map(&:voter).uniq
+    @userparticipating = @activity.votes.where(:vote_scope => nil).map(&:voter)    
     
     @useractivity = @user
     @activity2 = Activity.find(params[:id])
@@ -56,6 +57,7 @@ class GeneralController < ApplicationController
   def unfollow2
       @activity2 = Activity.find(params[:id])
       @activity2.unliked_by current_user
+      @activity2.unliked_by current_user, :vote_scope => 'accept'
       respond_to do |format|
          format.js {}
       end
@@ -139,6 +141,8 @@ class GeneralController < ApplicationController
      end
      
   end
+  
+
   
   def newsletter
     @email = params[:email]

@@ -66,7 +66,11 @@
                                 <div class="editor-content">
                                     <h3 class="rs title-inside"><%= @activity.title %></h3>
                                     <p class="rs post-by">by <a href="#" class="fw-b fc-gray be-fc-orange"><%= @useractivity.username %></a> in <span class="fw-b fc-gray"><%= @activity.location %></span></p>
-                                    <p><%= @activity.about %></p>
+                                    <p><%= @activity.about %></p> </br>
+<% if @activity.website = 'www' || @activity.website.empty? %>
+<% else %>
+<p> Please visit the activity website at: <%= @activity.website %> </p>
+<% end %>
                                     <div class="social-sharing">
                                         <!-- AddThis Button BEGIN -->
                                         <div class="addthis_toolbox addthis_default_style">
@@ -98,7 +102,7 @@
                         <div>
                             <h3 class="rs active alternate-tab accordion-label">Facebook Comments</h3>
                             <div class="tab-pane accordion-content">
-              <div class="fb-comments" data-href="http://www.woomatch.com" data-numposts="5" data-colorscheme="light"></div>
+              <div class="fb-comments" data-href="http://www.woomatch.com/activity/<%=@activity.id %>" data-numposts="5" data-colorscheme="light"></div>
                             </div><!--end: .tab-pane(Comments) -->
                         </div>
 

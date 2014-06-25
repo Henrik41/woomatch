@@ -76,9 +76,9 @@
 <% end %>
 </br>
 
-		           <%=@userview.sex%></br> Age: <%=  @userview.age  %> 
-		
-		  <% @userview.status %></br>
+		           <%=@userview.sex%></br> Age: <%=  @userview.age  %> </br>
+	
+		  <%= @userview.status %></br>
 		                    
 		
 																				                            <div class="line-progress">
@@ -138,7 +138,9 @@
 			<% end %>
 		
 
-									<h3>Where is <%=@userview.username%>?</h3> <%= @myip %>
+									<h3>Where is <%=@userview.username%>?</h3> 
+									</br><%=@userview.location %>
+									<%= @myip %>
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@userview.latitude}%2C#{@userview.longitude}" %>  
 				                   </div>
 

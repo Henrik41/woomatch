@@ -122,7 +122,7 @@
 									                                        <div class="val">
 
 
-									<%= f.text_field :title, :class => 'span2 validate[required,minSize[3],maxSize[20]] txt', :id => 'txt_name1', :placeholder => 'Enter an activity title' %>
+									<%= f.text_field :title, :class => 'span2 validate[required,minSize[3],maxSize[30]] txt', :id => 'txt_name1', :placeholder => 'Enter an activity title' %>
 									                                            <p class="rs description-input">Give a descriptive name to your Activity</p>
 									                                        </div>
 									                                    </div>
@@ -238,7 +238,7 @@
 																					<div class="row-item clearfix">
 																																What is the price?	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-																																  <%= f.select(:recurrent, [['Free'], ['0-20$'], ['21$-50$'], ['51$-100$'],['101$-500$'],['501$-100$'],['>1000$']], {}, { :class => 'my_style_class' }) %>
+																																  <%= f.select(:price, [['Free'], ['0-20$'], ['21$-50$'], ['51$-100$'],['101$-500$'],['501$-100$'],['>1000$']], {}, { :class => 'my_style_class' }) %>
 
 																																		</div>
 									                                    <div class="row-item clearfix">

@@ -48,7 +48,6 @@ post "general/followall/:id", to: 'general#followall'
 #profile
   get 'activities/myactivities'
   get "profile/edit", to: 'profile#edit', as: 'profilepage'
-
   get '/profile/:id', to: 'profile#show'
   put "profile/update"
   

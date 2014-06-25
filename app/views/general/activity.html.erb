@@ -15,7 +15,8 @@
 				
 				
 				<div id = <%= @num %>>
-					
+	
+			
 				 	<% if current_user.following?(@activity) %>
 
 					<%= form_tag({:action => 'unfollow', :id => @activity.id}, :remote => true) do %>
@@ -87,6 +88,9 @@
 				                      <li><a href="#" class="be-fc-orange">Followers (<%= @activity.followers.count %>)</a></li>
 
 				                      <li><a href="#" class="be-fc-orange">Facebook Comments</a></li>
+				
+				 <li><a href="#" class="be-fc-orange">Participants</a></li>
+				
 				                    </ul>
 				                    <div class="tab-content">
 				                        <div>
@@ -95,7 +99,11 @@
 				                                <div class="editor-content">
 				                                    <h3 class="rs title-inside"><%= @activity.title %></h3>
 				                                    <p class="rs post-by">by <a href="#" class="fw-b fc-gray be-fc-orange"><%= @useractivity.username %></a> in <span class="fw-b fc-gray"><%= @activity.location %></span></p>
-				                                    <p><%= @activity.about %></p>
+				                                    <p><%= @activity.about %></p></br>
+													<% if @activity.website = 'www' || @activity.website.empty? %>
+													<% else %>
+													<p> Please visit the activity website at: <%= @activity.website %> </p>
+													<% end %>
 				                                    <div class="social-sharing">
 				                                        <!-- AddThis Button BEGIN -->
 				                                        <div class="addthis_toolbox addthis_default_style">
@@ -114,8 +122,8 @@
 				                                </div>
 				                            </div><!--end: .tab-pane(About) -->
 				                        </div>
-				                 <div>
-				                            <h3 class="rs alternate-tab accordion-label">Followers (5)</h3>
+				                        <div>
+				                            <h3 class="rs alternate-tab accordion-label">Followers (<%= @activity.followers.count %>)</h3>
 				                            <div class="tab-pane accordion-content">
 				<%= render 'general/whosfollowing' %>
 				                                <div class="project-btn-action">
@@ -124,21 +132,66 @@
 				                                </div>
 				                            </div><!--end: .tab-pane(Backers) -->
 				                        </div>
-			
-			<%	@userparticipating2.each do |f| %>
-				<% if f.id == current_user %>
-				                        <div>
-				                            <h3 class="rs active alternate-tab accordion-label">Facebook Comments</h3>
-				                            <div class="tab-pane accordion-content">
-				                  <div class="fb-comments" data-href='http://localhost:3000/<%= @activity.id %>' data-numposts="5" data-colorscheme="light"></div>
-				                            </div><!--end: .tab-pane(Comments) -->
+	
+		<div>
+											<h3 class="rs active alternate-tab accordion-label">Facebook Comments</h3>
+	<div class="tab-pane accordion-content">
+												  
+		<% if current_user.liked? @activity, :vote_scope => 'accept' %>	
+				                            
+	<div class="fb-comments" data-href='http://www.woomatch.com/activity/<%= @activity.id %>' data-numposts="5" data-colorscheme="light"></div>
+	                        
 				
-				<% else %>
-				Register here
-				<% end %>
-				<% end %>
-				                        </div>
+		<% else %>
+				  <h2>You have to be accepted for this activity in order to see comments <h2>
+			
+		<% end %> 
+	 </div> <!--end: .tab-pane(Comments) -->	
+		</div>
+		
+		
+		<div>
+			<h3 class="rs active alternate-tab accordion-label">Participants</h3>
+            <div class="tab-pane accordion-content">
+	</br>
+		<% if current_user.liked? @activity, :vote_scope => 'accept' %>	
+            			<div id='foo2'>
+													
+						<% @userparticipating2.each do |f| %>
+
+										</br>			             
+							<div class="media">
+							<a href="#" class="thumb-left">
+									<div class="media-body">
+									<% if f.avatar.url(:mini) %>
+								                  <%= link_to (image_tag f.avatar.url(:supermini)), '/profile/'+ f.id.to_s %> 
+								    <% else %>
+								<%= image_tag '/assets/ex/blankmini.jpg'%>
+							    	<% end %>					                   
+						
+												                       
+											<a href="/profile/<%= f.id %>" class="be-fc-orange fw-b"><%= f.username %></a>
+</br>
+					
+							
+							</div>
+							</div>
+							<% end%>
+							</div>
+	<% end%>
+	</br>
+
+            </div>
+	    
+	
+		
+		</div>
+				
+				
+				
 				                      </div>
+				
+				
 				                </div><!--end: .project-tab-detail -->
            </div>
         </div><!--end: .content -->
@@ -156,16 +209,62 @@
 
 					<% @num2 = 'followid2' + @activity2.id.to_s %>
 					<div id =<%= @num2 %>>
-					 	<% if @activity2.voted_on_by? current_user  %>
+						
+							<% if @activity.enddate < @mytime %>
+							
+										<div class = 'a btn btn-green btn-buck-project'>	
+									
+														<span class="lbl">This activity ended</span>
+								                        <span class="desc">Let user know your still interested</span>
+										<%=  link_to_modal "Contact me", "#demo-form2", :class=>"a btn btn-green btn-buck-project" %>
+				</div>
+
+																<div id="demo-form2" class="demo-description" style="display: none; ">
+																  <p>
+
+																<b>	 Write me an Email</b>:
+																	    <br />
+
+
+
+
+
+																		<div class="theform2">
+																										<%= form_tag({:controller => 'conversation', :action => 'sendmail', :id => @user.id}, :remote => true) do %>
+																						<%= text_area_tag(:body, content= 'Hey ' + @user.username + '. I would love to participate to the activity ' + @activity2.title + '. Please try to make a new one.', {:cols => '50', :rows => '10'}) %>			
+
+																										<%= button_tag(type: 'submit', id: "search") do %>
+
+
+														<span class="btn btn-green">Send it</span> 
+																										<% end%> 
+																										<% end%>
+														</div>
+
+
+
+
+																  </p>
+																</div>
+
+					
+								
+							
+						
+					 			<% elsif (current_user.liked? @activity2) || (current_user.liked? @activity2, :vote_scope => 'accept')  %>
 
 						<%= form_tag({:action => 'unfollow2', :id => @activity2.id}, :remote => true) do %>
 						<%= button_tag(type: 'submit', class: "a btn btn-green btn-buck-project") do %>
 						<span class="lbl">I'm already registered</span>
                         <span class="desc">unregister</span>
-						<%end%>
-						 <% end %>
-
-					<% else %>
+								<%end%>
+						 		<% end %>
+							
+								
+						
+							
+						<% else %>
+						
 							<%= form_tag({:action => 'follow2', :id => @activity2.id}, :remote => true) do %>
 					
 						<%= button_tag(type: 'submit', class: "a btn btn-green btn-buck-project") do %>
@@ -174,7 +273,8 @@
 						<%end%>
 						
 					 		<% end %>
-					<%end%>
+				
+				   <% end %>
 
 					</div>
                 
@@ -195,8 +295,40 @@
                         </div>
                     </div>
                     <div class="author-action">
-                        <a class="btn btn-red" href="#">Contact me</a>
-                        <a class="btn btn-white" href="#">See my full bio</a>
+	
+  
+							<%=  link_to_modal "Contact me", "#demo-form", :class=>"bb btn btn-red" %>
+
+								<div id="demo-form" class="demo-description" style="display: none; ">
+								  <p>
+
+								<b>	 Write me an Email</b>:
+									    <br />
+
+
+
+
+
+										<div class="theform">
+																		<%= form_tag({:controller => 'conversation', :action => 'sendmail', :id => @user.id}, :remote => true) do %>
+														<%= text_area_tag(:body, content= @text, {:cols => '50', :rows => '10'}) %>			
+
+																		<%= button_tag(type: 'submit', id: "search") do %>
+
+
+						<span class="btn btn-green">Send it</span> 
+																		<% end%> 
+																		<% end%>
+						</div>
+
+
+
+
+								  </p>
+								</div>
+
+
+                        <a class="btn btn-white" href='/profile/<%= @user.id%>'>See my full bio</a>
                     </div>
                 </div>
             </div><!--end: .project-author -->
