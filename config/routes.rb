@@ -90,6 +90,8 @@ ActiveAdmin.routes(self)
       member do
         get :follow
         get :unfollow
+        get :block
+        get :unblock
       end
     end
    put 'setting/update'

@@ -43,11 +43,15 @@ class ProfileController < ApplicationController
     @user = current_user
     @useronline = User.online.find(:all, :limit => 9)
     @loc = @user.location
-    @interestcount = @user.userinterests.find(:all).count
-    @activitiescount = @user.activities.where(:user_id => @user.id).count
+    
+    
     @completion = @user.completion
     
     @userview = User.find(params[:id])
+    
+    @interestcount = @userview.userinterests.find(:all).count
+    @activitiescount = @userview.activities.where(:user_id => @userview.id).count
+    
     @activity = Activity.first
     @useronline = User.online.find(:all, :limit => 9)
     
@@ -142,6 +146,19 @@ class ProfileController < ApplicationController
       flash[:error] = "You must <a href='/users/sign_in'>login</a> to unfollow #{@user.monniker}.".html_safe
     end
   end
+  
+  def block
+    @user = User.find(params[:id])
+    @user.vote_by :voter => current_user    
+    redirect_to :back
+  end
+  
+  def unblock
+     @user = User.find(params[:id])
+     current_user.unvote_for @user 
+     redirect_to :back
+  end
+  
   
 
 end

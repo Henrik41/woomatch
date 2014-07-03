@@ -45,7 +45,7 @@ gem 'mailboxer'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "acts_as_follower", '~> 0.1.1'
-gem 'acts_as_votable', '~> 0.7.1'
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'ransack'
 gem "kaminari"
 gem 'jQuery-Validation-Engine-rails', :git => 'git@github.com:Henrik41/jQuery-Validation-Engine-rails.git'

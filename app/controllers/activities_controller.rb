@@ -55,8 +55,8 @@ class ActivitiesController < ApplicationController
       end
     
    
-    @userparticipating = @activity.votes.where(:vote_scope => nil).map(&:voter)    
-    @userparticipating2 = @activity.votes.where(:vote_scope => 'accept').map(&:voter).uniq
+    @userparticipating = @activity.votes_for(:vote_scope => nil).map(&:voter)    
+    @userparticipating2 = @activity.votes_for(:vote_scope => 'accept').map(&:voter).uniq
    
     
     respond_to do |format|

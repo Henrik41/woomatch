@@ -32,7 +32,7 @@ PROFILE_COMPLETENESS = %w[title about location start_time end_time start_date en
     if self.numpart.nil?
       100
     else
-      self.votes.size.to_f/self.numpart.to_f * 100
+      self.votes_for.size.to_f/self.numpart.to_f * 100
     end
   end
 

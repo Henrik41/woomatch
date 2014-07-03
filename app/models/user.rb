@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
      acts_as_followable
      acts_as_follower
       acts_as_voter
+       acts_as_votable
   validates_presence_of  :username
   validates_length_of :username, :minimum => 1, :maximum => 40
   validates_length_of :about, :minimum => 0, :maximum => 300, :allow_blank => true

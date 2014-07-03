@@ -86,8 +86,12 @@
 <%= link_to 'Delete', trash_path(:conversation_id => c.id), { :method => :post , :style =>'color:#ffffff' } %>
 </div>
 
+<% if current_user.voted_on? whois[0] %>
 
-
+<div class="btn btn-black" ><%= link_to 'Unblock', {:controller => 'profile', :action => 'unblock', :id => whois[0].id}, {:style =>'color:#ffffff'}    %></div>
+<% else %>
+<div class="btn btn-black" ><%= link_to 'Block', {:controller => 'profile', :action => 'block', :id => whois[0].id}, {:style =>'color:#ffffff'}    %></div>
+<% end %>
 					</div>
 							</div>
 				  </div>
