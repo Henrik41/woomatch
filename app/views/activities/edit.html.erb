@@ -8,7 +8,7 @@
          <div class="clear"></div>
 
 								
-                               	<%= nested_form_for @activity, :html => { :multipart => true } do |f| %>
+                               	<%= nested_form_for @activity, :html => { :multipart => true, :id => "form_id" } do |f| %>
 	
 	
   <div class="home-popular-project">
@@ -113,7 +113,7 @@
 									                                        <div class="val">
 
 
-									<%= f.text_field :title, :class => 'txt', :id => 'txt_name1', :placeholder => 'Enter an activity title' %>
+									<%= f.text_field :title, :class => 'span2 validate[required,minSize[3],maxSize[20]] txt', :id => 'txt_name1', :placeholder => 'Enter an activity title' %>
 									                                            <p class="rs description-input">Give a descriptive name to your Activity</p>
 									                                        </div>
 									                                    </div>
@@ -135,7 +135,7 @@
 									                                        <label class="lbl" for="Datepicker">Starting Day:</label>
 									                                        <div class="val">
 
-									<%= f.text_field :start_date, :class => 'txt datepicker',  :value => f.object.start_date %>     											</br>
+									<%= f.text_field :start_date, :class => 'validate[required,future[NOW]] text-input txt datepicker',  :value => f.object.start_date %>   											</br>
 
 									                                            <p class="rs description-input">What date is your event?</p>
 									                                        </div>
@@ -163,7 +163,7 @@
 									                                  <div class="row-item clearfix">
 									                                        <label class="lbl" for="Datepicker">Ending Day:</label>
 									                                        <div class="val">
-									                                           <%= f.text_field :end_date, :class => 'txt datepicker', :value => f.object.end_date %>		</br>
+									                                           <%= f.text_field :end_date, :class => 'validate[required,future[now]] text-input txt datepicker', :value => f.object.end_date %>		</br>
 
 
 
@@ -195,7 +195,7 @@
 									                                        <div class="val">
 
 
-									<%= f.text_area :about, :class => 'txt fill-width', :id => 'txt_bio' %>
+									<%= f.text_area :about, :class => 'span2 validate[required,minSize[3],maxSize[300]] txt fill-width', :id => 'txt_bio' %>
 									                                            <p class="rs description-input">We suggest a short description. Talk about what is fun about this activity and why people should join.</p>
 									                                        </div>
 									                                    </div>
@@ -443,7 +443,7 @@ $(document).ready(function(){
 
 <script>
 $(function() {
-  $(".datepicker").datepicker({ dateFormat: 'D, dd M yy' });
+  $(".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
 });
 </script>
 

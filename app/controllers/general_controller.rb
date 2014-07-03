@@ -1,5 +1,9 @@
 class GeneralController < ApplicationController
   def activity
+    mytimezone = NearestTimeZone.to(current_user.latitude,current_user.longitude)
+    Time.zone = mytimezone
+    @mytime = Time.zone.now
+    
     @activity = Activity.find(params[:id])
     @user = User.find(@activity.user_id)
     @useractivity = @user
