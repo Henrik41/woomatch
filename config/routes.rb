@@ -7,6 +7,8 @@ Woo::Application.routes.draw do
   get "people/index"
 
   get 'start/uservalide'
+  
+  get "general/activity/:id", to: 'general#activity'
 
 #general
 
@@ -46,7 +48,6 @@ post "general/followall/:id", to: 'general#followall'
 #profile
   get 'activities/myactivities'
   get "profile/edit", to: 'profile#edit', as: 'profilepage'
-
   get '/profile/:id', to: 'profile#show'
   put "profile/update"
   
@@ -75,8 +76,9 @@ post "general/followall/:id", to: 'general#followall'
     get "/contacts/:provider/contact_callback" => "invites#index"
     get "/contacts/hotmail/callback" => "invites#index"
     
-
-
+#contact
+    match 'contact' => 'contact#new', :as => 'contact', :via => :get
+    match 'contact' => 'contact#create', :as => 'contact', :via => :post
 
 devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks"  }
 

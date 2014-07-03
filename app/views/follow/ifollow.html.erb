@@ -15,8 +15,9 @@
                <div class="project-tab-detail tabbable accordion">
 
 			<ul class="nav nav-tabs clearfix">
-			 	<li class="active"><a href="#">People I follow</a></li>
-			    <li><a href="#" class="be-fc-orange">Activity I follow</a></li>
+			 	<li class="active"><a href="#">People I Follow</a></li>			
+			    <li><a href="#" class="be-fc-orange">Activity I Follow</a></li>
+		    	<li> <a href="#" class="be-fc-orange">People Following Me</a></li>
 			</ul>
 						
 			
@@ -40,6 +41,7 @@
 				</div>
 				</div>
  
+
 	   		
 	
 			     <h3 class="rs alternate-tab accordion-label">Past Activities</h3>
@@ -59,7 +61,23 @@
 			     </div>
 			                      
 			
-			 </div>
+			     <h3 class="rs alternate-tab accordion-label">People Following Me</h3>
+			     <div class="tab-pane accordion-content">
+	              
+								<div class="grid_12">
+									<div class="content-info-short clearfix">
+												<h2> People Following Me</h2>
+													<% @userfollowingme.each do |f| %>
+
+													<%= render :partial =>'/follow/grid', :locals => {:f => f} %>
+
+												
+													<% end %>
+									</div> <!--content-info-short clearfix--> 
+			 					</div><!--end: .tab-pane -->
+			     </div>
+			
+		    	 </div>
 				</div>
 
   						

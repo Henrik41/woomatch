@@ -16,7 +16,7 @@
                     <p class="rs description">Know people that would be interested in participating at this activity? Send them an email know</p>
 </br>
 			       <div class="bottom-project-info clearfix">
-						<div class="btn btn-red" id="myButton"> Email Friends </div> <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="60" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+						<div class="btn btn-red" id="myButton"> Email Friends </div> <div class="fb-like" data-href="http://www.woomatch.com" data-width="60" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
 
 			            
 			        </div>
@@ -38,7 +38,7 @@
 	<% @checkuser.each do |u| %>
                     <div class="media">   
 	<% if u.avatar.url(:mini) %>  
-	 <%= link_to image_tag(u.avatar.url(:mini)), {:controller => 'profile', :action =>'show', :id => u.id }, :class => "thumb-left" %>
+	 <%= link_to (image_tag u.avatar.url(:mini), :width => '101', :height => '101', :class => 'onbottom'), {:controller => 'profile', :action =>'show', :id => u.id }, :class => "thumb-left2" %>
 	
 
 	<% else %>      	
@@ -49,8 +49,8 @@
                         <div class="media-body">
 
 
-                            <h4 class="rs "><a href="#" class="be-fc-orange fw-b"><%= u.username %></a></h4>
-                            <h4 class="rs pb10"><a href="#" class="be-fc-orange fw-b">From: <%= u.location %></a></h4>
+                            <h4 class="rs "><a href='/profile/<%= u.id %>' class="be-fc-orange fw-b"><%= u.username %></a></h4>
+                            <h4 class="rs pb10"><a href='/profile/<%= u.id %>' class="be-fc-orange fw-b">From: <%= u.location %></a></h4>
 
                             <a class="btn btn-red" href="/profile/<%= u.id %>">View Profile</a>
 </br>
@@ -85,10 +85,11 @@
 			</script>
 			
 			<div id="fb-root"></div>
+			<div id="fb-root"></div>
 			<script>(function(d, s, id) {
 			  var js, fjs = d.getElementsByTagName(s)[0];
 			  if (d.getElementById(id)) return;
 			  js = d.createElement(s); js.id = id;
-			  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=516849445076378";
+			  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=516849445076378&version=v2.0";
 			  fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));</script>

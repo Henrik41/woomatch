@@ -1,14 +1,21 @@
 class FollowController < ApplicationController
   def ifollow
     @userfollowing = current_user.following_by_type('User')
-    
+    @userfollowingme = current_user.followers    
     @activityfollowing = current_user.following_by_type('Activity')
-    
+ 
     @user = current_user
-   
-    mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
-     Time.zone = mytimezone
-     @mytime = Time.zone.now
+    @loc = @user.location
+
+    
+    
+        if NearestTimeZone.to(@user.latitude,@user.longitude)
+          @mytime = NearestTimeZone.to(@user.latitude,@user.longitude)
+          @timenow = Time.now.in_time_zone(@mytime)
+        else
+          @timenow = Time.now
+        end
+
   end
   
   def list

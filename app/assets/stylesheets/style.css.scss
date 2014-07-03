@@ -374,7 +374,10 @@ input.btn  {
    
 }
 
+.itsright{
 
+float: right;
+}
 .btn-red{
     border: 1px solid #b53b2c;
     color: #FFF;
@@ -690,6 +693,21 @@ input.btn  {
     float: left;
     margin-right:18px;
     margin-top: 2px;
+}
+
+.media > .thumb-left2{
+
+    float: left;
+    margin-right:18px;
+    margin-top: 2px;
+    width: 100px;
+	height: 100px;
+    border: 1px solid #d4d4d4;
+    padding: 4px;
+    background: #FFF;
+    border-radius: 1px;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
 }
 
 .media > .thumb-right{
@@ -1570,6 +1588,11 @@ background: none;
 
 }
 
+.tiny-desc{
+height: 42px;
+
+}
+
 .content-info-short .tiny-desc .follow{
     float: right;
 
@@ -1622,7 +1645,7 @@ background: none;
     background: url(asset_path('bg-s-in.png',images)) no-repeat;
     width: 62px;
     height: 62px;
-    line-height: 62px;
+    line-height: 42px;
 }
 .project-short .line-progress{
     padding: 10px 0 18px 0;
@@ -1696,6 +1719,7 @@ background: none;
     margin-bottom: 2px;
     font-size: 1.154em;
 }
+.rs.acticle-title{ height: 42px;}
 .sml-thumb .content-info-short .acticle-title a{
     font-family: 'Open Sans', sans-serif;
 	font-weight: 700;
@@ -3296,6 +3320,8 @@ height: 100px;
 
 }
 
+.pagme .thumb-img {height:0;width:0;}
+
 .buttonspace{
   float: right;
   width:100%;
@@ -3380,4 +3406,8 @@ width: 100%;
 #demo-form{width:550px; }
 
 
+.space1{height: 16px;}
 
+.miniactivity{
+height:40px;
+}

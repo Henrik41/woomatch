@@ -1,4 +1,9 @@
-
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#form_id2").validationEngine();
+	<% var2 = Date.today.to_s %>
+});
+</script>
 
 
 	
@@ -8,7 +13,11 @@
          <div class="clear"></div>
 
 								
+<<<<<<< HEAD
                                	<%= nested_form_for @activity, :html => { :multipart => true, :id => "form_id" } do |f| %>
+=======
+                               	<%= nested_form_for @activity, :id => "form_id", :html => { :multipart => true, :id => "form_id2" }, :validate => :true do |f| %>
+>>>>>>> a2b36843b540aa598fbe445d073b5b818fbc8417
 	
 	
   <div class="home-popular-project">
@@ -72,23 +81,34 @@
 						 Activity Completion <%= @completion2 %> %
 							<div class="line-progress">
 					            <div class="bg-progress">
-					                <span  style="width: <%= @completion %>%;"></span>
+					                <span class="success" style="width: <%= @completion2 %>%;"></span>
+									
 					            </div>
 					        </div>
 					        <div class="group-fee clearfix">
 					            <div class="fee-item">
 					                <p class="rs lbl">Price</p>
-					                <span class="val">Free</span>
+					                <span class="val"><%= f.object.price %></span>
 					            </div>
 					            <div class="sep"></div>
 					            <div class="fee-item">
 					                <p class="rs lbl">Like</p>
-					                <span class="val">7</span>
+					                <span class="val"><%= f.object.followers_count %></span>
 					            </div>
 					            <div class="sep"></div>
 					            <div class="fee-item">
 					                <p class="rs lbl">Time Left</p>
-					                <span class="val">25</span>
+					                <span class="val">
+					                	
+
+										<% if f.object.end_time < @mytime %>
+																					Ended
+																					<% else %>
+
+											<%= distance_of_time_in_words(@mytime, f.object.ending) %>
+											<% end %>
+											
+					                </span>
 					            </div>
 					        </div>
 					    </div>
@@ -125,8 +145,15 @@
 																			            <span class="help-inline"><%= @activity.errors[:location].join(", ")%></span>  
 																	<%end%>	
 
-									<%= f.text_field :location, :class => 'address-picker-input', :id => 'txt_location', :placeholder => 'Where is your event?' %>      
+									<%= f.text_field :location, :class => 'validate[required] address-picker-input', :id => 'txt_location', :placeholder => 'Where is your event?' %>      
 									
+										<script type="text/javascript">
+										    AddressPickerRails.Pickers.applyOnReady({
+											  'onLoad':function (picker) {
+											    console.debug("callback for a single pond with ID '%s'", picker.getIdPrefix());
+											  }
+											});
+										</script>
 																                                
 									                                        </div>
 									                                    </div>
@@ -135,7 +162,11 @@
 									                                        <label class="lbl" for="Datepicker">Starting Day:</label>
 									                                        <div class="val">
 
+<<<<<<< HEAD
 									<%= f.text_field :start_date, :class => 'validate[required,future[NOW]] text-input txt datepicker',  :value => f.object.start_date %>   											</br>
+=======
+									<%= f.text_field :start_date, :class => 'validate[required,future[' + Date.today.to_s + ']] text-input txt datepicker', :id => 'txt45',  :value => f.object.start_date %>   											</br>
+>>>>>>> a2b36843b540aa598fbe445d073b5b818fbc8417
 
 									                                            <p class="rs description-input">What date is your event?</p>
 									                                        </div>
@@ -147,7 +178,7 @@
 									                                        <label class="lbl">Starting Time:</label>
 									                                        <div class="val">
 									<div class='txt2'>
-										    <%= f.text_field :start_time, :name => 's1Time1', :value => f.object.start_time.strftime("%I:%M %p")  %>
+										    <%= f.text_field :start_time, :name => 's1Time1', :class => 'span2 validate[required] txt', :id => 'txttime1', :value => f.object.start_time.strftime("%I:%M %p") %>
 									                                          <br/>
 														</div>
 
@@ -163,7 +194,11 @@
 									                                  <div class="row-item clearfix">
 									                                        <label class="lbl" for="Datepicker">Ending Day:</label>
 									                                        <div class="val">
+<<<<<<< HEAD
 									                                           <%= f.text_field :end_date, :class => 'validate[required,future[now]] text-input txt datepicker', :value => f.object.end_date %>		</br>
+=======
+									                                           <%= f.text_field :end_date, :class => 'validate[required,future[' + Date.today.to_s + '],funcCall[geThan]] text-input txt datepicker', :value => f.object.end_date %>		</br>
+>>>>>>> a2b36843b540aa598fbe445d073b5b818fbc8417
 
 
 
@@ -177,7 +212,7 @@
 									                                        <label class="lbl">Ending Time:</label>
 									                                        <div class="val">
 									<div class='txt2'>
-									                                                <%= f.text_field :end_time, :name => 's1Time2', :value => f.object.end_time.strftime("%I:%M %p")  %> <br/>
+									                                                <%= f.text_field :end_time,:class => 'validate[required,funcCall[geThan2]] txt', :name => 's1Time2', :id => 'txttime2',  :value => f.object.end_time.strftime("%I:%M %p")  %> <br/>
 														</div>
 
 
@@ -195,7 +230,11 @@
 									                                        <div class="val">
 
 
+<<<<<<< HEAD
 									<%= f.text_area :about, :class => 'span2 validate[required,minSize[3],maxSize[300]] txt fill-width', :id => 'txt_bio' %>
+=======
+									<%= f.text_area :about, :class => 'span2 validate[required,minSize[3],maxSize[600]] txt fill-width', :id => 'txt_bio' %>
+>>>>>>> a2b36843b540aa598fbe445d073b5b818fbc8417
 									                                            <p class="rs description-input">We suggest a short description. Talk about what is fun about this activity and why people should join.</p>
 									                                        </div>
 									                                    </div>
@@ -222,7 +261,7 @@
 																					<div class="row-item clearfix">
 																																What is the price?	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-																																  <%= f.select :price, [['Free'], ['0-10$'], ['11$-20$'], ['21$-30$']], :class =>"txt" %>
+																																  <%= f.select :price, [['Free'], ['0-20$'], ['21$-50$'], ['51$-100$'],['101$-500$'],['501$-100$'],['>1000$']], :class =>"txt" %>
 
 																																		</div>
 									                                    <div class="row-item clearfix">
@@ -254,46 +293,58 @@
                             </div>
                         </div>
 
-                        <div class="bottom-project-info clearfix">
-								<a href="#" class="btn btn-red" data-reveal-id="myModal">
-									
-									Email Friends 
-								</a>
-							
-								 <div class="btn btn-blue"><a href="#" >
-                               <%= image_tag 'thumbup.png'%>
-                            </a>Facebook</div>
-                            <div class="line-progress">
-                                <div class="bg-progress">
-                                    <span class="success" style="width: 98%"></span>
-                                </div>
-                            </div>
-                            <div class="group-fee clearfix">
+ <div class="bottom-project-info clearfix">
+																				
+																				<a href="#" class="btn btn-red" data-reveal-id="myModal">
 
-                                <div class="fee-item">
-                                    <p class="rs lbl">Credibility</p>
-                                    <span class="val">98%</span>
-                                </div>
-                                <div class="sep"></div>
-                                <div class="fee-item">
-                                    <p class="rs lbl">Interested</p>
-                                    <span class="val">100</span>
-                                </div>
-                                <div class="sep"></div>
-                                <div class="fee-item">
-                                    <p class="rs lbl">Days Left</p>
-                                    <span class="val">18</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end: .grid_3 > .project-short-->
+																					Email Friends 
+																				</a>
+
+																				 <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="60" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+
+												                            <div class="line-progress">
+												                                <div class="bg-progress">
+
+												                                </div>
+												                            </div>
+																			 Activity Profile Completion
+						<%= @completion2 %> %									                            <div class="line-progress">
+														                                <div class="bg-progress">
+													                                    <span class="success" style="width: <%= @completion2 %>%;"></span>
+														                                </div>
+														                            </div>
+														                            <div class="group-fee clearfix">
+
+
+														                                <div class="fee-item">
+														                                    <p class="rs lbl">Nb Activities</p>
+														                                    <span class="val"><%= @activitiescount %></span>
+														                                </div>
+														                                <div class="sep"></div>
+														                                <div class="fee-item">
+														                                    <p class="rs lbl">Interests</p>
+														                                    <span class="val"><%= @interestcount  %> </span>
+														                                </div>
+														                                <div class="sep"></div>
+														                                <div class="fee-item">
+														                                    <p class="rs lbl">Since</p>
+														                                    <span class="val"><%=distance_of_time_in_words(f.object.created_at,Time.now)%></span>
+														                                </div>
+														                            </div>
+														                        </div>								                        
+												                    </div>
+												                </div><!--end: .grid_3 > .project-short-->
+												           
+												         
+
                 <div class="clear clear-2col"></div>
 
 				    <div class="clear clear-2col"></div>
+
 	         	<% @activitygrid.each do |a| %>
 					 <%= render :partial => "/start/grid", :locals => {:a => a} %> 
-					<% end %>
+				<% end %>
 
 					</div>
 
@@ -301,78 +352,7 @@
         </div>
     </div><!--end: .home-popular-project -->
 
-
-<footer id="footer">
-        <div class="container_12 main-footer">
-            <div class="grid_3 about-us">
-                <h3 class="rs title">Want help to promote your event?</h3>
-                <p class="rs description">Woomatch can help you promote your activity or event. Just contact us and we will help you contact thousands of real member ready to go out. </p>
-                <p class="rs email"><a class="fc-default  be-fc-orange" href="mailto:info@megadrupal.com">info@Woomatch.com</a></p>
-                <p class="rs">+1 (800) 555-5555 </p>
-            </div><!--end: .contact-info -->
-            <div class="grid_3 recent-tweets">
-                <h3 class="rs title">Recent Tweets</h3>
-                <div class="lst-tweets" id="sys_lst_tweets">
-                    <p class="rs ta-c fc-white">
-                        loading Twitter <br />
-                        <img src="images/ajax-loader.gif" alt="loading"/>
-                    </p>
-                </div>
-            </div><!--end: .recent-tweets -->
-            <div class="clear clear-2col"></div>
-            <div class="grid_3 email-newsletter">
-                <h3 class="rs title">Newsletter Signup</h3>
-                <div class="inner">
-                    <p class="rs description">Signup for new promotions and activities in your area.</p>
-                    <form action="#">
-                        <div class="form form-email">
-                            <label class="lbl" for="txt-email">
-                                <input id="txt-email" type="text" class="txt fill-width" placeholder="Enter your e-mail address"/>
-                            </label>
-                            <button class="btn btn-green" type="submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div><!--end: .email-newsletter -->
-            <div class="grid_3">
-                <h3 class="rs title">Discover &amp; Promote new activities</h3>
-                <div class="footer-menu">
-                    <ul class="rs">
-                        <li><a class="be-fc-orange" href="#">What is WooMatch</a></li>
-                        <li><a class="be-fc-orange" href="#">Start an Activity</a></li>
-                        <li><a class="be-fc-orange" href="#">Project Guidlines</a></li>
-                        <li><a class="be-fc-orange" href="#">Press</a></li>
-                        <li><a class="be-fc-orange" href="#">Stats</a></li>
-                    </ul>
-                    <ul class="rs">
-                        <li><a class="be-fc-orange" href="#">Staff Picks</a></li>
-                        <li><a class="be-fc-orange" href="#">Popular</a></li>
-                        <li><a class="be-fc-orange" href="#">Recent</a></li>
-
-                        <li><a class="be-fc-orange" href="#">Most Credible Activities </a></li>
-                    </ul>
-                    <div class="clear"></div>
-                </div>
-            </div>
-            <div class="clear"></div>
-        </div>
-        <div class="copyright">
-            <div class="container_12">
-                <div class="grid_12">
-                    <a class="logo-footer" href="index.html"><img src="images/logo-2.png" alt="$SITE_NAME"/></a>
-                    <p class="rs term-privacy">
-                        <a class="fw-b be-fc-orange" href="single.html">Terms & Conditions</a>
-                        <span class="sep">/</span>
-                        <a class="fw-b be-fc-orange" href="single.html">Privacy Policy</a>
-                        <span class="sep">/</span>
-                        <a class="fw-b be-fc-orange" href="#">FAQ</a>
-                    </p>
-                    <p class="rs ta-c fc-gray-dark site-copyright">HTML by <a href="http://megadrupal.com" title="Drupal Developers" target="_blank">Woomatch</a>. Designed by <a href="http://bestwebsoft.com/" title="Web development company" target="_blank">WoomatchDesign</a>.</p>
-                </div>
-                <div class="clear"></div>
-            </div>
-        </div>
-</footer><!--end: #footer -->
+<%= render 'footer/footer'%>
       <% end %>     
 </div>
 
@@ -414,12 +394,37 @@
 			  </p>
 			</div>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        // find the input fields and apply the time select to them.
-        $('input[name="s1Time1"]').ptTimeSelect();
-    });
-</script>
+
+				<script type="text/javascript">
+				    $(document).ready(function(){
+				        // find the input fields and apply the time select to them.
+				        $('input[name="s1Time2"]').ptTimeSelect({
+										onClose:  function() {
+
+				  $('input[name="s1Time2"]').focusout();
+										}
+
+						 });
+						 });
+
+				</script>
+
+
+
+
+
+				<script type="text/javascript">
+				    $(document).ready(function(){
+				            // find the input fields and apply the time select to them.
+					        $('input[name="s1Time1"]').ptTimeSelect({
+											onClose:  function() {
+
+					  $('input[name="s1Time1"]').focusout();
+											}
+
+				    });
+				  });
+				</script>
 
 
 <script type="text/javascript">
@@ -452,10 +457,6 @@ $(function() {
 
 
 
-<script type="text/javascript">
-    AddressPickerRails.Pickers.applyOnReady();
-</script>
-
 
 			
 			<script type="text/javascript">
@@ -473,6 +474,7 @@ $(function() {
 			$("#remote_not_visible").hide();
 			$("#button_out").hide();
 			</script>
+			
 
 			<script>
 			$(document).ready(function(){
@@ -490,3 +492,84 @@ $(function() {
 			    });
 			});
 			</script>
+			
+
+				<script>
+
+				$('#txt45').on('change', function() {
+				  var date2 = this.value ; // or $(this).val()
+
+
+				});
+
+			function geThan(field, rules, i, options){
+	 var startdate = document.getElementsByName('activity[start_date]')[0].value;
+				   var d1 = startdate.split('-');
+				   d1a = new Date(d1[0], d1[1]-1, d1[2]);
+
+				var enddate = field.val();
+				var d2 = enddate.split('-');
+				d2a = new Date(d2[0], d2[1]-1, d2[2]);
+
+				   if (d1a > d2a){
+				   return "Your ending date has to be later then the starting date"
+			}
+				};
+
+
+				</script>
+
+					<script>
+
+					$('#txt45').on('change', function() {
+					  var date2 = this.value ; // or $(this).val()
+
+
+					});
+
+				function geThan2(field, rules, i, options){
+					   var startdate = document.getElementsByName('activity[start_date]')[0].value;
+					   var starttime = document.getElementsByName('s1Time1')[0].value;
+
+					   var d1 = startdate.split('-');
+					   var arr = starttime.split(':');
+					   var hour = parseInt(arr[0]);
+					   var min = parseInt(arr[1]);
+					   d1b = new Date(d1[0], d1[1]-1, d1[2],hour,min);	       
+
+						var enddate  = document.getElementsByName('activity[end_date]')[0].value;
+						var endtime = field.val();
+
+						var e1 = enddate.split('-');
+						var arre = endtime.split(':');
+						var houre = parseInt(arre[0]);
+						var mine = parseInt(arre[1]);
+						d2b = new Date(e1[0], e1[1]-1, e1[2],houre,mine);
+
+						 if (d1b > d2b){
+						   return "Your ending date and time has to be later then the starting date and time"
+					}
+
+					};
+
+
+
+
+					</script>
+
+
+
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=516849445076378";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
+
+			<script type="text/javascript">
+			$(document).ready(function(){
+			    $("#form_id2").validationEngine();
+			});
+			</script>
+			

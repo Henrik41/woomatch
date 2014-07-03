@@ -84,18 +84,18 @@
 		<div class= "wrapper-box">
            <div class="right-panel2">
 					
-								<% @events.each do |activity| %>
+			<% @events.each do |activity| %>
 			
 				<div class="box-white2">
 			
-		        <div class="section_1">
-			<a href="/profile/<%=activity.owner.id %>"> <%= image_tag activity.owner.avatar.url(:supermini) %> </a>
+		        		<div class="section_1">
+							<a href="/profile/<%=activity.owner.id %>"> <%= image_tag activity.owner.avatar.url(:supermini) %> </a>
 					
-    	        </div>
-				    		<%= render_activity activity %> 
+    	        		</div>
+				    		<%= render_activities (activity) %> 
 			    </div>	
 					
-			                	<% end %>
+			 <% end %>
 			
 						    	<div class="pagme"> <%= paginate @events %></div> 
 			

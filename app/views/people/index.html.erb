@@ -15,7 +15,7 @@
     <div class="form-search2">
 	<div class="form2">
 
-<%= form_tag('search/searchbycity') do %>
+<%= form_tag('/search/searchbycity') do %>
   <%= text_field_tag "q",nil, :class => 'address-picker-input', :placeholder => 'Change my city' %>
 
 
@@ -46,6 +46,7 @@
 
 <% @people.each do |a| %>
  <%= render :partial => "grid", :locals => {:a => a} %> 
+
 <% end %>
  <div class="clear"></div>
 <center> <a href="#" class="btn btn-green">View More Things To Do In Your Area</a> </center>

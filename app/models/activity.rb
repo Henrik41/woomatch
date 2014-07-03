@@ -9,6 +9,7 @@ class Activity < ActiveRecord::Base
   geocoded_by :location
   belongs_to :user
   has_many :interests, :dependent => :destroy
+  has_one :visit, :as => :visitable
   accepts_nested_attributes_for :interests, 
                                    :allow_destroy => true
                                   
@@ -87,7 +88,7 @@ PROFILE_COMPLETENESS = %w[title about location start_time end_time start_date en
       else
       end
             
-      progression*100/8
+      progression*100/11
   end
   
 

@@ -1,9 +1,13 @@
+ActionMailer::Base.delivery_method = :smtp 
 ActionMailer::Base.smtp_settings = {
-  :address              => "smtp.gmail.com",
-  :port                 => 587,
-  :domain               => "gmail.com",
-  :user_name            => "henriknafo@gmail.com",
-  :password             => "hnmatrix7374908",
-  :authentication       => "plain",
+  :address              => "smtp.zoho.com",
+  :port                 => 465,
+  :domain               => 'woomatch.com',
+  :user_name            => "admin@woomatch.com",
+  :password             => "qqqqqqqw",
+  :authentication       => :login,
+  :ssl                  => true,
+  :tls                  => true,
+  :content_type         => "text/html",
   :enable_starttls_auto => true
 }

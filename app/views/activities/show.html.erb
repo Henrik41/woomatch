@@ -21,7 +21,7 @@
                     </div><!--end: .top-project-info -->
                     <div class="bottom-project-info clearfix">
 
-                        <div class="project-progress sys_circle_progress" data-percent="87">
+                        <div class="project-progress sys_circle_progress" data-percent="<%= @activity.visit.total_visits rescue 0 %>">
 
                             <div class="sys_holder_sector"></div>
                         </div>
@@ -66,7 +66,11 @@
                                 <div class="editor-content">
                                     <h3 class="rs title-inside"><%= @activity.title %></h3>
                                     <p class="rs post-by">by <a href="#" class="fw-b fc-gray be-fc-orange"><%= @useractivity.username %></a> in <span class="fw-b fc-gray"><%= @activity.location %></span></p>
-                                    <p><%= @activity.about %></p>
+                                    <p><%= @activity.about %></p> </br>
+<% if @activity.website = 'www' || @activity.website.empty? %>
+<% else %>
+<p> Please visit the activity website at: <%= @activity.website %> </p>
+<% end %>
                                     <div class="social-sharing">
                                         <!-- AddThis Button BEGIN -->
                                         <div class="addthis_toolbox addthis_default_style">
@@ -98,7 +102,7 @@
                         <div>
                             <h3 class="rs active alternate-tab accordion-label">Facebook Comments</h3>
                             <div class="tab-pane accordion-content">
-                  <div class="fb-comments" data-href='http://localhost:3000/<%= @activity.id %>' data-numposts="5" data-colorscheme="light"></div>
+              <div class="fb-comments" data-href="http://www.woomatch.com/activity/<%=@activity.id %>" data-numposts="5" data-colorscheme="light"></div>
                             </div><!--end: .tab-pane(Comments) -->
                         </div>
 
@@ -156,11 +160,25 @@
                         <i class="icon iClock"></i>
                         <span class="val"><span class="fw-b">Be there at: </span><%= @activity.start_time.strftime('%I:%M:%S %p') %></span>
                     </div>
+
+<% if @activity.enddate < @timenow %>
+<a class="btn btn-green btn-buck-project" href="/activities/new">
+    <span class="lbl">Activity is Expired</span>
+    <span class="desc">Recreate a new activity</span>
+</a>
+<% else %>
                     <a class="btn btn-green btn-buck-project" href="/activities/<%=@activity.id%>/edit">
                         <span class="lbl">Edit My Activity</span>
                         <span class="desc">Participant will be informed</span>
                     </a>
-                    <p class="rs description">Know people that would be interested in participating at this activity? Send them an email know</p>
+<% end %>
+                    <p class="rs description">Know people that would be interested in participating at this activity? Send them an email know</p></br>
+
+					 <div class="bottom-project-info clearfix">
+							<div class="btn btn-red" id="myButton"> Email Friends </div> <div class="fb-like" data-href="http://www.woomatch.com" data-width="60" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+
+				        </div>
                 </div>
             </div><!--end: .project-runtime -->
             <div class="project-author">
@@ -227,7 +245,7 @@
                     <li>
                         <div class=" pledge-label accordion-label clearfix">
                             <i class="icon iPlugGray"></i>
-                            <span class="pledge-amount">Free acticities</span>
+                            <span class="pledge-amount">Free activities</span>
                             <span class="count-val">(2 of 31)</span>
                         </div>
                         <div class=" pledge-content accordion-content">
@@ -328,10 +346,16 @@
 <%= render 'footer/footer'%>
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=516849445076378";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<script>
+<%= add_gritter('Last visited your activity about ' + distance_of_time_in_words(@timenow,@visitor.updated_at)+' ago', :image => @visitorob.avatar.url(:supermini), :time => 2000, :title => @visitorob.username) %>
+<%= extend_gritter :position => :bottom_right %>
+</script>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=516849445076378&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
+	

@@ -9,7 +9,7 @@ before_filter :get_mailbox
   def sendmail
    
     @para1 = params[:body]
-    @para2 = params[:id]
+    @para2 = params[:id].to_i
 
     @user_receiver = User.find(@para2)
     
@@ -35,7 +35,7 @@ before_filter :get_mailbox
     @conversations =  Kaminari.paginate_array(@mailbox.inbox.all).page(params[:page]).per(5)
     @messages_count = @mailbox.inbox({:read => false}).count
     if current_user.nearbys
-      @checkuser = current_user.nearbys(100,:order => :distance).find(:all, :limit => 3)
+      @checkuser = current_user.nearbys(300,:order => :created_at).last(3)
     else
       @checkuser = User.last(3)
     end
@@ -47,7 +47,7 @@ before_filter :get_mailbox
     @messages_count = @mailbox.inbox({:read => false}).count
     @messages_out_count = @mailbox.sentbox.count
     if current_user.nearbys
-      @checkuser = current_user.nearbys(100,:order => :distance).find(:all, :limit => 3)
+      @checkuser = current_user.nearbys(300,:order => :created_at).last(3)
     else
       @checkuser = User.last(3)
     end
@@ -58,7 +58,7 @@ before_filter :get_mailbox
      @conversation = Kaminari.paginate_array(@con).page(params[:page]).per(6)
      current_user.mark_as_read(@conversation)
      if current_user.nearbys
-       @checkuser = current_user.nearbys(100,:order => :distance).find(:all, :limit => 3)
+       @checkuser = current_user.nearbys(300,:order => :created_at).last(3)
      else
        @checkuser = User.last(3)
      end
@@ -77,7 +77,8 @@ before_filter :get_mailbox
 
   def reply
     conversation = Conversation.find(params[:user][:conversation_id])
-    current_user.reply_to_conversation(conversation, params[:user][:body], 'this is a reply')
+    current_user.reply_to_conversation(conversation, params[:user][:body], 'Reply')
+    
     redirect_to conversation_myinbox_path
   end
 

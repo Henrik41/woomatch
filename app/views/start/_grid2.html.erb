@@ -36,27 +36,7 @@
 	
 	
 <a class="sys_show_popup_login" >	 <%= image_tag(User.find(a.user_id).avatar.url(:supermini), :height =>'30', :width => '30') %> </a>
-			<% @num = 'followid' + a.id.to_s %>
-			
-			<div class= "follow">
-			<div id = <%= @num %>>
-				
-			 	<% if current_user.following?(a) %>
-
-				<%= form_tag({:action => 'unfollow', :id => a.id}, :remote => true) do %>
-				<%= submit_tag 'Unfollow This Activity',  :class => "btn big btn-red" %>
-				
-				
-				 <% end %>
-
-			<% else %>
-					<%= form_tag({:controller => 'general', :action => 'follow', :id => a.id}, :remote => true) do %>
-						<%= submit_tag 'Follow This Activity',  :class => "btn big btn-red" %>
-			 		<% end %>
-			<%end%>
-
-			</div>
-</div> </div>
+</div>
                     <p class="rs title-description"><div class="description_space"><%=a.about.capitalize[0,90]%>...(more)</div></p>
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
@@ -93,12 +73,12 @@ registered people: <%= a.completion %>%
                             <span class="val">
 
 
-<% if a.end_time < @mytime %>
-											Ended
-											<% else %>
-											
-	<%= distance_of_time_in_words(@mytime, a.ending) %>
-	<% end %>
+									<% if a.enddate < @mytime %>
+																				Ended
+																				<% else %>
+
+										<%= distance_of_time_in_words(@mytime, a.ending) %>
+										<% end %>
 	 </span>
 
                         </div>

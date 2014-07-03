@@ -1,6 +1,12 @@
 
 
 <body>
+	<script type="text/javascript">
+	$(document).ready(function(){
+	    $("#form_id2").validationEngine();
+		<% var2 = Date.today.to_s %>
+	});
+	</script>
 	
 <div id="wrapper">
 <%= render "header/header" %>
@@ -8,7 +14,7 @@
          <div class="clear"></div>
 
 								
-                               	<%= nested_form_for @activity, :html => { :multipart => true } do |f| %>
+                               	<%= nested_form_for @activity, :html => { :multipart => true, :id => "form_id2" }, :validate => :true do |f| %>
 	
 	
   <div class="home-popular-project">
@@ -116,7 +122,7 @@
 									                                        <div class="val">
 
 
-									<%= f.text_field :title, :class => 'txt', :id => 'txt_name1', :placeholder => 'Enter an activity title' %>
+									<%= f.text_field :title, :class => 'span2 validate[required,minSize[3],maxSize[30]] txt', :id => 'txt_name1', :placeholder => 'Enter an activity title' %>
 									                                            <p class="rs description-input">Give a descriptive name to your Activity</p>
 									                                        </div>
 									                                    </div>
@@ -126,7 +132,7 @@
 
 																		
 
-									<%= f.text_field :location, :class => 'address-picker-input', :id => 'txt_location', :placeholder => 'Where is your event?' %>    
+									<%= f.text_field :location, :validate => :true, :class => 'span2 validate[required] address-picker-input', :id => 'txt_location', :placeholder => 'Where is your event?' %>    
 									
 
 									<script type="text/javascript">
@@ -144,7 +150,7 @@
 									                                        <label class="lbl" for="Datepicker">Starting Day:</label>
 									                                        <div class="val">
 
-									<%= f.text_field :start_date, :class => 'txt datepicker', :id => 'txt', :placeholder => 'Give us a date' %>     											</br>
+									<%= f.text_field :start_date, :class => 'validate[required,future[' + Date.today.to_s + ']] text-input txt datepicker', :id => 'txt45', :placeholder => 'Give us a date' %>     											</br>
 
 									                                            <p class="rs description-input">What date is your event?</p>
 									                                        </div>
@@ -156,7 +162,7 @@
 									                                        <label class="lbl">Starting Time:</label>
 									                                        <div class="val">
 									<div class='txt2'>
-										    <%= f.text_field :start_time, :name => 's1Time1', :class => 'txt' %>
+										    <%= f.text_field :start_time, :name => 's1Time1', :class => 'span2 validate[required] txt', :id => 'txttime1', :placeholder => 'Give us a time' %>
 									                                          <br/>
 														</div>
 
@@ -172,7 +178,8 @@
 									                                  <div class="row-item clearfix">
 									                                        <label class="lbl" for="Datepicker">Ending Day:</label>
 									                                        <div class="val">
-									                                           <%= f.text_field :end_date, :class => 'txt datepicker' %>		</br>
+										
+									                                           <%= f.text_field :end_date, :class => 'validate[required,future[' + Date.today.to_s + '],funcCall[geThan]] text-input txt datepicker' %>		</br>
 
 
 
@@ -186,7 +193,7 @@
 									                                        <label class="lbl">Ending Time:</label>
 									                                        <div class="val">
 									<div class='txt2'>
-									                                               <%= f.text_field :end_time, :name => 's1Time2', :class => 'txt' %> <br/>
+									                                               <%= f.text_field :end_time, :name => 's1Time2', :class => 'validate[required,funcCall[geThan2]] txt',  :id => 'txttime2' %> <br/>
 														</div>
 
 
@@ -204,7 +211,7 @@
 									                                        <div class="val">
 
 
-									<%= f.text_area :about, :class => 'txt fill-width', :id => 'txt_bio' %>
+									<%= f.text_area :about, :class => 'span2 validate[required,minSize[3],maxSize[600]]  txt fill-width', :id => 'txt_bio' %>
 									                                            <p class="rs description-input">We suggest a short description. Talk about what is fun about this activity and why people should join.</p>
 									                                        </div>
 									                                    </div>
@@ -212,7 +219,7 @@
 									<div class="row-item clearfix">
 									    <label class="lbl" for="txt_name1">Number of participants:</label>
 									    <div class="val">
-									       <%= f.number_field :numpart, :class =>'txt', :id => 'txt-name1' %>
+									       <%= f.number_field :numpart, :class =>'validate[required] txt', :id => 'txt-name1' %>
 									        <p class="rs description-input">Tell us how many people should attend your activity</p>
 									</div>	</div>
 									                                    <div class="row-item clearfix">
@@ -231,7 +238,7 @@
 																					<div class="row-item clearfix">
 																																What is the price?	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-																																  <%= f.select(:recurrent, [['Free'], ['0-10$'], ['11$-20$'], ['21$-30$']], {}, { :class => 'my_style_class' }) %>
+																																  <%= f.select(:price, [['Free'], ['0-20$'], ['21$-50$'], ['51$-100$'],['101$-500$'],['501$-100$'],['>1000$']], {}, { :class => 'my_style_class' }) %>
 
 																																		</div>
 									                                    <div class="row-item clearfix">
@@ -362,15 +369,32 @@
 <script type="text/javascript">
     $(document).ready(function(){
         // find the input fields and apply the time select to them.
-        $('input[name="s1Time2"]').ptTimeSelect();
-    });
+        $('input[name="s1Time2"]').ptTimeSelect({
+						onClose:  function() {
+				   
+  $('input[name="s1Time2"]').focusout();
+						}
+		        
+		 });
+		 });
+
 </script>
+
+
+
+
 
 <script type="text/javascript">
     $(document).ready(function(){
-        // find the input fields and apply the time select to them.
-        $('input[name="s1Time1"]').ptTimeSelect();
+            // find the input fields and apply the time select to them.
+	        $('input[name="s1Time1"]').ptTimeSelect({
+							onClose:  function() {
+
+	  $('input[name="s1Time1"]').focusout();
+							}
+	   
     });
+  });
 </script>
 
 
@@ -429,6 +453,95 @@ $(function() {
   });
 });
 </script>
+
+
+		</script>
+		
+
+			<script>
+
+			$('#txt45').on('change', function() {
+			  var date2 = this.value ; // or $(this).val()
+
+
+			});
+
+		function geThan(field, rules, i, options){
+ var startdate = document.getElementsByName('activity[start_date]')[0].value;
+			   var d1 = startdate.split('-');
+			   d1a = new Date(d1[0], d1[1]-1, d1[2]);
+
+			var enddate = field.val();
+			var d2 = enddate.split('-');
+			d2a = new Date(d2[0], d2[1]-1, d2[2]);
+
+			   if (d1a > d2a){
+			   return "Your ending date has to be later then the starting date"
+		}
+			};
+
+
+			</script>
+
+				<script>
+
+				$('#txt45').on('change', function() {
+				  var date2 = this.value ; // or $(this).val()
+
+
+				});
+
+			
+			function geThan2(field, rules, i, options){
+				   var startdate = document.getElementsByName('activity[start_date]')[0].value;
+				   var starttime = document.getElementsByName('s1Time1')[0].value;
+				  
+				 
+				  
+				
+				   var d1 = startdate.split('-');
+				   var arr = starttime.split(':');
+				   var hour = parseInt(arr[0]);
+				   var min = parseInt(arr[1]);
+				   var camoupm4 = arr[1];
+				   var camoupm5 = camoupm4.split(" ");
+				   var camoupm = camoupm5[1];
+				
+				
+				   
+				   if (camoupm == "PM" && hour < 12) hour = hour + 12;
+				   if (camoupm == "AM" && hour == 12) hour = hour - 12;
+				  
+				   d1b = new Date(d1[0], d1[1]-1, d1[2],hour,min);	       
+
+					var enddate  = document.getElementsByName('activity[end_date]')[0].value;
+					var endtime = document.getElementsByName('s1Time2')[0].value;
+					 
+					var e1 = enddate.split('-');
+					var arre = endtime.split(':');
+					var houre = parseInt(arre[0]);
+					var mine = parseInt(arre[1]);
+					var camoupm41 = arre[1];
+					   var camoupm51 = camoupm41.split(" ");
+					   var camoupm2 = camoupm51[1];
+
+					   if (camoupm2 == "PM" && houre < 12) houre = houre + 12;
+					   if (camoupm2 == "AM" && houre == 12) houre = houre - 12;
+
+
+					d2b = new Date(e1[0], e1[1]-1, e1[2],houre,mine);
+
+					 if (d1b > d2b){
+					   return "Your ending date and time has to be later then the starting date and time"
+				}
+
+				};
+
+
+
+
+				</script>
+
 
 </body>
 </html>

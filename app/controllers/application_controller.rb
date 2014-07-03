@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include PublicActivity::StoreController 
+  skip_before_filter :verify_authenticity_token
   protect_from_forgery
   around_filter :user_time_zone, if: :current_user
   before_filter :messages_count, if: :current_user

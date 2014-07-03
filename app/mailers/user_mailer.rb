@@ -1,11 +1,42 @@
 class UserMailer < ActionMailer::Base
-  default :from => "Do_not_reply@woomatch.com"
+  default :from => "admin@woomatch.com", content_type: 'multipart/mixed', parts_order: [ "text/html", "text/enriched", "text/plain", "application/pdf" ]
   
-  def send_user_accepted(user)
-     mail(:to => 'henrik41@hotmail.com', :subject => "You just got accepted!")
+  def send_user_accepted(user,activity,current_user)
+     @activity = activity
+     @current_user = current_user
+     mail(:to => user.email, 
+          :subject => "You just got accepted!",
+       
+          :template_path => 'user_mailer',    
+          :template_name => 'send_user_accepted'  
+          ) 
   end
   
-  def followme(user)
-     mail(:to => 'henrik41@hotmail.com', :subject => "Someone is follow your activity!")
+  def followme(current_user,user,activity)
+    @current_user = current_user
+    @activity = activity
+    @username = user
+
+     mail(:to => user.email, 
+          :subject => "Someone is follow your activity!",
+             
+          :template_path => 'user_mailer',    
+          :template_name => 'followme'  
+              )
   end
+  
+  def userfollowme(user,userfollowingu)
+     @thecurrentuser = user
+     mail(:to => userfollowingu.email, 
+          :subject => "Someone is follow you!",
+        
+          :template_path => 'user_mailer',    
+          :template_name => 'userfollowme'  
+              )
+    
+  end
+  
+
+  
+
 end

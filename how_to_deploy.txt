@@ -51,3 +51,16 @@ etc
 don't forget to change unicorn.rb!!!
 
 http://dan.carley.co/blog/2012/02/07/rbenv-and-bundler/
+
+
+
+
+when cap deploy:cold...
+
+1. Kill all Unicorn 
+2. wait until everything is install!!!
+3. relocate in current directory
+4. Precompile assets in local directory
+5. kill all Unicorn
+6. redemarer unicorn
+

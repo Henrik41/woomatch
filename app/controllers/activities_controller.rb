@@ -18,17 +18,16 @@ class ActivitiesController < ApplicationController
      @user = current_user
     
      mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
-      Time.zone = mytimezone
-      @mytime = Time.zone.now
+     Time.zone = mytimezone
+     @mytime = Time.zone.now
       
      
      @activitypast = @user.activities.where("ending < ?", @mytime)
-     @activitynow = @user.activities.where("ending >= ?", @mytime)
-     
-  
+     @activitynow = @user.activities.where("ending >= ?", @mytime).reverse_order
+       
         @result = @user.location    
         if @result
-        @activitygrid = Activity.near(@result, 200000).first(7)
+        @activitygrid = Activity.near(@result, 1000, :order => :ending).reverse_order.first(7)
         else
         @activitygrid = Activity.find(:all).last(4)
       end
@@ -40,6 +39,11 @@ class ActivitiesController < ApplicationController
     @user = current_user
     
     @activity = @user.activities.find(params[:id])
+    
+   
+    @visitor = @activity.visit.visit_details.last 
+    @visitorob = User.find(@visitor.ip_address)  
+    
     @useractivity = @user
     @whos_following = @activity.followers
     
@@ -53,7 +57,8 @@ class ActivitiesController < ApplicationController
    
     @userparticipating = @activity.votes.where(:vote_scope => nil).map(&:voter)    
     @userparticipating2 = @activity.votes.where(:vote_scope => 'accept').map(&:voter).uniq
-
+   
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @activity }
@@ -63,7 +68,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   # GET /activities/new.json
   def new
-    
+
     @activity = current_user.activities.new
     @useronline = User.online.find(:all, :limit => 9)
     if @useronline.empty?
@@ -72,13 +77,16 @@ class ActivitiesController < ApplicationController
       @useronline = User.online.find(:all, :limit => 9)
     end
     @user = current_user
+   
     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
     Time.zone = mytimezone
     @mytime = Time.zone.now
  
      @result = @user.location    
      if @result
-     @activitygrid = Activity.near(@result, 200000).first(7)
+     
+       @activitygrid = Activity.near(@result, 1000, :order => :ending).reverse_order.first(7)
+     
      else
      @activitygrid = Activity.find(:all).last(4)
    end
@@ -94,20 +102,20 @@ class ActivitiesController < ApplicationController
   def edit
     
     @user = current_user
+    @interestcount = @user.userinterests.find(:all).count
+    @activitiescount = @user.activities.where(:user_id => @user.id).count      
     @useronline = User.online.find(:all, :limit => 9)
     @activity = current_user.activities.find(params[:id])
     @completion2 = @activity.completion2
     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
     Time.zone = mytimezone
-    @mytime = Time.zone.now
-     
-       @result = @user.location    
+    @mytime = Time.zone.now     
+    @result = @user.location    
        if @result
-       @activitygrid = Activity.near(@result, 200000).first(7)
+       @activitygrid = Activity.near(@result, 1000, :order => :ending).reverse_order.first(7)
        else
        @activitygrid = Activity.find(:all).last(4)
      end
-  
   end
 
   # POST /activities
@@ -115,7 +123,9 @@ class ActivitiesController < ApplicationController
   def create
     
     @user = current_user
-    @activity = current_user.activities.create(params[:activity])    
+    @activity = current_user.activities.create(params[:activity])  
+   
+        
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
     @useronline = User.online.find(:all, :limit => 9)
@@ -124,13 +134,15 @@ class ActivitiesController < ApplicationController
      @mytime = Time.zone.now
       @result = @user.location    
        if @result
-       @activitygrid = Activity.near(@result, 200000).first(7)
+       @activitygrid = Activity.near(@result, 1000, :order => :ending).reverse_order.first(7)
        else
        @activitygrid = Activity.find(:all).last(4)
      end
     
     respond_to do |format|
       if @activity.save
+            Visit.track(@activity,current_user) 
+            @activity.liked_by @user, :vote_scope => 'accept'
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render json: @activity, status: :created, location: @activity }
       else
@@ -143,12 +155,21 @@ class ActivitiesController < ApplicationController
   # PUT /activities/1
   # PUT /activities/1.json
   def update
-    
-    @activity = current_user.activities.find(params[:id])    
+    @user = current_user
+    @activity = current_user.activities.find(params[:id])  
+   
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
     @useronline = User.online.find(:all, :limit => 9)
-   
+     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
+       Time.zone = mytimezone
+       @mytime = Time.zone.now
+    @result = @user.location    
+          if @result
+          @activitygrid = Activity.near(@result, 200000).first(7)
+          else
+          @activitygrid = Activity.find(:all).last(4)
+        end
     respond_to do |format|
       if @activity.update_attributes(params[:activity])
      

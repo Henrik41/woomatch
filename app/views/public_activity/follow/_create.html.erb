@@ -10,37 +10,72 @@ just followed
 <% if Follow.find(activity.trackable_id).followable_type == "Activity"   %>
    
 
-<% if Activity.where(:id => activity.trackable.followable_id.to_i).empty? %>
-<%else%>
-<% if Activity.find(activity.trackable.followable_id.to_i).user_id == current_user.id %>
+	<% if Activity.where(:id => activity.trackable.followable_id.to_i).empty? %>
 
-<%= link_to Activity.find(activity.trackable.followable_id.to_i).title, {:controller => 'activities', :action => 'show', :id => activity.trackable.followable_id.to_i } %>
+		<%else%>
+		<% if Activity.find(activity.trackable.followable_id.to_i).user_id == current_user.id %>
 
-<% else %>
+			<%= link_to Activity.find(activity.trackable.followable_id.to_i).title, {:controller => 'activities', :action => 'show', :id => activity.trackable.followable_id.to_i } %>
+
+			<% else %>
 <%= link_to Activity.find(activity.trackable.followable_id.to_i).title, {:controller => 'general', :action => 'activity', :id => activity.trackable.followable_id.to_i } %>
-
+    
 <% end %>
 <% end %>
-</div>
-<div class="section_4">
-	<% if !activity.trackable.respond_to?('user_id') %>
-	<%= link_to image_tag(Activity.find(activity.trackable.followable_id.to_i).avatar.url(:supermini)),  {:controller => 'general', :action => 'activity', :id => activity.trackable.followable_id.to_i }%>
-	<%else%>	
-    	<% if activity.trackable.user_id == current_user.id %>
-	<a href="/activities/<%= activity.trackable.id %>" class="thumb-img">
-	    <% else %>
-	<a href="/activity/<%= activity.trackable.id %>" class="thumb-img">
-	    <% end %>
-<%= image_tag Activity.find(activity.trackable.followable_id.to_i).avatar.url(:supermini) %>
-    <% end%>
+<% end %>
 
-<% else %>
+<% if Follow.find(activity.trackable_id).followable_type == "User"   %>
+   
 
+	<% if User.where(:id => activity.trackable.followable_id.to_i).empty? %>
+
+		<%else%>
+		<% if User.find(activity.trackable.followable_id.to_i).id == current_user.id %>
+
+			<%= link_to User.find(activity.trackable.followable_id.to_i).username, {:controller => 'profile', :action => 'show', :id => activity.trackable.followable_id.to_i } %>
+
+			<% else %>
 <%= link_to User.find(activity.trackable.followable_id.to_i).username, {:controller => 'profile', :action => 'show', :id => activity.trackable.followable_id.to_i } %>
+    
+<% end %>
+<% end %>
+<% end %>
 </div>
 <div class="section_4">
 	
-  <%= link_to image_tag(User.find(activity.trackable.followable_id.to_i).avatar.url(:supermini)), {:controller => 'profile', :action => 'show', :id => activity.trackable.followable_id.to_i } %>
+	<% if Follow.find(activity.trackable_id).followable_type == "Activity"   %>
 
+
+	<% if Activity.where(:id => activity.trackable.followable_id.to_i).empty? %>
+	<%else%>
+	<% if Activity.find(activity.trackable.followable_id.to_i).user_id == current_user.id %>
+		<%= link_to image_tag( Activity.find(activity.trackable.followable_id.to_i).avatar.url(:supermini)), {:controller => 'activities', :action => 'show', :id => activity.trackable.followable_id.to_i }  %>  
+	
+	
+	<% else %>
+			<%= link_to image_tag( Activity.find(activity.trackable.followable_id.to_i).avatar.url(:supermini)), {:controller => 'general', :action => 'activity', :id =>  activity.trackable.followable_id.to_i} %>  
+	
+	<% end %>
+	<% end %>
+	
 <% end %>
+
+	<% if Follow.find(activity.trackable_id).followable_type == "User"   %>
+
+
+	<% if User.where(:id => activity.trackable.followable_id.to_i).empty? %>
+	<%else%>
+	<% if User.find(activity.trackable.followable_id.to_i).id == current_user.id %>
+		<%= link_to image_tag( User.find(activity.trackable.followable_id.to_i).avatar.url(:supermini)), {:controller => 'profile', :action => 'show', :id => activity.trackable.followable_id.to_i }  %>  
+	
+	
+	<% else %>
+			<%= link_to image_tag( User.find(activity.trackable.followable_id.to_i).avatar.url(:supermini)), {:controller => 'profile', :action => 'show', :id => activity.trackable.followable_id.to_i} %>  
+	
+	<% end %>
+	<% end %>
+	
+<% end %>
+
+
 </div>

@@ -40,13 +40,14 @@
                     <p class="rs title-description"><div class="description_space"><%=a.about.capitalize[0,90]%>...(more)</div></p>
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
-                                <%= a.location[0..20] %>  &nbsp; &nbsp;&nbsp; <%= a.distance_from(@loc).round(1)%>&nbsp;km
+
+                                <%= a.location[0..18] %>  &nbsp; &nbsp;&nbsp; <%= a.distance_from(@loc).round(1)%>&nbsp;miles
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="bottom-project-info clearfix">
-registered people: <%= a.completion %>%   
+registered people: <%= a.completion.round(0) %>%   
                     <div class="line-progress">
                         <div class="bg-progress">
                             <span <% if a.completion < 51 %> 
@@ -72,12 +73,12 @@ registered people: <%= a.completion %>%
                             <span class="val">
 
 
-<% if a.end_time < @mytime %>
-											Ended
-											<% else %>
-											
-	<%= distance_of_time_in_words(@mytime, a.ending) %>
-	<% end %>
+									<% if a.enddate < @mytime %>
+																				Ended
+																				<% else %>
+
+										<%= distance_of_time_in_words(@mytime, a.ending) %>
+										<% end %>
 	 </span>
 
                         </div>

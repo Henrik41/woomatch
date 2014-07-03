@@ -5,20 +5,27 @@ class GeneralController < ApplicationController
     @mytime = Time.zone.now
     
     @activity = Activity.find(params[:id])
+   
     @user = User.find(@activity.user_id)
+    @userparticipating2 = @activity.votes.where(:vote_scope => 'accept').map(&:voter).uniq
+    @userparticipating = @activity.votes.where(:vote_scope => nil).map(&:voter)    
+    
     @useractivity = @user
     @activity2 = Activity.find(params[:id])
     @whos_following = @activity.followers
+    Visit.track(@activity,current_user)
     
   end
 
-  def follow
-    @activity = Activity.find(params[:id])
-    @user2 = User.find(@activity.user_id)
-    @user = current_user
-    if @user2.followme
-       UserMailer.followme(@user2).deliver
-    else
+ def follow
+
+ 
+     @activity = Activity.find(params[:id])
+     @useraccepted = User.find(@activity.user_id)           
+     @current_user2 = current_user
+     
+    if @useraccepted.followme
+       UserMailer.followme(@current_user2,@useraccepted,@activity).deliver
     end
     
     current_user.follow(@activity)
@@ -50,6 +57,7 @@ class GeneralController < ApplicationController
   def unfollow2
       @activity2 = Activity.find(params[:id])
       @activity2.unliked_by current_user
+      @activity2.unliked_by current_user, :vote_scope => 'accept'
       respond_to do |format|
          format.js {}
       end
@@ -57,18 +65,22 @@ class GeneralController < ApplicationController
   end
   
   def follow3
-    @useraccepted = User.find(params[:id])
-    
-    UserMailer.send_user_accepted(@useraccepted).deliver
-    
+    @useraccepted = User.find(params[:id])       
     @activity2 = Activity.find(params[:activity])
+    @current_user2 = current_user
+    if @useraccepted.acceptme
+    UserMailer.send_user_accepted(@useraccepted,@activity2,@current_user2).deliver
+    end
     @votes = @activity2.likes.where(:voter_id => @useraccepted)
     @userparticipating = @activity2.votes.where(:vote_scope => nil).map(&:voter)
+   
     
     if @votes.empty?
     else
+
     @votes[0].vote_scope = 'accept'
     @votes[0].save
+ 
     end
     
     
@@ -129,6 +141,8 @@ class GeneralController < ApplicationController
      end
      
   end
+  
+
   
   def newsletter
     @email = params[:email]

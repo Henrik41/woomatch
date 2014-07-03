@@ -137,7 +137,7 @@ $(function() {
 		.data("uiAutocomplete")._renderItem = function(ul,item){
 		   return $("<li></li>")
 		  .data("item.uiAutocomplete",item)
-		  .append("<a>"+"<div class='list_item_container_holder'>"+"<div class='image_holder'>"+"<img src='" + item.avatar_url +"'>" +"</div>" + "<div class='label'>" + item.title + "</div>" + "<div class='description_holder'>" + item.about + "</div>"+"</div>" +"</a>")
+		  .append("<a>"+"<div class='list_item_container_holder'>"+"<div class='image_holder'>"+"<img src='" + item.avatar_url +"'>" +"</div>" + "<div class='label'>" + item.title.substr(0,20) + "</div>" + "<div class='description_holder'>" + item.about.substr(0,70) + "..."+ "</div>"+"</div>" +"</a>")
   .appendTo(ul);
 		  };
 });

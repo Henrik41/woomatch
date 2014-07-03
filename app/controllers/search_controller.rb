@@ -67,8 +67,8 @@ class SearchController < ApplicationController
        mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
         Time.zone = mytimezone
         @mytime = Time.zone.now
-    @search = Activity.search(params[:q])
-    @activities = @search.result
+    @search = Activity.ransack(params[:q])
+    @activities = @search.result(distinct: true)
     @activitiesrecent = @activities.order('created_at DESC').page(params[:page]).per(8)
     @activitiesnear = @activities.order('created_at DESC').near(@user.location).page(params[:page]).per(8)
     @activitiespop =  @activities.order('end_time DESC').page(params[:page]).per(8)

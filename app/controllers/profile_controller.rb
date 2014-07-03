@@ -31,17 +31,47 @@ class ProfileController < ApplicationController
       @result = @user.location    
       if @result
      
-      @activitygrid = Activity.near(@result, 2000).first(7)
+      @activitygrid = Activity.near(@result, 1000, :order => :ending).reverse_order.first(7)
+      
       else
       @activitygrid = Activity.find(:all).last(4)
     end
   end
   
   def show
+    
     @user = current_user
+    @useronline = User.online.find(:all, :limit => 9)
+    @loc = @user.location
+    @interestcount = @user.userinterests.find(:all).count
+    @activitiescount = @user.activities.where(:user_id => @user.id).count
+    @completion = @user.completion
+    
     @userview = User.find(params[:id])
     @activity = Activity.first
     @useronline = User.online.find(:all, :limit => 9)
+    
+    
+    if request.location == nil
+       @loc = 'Paris, France'  
+     else
+
+       if @user.location.nil?
+       @result = request.location       
+       mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
+       @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
+     else
+       @loc = @user.location
+       mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
+     end
+     end
+
+
+    Time.zone = mytimezone
+    @mytime = Time.zone.now
+       
+       @activitygrid = Activity.where("user_id = ?", params[:id])
+     
   end
   
   def update
@@ -87,6 +117,11 @@ class ProfileController < ApplicationController
         flash[:error] = "You cannot follow yourself."
       else
         current_user.follow(@user)
+        
+      if current_user.userfollowme
+        UserMailer.userfollowme(current_user,@user).deliver
+      else
+      end
       
         flash[:notice] = "You are now following #{@user.username}."
         redirect_to :back

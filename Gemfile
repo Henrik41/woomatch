@@ -41,7 +41,6 @@ gem "omnicontacts"
 gem "localtunnel"
 gem 'carrierwave'
 gem 'mini_magick' 
-gem 'rmagick'
 gem 'mailboxer'
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -50,7 +49,9 @@ gem 'acts_as_votable', '~> 0.7.1'
 gem 'ransack'
 gem "kaminari"
 gem 'jQuery-Validation-Engine-rails', :git => 'git@github.com:Henrik41/jQuery-Validation-Engine-rails.git'
-
+gem 'daemons'
+gem 'delayed_job'
+gem 'delayed_job_active_record'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

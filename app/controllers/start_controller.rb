@@ -6,8 +6,12 @@ class StartController < ApplicationController
      @activity = Activity.near(@loc, 400).order("created_at").last(4)    
   end
   
-  def dashboard    
+  def dashboard        
     @user = current_user
+      if @user.location.nil? || @user.location.blank?
+        @user.location = @loc
+        @user.save
+      end
     @useronline = User.online.find(:all, :limit => 9)
     @loc = @user.location
     @interestcount = @user.userinterests.find(:all).count
