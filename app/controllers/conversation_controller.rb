@@ -32,6 +32,7 @@ before_filter :get_mailbox
   
   def myinbox
   
+    
     @conversations =  Kaminari.paginate_array(@mailbox.inbox.all).page(params[:page]).per(5)
     @messages_count = @mailbox.inbox({:read => false}).count
     if current_user.nearbys
@@ -42,6 +43,7 @@ before_filter :get_mailbox
   end
   
   def myoutbox
+    
     
     @conversations =  Kaminari.paginate_array(@mailbox.sentbox.all).page(params[:page]).per(5)
     @messages_count = @mailbox.inbox({:read => false}).count
@@ -123,6 +125,9 @@ before_filter :get_mailbox
   
   private
   
+  def getblocked
+    @allblocked = current_user.votes_for.votes
+  end
 
   def get_mailbox
       @mailbox = current_user.mailbox
@@ -132,5 +137,6 @@ before_filter :get_mailbox
        @actor = current_user
   end
   
+
   
 end

@@ -55,6 +55,17 @@ class ProfileController < ApplicationController
     @activity = Activity.first
     @useronline = User.online.find(:all, :limit => 9)
     
+    @array1 = []
+    @userview.userinterests.each do |c|
+      @array1 << c.interest
+    end
+    
+    @array2 = []
+    @user.userinterests.each do |c|
+      @array2 << c.interest
+    end
+    
+    @interestcom = (@array1 & @array2).count
     
     if request.location == nil
        @loc = 'Paris, France'  
@@ -149,7 +160,14 @@ class ProfileController < ApplicationController
   
   def block
     @user = User.find(params[:id])
-    @user.vote_by :voter => current_user    
+    @user.vote_by :voter => current_user  
+
+    
+    @conversation = Conversation.participant(current_user).where('conversations.id in (?)', Conversation.participant(@user).collect(&:id))
+   
+     @conversation.each do |con|
+        con.move_to_trash(@user)
+     end
     redirect_to :back
   end
   
@@ -158,7 +176,6 @@ class ProfileController < ApplicationController
      current_user.unvote_for @user 
      redirect_to :back
   end
-  
   
 
 end

@@ -216,53 +216,79 @@
 									
 														<span class="lbl">This activity ended</span>
 								                        <span class="desc">Let user know your still interested</span>
+													
+														
 										<%=  link_to_modal "Contact me", "#demo-form2", :class=>"a btn btn-green btn-buck-project" %>
 				</div>
+
+											<% if @user.voted_on? current_user %>
 
 																<div id="demo-form2" class="demo-description" style="display: none; ">
 																  <p>
 
-																<b>	 Write me an Email</b>:
+																<b>	This user is unavailable</b>:
 																	    <br />
-
-
-
-
-
-																		<div class="theform2">
-																										<%= form_tag({:controller => 'conversation', :action => 'sendmail', :id => @user.id}, :remote => true) do %>
-																						<%= text_area_tag(:body, content= 'Hey ' + @user.username + '. I would love to participate to the activity ' + @activity2.title + '. Please try to make a new one.', {:cols => '50', :rows => '10'}) %>			
-
-																										<%= button_tag(type: 'submit', id: "search") do %>
-
-
-														<span class="btn btn-green">Send it</span> 
-																										<% end%> 
-																										<% end%>
-														</div>
-
 
 
 
 																  </p>
 																</div>
 
+ <% else %>
+
+			<div id="demo-form2" class="demo-description" style="display: none; ">
+			  <p>
+
+			<b>	 Write me an Email</b>:
+				    <br />
+
+
+
+
+
+					<div class="theform2">
+													<%= form_tag({:controller => 'conversation', :action => 'sendmail', :id => @user.id}, :remote => true) do %>
+									<%= text_area_tag(:body, content= 'Hey ' + @user.username + '. I would love to participate to the activity ' + @activity2.title + '. Please try to make a new one.', {:cols => '50', :rows => '10'}) %>			
+
+													<%= button_tag(type: 'submit', id: "search") do %>
+
+
+	<span class="btn btn-green">Send it</span> 
+													<% end%> 
+													<% end%>
+	</div>
+
+
+
+
+			  </p>
+			</div>
+
+
+				<% end %>
 					
-								
-							
 						
 					 			<% elsif (current_user.liked? @activity2) || (current_user.liked? @activity2, :vote_scope => 'accept')  %>
+					
+					<% if @user.voted_on? current_user %>
+						<span class="a btn btn-green btn-buck-project">This user is unavailable </span>
+					<% else %>
 
 						<%= form_tag({:action => 'unfollow2', :id => @activity2.id}, :remote => true) do %>
 						<%= button_tag(type: 'submit', class: "a btn btn-green btn-buck-project") do %>
+						
 						<span class="lbl">I'm already registered</span>
                         <span class="desc">unregister</span>
 								<%end%>
 						 		<% end %>
 							
 								
-						
+					 <% end %>	
 							
+						<% else %>
+						
+						<% if @user.voted_on? current_user %>
+							<span class="a btn btn-green btn-buck-project">This user is unavailable </span>
 						<% else %>
 						
 							<%= form_tag({:action => 'follow2', :id => @activity2.id}, :remote => true) do %>
@@ -273,7 +299,7 @@
 						<%end%>
 						
 					 		<% end %>
-				
+				<% end %>
 				   <% end %>
 
 					</div>
@@ -296,6 +322,19 @@
                     </div>
                     <div class="author-action">
 	
+						<% if @user.voted_on? current_user %>
+							<%=  link_to_modal "Email Me", "#demo-form", :class=>"btn btn-red" %>
+
+								<div id="demo-form" class="demo-description" style="display: none; ">
+								  <p>
+
+								<b>	 This user is unavailable.</b>
+									    <br />
+
+								  </p>
+								</div>
+
+	<% else %>
   
 							<%=  link_to_modal "Contact me", "#demo-form", :class=>"bb btn btn-red" %>
 
@@ -327,7 +366,7 @@
 								  </p>
 								</div>
 
-
+<% end %>
                         <a class="btn btn-white" href='/profile/<%= @user.id%>'>See my full bio</a>
                     </div>
                 </div>
