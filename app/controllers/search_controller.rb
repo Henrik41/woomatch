@@ -69,11 +69,11 @@ class SearchController < ApplicationController
     @mytime = Time.zone.now
     @search = Activity.ransack(params[:q])
     @activities = @search.result(distinct: true)
-    @activitiesrecent =  @activities.order('created_at DESC').page(params[:page]).per(8)
-    @activitiesnear   =  @activities.order('created_at DESC').near(@user.location).page(params[:page]).per(8)
-    @activitiespop    =  @activities.joins(:visit).order('total_visits DESC').page(params[:page]).per(8)
+    @activitiesrecent =  @activities.near(@user.location,200).order('created_at DESC').page(params[:page]).per(8)
+    @activitiesnear   =  @activities.order('created_at DESC').near(@user.location,150).page(params[:page]).per(8)
+    @activitiespop    =  @activities.joins(:visit).order('total_visits DESC').near(@user.location,200).page(params[:page]).per(8)
     @loc = current_user.location
-    @people = User.near(@loc)
+    @people = User.near([@user.latitude,@user.longitude], 150).last(9)
     
     
 

@@ -26,14 +26,14 @@
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
 <% if a.location %>
-                                <%= a.location[0..20] %>  &nbsp; &nbsp;&nbsp; 2.7&nbsp;km
+                                <%= a.location[0..20] %>  &nbsp; &nbsp;&nbsp; <%= a.distance_from(@loc).round(1) %> &nbsp;miles
 <% end%>
                             </p>
                         </div>
 
 							
 						
-								<%=  link_to "View Profile",  {:controller => 'profile', :action => 'show', :id => a.id }, :class=>"btn btn-blue" %>
+								<%=  link_to "Profile",  {:controller => 'profile', :action => 'show', :id => a.id }, :class=>"btn btn-blue" %>
 
 									
 
@@ -43,7 +43,7 @@
 							<% if current_user.following?(a) %>
 							<div class="btn btn-red"> <%= link_to "Unfollow", unfollow_profile_path(a.id) %> </div>
 							<% else %>		
-							<div class="btn btn-red"> <%= link_to "Follow me", follow_profile_path(a.id) %> </div>
+							<div class="btn btn-red"> <%= link_to "Follow", follow_profile_path(a.id) %> </div>
 							<% end %>
 					
 							</br>

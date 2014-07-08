@@ -86,8 +86,23 @@
 
 					<div class="thumb-right">
 				
+				<% if current_user.voted_on? whois[0] %>
+					<%=  link_to_modal "Read", "#demo-form", :class=>"btn btn-blue" %>
+
+						<div id="demo-form" class="demo-description" style="display: none; ">
+						  <p>
+
+						<b>Please unblock this user first.</b>
+							    <br />
+
+						  </p>
+						</div>
+				
+				<% else%>
 			
 					                     <div class="btn btn-blue" ><%= link_to 'Read', {:controller => 'conversation', :action => 'show', :id => c.id, :page => (c.messages.length.to_f/6).ceil}, {:style =>'color:#ffffff'}    %></div>
+					
+					<% end %>
 <div class = 'btn btn-red'>				                   
 <%= link_to 'Delete', trash_path(:conversation_id => c.id), { :method => :post , :style =>'color:#ffffff' } %>
 </div>
