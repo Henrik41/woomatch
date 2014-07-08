@@ -2,6 +2,8 @@ class Visit < ActiveRecord::Base
    attr_accessible :ip_address
   belongs_to :visitable, :polymorphic => true
     has_many :visit_details
+    
+    
     def self.track(obj, ip_address)
         visit = Visit.find_or_create_by_visitable_id_and_visitable_type(obj.id, obj.class.name)
         ### check if visit is unique

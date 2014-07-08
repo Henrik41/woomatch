@@ -36,7 +36,7 @@
 <% else%>
 
 <% if @userview.voted_on? current_user %>
-	<%=  link_to_modal "Email Me", "#demo-form", :class=>"btn btn-blue" %>
+	<%=  link_to_modal "Email", "#demo-form", :class=>"btn btn-blue" %>
 	
 		<div id="demo-form" class="demo-description" style="display: none; ">
 		  <p>
@@ -49,7 +49,7 @@
 
 
 <% else %>
-	<%=  link_to_modal "Email Me", "#demo-form", :class=>"btn btn-blue" %>
+	<%=  link_to_modal "Email", "#demo-form", :class=>"btn btn-blue" %>
 	
 		<div id="demo-form" class="demo-description" style="display: none; ">
 		  <p>
@@ -86,9 +86,20 @@
 <% if current_user.following?(@userview) %>
 <div class="btn btn-red"> <%= link_to "Unfollow", unfollow_profile_path(@userview.id) %> </div>
 <% else %>		
-<div class="btn btn-red"> <%= link_to "Follow me", follow_profile_path(@userview.id) %> </div>
+<div class="btn btn-red"> <%= link_to "Follow", follow_profile_path(@userview.id) %> </div>
 <% end %>
+
+<% if current_user.voted_on? @userview %>
+
+<div class="btn btn-black" ><%= link_to 'Unblock', {:controller => 'profile', :action => 'unblock', :id => @userview.id}, {:style =>'color:#ffffff'}    %></div>
+<% else %>
+<div class="btn btn-black" ><%= link_to 'Block', {:controller => 'profile', :action => 'block', :id => @userview.id}, {:style =>'color:#ffffff'}    %></div>
 <% end %>
+
+
+<% end %>
+
+
 </br>
 
 		           <%=@userview.sex%></br> Age: <%=  @userview.age  %> </br>
@@ -149,7 +160,7 @@
 
 		         <h2> Interests:</h2>  
 		                               <% @userview.userinterests.each do |x| %>
-		 <a class="btn btn-white">	<%= x.interest %> 	</a>
+		 <a class="btn btn-white">	<%= x.interest.capitalize %> 	</a>
 		
 		
 			<% end %>

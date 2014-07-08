@@ -7,8 +7,8 @@ class GeneralController < ApplicationController
     @activity = Activity.find(params[:id])
    
     @user = User.find(@activity.user_id)
-    @userparticipating2 = @activity.votes_for(:vote_scope => 'accept').map(&:voter).uniq
-    @userparticipating = @activity.votes_for(:vote_scope => nil).map(&:voter)    
+    @userparticipating2 = @activity.votes_for.where(:vote_scope => 'accept').map(&:voter).uniq
+    @userparticipating = @activity.votes_for.where(:vote_scope => nil).map(&:voter)    
     
     @useractivity = @user
     @activity2 = Activity.find(params[:id])
@@ -71,8 +71,10 @@ class GeneralController < ApplicationController
     if @useraccepted.acceptme
     UserMailer.send_user_accepted(@useraccepted,@activity2,@current_user2).deliver
     end
-    @votes = @activity2.likes.where(:voter_id => @useraccepted)
-    @userparticipating = @activity2.votes_for(:vote_scope => nil).map(&:voter)
+    
+    @votes = @activity2.find_votes_for.where(:voter_id => @useraccepted)
+    
+    @userparticipating = @activity2.votes_for.where(:vote_scope => nil).map(&:voter)
    
     
     if @votes.empty?
@@ -93,7 +95,7 @@ class GeneralController < ApplicationController
   def follow4
      @useraccepted = User.find(params[:id])
      @activity2 = Activity.find(params[:activity])
-     @votes = @activity2.votes_for(:voter_id => @useraccepted)
+     @votes = @activity2.votes_for.where(:voter_id => @useraccepted)
      
      if @votes.empty?
      else
@@ -121,7 +123,7 @@ class GeneralController < ApplicationController
   
   def followall
     @activity = Activity.find(params[:id])
-    @userparticipating = @activity.votes_for(:vote_scope => nil).map(&:voter)
+    @userparticipating = @activity.votes_for.where(:vote_scope => nil).map(&:voter)
       
     @userparticipating.each do |c|
       @votes = @activity.likes.where(:voter_id => c.id)

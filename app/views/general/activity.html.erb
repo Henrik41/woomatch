@@ -100,10 +100,10 @@
 				                                    <h3 class="rs title-inside"><%= @activity.title %></h3>
 				                                    <p class="rs post-by">by <a href="#" class="fw-b fc-gray be-fc-orange"><%= @useractivity.username %></a> in <span class="fw-b fc-gray"><%= @activity.location %></span></p>
 				                                    <p><%= @activity.about %></p></br>
-													<% if @activity.website = 'www' || @activity.website.empty? %>
+												<p>	<% if @activity.website == 'www.' || @activity.website.empty? %>
 													<% else %>
-													<p> Please visit the activity website at: <%= @activity.website %> </p>
-													<% end %>
+										<b>	Please visit the activity website at: <%= @activity.website %> </b>
+													<% end %> </p>
 				                                    <div class="social-sharing">
 				                                        <!-- AddThis Button BEGIN -->
 				                                        <div class="addthis_toolbox addthis_default_style">
@@ -164,7 +164,7 @@
 							<a href="#" class="thumb-left">
 									<div class="media-body">
 									<% if f.avatar.url(:mini) %>
-								                  <%= link_to (image_tag f.avatar.url(:supermini)), '/profile/'+ f.id.to_s %> 
+								                  <%= link_to (image_tag f.avatar.url(:mini)), '/profile/'+ f.id.to_s %> 
 								    <% else %>
 								<%= image_tag '/assets/ex/blankmini.jpg'%>
 							    	<% end %>					                   
@@ -206,6 +206,12 @@
                         <i class="icon iClock"></i>
                         <span class="val"><span class="fw-b">Be there at: </span> <%= @activity.start_time.strftime('%I:%M:%S %p') %></span>
                     </div>
+
+					        <div class="project-date clearfix">
+		                        <i class="icon iLocation"></i>
+		                        <span class="val"><span class="fw-b">Location: </span> <%= @activity.location %></span>
+		                    </div>
+		
 
 					<% @num2 = 'followid2' + @activity2.id.to_s %>
 					<div id =<%= @num2 %>>

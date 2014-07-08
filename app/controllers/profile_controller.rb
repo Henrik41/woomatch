@@ -57,12 +57,12 @@ class ProfileController < ApplicationController
     
     @array1 = []
     @userview.userinterests.each do |c|
-      @array1 << c.interest
+      @array1 << c.interest.capitalize
     end
     
     @array2 = []
     @user.userinterests.each do |c|
-      @array2 << c.interest
+      @array2 << c.interest.capitalize
     end
     
     @interestcom = (@array1 & @array2).count

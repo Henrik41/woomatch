@@ -17,20 +17,38 @@ class ActivitiesController < ApplicationController
   def myactivities
      @user = current_user
     
-     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
-     Time.zone = mytimezone
-     @mytime = Time.zone.now
-      
+      if request.location == nil
+         @loc = 'Paris, France'  
+       else
+
+         if @user.location.nil?
+         @result = request.location       
+         mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
+         @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
+       else
+         @loc = @user.location
+         mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
+       end
+       end
+
+
+      Time.zone = mytimezone
+      @mytime = Time.zone.now
+
+
+         @result = @user.location    
+         if @result
+
+         @activitygrid = Activity.near(@result, 1000, :order => :ending).reverse_order.first(7)
+
+         else
+         @activitygrid = Activity.find(:all).last(4)
+       end
      
      @activitypast = @user.activities.where("ending < ?", @mytime)
-     @activitynow = @user.activities.where("ending >= ?", @mytime).reverse_order
-       
-        @result = @user.location    
-        if @result
-        @activitygrid = Activity.near(@result, 1000, :order => :ending).reverse_order.first(7)
-        else
-        @activitygrid = Activity.find(:all).last(4)
-      end
+     @activitynow  = @user.activities.where("ending >= ?", @mytime).reverse_order
+         
+
       
   end
   # GET /activities/1
@@ -55,8 +73,8 @@ class ActivitiesController < ApplicationController
       end
     
    
-    @userparticipating = @activity.votes_for(:vote_scope => nil).map(&:voter)    
-    @userparticipating2 = @activity.votes_for(:vote_scope => 'accept').map(&:voter).uniq
+    @userparticipating = @activity.votes_for.where(:vote_scope => nil).map(&:voter)    
+    @userparticipating2 = @activity.votes_for.where(:vote_scope => 'accept').map(&:voter).uniq
    
     
     respond_to do |format|
@@ -78,19 +96,34 @@ class ActivitiesController < ApplicationController
     end
     @user = current_user
    
-    mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
-    Time.zone = mytimezone
-    @mytime = Time.zone.now
+     if request.location == nil
+         @loc = 'Paris, France'  
+       else
+
+         if @user.location.nil?
+         @result = request.location       
+         mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
+         @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
+       else
+         @loc = @user.location
+         mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
+       end
+       end
+
+
+      Time.zone = mytimezone
+      @mytime = Time.zone.now
+
+
+         @result = @user.location    
+         if @result
+
+         @activitygrid = Activity.near(@result, 1000, :order => :ending).reverse_order.first(7)
+
+         else
+         @activitygrid = Activity.find(:all).last(4)
+       end
  
-     @result = @user.location    
-     if @result
-     
-       @activitygrid = Activity.near(@result, 1000, :order => :ending).reverse_order.first(7)
-     
-     else
-     @activitygrid = Activity.find(:all).last(4)
-   end
-   
 
     respond_to do |format|
       format.html # new.html.erb

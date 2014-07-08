@@ -67,9 +67,9 @@
                                     <h3 class="rs title-inside"><%= @activity.title %></h3>
                                     <p class="rs post-by">by <a href="#" class="fw-b fc-gray be-fc-orange"><%= @useractivity.username %></a> in <span class="fw-b fc-gray"><%= @activity.location %></span></p>
                                     <p><%= @activity.about %></p> </br>
-<% if @activity.website = 'www' || @activity.website.empty? %>
+<% if @activity.website == 'www' || @activity.website.empty? %>
 <% else %>
-<p> Please visit the activity website at: <%= @activity.website %> </p>
+<b> Please visit the activity website at: <%= @activity.website %> </b>
 <% end %>
                                     <div class="social-sharing">
                                         <!-- AddThis Button BEGIN -->
@@ -160,6 +160,12 @@
                         <i class="icon iClock"></i>
                         <span class="val"><span class="fw-b">Be there at: </span><%= @activity.start_time.strftime('%I:%M:%S %p') %></span>
                     </div>
+
+					    <div class="project-date clearfix">
+	                        <i class="icon iLocation"></i>
+	                        <span class="val"><span class="fw-b">Location: </span> <%= @activity.location %></span>
+	                    </div>
+
 
 <% if @activity.enddate < @timenow %>
 <a class="btn btn-green btn-buck-project" href="/activities/new">
