@@ -19,7 +19,7 @@
  								<%= search_form_for @search do |f| %>
 							
 								    
-								    <%= f.text_field :location_cont, :class => 'span2 address-picker-input', :placeholder => 'Enter a Location' %>
+								    <%= text_field_tag :location, params[:location], {:class => 'span2 address-picker-input', :placeholder => 'Enter a Location'} %>
 															  
 								  <%= f.text_field :start_date_gteq, :class => "txt datepicker", :placeholder => 'Starting Date' %>
 								  <%= f.text_field :start_date_lteq, :class => "txt datepicker",  :placeholder => 'Ending Date'   %>

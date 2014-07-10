@@ -23,12 +23,7 @@ class SearchController < ApplicationController
   
   def searchbycity
     @param = params[:q]
-    # do test if location @param does not exist
-    #if Geocoder.search("%#{@param}%").empty?
-    #  @param =  'We do not have ' + @param + ' in our database' 
-    #end
     mycoord = Geocoder.coordinates(@param)
-    puts mycoord[0],mycoord[1]
     @activity = Activity.near([mycoord[0],mycoord[1]], 70).last(4)
     @loc = @param
     
@@ -43,14 +38,11 @@ class SearchController < ApplicationController
           @mytime = Time.now
 
         else
-          @result = request.location        
+          @result = request.location 
+            @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s + ', ' + @result.data['country_name'].to_s                 
+          
           mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
-
-          Time.zone = mytimezone
-          @mytime = Time.zone.now
-
-         @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s + ', ' + @result.data['country_name'].to_s
-         @activity = Activity.near(@loc, 400, :order => :distance).order("created_at").last(4)
+          @activity = Activity.near(@loc, 400, :order => :distance).order("created_at").last(4)
 
         end
     end
@@ -67,11 +59,19 @@ class SearchController < ApplicationController
     mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
     Time.zone = mytimezone
     @mytime = Time.zone.now
-    @search = Activity.ransack(params[:q])
-    @activities = @search.result(distinct: true)
-    @activitiesrecent =  @activities.near(@user.location,200).order('created_at DESC').page(params[:page]).per(8)
-    @activitiesnear   =  @activities.order('created_at DESC').near(@user.location,150).page(params[:page]).per(8)
-    @activitiespop    =  @activities.joins(:visit).order('total_visits DESC').near(@user.location,200).page(params[:page]).per(8)
+    
+     if params[:location].present?
+       @search = Activity.near(params[:location],100).ransack(params[:q])      
+ 
+     else
+       @search = Activity.ransack(params[:q])
+      
+      end
+         @activities = @search.result(distinct: true)
+         @activitiesrecent =  @activities.order('created_at DESC').page(params[:page]).per(8)
+         @activitiesnear   =  @activities.order('created_at DESC').near([@user.latitude,@user.longitude],50).page(params[:page]).per(8)
+         @activitiespop    =  @activities.joins(:visit).order('total_visits DESC').near(@user.location,200).page(params[:page]).per(8)
+     
     @loc = current_user.location
     @people = User.near([@user.latitude,@user.longitude], 150).last(9)
     
@@ -80,25 +80,22 @@ class SearchController < ApplicationController
   end
   
   def peoplesearch
-    if request.location == nil
-      @loc = 'Montreal, Canada'  
-    else
+   
       @result = request.location        
       @mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
-      @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
-    end
-    
-    if request.location == nil
-      @people = User.find(:all).last(10)
-
-    else
-      @people = User.near(@loc, 100).order("created_at").last(10)
-    end 
-     
-    
-    
-  end
-
   
+      @param = params[:q]
+      @loc = @param
+     if request.location == nil
+      @people = User.find(:all).last(10)
+     else
+      @people = User.near(@param, 100).order("created_at").order("distance").page(params[:page]).per(8)
+     end 
+     
+
+  respond_to do |format|    
+    format.html {}
+  end
+ end
   
 end

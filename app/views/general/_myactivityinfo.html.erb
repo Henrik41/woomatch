@@ -2,20 +2,20 @@
 		  <div class="top-project-info">
 		    <div class="content-info-short clearfix">
 	
-		          <a href="/activities/<%= a.id %>" >
+		          <a href="/activity/<%= a.id %>" >
 			<% if a.avatar.url(:grid) %>
                 <%= image_tag a.avatar.url(:grid) %>
              <% end %> 
 		    </a>
 		    	<div class="wrap-short-detail">
-		    <h3 class="rs acticle-title"><a class="be-fc-orange" href="#"><%= a.title.capitalize %></a></h3>
-		    <p class="rs tiny-desc">by <a href="#" class="fw-b fc-gray be-fc-orange"><%= User.find(a.user_id).username %></a> in <span class="fw-b fc-gray"><%= User.find(a.user_id).location %></span></p>
-		    <p class="rs title-description"><%=a.about.capitalize[0,90]%>...(more).</p>
+		    <h3 class="rs acticle-title"><a class="be-fc-orange" href="/activity/<%= a.id %>"><%= a.title.capitalize %></a></h3>
+		    <p class="rs tiny-desc">by <a href="/profile/<%= a.user_id %>" class="fw-b fc-gray be-fc-orange"><%= User.find(a.user_id).username %></a> in <span class="fw-b fc-gray"><%= User.find(a.user_id).location %></span></p>
+		  <a href="/activity/<%= a.id %>" >   <p class="rs title-description"><%=a.about.capitalize[0,90]%>...(more).</p></a>
 		    	</div>
 		     <p class="rs clearfix comment-view">
-		     <a href="#" class="fc-gray be-fc-orange"> Facebook comments</a>
+		     <a href="/activity/<%= a.id %>" class="fc-gray be-fc-orange"> View Facebook Comments</a>
 <span class="sep">|</span>
-		     <a href="#" class="fc-gray be-fc-orange">  250  views</a>
+		     <a href="#" class="fc-gray be-fc-orange">  <%= a.visit.total_visits %> views</a>
 		
 		     </p>
 		
@@ -31,7 +31,7 @@
 		 	<div class="group-fee clearfix">
 				<div class="fee-item">
 			<p class="rs lbl">REGISTERED</p>
-					 <span class="val"> <%= a.completion %>% </span>
+					 <span class="val"> <%= a.completion.round(0) %>% </span>
 					</div>
 					   <div class="sep"></div>
 		    	<div class="fee-item">

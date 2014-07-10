@@ -29,6 +29,7 @@ post "general/followall/:id", to: 'general#followall'
 #search routes
   post "search/searchactivities"
   post "search/searchbycity"
+    post "search/peoplesearch"
   get "search/activitysearch"
   get "search/peoplesearch"
  

@@ -44,8 +44,9 @@
 				<div class="box-white4"> <% end %>
 		          		    <h3 class="title-box2">From</h3>
 							 <div class="media">
-				                 <a href="#" class="medium_images2"> 
-				         			    <% whois = c.participants - Array(current_user) %>
+								 <% whois = c.participants - Array(current_user) %>
+				                 <a href="/profile/<%=whois[0].id%>" class="medium_images2"> 
+				         			   
 											
 				
 									

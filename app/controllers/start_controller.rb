@@ -3,7 +3,7 @@ class StartController < ApplicationController
   before_filter :get_location, :get_time
    
   def index   
-     @activity = Activity.near(@loc, 400).order("created_at").last(4)    
+     @activity = Activity.near([@result.latitude,@result.longitude],100).order("created_at").first(4)    
   end
   
   def dashboard        

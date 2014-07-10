@@ -8,22 +8,14 @@
    <div class="home-popular-project">
         <div class="container_12">
             <div class="grid_12 wrap-title">
-	
-                <h2 class="common-title">Popular in <%= @loc %>   
-	
+	  <h2 class="common-title">Popular in <div id= "location_main" style = "display:inline;"><%= @loc %> </div><div id="location_change" style = "display:inline;"></div>
+ 
 	<!-- Time: <%= @timenowuser %> --> </h2>
     <div class="form-search2">
 	<div class="form2">
 
-<%= form_tag('/search/searchbycity') do %>
+<%= form_tag({:controller => 'search', :action => 'peoplesearch'}) do %>
   <%= text_field_tag "q",nil, :class => 'address-picker-input', :placeholder => 'Change my city' %>
-
-
-<script type="text/javascript">
-    AddressPickerRails.Pickers.applyOnReady();
-</script>
-
-
      <%= submit_tag 'Search',  :class=>"btn btn-red" %>
 
 
@@ -43,16 +35,25 @@
             </div>
             <div class="clear"></div>
             <div class="lst-popular-project clearfix">
-
+<div id="thepartial">
 <% @people.each do |a| %>
  <%= render :partial => "grid", :locals => {:a => a} %> 
-
 <% end %>
- <div class="clear"></div>
-<center> <a href="#" class="btn btn-green">View More Things To Do In Your Area</a> </center>
-<center>	<%= paginate @people %> </center>
-         </div>
+</div>
+ 	<div id="select_button"></div><div class="clear"></div>
 
+<center><div id="select_page"></div><div id="pagination">	<%= paginate @people %> </div></center>
+
+<div class="clear"></div>
+</br>
+<div class="lst-popular-project clearfix">
+<center> <a href="/start/dashboard" class="btn btn-green">View More Things To Do In Your Area</a> </center>
+
+</div>
+<div class="lst-popular-project clearfix">
+<div class="clear"></div>
+         </div>
+</div>
        </div>
 
 
@@ -62,21 +63,6 @@
 
 </div>
 
-<div class="popup-common" id="sys_popup_common">
-    <div class="overlay-bl-bg"></div>
-    <div class="container_12 pop-content">
-        <div class="grid_12 wrap-btn-close ta-r">
-            <i class="icon iBigX closePopup"></i>
-        </div>
-        <div class="grid_6 prefix_1">
-<%= render "devise/registrations/new" %>
-      </div>
-        <div class="grid_4">
-            <div class="form login-form">
-	<%= render "devise/sessions/new" %>
-            
-            </div>
-        </div>
-        <div class="clear"></div>
-    </div>
-</div>
+<script type="text/javascript">
+    AddressPickerRails.Pickers.applyOnReady();
+</script>
