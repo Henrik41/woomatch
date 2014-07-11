@@ -1,7 +1,7 @@
 class Visit < ActiveRecord::Base
    attr_accessible :ip_address
-  belongs_to :visitable, :polymorphic => true
-    has_many :visit_details
+  belongs_to :visitable, :polymorphic => true, :dependent => :destroy
+    has_many :visit_details, :dependent => :destroy
     
     
     def self.track(obj, ip_address)

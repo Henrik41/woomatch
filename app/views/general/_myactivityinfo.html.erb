@@ -2,20 +2,25 @@
 		  <div class="top-project-info">
 		    <div class="content-info-short clearfix">
 	
-		          <a href="/activity/<%= a.id %>" >
+	<% if a.user_id == current_user.id %>	
+	<% @linkme = 'activities' %>
+	<% else %>
+	 <% @linkme = 'activity' %>
+	<% end %>
+		          <a href="/<%=@linkme%>/<%= a.id %>" >
 			<% if a.avatar.url(:grid) %>
                 <%= image_tag a.avatar.url(:grid) %>
              <% end %> 
 		    </a>
 		    	<div class="wrap-short-detail">
-		    <h3 class="rs acticle-title"><a class="be-fc-orange" href="/activity/<%= a.id %>"><%= a.title.capitalize %></a></h3>
+		    <h3 class="rs acticle-title"><a class="be-fc-orange" href="/<%=@linkme%>/<%= a.id %>"><%= a.title.capitalize %></a></h3>
 		    <p class="rs tiny-desc">by <a href="/profile/<%= a.user_id %>" class="fw-b fc-gray be-fc-orange"><%= User.find(a.user_id).username %></a> in <span class="fw-b fc-gray"><%= User.find(a.user_id).location %></span></p>
-		  <a href="/activity/<%= a.id %>" >   <p class="rs title-description"><%=a.about.capitalize[0,90]%>...(more).</p></a>
+		  <a href="/<%=@linkme%>/<%= a.id %>" >   <p class="rs title-description"><%=a.about.capitalize[0,90]%>...(more).</p></a>
 		    	</div>
 		     <p class="rs clearfix comment-view">
-		     <a href="/activity/<%= a.id %>" class="fc-gray be-fc-orange"> View Facebook Comments</a>
+		     <a href="/<%=@linkme%>/<%= a.id %>" class="fc-gray be-fc-orange"> View Facebook Comments</a>
 <span class="sep">|</span>
-		     <a href="#" class="fc-gray be-fc-orange">  <%= a.visit.total_visits %> views</a>
+		     <a href="#" class="fc-gray be-fc-orange"> <%= a.visit.total_visits %>   views</a>
 		
 		     </p>
 		

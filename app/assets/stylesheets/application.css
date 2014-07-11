@@ -17,6 +17,7 @@
  *= require jquery.counter-analog2
  *= require jquery.counter-analog
  *= require normalize
+ *= require ion.rangeSlider.skinFlat
  *= require videopopup
  *= require jquery.ui.all
  *= require jquery.modal

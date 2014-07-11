@@ -1,19 +1,27 @@
 class GeneralController < ApplicationController
   def activity
-    mytimezone = NearestTimeZone.to(current_user.latitude,current_user.longitude)
-    Time.zone = mytimezone
-    @mytime = Time.zone.now
     
-    @activity = Activity.find(params[:id])
-   
-    @user = User.find(@activity.user_id)
-    @userparticipating2 = @activity.votes_for.where(:vote_scope => 'accept').map(&:voter).uniq
-    @userparticipating = @activity.votes_for.where(:vote_scope => nil).map(&:voter)    
+    unless current_user.nil?
+      mytimezone = NearestTimeZone.to(current_user.latitude,current_user.longitude)
+      Time.zone = mytimezone
+      @mytime = Time.zone.now
+
+      @activity = Activity.find(params[:id])
+
+      @user = User.find(@activity.user_id)
+      @userparticipating2 = @activity.votes_for.where(:vote_scope => 'accept').map(&:voter).uniq
+      @userparticipating = @activity.votes_for.where(:vote_scope => nil).map(&:voter)    
+
+      @useractivity = @user
+      @activity2 = Activity.find(params[:id])
+      @whos_following = @activity.followers
+      Visit.track(@activity,current_user)  
+    else
+
     
-    @useractivity = @user
-    @activity2 = Activity.find(params[:id])
-    @whos_following = @activity.followers
-    Visit.track(@activity,current_user)
+    redirect_to :controller => 'start', :action => 'index'
+    end
+    
     
   end
 
@@ -126,7 +134,7 @@ class GeneralController < ApplicationController
     @userparticipating = @activity.votes_for.where(:vote_scope => nil).map(&:voter)
       
     @userparticipating.each do |c|
-      @votes = @activity.likes.where(:voter_id => c.id)
+        @votes = @activity.votes_for.where(:voter_id => c.id)
       
       if @votes.empty?
        else

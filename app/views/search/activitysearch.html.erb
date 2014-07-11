@@ -30,8 +30,8 @@
 							   
 							       
 				Between
-						<%= f.select :user_realage_gteq, (13..120), :class => "txt2" %> and
-						<%= f.select :user_realage_lteq, (13..120), :class => "txt2", :selected => 120 %>		
+						<%= f.select :user_realage_gteq, (16..99), :class => "txt2" %> and
+						<%= f.select :user_realage_lteq, (16..99), :class => "txt2", :selected => 99 %>		
 					    <%= f.submit "Search", :class=> "btn btn-green2" %>	
 						<% end %>             
 		
@@ -127,7 +127,7 @@
 </div>
   
 </div>
-  
+  <%= render 'footer/footer' %>
 </div>
 
 

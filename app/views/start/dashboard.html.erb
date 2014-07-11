@@ -1,4 +1,10 @@
 <div id="wrapper">
+<% if @notification %>
+<%= js add_gritter('Thank you for your email. You make Woomach a better place!', :image => current_user.avatar.url(:supermini), :time => 4000, :title => 'Email was sent successfully') %>
+<%= js extend_gritter :position => :upper_right %>
+<% end %>
+
+
 <%= render "header/header" %>
 <%= render 'activities/navbar' %>	
          <div class="clear"></div>
@@ -114,3 +120,4 @@
 
 
 </div>
+

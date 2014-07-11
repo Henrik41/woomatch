@@ -3,7 +3,7 @@ class StartController < ApplicationController
   before_filter :get_location, :get_time
    
   def index   
-     @activity = Activity.near([@result.latitude,@result.longitude],100).order("created_at").first(4)    
+     @activity = Activity.near([@result.latitude,@result.longitude],200).order('updated_at').first(4)    
   end
   
   def dashboard        
@@ -12,6 +12,13 @@ class StartController < ApplicationController
         @user.location = @loc
         @user.save
       end
+     
+    @notification = false  
+    if params[:id] == "2"
+      @notification = true
+    end
+     
+   
     @useronline = User.online.find(:all, :limit => 9)
     @loc = @user.location
     @interestcount = @user.userinterests.find(:all).count
@@ -23,12 +30,7 @@ class StartController < ApplicationController
     @events = Kaminari.paginate_array(public_array).page(params[:page]).per(5) 
   end
   
-  def accept
-    @activity = current_user.activities.create(params[:activity]) 
-    puts "ca marche"
-    render :js => "window.location = '/activities/49/edit'"
 
-  end
   
   def uservalide
   user = User.find_by_email(params[:user_email])

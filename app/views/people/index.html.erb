@@ -16,6 +16,7 @@
 
 <%= form_tag({:controller => 'search', :action => 'peoplesearch'}) do %>
   <%= text_field_tag "q",nil, :class => 'address-picker-input', :placeholder => 'Change my city' %>
+
      <%= submit_tag 'Search',  :class=>"btn btn-red" %>
 
 
@@ -66,3 +67,5 @@
 <script type="text/javascript">
     AddressPickerRails.Pickers.applyOnReady();
 </script>
+
+

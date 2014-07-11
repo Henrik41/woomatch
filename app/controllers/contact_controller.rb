@@ -17,4 +17,21 @@ class ContactController < ApplicationController
      end
    end
    
+   def alerte
+     @contact = Contact.new(
+     :name => params[:id],
+     :email => 'henri@woomatch.com',
+     :body => 'You received an email from '+User.find(params[:id]).name+'. The activity id='+params[:activity]+' is suspicious',     
+     
+     )
+     
+      NotificationsMailer.new_message(@contact).deliver
+      
+        respond_to do |format|
+             format.js { render :js => "window.location = '/start/dashboard/2'" }
+         end
+      
+
+   end
+   
 end

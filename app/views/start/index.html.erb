@@ -90,14 +90,17 @@
 			
 
             <div class="lst-popular-project clearfix">
-	<div id="select_button"></div>
+
 	<div id ="thepartial">
 		
 <% @activity.each do |a| %>
  <%= render :partial => "grid", :locals => {:a => a} %> 
 <% end %>
 
+
 	</div>
+		<div id="select_button"></div>
+	
 <center> <a  class="btn btn-green sys_show_popup_login">View More Things To Do In Your Area</a> </center>
 </br>
          </div>

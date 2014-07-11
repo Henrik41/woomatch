@@ -70,7 +70,8 @@ post "general/followall/:id", to: 'general#followall'
 #starting page
   get "start/index"
   get "start/dashboard"
-
+  get "start/dashboard/:id" => "start#dashboard"
+    
 #to check
   get "/activities/back_to_edit" 
   #get emails from gmail/others
@@ -80,7 +81,8 @@ post "general/followall/:id", to: 'general#followall'
 #contact
     match 'contact' => 'contact#new', :as => 'contact', :via => :get
     match 'contact' => 'contact#create', :as => 'contact', :via => :post
-
+     post 'contact/alerte/:id/:activity' => 'contact#alerte'
+     
 devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks"  }
 
 devise_for :admin_users, ActiveAdmin::Devise.config

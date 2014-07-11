@@ -26,7 +26,7 @@
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
 <% if a.location %>
-                                <%= a.location[0..20] %>  &nbsp; &nbsp;&nbsp; <%= a.distance_from(@loc).round(1) %> &nbsp;miles
+                                <%= a.location[0..15] %>  &nbsp; &nbsp;&nbsp; <%= a.distance_from(current_user.location).round(1) %> &nbsp;miles
 <% end%>
                             </p>
                         </div>
