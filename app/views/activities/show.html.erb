@@ -178,10 +178,25 @@
                         <span class="desc">Participant will be informed</span>
                     </a>
 <% end %>
-                    <p class="rs description">Know people that would be interested in participating at this activity? Send them an email know</p></br>
-
+                    <p class="rs description">Know people that would be interested in participating at this activity? Send them an email now</p></br>
 					 <div class="bottom-project-info clearfix">
 							<div class="btn btn-red" id="myButton"> Email Friends </div> <div class="fb-like" data-href="http://www.woomatch.com" data-width="60" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+
+				        </div>
+
+		  				<div id="myModal" class="reveal-modal">
+						     <h1>Email Your Friends</h1>
+						     <a href="/contacts/gmail"><%= image_tag "Gmail.png", :width => '100', :height => '70' %> </a>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/contacts/yahoo"><%= image_tag "Yahoo.png", :width => '100', :height => '70' %></a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/contacts/hotmail"><%= image_tag "Hotmail.png", :width => '150', :height => '100' %></a>
+
+						     <a class="close-reveal-modal">&#215;</a>
+						</div>
+
+
+					 <div class="bottom-project-info clearfix">
+						
 
 
 				        </div>
@@ -356,6 +371,16 @@
 <%= add_gritter('Last visited your activity about ' + distance_of_time_in_words(@timenow,@visitor.updated_at)+' ago', :image => @visitorob.avatar.url(:supermini), :time => 2000, :title => @visitorob.username) %>
 <%= extend_gritter :position => :bottom_right %>
 </script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+     $('#myButton').click(function(e) {
+          e.preventDefault();
+	  $('#myModal').reveal();
+     });
+});
+</script>
+
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) return;

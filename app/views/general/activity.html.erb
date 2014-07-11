@@ -117,7 +117,57 @@
 				                                    </div>
 				                                </div>
 				                                <div class="project-btn-action">
-				                                    <a class="btn big btn-red" href="/contact">Ask a question</a>
+				                               
+				
+																																							<%=  link_to_modal "Ask a question", "#demo-form5", :class=>"btn big btn-red" %>
+
+
+																																								<% if @user.voted_on? current_user %>
+
+																																													<div id="demo-form5" class="demo-description" style="display: none; ">
+																																													  <p>
+
+																																													<b>	This user is unavailable</b>:
+																																														    <br />
+
+
+
+																																													  </p>
+																																													</div>
+
+													<% else %>
+
+																																<div id="demo-form5" class="demo-description" style="display: none; ">
+																																  <p>
+
+																																<b>	 Write a question about this event</b>:
+																																	    <br />
+
+
+
+
+
+																																		
+																																										<%= form_tag({:controller => 'conversation', :action => 'sendmail', :id => @user.id}, :remote => true) do %>
+																																						<%= text_area_tag(:body, content= 'Hey '+@user.username+'. I would love to ask a question about your activity '+@activity2.title+':', {:cols => '50', :rows => '10'}) %>			
+
+																																										<%= button_tag(type: 'submit', id: "search") do %>
+
+
+																														<span class="btn btn-green">Send it</span> 
+																																										<% end%> 
+																																										<% end%>
+	</p>																													</div>
+
+
+
+
+																																  
+																																
+
+
+													<% end %>
+				
 				                        						<%=  link_to_modal "Report This Activity", "#demo-form3", :class=>"btn big btn-black" %>
 
 																	<div id="demo-form3" class="demo-description" style="display: none; ">
@@ -157,8 +207,95 @@
 				                            <div class="tab-pane accordion-content">
 				<%= render 'general/whosfollowing' %>
 				                                <div class="project-btn-action">
-				                                    <a class="btn btn-red" href="#">Ask a question</a>
-				                                    <a class="btn btn-black" href="#">Report this project</a>
+				                                   
+													<%=  link_to_modal "Ask a question", "#demo-form12", :class=>"btn big btn-red" %>
+
+
+														<% if @user.voted_on? current_user %>
+
+																			<div id="demo-form12" class="demo-description" style="display: none; ">
+																			  <p>
+
+																			<b>	This user is unavailable</b>:
+																				    <br />
+
+
+
+																			  </p>
+																			</div>
+
+<% else %>
+
+						<div id="demo-form12" class="demo-description" style="display: none; ">
+						  <p>
+
+						<b>	 Write a question about this event</b>:
+							    <br />
+
+
+
+
+
+								
+																<%= form_tag({:controller => 'conversation', :action => 'sendmail', :id => @user.id}, :remote => true) do %>
+												<%= text_area_tag(:body, content= 'Hey '+@user.username+'. I would love to ask a question about your activity '+@activity2.title+':', {:cols => '50', :rows => '10'}) %>			
+
+																<%= button_tag(type: 'submit', id: "search") do %>
+
+
+				<span class="btn btn-green">Send it</span> 
+																<% end%> 
+																<% end%>
+</p>																													</div>
+
+
+
+
+						  
+						
+
+
+<% end %>
+
+				
+				
+				
+				
+				
+				
+				
+				
+				                    	<%=  link_to_modal "Report This Activity", "#demo-form9", :class=>"btn big btn-black" %>
+				
+																					<div id="demo-form9" class="demo-description" style="display: none; ">
+																					  <p>
+				<div id="aftertext">
+				<div id="aftertext2"></div>																	<b>	 Write us an Email</b>:
+																						    <br />
+
+
+
+
+
+																							<div class="theform">
+																															<%= form_tag({:controller => 'contact', :action => 'alerte', :id => @user.id, :activity => @activity.id}, :remote => true) do %>
+				<% @text2 = 'The Activity '+@activity.title+' is suspicious. Please investigate the activity and contact the owner of the activity.' %>																							<%= text_area_tag(:body, content= @text2, {:cols => '50', :rows => '10'}) %>			
+
+																															<%= button_tag(type: 'submit', id: "search") do %>
+
+
+																			<span class="btn btn-green">Send it</span> 
+																															<% end%> 
+																															<% end%>
+																			</div>
+
+
+
+
+																					  </p>
+																					</div>
+
+								</div>
 				                                </div>
 				                            </div><!--end: .tab-pane(Backers) -->
 				                        </div>
@@ -341,6 +478,23 @@
 					</div>
                 
                     <p class="rs description">Do you know people that would be interested in participating in this activity? Send them an email now</p>
+
+
+					     <div class="bottom-project-info clearfix">
+								<div class="btn btn-red" id="myButton"> Email Friends </div> <div class="fb-like" data-href="http://www.woomatch.com" data-width="60" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+
+					        </div>
+
+			  				<div id="myModal" class="reveal-modal">
+							     <h1>Email Your Friends</h1>
+							     <a href="/contacts/gmail"><%= image_tag "Gmail.png", :width => '100', :height => '70' %> </a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/contacts/yahoo"><%= image_tag "Yahoo.png", :width => '100', :height => '70' %></a>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/contacts/hotmail"><%= image_tag "Hotmail.png", :width => '150', :height => '100' %></a>
+
+							     <a class="close-reveal-modal">&#215;</a>
+							</div>
+
                 </div>
             </div><!--end: .project-runtime -->
             <div class="project-author">
@@ -353,13 +507,13 @@
                         <div class="media-body">
                             <h4 class="rs pb10"><a href="#" class="be-fc-orange fw-b"><%= @user.username %> </a></h4>
                             <p class="rs"><%= @user.location %></p>
-                            <p class="rs fc-gray">5 projects</p>
+                            <p class="rs fc-gray"><%= @user.activities.count %> Activities</p>
                         </div>
                     </div>
                     <div class="author-action">
 	
 						<% if @user.voted_on? current_user %>
-							<%=  link_to_modal "Email Me", "#demo-form", :class=>"btn btn-red" %>
+							<%=  link_to_modal "Contact Me", "#demo-form", :class=>"btn btn-red" %>
 
 								<div id="demo-form" class="demo-description" style="display: none; ">
 								  <p>
@@ -513,8 +667,28 @@
     </div>
 <%= render 'footer/footer' %>
 
+
+<div id="myModal" class="reveal-modal">
+     <h1>Email Your Friends</h1>
+     <a href="/contacts/gmail"><%= image_tag "Gmail.png", :width => '100', :height => '70' %> </a>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/contacts/yahoo"><%= image_tag "Yahoo.png", :width => '100', :height => '70' %></a>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/contacts/hotmail"><%= image_tag "Hotmail.png", :width => '150', :height => '100' %></a>
+
+     <a class="close-reveal-modal">&#215;</a>
+</div>
+
 </div>
 <div id="fb-root"></div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+     $('#myButton').click(function(e) {
+          e.preventDefault();
+	  $('#myModal').reveal();
+     });
+});
+</script>
+
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
