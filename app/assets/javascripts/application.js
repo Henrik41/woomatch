@@ -36,7 +36,6 @@
 //= require jquery.modal
 //= require image-picker
 //= require gritter
-//= require ion.rangeSlider.min
 //= require jquery.validationEngine-zh_CN
 //= require jquery.validationEngine-en.js
 //= require jquery.validationEngine
