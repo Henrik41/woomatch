@@ -65,12 +65,13 @@ class SearchController < ApplicationController
  
      else
        @search = Activity.ransack(params[:q])
+     end
       
-      end
          @activities = @search.result(distinct: true)
+         
          @activitiesrecent =  @activities.order('updated_at DESC').page(params[:page]).per(8)
-         @activitiesnear   =  @activities.order('updated_at DESC').near([@user.latitude,@user.longitude]).order("distance").page(params[:page]).per(8)
-         @activitiespop    =  @activities.joins(:visit).order('total_visits DESC').near(@user.location,200).page(params[:page]).per(8)
+         @activitiesnear   =  @activities.order('updated_at DESC').near([@user.latitude,@user.longitude],200).order("distance").page(params[:page]).per(8)
+         @activitiespop    =  @activities.order('total_visits DESC').joins(:visit).page(params[:page]).per(8)
      
     @loc = current_user.location
     @people = User.near([@user.latitude,@user.longitude], 150).last(9)

@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :location, :realage, :dob, :age, :sex, :status, :about, :web, :email, :password, :password_confirmation, :time_zone, :avatar, :remote_avatar_url, :userinterests_attributes
   attr_accessible :longitude, :latitude
-  attr_accessible :provider, :uid, :name, :completion, :nomail, :followme, :userfollowme, :acceptme
+  attr_accessible :provider, :uid, :name, :completion, :nomail, :followme, :userfollowme, :acceptme, :partime
   attr_accessible :body, :conversation_id
  
   geocoded_by :location
@@ -108,6 +108,7 @@ PROFILE_COMPLETENESS = %w[username dob location status about web]
                                 followme: active,
                                 userfollowme:active,
                                 acceptme:active,
+                                partime:active,
                                 dob:Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y'),                        
                                 password:Devise.friendly_token[0,20]
              )

@@ -71,6 +71,13 @@ class GeneralController < ApplicationController
     @activity2 = Activity.find(params[:id])
     @activity2.liked_by current_user
     
+    @current_user2 = current_user
+    @useraccepted = User.find(@activity2.user_id) 
+    
+    if @useraccepted.partime
+       UserMailer.partime(@current_user2,@useraccepted,@activity2).deliver
+    end
+    
     respond_to do |format|
        format.js {}
     end

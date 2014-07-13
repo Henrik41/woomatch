@@ -7,5 +7,7 @@ class NotificationsMailer < ActionMailer::Base
     @contact = contact
     mail(:subject => "Woomatch-email #{message.subject}")
   end
+  
+
 
 end

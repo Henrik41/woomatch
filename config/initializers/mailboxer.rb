@@ -14,4 +14,12 @@ Mailboxer.setup do |config|
   #Supported enignes: [:solr,:sphinx]
   config.search_enabled = false
   config.search_engine = :solr
+  
+  def mailboxer_email(object)
+      if self.nomail
+      else
+          nil
+      end
+  end
+  
 end

@@ -36,7 +36,21 @@ class UserMailer < ActionMailer::Base
     
   end
   
+  def partime(current_user,user,activity)
+    @current_user = current_user
+    @activity = activity
+    @username = user
 
+     mail(:to => user.email, 
+          :subject => "Someone wants to participate to your activity!",
+             
+          :template_path => 'user_mailer',    
+          :template_name => 'partime'  
+              )
+  end
+  
+  
+  
   
 
 end
