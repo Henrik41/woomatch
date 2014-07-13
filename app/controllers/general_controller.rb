@@ -16,6 +16,20 @@ class GeneralController < ApplicationController
       @activity2 = Activity.find(params[:id])
       @whos_following = @activity.followers
       Visit.track(@activity,current_user)  
+      
+      @peoplevisitingme = Visit.where(:visitable_id => current_user, :visitable_type => "User")
+    
+       unless @peoplevisitingme[0].nil?
+     
+      @myvisitor = @peoplevisitingme[0].visit_details.pluck(:ip_address)
+      @myvisit = User.find_all_by_id(@myvisitor).last(4)
+      
+       else
+      
+       @myvisit = nil
+       
+       end
+    
     else
 
     

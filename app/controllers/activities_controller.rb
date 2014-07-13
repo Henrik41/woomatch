@@ -75,8 +75,19 @@ class ActivitiesController < ApplicationController
    
     @userparticipating = @activity.votes_for.where(:vote_scope => nil).map(&:voter)    
     @userparticipating2 = @activity.votes_for.where(:vote_scope => 'accept').map(&:voter).uniq
-   
+    @peoplevisitingme = Visit.where(:visitable_id => current_user, :visitable_type => "User")
     
+     unless @peoplevisitingme[0].nil?
+   
+    @myvisitor = @peoplevisitingme[0].visit_details.pluck(:ip_address)
+    @myvisit = User.find_all_by_id(@myvisitor).last(4)
+    
+     else
+    
+     @myvisit = nil
+     
+     end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @activity }

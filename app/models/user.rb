@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :activities, :dependent => :destroy
   has_many :userinterests, :dependent => :destroy
   has_one :profile, :dependent => :destroy
+  has_one :visit, :as => :visitable, :dependent => :destroy
   accepts_nested_attributes_for :userinterests, 
                                     :allow_destroy => true
 
@@ -28,6 +29,7 @@ class User < ActiveRecord::Base
      acts_as_follower
       acts_as_voter
        acts_as_votable
+       
   validates_presence_of  :username
   validates_length_of :username, :minimum => 1, :maximum => 40
   validates_length_of :about, :minimum => 0, :maximum => 300, :allow_blank => true

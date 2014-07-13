@@ -43,12 +43,12 @@ class ProfileController < ApplicationController
     @user = current_user
     @useronline = User.online.find(:all, :limit => 9)
     @loc = @user.location
-    
-    
+ 
     @completion = @user.completion
     
     @userview = User.find(params[:id])
     
+    Visit.track(@userview,current_user)
     @interestcount = @userview.userinterests.find(:all).count
     @activitiescount = @userview.activities.where(:user_id => @userview.id).count
     
@@ -115,6 +115,7 @@ class ProfileController < ApplicationController
       if @user.update_attributes(params[:user])
         @user.realage = @user.age.to_i
         @user.save
+       
         format.html { redirect_to '/start/dashboard', notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else

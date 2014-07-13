@@ -394,6 +394,22 @@
 										<%=  link_to_modal "Contact me", "#demo-form2", :class=>"a btn btn-green btn-buck-project" %>
 				</div>
 
+<% if @current_user.voted_on? @user %>
+		
+			<div id="demo-form2" class="demo-description" style="display: none; ">
+			  <p>
+
+			<b>	This user is blocked. Please unblock this user first</b>:
+				    <br />
+
+
+
+			  </p>
+			</div>
+		
+<% else %>
+		
+		
 											<% if @user.voted_on? current_user %>
 
 																<div id="demo-form2" class="demo-description" style="display: none; ">
@@ -439,7 +455,7 @@
 
 
 				<% end %>
-					
+			<% end%>		
 						
 					 			<% elsif (current_user.liked? @activity2) || (current_user.liked? @activity2, :vote_scope => 'accept')  %>
 					
@@ -562,107 +578,9 @@
                 </div>
             </div><!--end: .project-author -->
             <div class="clear clear-2col"></div>
-            <div class="wrap-nav-pledge">
-                <ul class="rs nav nav-pledge accordion">
-                    <li>
-                        <div class=" pledge-label accordion-label clearfix">
-                            <i class="icon iPlugGray"></i>
-                            <span class="pledge-amount">Free acticities</span>
-                            <span class="count-val">(2 of 31)</span>
-                        </div>
-                        <div class=" pledge-content accordion-content">
-                            <div class="pledge-detail">
-                                <p class="rs pledge-description">Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                <p class="rs fw-b pb20">Ocupated (2 of 10)</p>
-                                <p class="rs"><span class="fw-b">Estimated delivery:</span> Aug 2013</p>
-                                <p class="rs fw-thin fc-gray pb20">Ships within the US only</p>
-                                <p class="rs ta-c"><a class="btn big btn-red" href="#">Buck this project</a></p>
-                            </div>
-                        </div>
-                    </li><!--end: pledge-item -->
-                    <li>
-                        <div class=" pledge-label accordion-label clearfix">
-                            <i class="icon iPlugGray"></i>
-                            <span class="pledge-amount">Between 0$ and 10$ </span>
-                            <span class="count-val">(42 of 111)</span>
-                        </div>
-                        <div class=" pledge-content accordion-content">
-                            <div class="pledge-detail">
-                                <p class="rs pledge-description">Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                <p class="rs fw-b pb20">Ocupated (2 of 10)</p>
-                                <p class="rs"><span class="fw-b">Estimated delivery:</span> Aug 2013</p>
-                                <p class="rs fw-thin fc-gray pb20">Ships within the US only</p>
-                                <p class="rs ta-c"><a class="btn big btn-red" href="#">Buck this project</a></p>
-                            </div>
-                        </div>
-                    </li><!--end: pledge-item -->
-                    <li>
-                        <div class="active pledge-label accordion-label clearfix">
-                            <i class="icon iPlugGray"></i>
-                            <span class="pledge-amount">Between $10 and 20$</span>
-                            <span class="count-val">(7 of 13)</span>
-                        </div>
-                        <div class="active pledge-content accordion-content">
-                            <div class="pledge-detail">
-                                <p class="rs pledge-description">Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                <p class="rs fw-b pb20">Ocupated (2 of 10)</p>
-                                <p class="rs"><span class="fw-b">Estimated delivery:</span> Aug 2013</p>
-                                <p class="rs fw-thin fc-gray pb20">Ships within the US only</p>
-                                <p class="rs ta-c"><a class="btn big btn-red" href="#">Buck this project</a></p>
-                            </div>
-                        </div>
-                    </li><!--end: pledge-item -->
-                    <li>
-                        <div class=" pledge-label accordion-label clearfix">
-                            <i class="icon iPlugGray"></i>
-                            <span class="pledge-amount">Between $20 and $30</span>
-                            <span class="count-val">(2 of 10)</span>
-                        </div>
-                        <div class=" pledge-content accordion-content">
-                            <div class="pledge-detail">
-                                <p class="rs pledge-description">Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                <p class="rs fw-b pb20">Ocupated (12 of 30)</p>
-                                <p class="rs"><span class="fw-b">Estimated delivery:</span> Aug 2013</p>
-                                <p class="rs fw-thin fc-gray pb20">Ships within the US only</p>
-                                <p class="rs ta-c"><a class="btn big btn-red" href="#">Buck this project</a></p>
-                            </div>
-                        </div>
-                    </li><!--end: pledge-item -->
-                    <li>
-                        <div class=" pledge-label accordion-label clearfix">
-                            <i class="icon iPlugGray"></i>
-                            <span class="pledge-amount">Between 30$ and 50$</span>
-                            <span class="count-val">(23 of 47)</span>
-                        </div>
-                        <div class=" pledge-content accordion-content">
-                            <div class="pledge-detail">
-                                <p class="rs pledge-description">Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                <p class="rs fw-b pb20">Ocupated (2 of 10)</p>
-                                <p class="rs"><span class="fw-b">Estimated delivery:</span> Aug 2013</p>
-                                <p class="rs fw-thin fc-gray pb20">Ships within the US only</p>
-                                <p class="rs ta-c"><a class="btn big btn-red" href="#">Buck this project</a></p>
-                            </div>
-                        </div>
-                    </li><!--end: pledge-item -->
-                    <li>
-                        <div class=" pledge-label accordion-label clearfix">
-                            <i class="icon iPlugGray"></i>
-                            <span class="pledge-amount">More then 50$</span>
-                            <span class="count-val">(23 of 39)</span>
-                        </div>
-                        <div class=" pledge-content accordion-content">
-                         <div class="pledge-detail">
-                                <p class="rs pledge-description">Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                <p class="rs fw-b pb20">Ocupated (2 of 10)</p>
-                                <p class="rs"><span class="fw-b">Estimated delivery:</span> Aug 2013</p>
-                                <p class="rs fw-thin fc-gray pb20">Ships within the US only</p>
-                                <p class="rs ta-c"><a class="btn big btn-red" href="#">Buck this project</a></p>
-                            </div>
-                        </div>
-                    </li><!--end: pledge-item -->
-                </ul>
-            </div><!--end: .wrap-nav-pledge -->
-        </div><!--end: .sidebar -->
+    
+<%= render 'activities/myvisits'%>
+   </div><!--end: .sidebar -->
         <div class="clear"></div>      
     </div>
 <%= render 'footer/footer' %>
