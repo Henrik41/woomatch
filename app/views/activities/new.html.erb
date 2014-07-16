@@ -276,31 +276,9 @@
 									Email Friends 
 								</a>
 							
-								 <div class="btn btn-blue"><a href="#" >
-                               <%= image_tag 'thumbup.png'%>
-                            </a>Facebook</div>
-                            <div class="line-progress">
-                                <div class="bg-progress">
-                                    <span class="success" style="width: 98%"></span>
-                                </div>
-                            </div>
-                            <div class="group-fee clearfix">
+												 <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="60" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+                   
 
-                                <div class="fee-item">
-                                    <p class="rs lbl">Credibility</p>
-                                    <span class="val">98%</span>
-                                </div>
-                                <div class="sep"></div>
-                                <div class="fee-item">
-                                    <p class="rs lbl">Interested</p>
-                                    <span class="val">100</span>
-                                </div>
-                                <div class="sep"></div>
-                                <div class="fee-item">
-                                    <p class="rs lbl">Days Left</p>
-                                    <span class="val">18</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div><!--end: .grid_3 > .project-short-->
@@ -541,7 +519,19 @@ $(function() {
 
 
 				</script>
+					<script>(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=516849445076378";
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
 
+					<script type="text/javascript">
+					$(document).ready(function(){
+					    $("#form_id2").validationEngine();
+					});
+					</script>
 
 </body>
 </html>
