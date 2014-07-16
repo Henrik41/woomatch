@@ -22,7 +22,7 @@
                 <p class="rs description">Signup for new promotions and activities in your area.</p>
 
 
-				<%= form_tag({:controller => 'general', :action => 'newsletter'},  :class => 'form form-email',  :remote => true) do %>
+				<%= form_tag({:controller => '/general', :action => 'newsletter'},  :class => 'form form-email',  :remote => true) do %>
 				<label class="lbl" for="txt-email">
 					<%= text_field_tag :email, '', :id => 'txt-email', :class=>'txt fill-width', :size => '16', :placeholder => 'Enter your e-mail address' %> 
    </label>

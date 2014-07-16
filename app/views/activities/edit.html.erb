@@ -129,7 +129,7 @@ $(document).ready(function(){
 									                                        <div class="val">
 
 
-									<%= f.text_field :title, :class => 'span2 validate[required,minSize[3],maxSize[20]] txt', :id => 'txt_name1', :placeholder => 'Enter an activity title' %>
+									<%= f.text_field :title, :class => 'span2 validate[required,minSize[3],maxSize[30]] txt', :id => 'txt_name1', :placeholder => 'Enter an activity title' %>
 									                                            <p class="rs description-input">Give a descriptive name to your Activity</p>
 									                                        </div>
 									                                    </div>
@@ -511,33 +511,51 @@ $(function() {
 
 					});
 
-				function geThan2(field, rules, i, options){
-					   var startdate = document.getElementsByName('activity[start_date]')[0].value;
-					   var starttime = document.getElementsByName('s1Time1')[0].value;
+		
+		function geThan2(field, rules, i, options){
+			   var startdate = document.getElementsByName('activity[start_date]')[0].value;
+			   var starttime = document.getElementsByName('s1Time1')[0].value;
+			  
+			 
+			  
+			
+			   var d1 = startdate.split('-');
+			   var arr = starttime.split(':');
+			   var hour = parseInt(arr[0]);
+			   var min = parseInt(arr[1]);
+			   var camoupm4 = arr[1];
+			   var camoupm5 = camoupm4.split(" ");
+			   var camoupm = camoupm5[1];
+			
+			
+			   
+			   if (camoupm == "PM" && hour < 12) hour = hour + 12;
+			   if (camoupm == "AM" && hour == 12) hour = hour - 12;
+			  
+			   d1b = new Date(d1[0], d1[1]-1, d1[2],hour,min);	       
 
-					   var d1 = startdate.split('-');
-					   var arr = starttime.split(':');
-					   var hour = parseInt(arr[0]);
-					   var min = parseInt(arr[1]);
-					   d1b = new Date(d1[0], d1[1]-1, d1[2],hour,min);	       
+				var enddate  = document.getElementsByName('activity[end_date]')[0].value;
+				var endtime = document.getElementsByName('s1Time2')[0].value;
+				 
+				var e1 = enddate.split('-');
+				var arre = endtime.split(':');
+				var houre = parseInt(arre[0]);
+				var mine = parseInt(arre[1]);
+				var camoupm41 = arre[1];
+				   var camoupm51 = camoupm41.split(" ");
+				   var camoupm2 = camoupm51[1];
 
-						var enddate  = document.getElementsByName('activity[end_date]')[0].value;
-						var endtime = field.val();
-
-						var e1 = enddate.split('-');
-						var arre = endtime.split(':');
-						var houre = parseInt(arre[0]);
-						var mine = parseInt(arre[1]);
-						d2b = new Date(e1[0], e1[1]-1, e1[2],houre,mine);
-
-						 if (d1b > d2b){
-						   return "Your ending date and time has to be later then the starting date and time"
-					}
-
-					};
+				   if (camoupm2 == "PM" && houre < 12) houre = houre + 12;
+				   if (camoupm2 == "AM" && houre == 12) houre = houre - 12;
 
 
+				d2b = new Date(e1[0], e1[1]-1, e1[2],houre,mine);
 
+				 if (d1b > d2b){
+				   return "Your ending date and time has to be later then the starting date and time"
+			}
+
+			};
 
 					</script>
 

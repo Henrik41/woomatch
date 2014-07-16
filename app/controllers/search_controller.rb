@@ -61,18 +61,36 @@ class SearchController < ApplicationController
     @mytime = Time.zone.now
     
      if params[:location].present?
-       @search = Activity.near(params[:location],100).order("distance").ransack(params[:q])      
- 
+       @search1 = Activity.joins(:visit).order('total_visits DESC').near(params[:location],80).order("distance").ransack(params[:q])      
+       @activities1 = @search1.result(distinct: true)
+       
+       
+       @search2 = Activity.near([@user.latitude,@user.longitude],400).order('updated_at DESC').order("distance").ransack(params[:q])
+        @activities2 = @search2.result(distinct: true)
+       
+        @search = Activity.order('updated_at DESC').near(params[:location],120).ransack(params[:q])
+        @activities = @search.result(distinct: true)
+       
+       
+       @activitiesrecent =  @activities.page(params[:page]).per(8)
+       @activitiesnear   =  @activities2.page(params[:page]).per(8)
+       
+       
+       @activitiespop    =  @activities1.page(params[:page]).per(8)
+
      else
        @search = Activity.ransack(params[:q])
+       @activities = @search.result(distinct: true)
+       
+       @activitiesrecent =  @activities.order('updated_at DESC').page(params[:page]).per(8)
+       @activitiesnear   =  @activities.order('updated_at DESC').near([@user.latitude,@user.longitude],100).order("distance").page(params[:page]).per(8)
+       @activitiespop    =  @activities.joins(:visit).order('total_visits DESC').joins(:visit).page(params[:page]).per(8)
+       
      end
       
-         @activities = @search.result(distinct: true)
+      
          
-         @activitiesrecent =  @activities.order('updated_at DESC').page(params[:page]).per(8)
-         @activitiesnear   =  @activities.order('updated_at DESC').near([@user.latitude,@user.longitude],200).order("distance").page(params[:page]).per(8)
-         @activitiespop    =  @activities.order('total_visits DESC').joins(:visit).page(params[:page]).per(8)
-     
+
     @loc = current_user.location
     @people = User.near([@user.latitude,@user.longitude], 150).last(9)
     

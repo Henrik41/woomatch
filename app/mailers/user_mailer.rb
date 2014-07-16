@@ -49,8 +49,18 @@ class UserMailer < ActionMailer::Base
               )
   end
   
+  def activitymod(current_user,user,activity)
+    @current_user = current_user
+    @activity = activity
+    @username = user
   
-  
+      mail(:to => user.email, 
+            :subject => "Someone change it's activity! Woomatch",
+
+            :template_path => 'user_mailer',    
+            :template_name => 'activitymod'  
+                )
+    end
   
 
 end

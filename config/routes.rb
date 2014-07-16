@@ -12,6 +12,7 @@ Woo::Application.routes.draw do
 
 #general
 
+
 post "general/newsletter", to: 'general#newsletter'
 post "general/follow/:id", to: 'general#follow'
 

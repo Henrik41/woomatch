@@ -44,6 +44,8 @@
 										  <%= devise_error_messages! %>
 
 										  <div><%= f.label :email %><br />
+
+
 										  <%= f.email_field :email, :autofocus => true %></div>
 
 										  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -107,14 +109,28 @@
 	
 		<%= form_for @user, :url => 'update' do |f| %>
 	                             
-	                                <p class="rs fw-b pb20"> A user follows me
+	          	<div class="grid_4">
+		                      <p class="rs fw-b pb20"> A user follows me
+			    </div>
+			
+				<div class="grid_4">
 		<%= f.select :userfollowme, [['Yes', true], ['No', false]] %></p>
-	 <p class="rs fw-b pb20">A user follows my activity 	<%= f.select :followme, [['Yes', true], ['No', false]] %></p>
-	 <p class="rs fw-b pb20">I receive a message in my inbox
-	<%= f.select :nomail, [['Yes', true], ['No', false]] %></p>
-		 <p class="rs fw-b pb20">A users accepts me for an activity <%= f.select :acceptme, [['Yes', true], ['No', false]] %></p>
-	     		 <p class="rs fw-b pb20">Someone wants to participate to my activity <%= f.select :partime, [['Yes', true], ['No', false]] %></p>
-	                                
+				</div>
+				<div class="clear"></div>
+	<div class="grid_4">
+		 <p class="rs fw-b pb20">A user follows my activity </div>
+				<div class="grid_4">
+						<%= f.select :followme, [['Yes', true], ['No', false]] %></p></div>
+						<div class="clear"></div>
+<div class="grid_4">
+		 <p class="rs fw-b pb20">I receive a message in my inbox
+			</div>
+<div class="grid_4">	<%= f.select :nomail, [['Yes', true], ['No', false]] %></p></div>
+<div class="clear"></div>
+
+<div class="grid_4">		 <p class="rs fw-b pb20">A users accepts me for an activity</div><div class="grid_4"> <%= f.select :acceptme, [['Yes', true], ['No', false]] %></p></div> <div class="clear"></div> 
+	 <div class="grid_4">    		 <p class="rs fw-b pb20">Someone wants to participate to my activity</div>	 <div class="grid_4">     <%= f.select :partime, [['Yes', true], ['No', false]] %></p></div>
+	                    <div class="clear"></div>            
 	                                 <p class="rs ta-c"><%= f.submit "Change my settings", :class => 'btn big btn-red' %></p>
 	<% end %>
 	                            </div>

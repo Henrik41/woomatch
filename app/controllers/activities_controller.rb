@@ -205,6 +205,13 @@ class ActivitiesController < ApplicationController
     @activity.start_time = params[:s1Time1]
     @activity.end_time = params[:s1Time2]
     @useronline = User.online.find(:all, :limit => 9)
+    
+    @userparticipating2 = @activity.votes_for.where(:vote_scope => 'accept').map(&:voter).uniq
+    
+    @userparticipating2.each do |v|
+      UserMailer.activitymod(@user,v,@activity).deliver
+    end
+    
      mytimezone = NearestTimeZone.to(@user.latitude,@user.longitude)
        Time.zone = mytimezone
        @mytime = Time.zone.now
