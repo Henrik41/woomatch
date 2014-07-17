@@ -98,7 +98,7 @@ class GeneralController < ApplicationController
     @activity2 = Activity.find(params[:activity])
     @current_user2 = current_user
     if @useraccepted.acceptme
-    UserMailer.send_user_accepted(@useraccepted,@activity2,@current_user2).deliver
+       UserMailer.send_user_accepted(@useraccepted,@activity2,@current_user2).deliver
     end
     
     @votes = @activity2.find_votes_for.where(:voter_id => @useraccepted)
@@ -153,10 +153,11 @@ class GeneralController < ApplicationController
   def followall
     @activity = Activity.find(params[:id])
     @userparticipating = @activity.votes_for.where(:vote_scope => nil).map(&:voter)
-      
+    @activity2 = @activity
+    @current_user2 = current_user  
     @userparticipating.each do |c|
         @votes = @activity.votes_for.where(:voter_id => c.id)
-      
+         UserMailer.send_user_accepted(c,@activity2,@current_user2).deliver
       if @votes.empty?
        else
          @votes.each do |v|
