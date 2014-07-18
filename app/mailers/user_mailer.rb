@@ -5,7 +5,7 @@ class UserMailer < ActionMailer::Base
      @activity = activity
      @current_user = current_user
      mail(:to => user.email, 
-          :subject => "You just got accepted!",
+          :subject => "Woomatch! You just got accepted!",
        
           :template_path => 'user_mailer',    
           :template_name => 'send_user_accepted'  
@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
     @username = user
 
      mail(:to => user.email, 
-          :subject => "Someone is follow your activity!",
+          :subject => "Woomatch! Someone is follow your activity!",
              
           :template_path => 'user_mailer',    
           :template_name => 'followme'  
@@ -28,7 +28,7 @@ class UserMailer < ActionMailer::Base
   def userfollowme(user,userfollowingu)
      @thecurrentuser = user
      mail(:to => userfollowingu.email, 
-          :subject => "Someone is follow you!",
+          :subject => "Woomatch! Someone is follow you!",
         
           :template_path => 'user_mailer',    
           :template_name => 'userfollowme'  
@@ -42,7 +42,7 @@ class UserMailer < ActionMailer::Base
     @username = user
 
      mail(:to => user.email, 
-          :subject => "Someone wants to participate to your activity!",
+          :subject => "Woomatch! Someone wants to participate to your activity!",
              
           :template_path => 'user_mailer',    
           :template_name => 'partime'  
@@ -55,7 +55,7 @@ class UserMailer < ActionMailer::Base
     @username = user
   
       mail(:to => user.email, 
-            :subject => "Someone change it's activity! Woomatch",
+            :subject => "Someone change it's activity on Woomatch!",
 
             :template_path => 'user_mailer',    
             :template_name => 'activitymod'  

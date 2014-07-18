@@ -18,18 +18,18 @@ class StartController < ApplicationController
       @notification = true
     end
      
-   
+
+    @activities = Activity.near([@result.latitude,@result.longitude],200).first(:order => "RANDOM()")
     @useronline = User.online.find(:all, :limit => 9)
     @loc = @user.location
     @interestcount = @user.userinterests.find(:all).count
     @activitiescount = @user.activities.where(:user_id => @user.id).count
     @completion = @user.completion 	
-    public_destroy = PublicActivity::Activity.order('created_at DESC').where(:key => "follow.destroy")
-    public_array_all = PublicActivity::Activity.order('created_at DESC')
+    public_destroy = PublicActivity::Activity.order('created_at DESC').where(:key => "follow.destroy").limit(40)
+    public_array_all = PublicActivity::Activity.order('created_at DESC').limit(40)
     public_array = (public_array_all - public_destroy).delete_if {|x| x.trackable == nil}
     @events = Kaminari.paginate_array(public_array).page(params[:page]).per(5) 
   end
-  
 
   
   def uservalide

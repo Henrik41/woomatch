@@ -1,6 +1,6 @@
 class Visit < ActiveRecord::Base
    attr_accessible :ip_address
-  belongs_to :visitable, :polymorphic => true, :dependent => :destroy
+  belongs_to :visitable, :polymorphic => true
     has_many :visit_details, :dependent => :destroy
     
     

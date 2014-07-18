@@ -662,6 +662,12 @@ float: right;
     margin: 0 auto;
     padding: 40px 0;
 }
+.layout-2colsb{
+    width: 650px;
+
+    margin: 0 auto;
+    padding: 20px 0;
+}
 .layout-2cols .content{
     float: left;
 }
@@ -1544,6 +1550,11 @@ background: none;
 .project-short .top-project-info{
     padding: 22px 28px 28px;
 }
+.project-short .top-project-info2{
+    padding: 10px 10px 10px;
+	width: 625px;
+}
+
 .content-info-short{
     position: relative;
 }
@@ -2633,6 +2644,8 @@ height: 42px;
     line-height: 0;
 }
 .comment-item .thumb-left img{
+    width: 85px;
+    height: 85px;
     border-radius: 57px;
     -moz-border-radius: 57px;
     -webkit-border-radius: 57px;
@@ -3411,3 +3424,44 @@ width: 100%;
 .miniactivity{
 height:40px;
 }
+
+#totalw{width:400px;
+
+}
+#left-item{
+
+width: 60%;
+float: left;
+}
+
+#right-item{
+
+width: 40%;
+float: left;
+}
+
+#totalitem{
+height: 100%;
+float:left;
+position:relative;
+
+}
+#haut-item{
+height: 50%;
+}
+#bas-item{
+height: 50%;
+}
+#rightfloating{float: right;
+
+}
+
+#myModal {
+   
+   width: 700px;
+   height: 360px;
+}
+
+.float-left{float:left;}
+.float-right{float:right;}
+

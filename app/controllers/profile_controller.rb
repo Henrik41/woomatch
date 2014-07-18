@@ -100,7 +100,7 @@ class ProfileController < ApplicationController
         if @result
         @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
         mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
-        @activitygrid = Activity.near(@loc, 200000).last(7)
+        @activitygrid = Activity.near(@loc, 200).last(7)
         else
          mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)  
         @activitygrid = Activity.find(:all).last(4)

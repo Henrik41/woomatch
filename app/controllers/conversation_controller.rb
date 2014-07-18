@@ -45,6 +45,12 @@ before_filter :get_mailbox
   
   def myoutbox
     
+    @mailbox.sentbox.each do |i|
+      if i.participants == Array(current_user)
+        i.move_to_trash(current_user)
+      end
+    end
+    
     
     @conversations =  Kaminari.paginate_array(@mailbox.sentbox.all).page(params[:page]).per(5)
     @messages_count = @mailbox.inbox({:read => false}).count
@@ -137,8 +143,10 @@ before_filter :get_mailbox
           i.move_to_trash(current_user)
         end
       end
-      
+
     end
+    
+    
    
   def get_actor
        @actor = current_user

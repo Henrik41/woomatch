@@ -7,7 +7,7 @@ class Activity < ActiveRecord::Base
   attr_accessible :about, :end_date, :end_time, :location, :numpart, :price, :recurrent, :start_date, :start_time, :title, :user_id, :website, :starting, :ending
   attr_accessible :avatar, :longitude, :latitude, :interests_attributes, :url, :remote_avatar_url
   geocoded_by :location
-  belongs_to :user, :dependent => :destroy
+  belongs_to :user
   has_many :interests, :dependent => :destroy
   has_one :visit, :as => :visitable, :dependent => :destroy
   

@@ -1,3 +1,33 @@
+
+<% if params[:id] == "1" %>
+<% else %>
+<div id="myModal" class="modal hide fade" tabindex="-1"   aria-hidden="true">
+
+
+
+<div class="modal-body">
+
+
+	
+	
+    
+
+
+	
+	<div class="layout-2colsb">
+<div class="float-left"><h3> <%= @activities.title%></h3> </div><div class="float-right">	<h3> <%=@activities.location%> </h3></div>
+		<div class="content grid_12">
+
+	<%= render :partial => '/general/myactivityinfo3', :locals => {:a => @activities} %> 
+
+		</div>
+	</div>
+	
+
+</div>
+
+</div>
+<% end %>
 <div id="wrapper">
 <% if @notification %>
 <%= js add_gritter('Thank you for your email. You make Woomach a better place!', :image => current_user.avatar.url(:supermini), :time => 4000, :title => 'Email was sent successfully') %>
@@ -120,4 +150,15 @@
 
 
 </div>
+
+
+
+<script type="text/javascript">
+$('#myModal').modal().css(
+          {
+              'margin-top': function () {
+                  return window.pageYOffset-($(this).height() / 2 );
+              }
+          });
+</script>
 
