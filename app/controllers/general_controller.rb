@@ -139,6 +139,26 @@ class GeneralController < ApplicationController
      
   end
   
+  
+  def followdash
+       @activity = Activity.find(params[:id])
+       @useraccepted = User.find(@activity.user_id)           
+       @current_user2 = current_user
+       
+       
+      if @useraccepted.followme
+         UserMailer.followme(@current_user2,@useraccepted,@activity).deliver
+      end
+
+      
+      current_user.follow(@activity)
+      
+      respond_to do |format|
+         format.js {}
+      end
+   
+  end
+  
   def unfollow3
     @useraccepted = User.find(params[:id])
     @activity2 = Activity.find(params[:activity])

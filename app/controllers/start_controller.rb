@@ -13,20 +13,26 @@ class StartController < ApplicationController
         @user.save
       end
      
-    @notification = false  
-    if params[:id] == "2"
-      @notification = true
+      @allfollow = @user.following_by_type('Activity') 
+      @myact =  @user.activities    
+      @activityall = Activity.near([current_user.latitude,current_user.longitude],200)
+      @act = @activityall - @allfollow - @myact
+    
+      if   @act.sample.nil?
+        params[:id] = "1"
+      else
+      @activities = @act.sample
     end
-     
+ 
+      
 
-    @activities = Activity.near([@result.latitude,@result.longitude],200).first(:order => "RANDOM()")
     @useronline = User.online.find(:all, :limit => 9)
     @loc = @user.location
     @interestcount = @user.userinterests.find(:all).count
     @activitiescount = @user.activities.where(:user_id => @user.id).count
     @completion = @user.completion 	
-    public_destroy = PublicActivity::Activity.order('created_at DESC').where(:key => "follow.destroy").limit(40)
-    public_array_all = PublicActivity::Activity.order('created_at DESC').limit(40)
+    public_destroy = PublicActivity::Activity.order('created_at DESC').limit(300).where(:key => "follow.destroy")
+    public_array_all = PublicActivity::Activity.order('created_at DESC').limit(300)
     public_array = (public_array_all - public_destroy).delete_if {|x| x.trackable == nil}
     @events = Kaminari.paginate_array(public_array).page(params[:page]).per(5) 
   end
