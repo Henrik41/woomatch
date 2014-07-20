@@ -1,4 +1,5 @@
-<div class="section_2"> <%= image_tag 's3.png' %> </div>
+
+<div class="section_2"> <div class="tool" data-toggle="tooltip" data-original-title="Woo! An activity was just added"> <%= image_tag 's3.png', :title => 'Woo! An activity was just added' %> </div></div>
 <div class="section_3">
 	<div class="section3_1">
 created	<%= distance_of_time_in_words(@mytime, activity.trackable.created_at) %> ago
@@ -21,3 +22,9 @@ just added an activity
 					<% end %>
 
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".tool img[title]").tooltip();   
+});
+</script>

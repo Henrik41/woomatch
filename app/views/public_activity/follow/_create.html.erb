@@ -1,8 +1,8 @@
 <div class="section_2">
 	<% if Follow.find(activity.trackable_id).followable_type == "User"   %>
-	 <%= image_tag 's4.png' %> 
+ <div class="tool" data-toggle="tooltip" data-original-title="Woo!  user was just followed"> <%= image_tag 's4.png', :title => 'Woo! user was just followed' %> </div>
 	<% else %>
-		 <%= image_tag 's5.png' %> 
+ <div class="tool" data-toggle="tooltip" data-original-title="Woo! An activity was just followed"> <%= image_tag 's5.png', :title => 'Woo! An activity was just followed' %> </div>
 		<% end %>
 	</div>
 <div class="section_3">
