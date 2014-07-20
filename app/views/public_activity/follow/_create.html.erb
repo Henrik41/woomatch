@@ -1,4 +1,10 @@
-<div class="section_2"> <%= image_tag 'logofollow.png' %> </div>
+<div class="section_2">
+	<% if Follow.find(activity.trackable_id).followable_type == "User"   %>
+	 <%= image_tag 's4.png' %> 
+	<% else %>
+		 <%= image_tag 's5.png' %> 
+		<% end %>
+	</div>
 <div class="section_3">
 	<div class="section_3_1">
 created	<%= distance_of_time_in_words(@mytime, activity.trackable.created_at) %> ago 

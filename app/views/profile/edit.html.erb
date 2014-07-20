@@ -49,7 +49,7 @@
 
 
 								                        <div class="bottom-project-info clearfix">           
-													   <%= f.file_field :avatar %> </br> </br>  </br> </br>  Profile Completion
+													   <%= f.file_field :avatar, :class => 'validate[required]' %> </br> </br>  </br> </br>  Profile Completion
 <%= @completion %> %									                            <div class="line-progress">
 								                                <div class="bg-progress">
 							                                    <span style="width: <%= @completion %>%;"></span>
@@ -109,7 +109,7 @@
 
 
 									                                            <div class="val">
-			<%= f.date_select :dob, :class => 'txt', :id => 'txt_location', :include_blank => true, :start_year => Time.now.year - 100, :end_year => Time.now.year - 10 %>    
+			<%= f.date_select :dob, {:order => [:day, :month, :year], :start_year => 1920, :end_year => 2013, :include_blank => true},  {:class => "span2 validate[required]"} %>    
 										                                            </div>
 									                                        </div>
 								                                        <div class="row-item clearfix">
@@ -144,7 +144,7 @@
 								
 																					<%= f.fields_for :userinterests do |f| %>
 
-									<%= f.text_field :interest, :class => "txt txt-website", :id => "txt_web" %>
+									<%= f.text_field :interest, :class => 'span2 validate[required] txt txt-website', :id => 'txt_web' %>
 
 												<%= f.link_to_remove "Remove" %>
 																					<% end %>
@@ -259,6 +259,11 @@
 				    $("#form_id2").validationEngine();
 				});
 				</script>
-				
-				
+			<script>	
+				$("document").ready(function() {
+				    setTimeout(function() {
+				        $(".btn-white").trigger('click');
+				    },10);
+				});	
 
+			</script>
