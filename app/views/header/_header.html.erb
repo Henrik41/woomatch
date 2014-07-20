@@ -10,17 +10,17 @@
   				<div class="account-panel">
 					<div class="nav-title">
 						
-		
+<div class="red-tooltip">		
 		<% if @messages_count >= 1 %>
 <span class="pink blink2">  <%= @messages_count %> </span>
 <% else %>		
 <% end %>
 
-				<a  href="/conversation/myinbox">&nbsp;<%= image_tag '/assets/icon1c.png'%></a><span class="sep"></span>
-				                        <a href="/profile/edit"><%= image_tag '/assets/icon2c.png'%></a><span class="sep"></span>
-				                        <a href="/setting/index"><%= image_tag '/assets/icon3c.png'%></a><span class="sep"></span>
-										<%= link_to (image_tag '/assets/icon4c.png'), destroy_user_session_path, :method => :delete %>
-				
+				<a  href="/conversation/myinbox" data-toggle="tooltip" data-original-title="Check your Woobox">&nbsp;<%= image_tag "/assets/icon1c.png"  %></a><span class="sep"></span>
+				                        <a href="/profile/edit" data-toggle="tooltip" data-original-title="Check your profile"><%= image_tag '/assets/icon2c.png' %></a><span class="sep"></span>
+				                        <a href="/setting/index" data-toggle="tooltip" data-original-title="Settings" ><%= image_tag '/assets/icon3c.png'%></a><span class="sep"></span>
+										<%= link_to (image_tag '/assets/icon4c.png'), destroy_user_session_path,  "data-toggle"=>"tooltip", "data-original-title"=>"I'm out!", :method => :delete %>
+			
 				                       <span class="sep"></span>
 										
 											<% if current_user.avatar? %>
@@ -29,7 +29,7 @@
 				<a href='/profile/edit'> <%= image_tag '/assets/ex/blankmini.jpg' %> </a>
 				<% end %>
 				</div>
-			                    </div>
+	</div>			                    </div>
 
            <div class="form-search3">
           	<%=	form_tag( {:action=> 'searchactivities', :controller =>'search'}, :id =>'sys_txt_keyword', :class => 'txt-keyword')  do %>
@@ -157,6 +157,12 @@ $(function() {
 	                    }
 	                }
 	        }, 500);
+	});
+	</script>
+	
+	<script type="text/javascript">
+	$(document).ready(function(){
+	    $(".red-tooltip a").tooltip();   
 	});
 	</script>
 	
