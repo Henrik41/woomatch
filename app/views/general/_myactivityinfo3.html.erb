@@ -17,10 +17,15 @@
 			<div id="haut-item">
 				
 
-
+<div id="search_button">
 	<%= form_tag({:controller => 'general', :action => 'followdash', :id => @activities.id},  :remote => true) do %>
 		<%= submit_tag 'Woo! I Like It',  :class => "btn bigger btn-red" %>
 	<% end %>
+</div>	
+	 <span id="spinner"  style="display:none">
+	    <%= image_tag 'spinner-b.gif' %>
+	  </span>
+	
 		</div></br>
 <div id = "bas-item">
    <a class="btn bigger  btn-blue" href="/activity/<%= a.id %>">Check it out</a> 
@@ -78,5 +83,8 @@
 		                                        <div class="clear"></div>
 		  </div><!-- end bottom-project-info clearfix-->
 		 </div><!--end: .box-marked-project -->
-
-
+<script>
+$(".btn-red").click(function() {
+    $("#spinner, #search_button").toggle();
+});
+</script>

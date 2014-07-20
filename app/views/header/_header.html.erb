@@ -16,10 +16,10 @@
 <% else %>		
 <% end %>
 
-				<a  href="/conversation/myinbox">&nbsp;Inbox</a><span class="sep"></span>
-				                        <a href="/profile/edit">Profile</a><span class="sep"></span>
-				                        <a href="/setting/index">Settings</a><span class="sep"></span>
-										<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+				<a  href="/conversation/myinbox">&nbsp;<%= image_tag '/assets/icon1c.png'%></a><span class="sep"></span>
+				                        <a href="/profile/edit"><%= image_tag '/assets/icon2c.png'%></a><span class="sep"></span>
+				                        <a href="/setting/index"><%= image_tag '/assets/icon3c.png'%></a><span class="sep"></span>
+										<%= link_to (image_tag '/assets/icon4c.png'), destroy_user_session_path, :method => :delete %>
 				
 				                       <span class="sep"></span>
 										
