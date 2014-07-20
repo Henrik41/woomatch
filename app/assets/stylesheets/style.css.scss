@@ -393,6 +393,22 @@ float: right;
 .btn-red:hover{
     background: #e84837;
 }
+.btn-red2{
+    border: 1px solid #b53b2c;
+    color: #FFF;
+    background: #ec5843; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ec5843 0%, #e84837 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ec5843), color-stop(100%,#e84837)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ec5843 0%,#e84837 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ec5843 0%,#e84837 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ec5843 0%,#e84837 100%); /* IE10+ */
+    background: linear-gradient(top,  #ec5843 0%,#e84837 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ec5843', endColorstr='#e84837',GradientType=0 ); /* IE6-9 */
+}
+.btn-red2:hover{
+    background: #e84837;
+}
+
 .btn-gray{
     padding: 11px 25px 13px;
     border: none;

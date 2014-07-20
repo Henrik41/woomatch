@@ -18,18 +18,35 @@
 	
 			
 				 	<% if current_user.following?(@activity) %>
-
+							 <span id="spinnera"  style="display:none">
+							    <%= image_tag 'spinner-b.gif' %>
+							  </span>
+<div id="search_buttona">
 					<%= form_tag({:action => 'unfollow', :id => @activity.id}, :remote => true) do %>
-					<%= submit_tag 'Unfollow This Activity',  :class => "btn big btn-red" %>
+					<%= submit_tag 'Unfollow This Activity',  :class => "btn big btn-red2" %>
 					
-					
+		
 					 <% end %>
+					
+	</div>		
 
+	
+	
+	
 				<% else %>
+		
+			 <span id="spinnerb"  style="display:none">
+			    <%= image_tag 'spinner-b.gif' %>
+			  </span>
+	
+				<div id="search_buttonb">
 						<%= form_tag({:controller => 'general', :action => 'follow', :id => @activity.id}, :remote => true) do %>
-							<%= submit_tag 'Follow This Activity',  :class => "btn big btn-red" %>
+							<%= submit_tag 'Follow This Activity',  :class => "btn big btn-red2" %>
 				 		<% end %>
+				</div>
+
 				<%end%>
+
 
 				</div>
 </div>
@@ -480,6 +497,8 @@
 							<span class="a btn btn-green btn-buck-project">This user is unavailable </span>
 						<% else %>
 						
+						
+						<div id="search_button">
 							<%= form_tag({:action => 'follow2', :id => @activity2.id}, :remote => true) do %>
 					
 						<%= button_tag(type: 'submit', class: "a btn btn-green btn-buck-project") do %>
@@ -488,6 +507,11 @@
 						<%end%>
 						
 					 		<% end %>
+					</div>
+							 <span id="spinner"  style="display:none">
+							    <%= image_tag 'spinner-b.gif' %>
+							  </span>
+							
 				<% end %>
 				   <% end %>
 
@@ -606,6 +630,30 @@ $(document).ready(function() {
      });
 });
 </script>
+
+<script>
+$(".btn-red2").click(function() {
+    $("#spinnerb, #search_buttonb").toggle();
+});
+</script>
+<script>
+$(".btn-red2").click(function() {
+    $("#spinnera, #search_buttona").toggle();
+});
+</script>
+
+<script>
+$("#followid2<%=@activity.id%>").click(function() {
+    $("#spinner, #search_button").toggle();
+});
+</script>
+
+<script>
+$('#followid<%=@activity.id%>').click(function() {
+    $("#spinnerb, #search_buttonb").toggle();
+});
+</script>
+
 
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
