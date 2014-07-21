@@ -36,6 +36,8 @@
 //= require jquery.modal
 //= require image-picker
 //= require gritter
+//= require jquery.fancybox
+//= require jquery.fancybox.pack
 //= require jquery.validationEngine-zh_CN
 //= require jquery.validationEngine-en.js
 //= require jquery.validationEngine

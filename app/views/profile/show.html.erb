@@ -21,7 +21,7 @@
 
 		      				       		         
 													<% if @userview.avatar? %>
-												<%= image_tag @userview.avatar.url(:medium) %>
+											<a class="fancybox" rel="group" href='<%= @userview.avatar.url%>' %>	<%= image_tag @userview.avatar.url(:medium) %>
 													<%else%>
 <%= image_tag '/assets/ex/blank.jpg' %>
 <%end%>
@@ -234,6 +234,15 @@
 
 <%= render 'footer/footer'%>
 </div> <!--div wrapper -->
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script>
+
+
 <script>
 <%= add_gritter('has '+@interestcom.to_s+' interests in common wih you', :image => @userview.avatar.url(:supermini), :time => 4000, :title => @userview.username) %>
 <%= extend_gritter :position => :bottom_right %>

@@ -49,7 +49,14 @@
 
 
 								                        <div class="bottom-project-info clearfix">           
-													   <%= f.file_field :avatar, :class => 'validate[required]' %> </br> </br>  </br> </br>  Profile Completion
+										    <% if f.object.avatar? %>
+											   <%= f.file_field :avatar, :class => 'autrechose'  %> 
+											<% else %>		  
+											    <%= f.file_field :avatar, :class => 'validate[required]' %> 
+											<% end %>		
+													
+													
+													</br> </br>  </br> </br>  Profile Completion
 <%= @completion %> %									                            <div class="line-progress">
 								                                <div class="bg-progress">
 							                                    <span style="width: <%= @completion %>%;"></span>

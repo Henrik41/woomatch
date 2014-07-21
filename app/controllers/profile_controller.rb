@@ -95,7 +95,7 @@ class ProfileController < ApplicationController
     @activitiescount = @user.activities.where(:user_id => @user.id).count
     @completion = @user.completion
     @useronline = User.online.find(:all, :limit => 9)
-     @activity = @user.activities.all
+    @activity = @user.activities.all
         @result = request.location    
         if @result
         @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s

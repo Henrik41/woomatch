@@ -106,6 +106,7 @@ rescue Exception => e
 end
 
 
+
   # resources
 
     resources :profile do
