@@ -9,7 +9,7 @@
 							              
 							<% if u.avatar? %>
 						<div class="small_images">
-							<%= link_to (image_tag (u.avatar.url(:mini)), :width => '75', :height => '75', :class => 'onbottom'), :controller => 'profile', :action => 'show', :id => u.id %> 
+							<%= link_to (image_tag (u.avatar.url(:supermini)), :width => '75', :height => '75', :class => 'onbottom'), :controller => 'profile', :action => 'show', :id => u.id %> 
 							
 							<%= image_tag '/assets/Greenlight2.gif', :class => 'ontop' %>
 						

@@ -21,7 +21,7 @@
 
 		      				       		         
 													<% if @userview.avatar? %>
-											<a class="fancybox" rel="group" href='<%= @userview.avatar.url%>' %>	<%= image_tag @userview.avatar.url(:medium) %>
+											<a class="fancybox" rel="group" href='<%= @userview.avatar.url%>' title = '<%= @userview.username %>' %>	<%= image_tag @userview.avatar.url(:medium) %>
 													<%else%>
 <%= image_tag '/assets/ex/blank.jpg' %>
 <%end%>
