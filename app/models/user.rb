@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:facebook]
   has_many :activities, :dependent => :destroy
   has_many :userinterests, :dependent => :destroy
-  has_one :profile, :dependent => :destroy
   has_one :visit, :as => :visitable, :dependent => :destroy
   accepts_nested_attributes_for :userinterests, 
                                     :allow_destroy => true
