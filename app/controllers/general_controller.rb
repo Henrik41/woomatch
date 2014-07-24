@@ -194,7 +194,34 @@ class GeneralController < ApplicationController
      
   end
   
+  def invite
+    
+    @activity = Activity.find(params[:id])
+    @useraccepted = User.find(@activity.user_id)
+    @para1= 'Hey there. I would be delighted if you would participate to my activity '+@activity.title+'. Please check it out and let me know!' 
+     @following = params[:role_ids]
+     @following.each do |f|
+       
+      @user_receiver = User.find(f)
+      
+       conv_check_1 = Conversation.participant(@user_receiver)
+       conv_check_2 = Conversation.participant(current_user)
 
+       @dialog = (conv_check_1 & conv_check_2).first
+
+       if @dialog.nil? or !@dialog.is_participant?(current_user)
+          current_user.send_message(@user_receiver, @para1, 'VIP Invitation')
+       else
+          current_user.reply_to_conversation(@dialog, @para1)
+       end
+       
+       
+     end
+     respond_to do |format|
+          format.html {}
+      end   
+     
+  end
   
   def newsletter
     @email = params[:email]
@@ -203,5 +230,7 @@ class GeneralController < ApplicationController
      end
      
   end
+  
+
   
   end
