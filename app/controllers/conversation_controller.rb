@@ -19,9 +19,9 @@ before_filter :get_mailbox
     @dialog = (conv_check_1 & conv_check_2).first
     
     if @dialog.nil? or !@dialog.is_participant?(current_user)
-       current_user.send_message(@user_receiver, @para1, 'subject')
+       current_user.send_message(@user_receiver, @para1, 'subject', sanitize_text = false, attachment = nil)
     else
-       current_user.reply_to_conversation(@dialog, @para1)
+       current_user.reply_to_conversation(@dialog, @para1, sanitize_text = false, attachment = nil )
     end
 
 
@@ -79,14 +79,14 @@ before_filter :get_mailbox
     recipients = User.where(email: recipient_emails).all
 
     conversation = current_user.
-      send_message(recipients, *conversation_params(:body, :subject)).conversation
+      send_message(recipients, *conversation_params(:body, :subject), sanitize_text = false, attachment = nil).conversation
 
     redirect_to conversation
   end
 
   def reply
     conversation = Conversation.find(params[:user][:conversation_id])
-    current_user.reply_to_conversation(conversation, params[:user][:body], 'Reply')
+    current_user.reply_to_conversation(conversation, params[:user][:body], 'Reply', sanitize_text = false, attachment = nil)
     
     redirect_to conversation_myinbox_path
   end

@@ -198,7 +198,7 @@ class GeneralController < ApplicationController
     
     @activity = Activity.find(params[:id])
     @useraccepted = User.find(@activity.user_id)
-    @para1= 'Hey there. I would be delighted if you would participate to my activity '+@activity.title+'. Please check it out and let me know!' 
+    @para1= 'Hey '+@useraccepted.username+'. You are invited to my activity <b>'+'<a href="/activity/'+@activity.id.to_s+'">'+ @activity.title+'</a></b>. Please check it out and let me know what you think! </br> '+'<a href="/activity/'+@activity.id.to_s+'">'+'<img src="'+@activity.avatar.url(:supermini)+'"></a>'
      @following = params[:role_ids]
      @following.each do |f|
        
@@ -210,9 +210,9 @@ class GeneralController < ApplicationController
        @dialog = (conv_check_1 & conv_check_2).first
 
        if @dialog.nil? or !@dialog.is_participant?(current_user)
-          current_user.send_message(@user_receiver, @para1, 'VIP Invitation')
+          current_user.send_message(@user_receiver, @para1, 'VIP Invitation', sanitize_text = false, attachment = nil)
        else
-          current_user.reply_to_conversation(@dialog, @para1)
+          current_user.reply_to_conversation(@dialog, @para1, sanitize_text = false, attachment = nil)
        end
        
        

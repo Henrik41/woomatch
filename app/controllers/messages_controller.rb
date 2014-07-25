@@ -44,7 +44,7 @@ class MessagesController < ApplicationController
           []
         end
 
-      @receipt = @actor.send_message(@recipients, params[:body], params[:subject])
+      @receipt = @actor.send_message(@recipients, params[:body], params[:subject], sanitize_text = false, attachment = nil)
       if (@receipt.errors.blank?)
         @conversation = @receipt.conversation
         flash[:success]= t('mailboxer.sent')
