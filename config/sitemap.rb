@@ -25,7 +25,10 @@ SitemapGenerator::Sitemap.create do
   #
   # Add all articles:
   #
-  #   Article.find_each do |article|
-  #     add article_path(article), :lastmod => article.updated_at
-  #   end
+  
+    add '/info/about'
+  
+    Activity.find_each do |activity|
+       add '/info/my_activity/'+activity.slug, :lastmod => activity.updated_at
+    end
 end
