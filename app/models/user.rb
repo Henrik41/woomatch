@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
 
-  extend FriendlyId
-    friendly_id :username, use: :slugged
+
    
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
