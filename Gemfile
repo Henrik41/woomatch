@@ -53,6 +53,7 @@ gem 'daemons'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem "friendly_id", "~> 4.0.10"
+gem 'sitemap_generator'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
