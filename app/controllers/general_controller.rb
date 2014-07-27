@@ -198,7 +198,7 @@ class GeneralController < ApplicationController
     
     @activity = Activity.find(params[:id])
     @useraccepted = User.find(@activity.user_id)
-    @para1= 'Hey '+@useraccepted.username+'. You are invited to my activity <b>'+'<a href="/activity/'+@activity.id.to_s+'">'+ @activity.title+'</a></b>. Please check it out and let me know what you think! </br> '+'<a href="/activity/'+@activity.id.to_s+'">'+'<img src="'+@activity.avatar.url(:supermini)+'"></a>'
+    @para1= 'Hey '+@useraccepted.username+'. You are invited to my activity <b>'+'<a href="/activity/'+@activity.id.to_s+'">'+ @activity.title+'</a></b>. Please check it out and let me know what you think! </br> </br>'+'<a href="/activity/'+@activity.id.to_s+'">'+'<img src="'+@activity.avatar.url(:supermini)+'"></a>'
      @following = params[:role_ids]
      @following.each do |f|
        

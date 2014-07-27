@@ -1,6 +1,6 @@
 class AddDeviseToAdminUsers < ActiveRecord::Migration
   def self.up
-    change_table(:admin_users) do |t|
+    create_table(:admin_users) do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: "admin@woomatch.com"
       t.string :encrypted_password, null: false, default: "qqqqq"

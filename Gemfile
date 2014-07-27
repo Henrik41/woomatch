@@ -52,6 +52,7 @@ gem 'jQuery-Validation-Engine-rails', :git => 'git@github.com:Henrik41/jQuery-Va
 gem 'daemons'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
+gem "friendly_id", "~> 4.0.10"
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

@@ -31,7 +31,7 @@
                 <a href="/profile/<%=x.sender_id%>" class="be-fc-orange fw-b"><%= User.find(x.sender_id).username %></a>
                 <span class="fc-gray">say:</span>
             </h4>
-            <p class="rs comment-content"> 	<%= simple_format (x.body) %> </p>
+            <p class="rs comment-content"> 	<%= sanitize(simple_format (x.body)) %> </p>
             <p class="rs time-post">
                 	written <%= "#{time_ago_in_words(x.created_at)} ago " %>
                 <a class="btn-reply fc-gray be-fc-orange" href="#">
