@@ -41,7 +41,7 @@ gem "omnicontacts"
 gem "localtunnel"
 gem 'carrierwave'
 gem 'mini_magick' 
-gem 'mailboxer'
+gem 'mailboxer', '~>  0.11.0'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "acts_as_follower", '~> 0.1.1'

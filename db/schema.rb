@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140727051902) do
+ActiveRecord::Schema.define(:version => 20140728031737) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -33,20 +33,16 @@ ActiveRecord::Schema.define(:version => 20140727051902) do
     t.string   "title"
     t.string   "location"
     t.date     "start_date"
-    t.datetime "start_time"
+    t.time     "start_time"
     t.date     "end_date"
-    t.datetime "end_time"
+    t.time     "end_time"
     t.text     "about"
     t.integer  "numpart"
     t.string   "website"
     t.boolean  "recurrent"
     t.string   "price"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.float    "longitude"
     t.float    "latitude"
     t.string   "avatar"
@@ -57,35 +53,17 @@ ActiveRecord::Schema.define(:version => 20140727051902) do
 
   add_index "activities", ["slug"], :name => "index_activities_on_slug"
 
-  create_table "activityapplies", :force => true do |t|
-    t.integer  "activity_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "activityavatars", :force => true do |t|
-    t.integer  "activity_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-  end
-
   create_table "admin_users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "admin@woomatch.com", :null => false
+    t.string   "encrypted_password",     :default => "qqqqq",              :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.integer  "sign_in_count",          :default => 0,                    :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -93,12 +71,14 @@ ActiveRecord::Schema.define(:version => 20140727051902) do
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "conversations", :force => true do |t|
+    t.string   "subject",    :default => ""
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -138,19 +118,7 @@ ActiveRecord::Schema.define(:version => 20140727051902) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "mailboxer_conversation_opt_outs", :force => true do |t|
-    t.integer "unsubscriber_id"
-    t.string  "unsubscriber_type"
-    t.integer "conversation_id"
-  end
-
-  create_table "mailboxer_conversations", :force => true do |t|
-    t.string   "subject",    :default => ""
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-  end
-
-  create_table "mailboxer_notifications", :force => true do |t|
+  create_table "notifications", :force => true do |t|
     t.string   "type"
     t.text     "body"
     t.string   "subject",              :default => ""
@@ -168,9 +136,9 @@ ActiveRecord::Schema.define(:version => 20140727051902) do
     t.datetime "expires"
   end
 
-  add_index "mailboxer_notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
+  add_index "notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
 
-  create_table "mailboxer_receipts", :force => true do |t|
+  create_table "receipts", :force => true do |t|
     t.integer  "receiver_id"
     t.string   "receiver_type"
     t.integer  "notification_id",                                  :null => false
@@ -182,27 +150,7 @@ ActiveRecord::Schema.define(:version => 20140727051902) do
     t.datetime "updated_at",                                       :null => false
   end
 
-  add_index "mailboxer_receipts", ["notification_id"], :name => "index_receipts_on_notification_id"
-
-  create_table "ponds", :force => true do |t|
-    t.string   "address"
-    t.string   "address_latitude"
-    t.string   "address_longitude"
-    t.string   "address_locality"
-    t.string   "address_country"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-  end
-
-  create_table "profiles", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "location"
-    t.string   "status"
-    t.text     "about"
-    t.string   "web"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+  add_index "receipts", ["notification_id"], :name => "index_receipts_on_notification_id"
 
   create_table "userinterests", :force => true do |t|
     t.integer  "user_id"
