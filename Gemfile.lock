@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:Henrik41/jQuery-Validation-Engine-rails.git
-  revision: 88edcc7b75b10233010f60f29afd4abeffcc36cf
+  revision: 290c8c36d200070f3443d7e73e72b029cc5bb036
   specs:
     jQuery-Validation-Engine-rails (0.0.2)
 
@@ -165,6 +165,8 @@ GEM
       carrierwave (>= 0.5.8)
       foreigner (>= 0.9.1)
       rails (> 3.0.0)
+    meta-tags (2.0.0)
+      actionpack (>= 3.0.0)
     meta_request (0.3.3)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
@@ -328,6 +330,7 @@ DEPENDENCIES
   kaminari
   localtunnel
   mailboxer (~> 0.11.0)
+  meta-tags
   meta_request
   mini_magick
   mysql2

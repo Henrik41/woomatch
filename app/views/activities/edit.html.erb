@@ -141,7 +141,7 @@ $(document).ready(function(){
 																			            <span class="help-inline"><%= @activity.errors[:location].join(", ")%></span>  
 																	<%end%>	
 
-									<%= f.text_field :location, :class => 'validate[required] address-picker-input', :id => 'txt_location', :placeholder => 'Where is your event?' %>      
+									<%= f.text_field :location, :class => 'validate[required,minSize[3],maxSize[80]] address-picker-input', :id => 'txt_location', :placeholder => 'Where is your event?' %>      
 									
 										<script type="text/javascript">
 										    AddressPickerRails.Pickers.applyOnReady({
@@ -200,7 +200,7 @@ $(document).ready(function(){
 									                                        <label class="lbl">Ending Time:</label>
 									                                        <div class="val">
 									<div class='txt2'>
-									                                                <%= f.text_field :end_time,:class => 'validate[required,funcCall[geThan2]] txt', :name => 's1Time2', :id => 'txttime2',  :value => f.object.end_time.strftime("%I:%M %p")  %> <br/>
+									                                                <%= f.text_field :end_time,:class => 'validate[required,funcCall[than]] txt', :name => 's1Time2', :id => 'txttime2',  :value => f.object.end_time.strftime("%I:%M %p")  %> <br/>
 														</div>
 
 
@@ -477,6 +477,16 @@ $(function() {
 			});
 			</script>
 			
+			<script>
+						$('#form_id2').submit(function() {
+						    if($('#activity_remote_avatar_url').val() == '' && $('#activity_avatar').val() == '') {
+						        alert('You need a pic. Please select a pic from your computer or select a pic from the net');
+						        return false;
+						    }
+						});
+
+
+						</script>
 
 				<script>
 
@@ -511,52 +521,57 @@ $(function() {
 
 					});
 
-		
-		function geThan2(field, rules, i, options){
-			   var startdate = document.getElementsByName('activity[start_date]')[0].value;
-			   var starttime = document.getElementsByName('s1Time1')[0].value;
-			  
-			 
-			  
-			
-			   var d1 = startdate.split('-');
-			   var arr = starttime.split(':');
-			   var hour = parseInt(arr[0]);
-			   var min = parseInt(arr[1]);
-			   var camoupm4 = arr[1];
-			   var camoupm5 = camoupm4.split(" ");
-			   var camoupm = camoupm5[1];
-			
-			
-			   
-			   if (camoupm == "PM" && hour < 12) hour = hour + 12;
-			   if (camoupm == "AM" && hour == 12) hour = hour - 12;
-			  
-			   d1b = new Date(d1[0], d1[1]-1, d1[2],hour,min);	       
+							function than(field, rules, i, options){
 
-				var enddate  = document.getElementsByName('activity[end_date]')[0].value;
-				var endtime = document.getElementsByName('s1Time2')[0].value;
-				 
-				var e1 = enddate.split('-');
-				var arre = endtime.split(':');
-				var houre = parseInt(arre[0]);
-				var mine = parseInt(arre[1]);
-				var camoupm41 = arre[1];
-				   var camoupm51 = camoupm41.split(" ");
-				   var camoupm2 = camoupm51[1];
-
-				   if (camoupm2 == "PM" && houre < 12) houre = houre + 12;
-				   if (camoupm2 == "AM" && houre == 12) houre = houre - 12;
+								var d1b = 4;
+								var d2b = 3;
+								   var startdate = document.getElementsByName('activity[start_date]')[0].value;
+								   var starttime = document.getElementsByName('s1Time1')[0].value;
 
 
-				d2b = new Date(e1[0], e1[1]-1, e1[2],houre,mine);
 
-				 if (d1b > d2b){
-				   return "Your ending date and time has to be later then the starting date and time"
-			}
 
-			};
+								   var d1 = startdate.split('-');
+								   var arr = starttime.split(':');
+								   var hour = parseInt(arr[0]) || 0;
+								   var min = parseInt(arr[1]) || 0;
+								   var camoupm4 = arr[1] || "";
+								   var camoupm5 = camoupm4.split(" ");
+								   var camoupm = camoupm5[1] || "";
 
+
+
+								   if (camoupm == "PM" && hour < 12) hour = hour + 12;
+								   if (camoupm == "AM" && hour == 12) hour = hour - 12;
+
+								   d1b = new Date(d1[0], d1[1]-1, d1[2],hour,min);
+
+
+
+									var enddate  = document.getElementsByName('activity[end_date]')[0].value;
+									var endtime = document.getElementsByName('s1Time2')[0].value;
+
+									var e1 = enddate.split('-');
+									var arre = endtime.split(':');
+									var houre = parseInt(arre[0]) || 0;
+									var mine = parseInt(arre[1]) || 0;
+									var camoupm41 = arre[1]  || "";
+									   var camoupm51 = camoupm41.split(" ");
+									   var camoupm2 = camoupm51[1]|| "";
+
+									   if (camoupm2 == "PM" && houre < 12) houre = houre + 12;
+									   if (camoupm2 == "AM" && houre == 12) houre = houre - 12;
+
+
+									d2b = new Date(e1[0], e1[1]-1, e1[2],houre,mine);
+
+									 if (d1b > d2b){
+
+									   rules.push('required');
+									   return "Your ending date and time has to be later then the starting date and time";
+								}
+
+								}
 					</script>
 
 
@@ -574,4 +589,6 @@ $(function() {
 			    $("#form_id2").validationEngine();
 			});
 			</script>
+			
+
 			

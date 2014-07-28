@@ -5,11 +5,11 @@
 
     <div class="project-author pb20">
         <div class="media">
-            <a href="#" class="thumb-left">
+            <a href='/profile/<%= u.username.id %>' class="thumb-left">
                <%= image_tag (u.avatar.url(:mini))%>
             </a>
             <div class="media-body">
-                <h4 class="rs pb10"><a href="#" class="be-fc-orange fw-b"><%= u.username %></a></h4>
+                <h4 class="rs pb10"><a href='/profile/<%= u.username.id %>' class="be-fc-orange fw-b"><%= u.username %></a></h4>
                 <p class="rs"><%= u.location %></p>
                 <p class="rs fc-gray">has <%= u.activities.count %> activities</p>
             </div>

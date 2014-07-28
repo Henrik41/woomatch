@@ -56,7 +56,7 @@
 				</div>
 			</br>		</br>
 			
-                <p class="rs post-by">by <a href="#"><%=@user.username %></a> </p></div>
+                <p class="rs post-by">by <a href='/profile/<%=@user.id %>'><%=@user.username %></a> </p></div>
                 <div class="project-short big-thumb">
                     <div class="top-project-info">
                         <div class="content-info-short clearfix">
@@ -115,7 +115,7 @@
 				                            <div class="tab-pane active accordion-content">
 				                                <div class="editor-content">
 				                                    <h3 class="rs title-inside"><%= @activity.title %></h3>
-				                                    <p class="rs post-by">by <a href="#" class="fw-b fc-gray be-fc-orange"><%= @useractivity.username %></a> in <span class="fw-b fc-gray"><%= @activity.location %></span></p>
+				                                    <p class="rs post-by">by <a href="/profile/<%=@useractivity.id %>" class="fw-b fc-gray be-fc-orange"><%= @useractivity.username %></a> in <span class="fw-b fc-gray"><%= @activity.location %></span></p>
 				                                    <p><%= @activity.about %></p></br>
 												<p>	<% if @activity.website == 'www.' || @activity.website.empty? %>
 													<% else %>
@@ -345,7 +345,7 @@
 
 										</br>			             
 							<div class="media">
-							<a href="#" class="thumb-left">
+							<a href='/profile/<%=f.id %>' class="thumb-left">
 									<div class="media-body">
 									<% if f.avatar.url(:mini) %>
 								                  <%= link_to (image_tag f.avatar.url(:mini)), '/profile/'+ f.id.to_s %> 
@@ -541,11 +541,11 @@
                 <div class="box-gray">
                     <h3 class="title-box">Project by</h3>
                     <div class="media">
-                        <a href="#" class="thumb-left">
+                        <a href="/profile/<%=@user.id %>" class="thumb-left">
                             <%= image_tag @user.avatar.url(:thumb) %>
                         </a>
                         <div class="media-body">
-                            <h4 class="rs pb10"><a href="#" class="be-fc-orange fw-b"><%= @user.username %> </a></h4>
+                            <h4 class="rs pb10"><a href="/profile/<%=@user.id %>" class="be-fc-orange fw-b"><%= @user.username %> </a></h4>
                             <p class="rs"><%= @user.location %></p>
                             <p class="rs fc-gray"><%= @user.activities.count %> Activities</p>
                         </div>
