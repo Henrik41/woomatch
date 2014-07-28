@@ -1,11 +1,11 @@
 # This migration comes from mailboxer_engine (originally 20110719110700)
 class AddNotifiedObject < ActiveRecord::Migration
   def self.up
-    # change_table :notifications do |t|
-    #   t.references :notified_object, :polymorphic => true
-    #   t.remove :object_id
-    #   t.remove :object_type
-    # end
+    change_table :notifications do |t|
+      t.references :notified_object, :polymorphic => true
+      t.remove :object_id
+      t.remove :object_type
+    end
   end
 
   def self.down
