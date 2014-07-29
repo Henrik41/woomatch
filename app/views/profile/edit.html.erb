@@ -1,4 +1,17 @@
+<% if params[:id] == "2" %>
+<div id="myModal2" class="modal hide fade" tabindex="-1"   aria-hidden="true">
 
+<div class="modal-body">
+
+<h2> Welcome <%= current_user.username%></h2> 
+<%= image_tag ('/assets/logo-2.png') %>
+<h2> Thank you for registering. </h2>
+<h3> Lots of friends are waiting. Complete your profile now and join the fun WOO! </h3>
+
+</div>
+
+</div>
+<% end %>
 <div id="wrapper">
 <%= render "header/header" %>
 <%= render 'activities/navbar' %>	
@@ -273,4 +286,14 @@
 				    },10);
 				});	
 
+			</script>
+			
+			
+			<script type="text/javascript">
+			$('#myModal2').modal().css(
+			          {
+			              'margin-top': function () {
+			                  return window.pageYOffset-($(this).height() / 2 );
+			              }
+			          });
 			</script>

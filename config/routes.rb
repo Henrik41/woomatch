@@ -64,6 +64,7 @@ post "general/followall/:id", to: 'general#followall'
   
 #profile
   get 'activities/myactivities'
+  get 'profile/edit/:id', to: 'profile#edit'
   get "profile/edit", to: 'profile#edit', as: 'profilepage'
   get '/profile/:id', to: 'profile#show'
   put "profile/update"
@@ -99,11 +100,10 @@ post "general/followall/:id", to: 'general#followall'
     match 'contact' => 'contact#create', :as => 'contact', :via => :post
      post 'contact/alerte/:id/:activity' => 'contact#alerte'
      
-devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks"  }
+devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks", confirmations: 'confirmations'   }
 
 
 devise_for :admin_users, ActiveAdmin::Devise.config
-
 
 begin
     ActiveAdmin.routes(self)
