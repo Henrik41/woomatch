@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140728210343) do
+ActiveRecord::Schema.define(:version => 20140731030056) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -137,6 +137,13 @@ ActiveRecord::Schema.define(:version => 20140728210343) do
   end
 
   add_index "notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
+
+  create_table "notifs", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "shout"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "receipts", :force => true do |t|
     t.integer  "receiver_id"

@@ -1,0 +1,14 @@
+<h1>Chat</h1>
+
+<ul id="chat">
+<% @messages.each do |m| %>
+  <%= render partial: 'notif', locals: {message: m} %>
+<% end %>
+</ul>
+
+<%= form_for Notif.new, :url => {controller: 'notif', action:'create'}, remote: true do |f| %>
+  <%= f.text_field :shout %>
+  <%= f.submit "Send" %>
+<% end %>
+
+<%= subscribe_to "/notif/index" %>

@@ -30,7 +30,7 @@ gem 'public_activity'
 gem 'activeadmin'
 gem 'jquery-ui-themes'
 gem 'thin'
-gem 'jquery-rails', '< 3.0.0'
+gem 'jquery-rails'
 gem 'devise'
 gem 'geocoder'
 gem "flickraw", "~> 0.9.6"
@@ -55,6 +55,7 @@ gem 'delayed_job_active_record'
 gem "friendly_id", "~> 4.0.10"
 gem 'sitemap_generator'
 gem 'meta-tags'
+gem 'private_pub'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

@@ -120,7 +120,7 @@
 
 													             
 								<div class="media">
-								<a href="#" class="thumb-left">
+								<a href="/profile/<%= f.id%>" class="thumb-left">
 									
 										<% if f.avatar.url(:mini) %>
 									                  <%= image_tag f.avatar.url(:mini) %> 
@@ -129,7 +129,7 @@
 									<% end %>					                   
 								<div class="media-body">
 													                       
-													<h4 class="rs pb10"><a href="#" class="be-fc-orange fw-b"><%= f.username %></a></h4>
+													<h4 class="rs pb10"><a href="/profile/<%= f.id%>" class="be-fc-orange fw-b"><%= f.username %></a></h4>
 
 								<%= form_tag({:controller => 'general', :action => 'follow4', :id => f.id, :activity => @activity.id }, :remote => true) do %>
 								<%= button_tag(type: 'submit', class: "btn btn btn-red") do %>
@@ -213,7 +213,7 @@
 <% @userparticipating.each do |f| %>
 
                <div class="media">
-<a href="#" class="thumb-left">
+<a href="/profile/<%= f.id%>" class="thumb-left">
 	<% if f.avatar.url(:mini) %>
                   <%= image_tag f.avatar.url(:mini) %> 
     <% else %>
@@ -221,7 +221,7 @@
 <% end %>
 </a>
                    <div class="media-body">
-                       <h4 class="rs pb10"><a href="#" class="be-fc-orange fw-b"><%= f.username %></a></h4>
+                       <h4 class="rs pb10"><a href="/profile/<%= f.id%>" class="be-fc-orange fw-b"><%= f.username %></a></h4>
 
 <div class= "buttonspace">
 <%= form_tag({:controller => 'general', :action => 'follow3', :id => f.id, :activity => @activity.id },  :remote => true) do %>

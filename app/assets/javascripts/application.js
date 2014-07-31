@@ -41,6 +41,9 @@
 //= require jquery.validationEngine-zh_CN
 //= require jquery.validationEngine-en.js
 //= require jquery.validationEngine
+//= require mustache.min
+//= require private_pub
+
 
 
 

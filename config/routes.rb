@@ -1,5 +1,8 @@
 Woo::Application.routes.draw do
 
+  get "notif/index"
+  post "notif/create"
+
   get "info/about"
 
   get "info/faq"
@@ -16,6 +19,8 @@ Woo::Application.routes.draw do
   
   get "general/activity/:id", to: 'general#activity'
   
+  post 'general/notification'
+  get 'general/notification'
   post 'general/invite/:id', to: 'general#invite'
   
   post "activities/invites/:id", to: 'activities#invites'

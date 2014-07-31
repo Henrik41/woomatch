@@ -223,6 +223,13 @@ class GeneralController < ApplicationController
      
   end
   
+  def notification
+    
+    respond_to do |format|
+         format.js {}
+     end
+  end
+  
   def newsletter
     @email = params[:email]
     respond_to do |format|
