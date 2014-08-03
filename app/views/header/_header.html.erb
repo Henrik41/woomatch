@@ -12,12 +12,12 @@
 					<div class="nav-title">
 
 
-<!--
+
 
 			<%= form_tag({:action => 'notification', :controller =>'general'}, :remote => true) do %>
--->
+
 						<div class="red-tooltip">	
-<!--								
+								
 		<%= button_tag(type: 'submit', :class => "button-default show-notifications active js-show-notifications") do %>
 
 
@@ -44,8 +44,6 @@
 	 		<% end %>
 
 
--->
-
 
 
 	<span class="sep"></span>
@@ -57,7 +55,7 @@
 
 
 
-				<a  href="/conversation/myinbox" data-toggle="tooltip" data-original-title="Check your Woobox">&nbsp;<%= image_tag "/assets/icon1c.png"  %></a><span class="sep"></span>
+				<a  href="/conversation/myinbox" data-toggle="tooltip" data-original-title="My Woobox">&nbsp;<%= image_tag "/assets/icon1c.png"  %></a><span class="sep"></span>
 				                        <a href="/profile/edit" data-toggle="tooltip" data-original-title="My Profile"><%= image_tag '/assets/icon2c.png' %></a><span class="sep"></span>
 				                        <a href="/setting/index" data-toggle="tooltip" data-original-title="Settings" ><%= image_tag '/assets/icon3c.png'%></a><span class="sep"></span>
 										<%= link_to (image_tag '/assets/icon4c.png'), destroy_user_session_path,  "data-toggle"=>"tooltip", "data-original-title"=>"I'm out!", :method => :delete %>

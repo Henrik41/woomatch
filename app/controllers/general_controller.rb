@@ -224,9 +224,9 @@ class GeneralController < ApplicationController
   end
   
   def notification
-    
+    @notif = Notif.last(6)
     respond_to do |format|
-         format.js {}
+         format.js { render "notification", :locals => {:notifi => @notif} }
      end
   end
   
