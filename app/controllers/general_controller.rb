@@ -224,6 +224,15 @@ class GeneralController < ApplicationController
   end
   
   def notification
+    
+   # alert someone wants to participate
+   @useractivities = current_user.activities.all
+   @useractivities.each do |a|
+     @allpeoplewantingtoparticipate <<  a.votes_for.where(:vote_scope => nil).map(&:voter) 
+   end  
+   
+   logger.debug {@allpeoplewantingtoparticipate.inspect}
+   
     @notif = Notif.last(6)
     respond_to do |format|
          format.js { render "notification", :locals => {:notifi => @notif} }
