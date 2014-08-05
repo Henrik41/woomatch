@@ -1,6 +1,14 @@
 <li>
-  <span><%= image_tag (User.find(message.user_id).avatar.url(:supermini))%></span>
-  <span class="created_at"><%= message.created_at.strftime("%H:%M") %></span>
-  <%= message.shout %>
+
+  <span><%= link_to(image_tag(User.find(message.user_id).avatar.url(:supermini)), :controller => 'profile', :action => 'show', :id => message.user_id) %> </span> 
+ 
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<b>  <%= message.shout %></b>
+  
 </li>
+<li>
+<i>	 <span class="created_at"><%= Time.now.strftime("%I:%M%p") %> (EDT)</span>
+ from: <%= User.find(message.user_id).location %></i> 	
+	</li>
+
 </br>
+

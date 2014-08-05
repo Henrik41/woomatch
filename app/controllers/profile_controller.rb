@@ -134,7 +134,7 @@ class ProfileController < ApplicationController
       else
         current_user.follow(@user)
         
-      if current_user.userfollowme
+      if @user.userfollowme
         UserMailer.userfollowme(current_user,@user).deliver
       else
       end

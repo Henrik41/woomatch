@@ -8,15 +8,17 @@
 
 <ul id="chatbox">
 <% @messages.each do |m| %>
+  
   <%= render partial: 'notif', locals: {message: m} %>
 <% end %>
 </ul>
-
-<%= form_for Notif.new, :url => {controller: 'notif', action:'create'}, remote: true do |f| %>
-  <%= f.text_field :shout %>
+  <div class="form-action">
+<label for="txt_name">
+<%= form_for Notif.new, :url => {controller: 'notif', action:'create'},  remote: true do |f| %>
+  <%= f.text_field :shout, :class => "txt"  %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.submit "Send" %>
-
+<%= f.submit "SHOUT!!!", :class => 'btn btn-red' %>
+</label></div>
 <% end %>
 
 <%= subscribe_to "/notif/index" %>
@@ -24,6 +26,8 @@
 </div>
 <%= render 'footer/footer'%>
 </div>
+
+
 
 <script>
 var downplease = $("#chatbox").prop("scrollHeight") - 20; //Scroll height
