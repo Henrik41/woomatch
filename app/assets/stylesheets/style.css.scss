@@ -3636,6 +3636,8 @@ height: 50%;
   display: inline-block;
   vertical-align: middle;
 }
+
+
 .notifications .notifications-list .item:before {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -3651,7 +3653,7 @@ height: 50%;
 .notifications .notifications-list .item .details {
   margin-left: 10px;
   white-space: normal;
-  width: 280px;
+  width: 240px;
 }
 .notifications .notifications-list .item .details .title,
 .notifications .notifications-list .item .details .date {
@@ -3747,3 +3749,5 @@ height: 40px;
 		    *zoom: 1;
 		    }
 
+
+.title2 { width: 50px;}

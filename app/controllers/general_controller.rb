@@ -51,6 +51,8 @@ class GeneralController < ApplicationController
     end
     
     current_user.follow(@activity)
+    PublicActivity::Activity.last.update_attribute(:recipient_id, @useraccepted.id)
+    
     
     respond_to do |format|
        format.js {}
@@ -60,6 +62,8 @@ class GeneralController < ApplicationController
   def unfollow
     @activity = Activity.find(params[:id])
     current_user.stop_following(@activity)
+    PublicActivity::Activity.last.update_attribute(:notif, "off")
+    
     respond_to do |format|
        format.js {}
     end
@@ -73,6 +77,7 @@ class GeneralController < ApplicationController
     
     @current_user2 = current_user
     @useraccepted = User.find(@activity2.user_id) 
+    @activity2.create_activity key: 'wanto_participate', owner: current_user,  notif: 'on'
     
     if @useraccepted.partime
        UserMailer.partime(@current_user2,@useraccepted,@activity2).deliver
@@ -87,6 +92,8 @@ class GeneralController < ApplicationController
       @activity2 = Activity.find(params[:id])
       @activity2.unliked_by current_user
       @activity2.unliked_by current_user, :vote_scope => 'accept'
+        PublicActivity::Activity.last.update_attribute(:notif, "off")
+      
       respond_to do |format|
          format.js {}
       end
@@ -113,6 +120,9 @@ class GeneralController < ApplicationController
     @votes[0].save
  
     end
+    
+    @activity2.create_activity key: 'accepted', owner: current_user,  notif: 'on'
+    PublicActivity::Activity.last.update_attribute(:recipient_id, @useraccepted.id)
     
     
     respond_to do |format|
@@ -163,6 +173,7 @@ class GeneralController < ApplicationController
     @useraccepted = User.find(params[:id])
     @activity2 = Activity.find(params[:activity])
     @activity2.unliked_by @useraccepted
+      PublicActivity::Activity.last.update_attribute(:notif, "off")
     
     
     respond_to do |format|
@@ -225,18 +236,44 @@ class GeneralController < ApplicationController
   
   def notification
     
-   # alert someone wants to participate
-   #@useractivities = current_user.activities.all
-  # @useractivities.each do |a|
-  # #  @allpeoplewantingtoparticipate <<  a.votes_for.where(:vote_scope => nil).map(&:voter) 
-  # end  
+    @Private_activity_one = PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND owner_type = 'User' AND key = 'wanto_participate' AND notif = 'on'", current_user)
    
-  # logger.debug {@allpeoplewantingtoparticipate.inspect}
-   
-    @notif = Notif.last(6)
+    @Private_activity_two = PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND trackable_type = 'Follow' AND notif = 'on'", current_user)
+    
+    @Private_activity_three =  PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND owner_type = 'User' AND key = 'accepted' AND notif = 'on'", current_user)
+     
+    @Private_total =  @Private_activity_one +  @Private_activity_two + @Private_activity_three
+#    @notif = Notif.last(6)
+
+    @notif =   @Private_total.sort_by{ |a| a[:id] }.reverse.delete_if {|x| x.trackable == nil}
+    
+    
+    
+    
     respond_to do |format|
-         format.js { render "notification", :locals => {:notifi => @notif} }
+         format.js { render "notifalert", :locals => {:notifi => @notif} }
      end
+  end
+  
+  def deletenotif
+    @public_id = params[:id]
+    @notif_reset = PublicActivity::Activity.find(@public_id).update_attribute(:notif, "off")
+    
+        @Private_activity_one = PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND owner_type = 'User' AND key = 'wanto_participate' AND notif = 'on'", current_user)
+
+        @Private_activity_two = PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND trackable_type = 'Follow' AND notif = 'on'", current_user)
+
+        @Private_activity_three =  PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND owner_type = 'User' AND key = 'accepted' AND notif = 'on'", current_user)
+
+        @Private_total =  @Private_activity_one +  @Private_activity_two + @Private_activity_three
+    #    @notif = Notif.last(6)
+
+        @notif =   @Private_total.sort_by{ |a| a[:id] }.reverse.delete_if {|x| x.trackable == nil}
+        
+    respond_to do |format|
+       format.js { render "notifalert", :locals => {:notifi => @notif} }
+    end  
+    
   end
   
   def newsletter

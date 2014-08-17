@@ -73,7 +73,7 @@ class ActivitiesController < ApplicationController
       end
     
      @following = current_user.follows_by_type('User')
-    @userparticipating = @activity.votes_for.where(:vote_scope => nil).map(&:voter)    
+    @userparticipating = @activity.votes_for.where(:vote_scope => nil).map(&:voter) 
     @userparticipating2 = @activity.votes_for.where(:vote_scope => 'accept').map(&:voter).uniq
     @peoplevisitingme = Visit.where(:visitable_id => current_user, :visitable_type => "User")
     

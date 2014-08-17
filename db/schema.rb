@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140731030056) do
+ActiveRecord::Schema.define(:version => 20140817033618) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20140731030056) do
     t.string   "recipient_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "notif"
   end
 
   add_index "events", ["owner_id", "owner_type"], :name => "index_events_on_owner_id_and_owner_type"

@@ -210,12 +210,15 @@ $(function() {
 		// Init Plugin
 
 		$(".nav-title2").videopopup({
-			'videoid' : '70069963',
+			'videoid' : '103572289',
 			'videoplayer' : 'vimeo', //options - youtube or vimeo
 			'autoplay' : 'true',// options - true or false
 			'width' : '900',
 			'height' : '510'
 		});
 	});
+</script>
+<script>
+   $('.js-count').attr('data-count', <%= @notif_count %>).html(<%= @notif_count %>).end()
 </script>
 

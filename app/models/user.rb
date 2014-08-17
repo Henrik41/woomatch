@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
 
    
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :validatable, :email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
   devise :omniauthable, :omniauth_providers => [:facebook]

@@ -5,7 +5,10 @@ class Activity < ActiveRecord::Base
   friendly_id :title, use: :slugged
   
   include PublicActivity::Model
+  tracked :skip_defaults => true
   tracked owner: Proc.new{ |controller, model| controller.current_user }
+  tracked recipient: ->(controller, model) { model && model.user }
+  
   
   attr_accessible :about, :end_date, :end_time, :location, :numpart, :price, :recurrent, :start_date, :start_time, :title, :user_id, :website, :starting, :ending
   attr_accessible :avatar, :longitude, :latitude, :interests_attributes, :url, :remote_avatar_url

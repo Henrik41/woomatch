@@ -31,9 +31,14 @@ class StartController < ApplicationController
     @interestcount = @user.userinterests.find(:all).count
     @activitiescount = @user.activities.where(:user_id => @user.id).count
     @completion = @user.completion 	
+    
+ 
     public_destroy = PublicActivity::Activity.order('created_at DESC').limit(300).where(:key => "follow.destroy")
     public_array_all = PublicActivity::Activity.order('created_at DESC').limit(300)
-    public_array = (public_array_all - public_destroy).delete_if {|x| x.trackable == nil}
+    public_want_to_part =  PublicActivity::Activity.order('created_at DESC').where('key = ?', "wanto_participate").limit(100)
+    public_accepted =  PublicActivity::Activity.order('created_at DESC').where('key = ?', "accepted").limit(100)
+    
+    public_array = (public_array_all - public_destroy - public_want_to_part - public_accepted).delete_if {|x| x.trackable == nil}
     @events = Kaminari.paginate_array(public_array).page(params[:page]).per(5) 
   end
 

@@ -145,6 +145,8 @@ class ProfileController < ApplicationController
     else
       flash[:error] = "You must <a href='/users/sign_in'>login</a> to follow #{@user.monniker}.".html_safe
     end
+      PublicActivity::Activity.last.update_attribute(:recipient_id, @user.id)
+      
   end
 
   def unfollow

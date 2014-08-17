@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   around_filter :user_time_zone, if: :current_user
   before_filter :messages_count, if: :current_user
+    before_filter :notif_count, if: :current_user
   before_filter :user_activity
   
 
@@ -18,13 +19,17 @@ class ApplicationController < ActionController::Base
   def user_activity
     current_user.try :touch
   end
-  
+
  
   def messages_count
     @mailbox ||= current_user.mailbox
     @messages_count = @mailbox.inbox({:read => false}).count
   end
 
+  def notif_count
+    @Private_activity = PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND notif = 'on'", current_user)
+    @notif_count = @Private_activity.count
+  end
 
    def after_sign_up_path_for(resource_or_scope)
      profilepage_path

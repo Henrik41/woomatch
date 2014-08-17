@@ -41,7 +41,7 @@ post "general/unfollow/:id", to: 'general#unfollow'
 post "general/follow2/:id", to: 'general#follow2'
 
 post "general/unfollow2/:id", to: 'general#unfollow2'
-
+post "general/deletenotif/:id", to: 'general#deletenotif'
 
 post "general/follow3/:id", to: 'general#follow3'
 post "general/follow4/:id", to: 'general#follow4'

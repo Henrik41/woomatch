@@ -32,7 +32,14 @@
 	<% end %>
 		
 </a>
-       </div>             <p class="rs title-description"><div class="description_space"><%= link_to f.about.capitalize[0,90], :controller => 'profile', :action =>"show", :id => f.id %>...(more)</div></p>
+       </div>             <p class="rs title-description"><div class="description_space">
+
+<% if f.about %>
+<%= link_to f.about.capitalize[0,90], :controller => 'profile', :action =>"show", :id => f.id %>...(more)
+<% else %>
+   No Description yet
+<% end %>
+</div></p>
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
                                 <%= f.location[0..20] %>  &nbsp; &nbsp;&nbsp;</br> <%= f.distance_from(@loc).round(1)%>&nbsp;miles

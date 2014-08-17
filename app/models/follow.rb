@@ -2,7 +2,9 @@ class Follow < ActiveRecord::Base
   
   include PublicActivity::Model
   tracked except: :delete, owner: Proc.new{ |controller, model| controller.current_user }
+  tracked notif: 'on'
   
+    
   extend ActsAsFollower::FollowerLib
   extend ActsAsFollower::FollowScopes
 

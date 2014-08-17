@@ -216,6 +216,57 @@ need to change the z-index of slider
 getting 500 error on server
 
 
+Notification
+
+If someone follows your activity...
+
+    PublicActivity::Activity.where("events.trackable_id = ? AND owner_type = 'User'", current_user.id)
+
+If someone follows you....
+
+  idem sauf que la Follow
+
+ if Follow.find(activity.trackable_id).followable_type == "User"
+then
+
+   PublicActivity::Activity.where("events.trackable_id = ? AND owner_type = 'User'", @activity.user_id)
+
+If someone sends a message to you 
+
+
+
+
+
+
+
+If someone wants to participate to your events: 
+
+PublicActivity::Activity.where("events.owner_id = ? AND owner_type = 'User' AND key = "wanto_participate"", current_user)
+
+  
+
+
+Get all public_activity in order desc where User is involved
+
+
+Follow activity ....
+
+
+Private_activity_one = PublicActivity::Activity.where("events.owner_id = ? AND owner_type = 'User' AND key = "wanto_participate"", current_user)
+
+Private_activity_two = PublicActivity::Activity.where("events.trackable_id = ? AND owner_type = 'User'", current_user)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
