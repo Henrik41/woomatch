@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   around_filter :user_time_zone, if: :current_user
   before_filter :messages_count, if: :current_user
-    before_filter :notif_count, if: :current_user
+  before_filter :notif_count, if: :current_user
+  before_filter :notif, if: :current_user
   before_filter :user_activity
   
 
@@ -28,7 +29,10 @@ class ApplicationController < ActionController::Base
 
   def notif_count
     @Private_activity = PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND notif = 'on'", current_user)
-    @notif_count = @Private_activity.count
+    @notifa =   @Private_activity.sort_by{ |a| a[:id] }.reverse.delete_if {|x| x.trackable == nil}
+
+    
+    @notif_count = @notifa.count
   end
 
    def after_sign_up_path_for(resource_or_scope)
@@ -37,6 +41,11 @@ class ApplicationController < ActionController::Base
   
    def after_sign_in_path_for(resource_or_scope)
      '/start/dashboard'
+   end
+   
+   def notif
+         @notif = Notif.last.shout
+         @notifuser = User.find(Notif.last.user_id)
    end
    
 

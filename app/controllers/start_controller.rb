@@ -35,8 +35,8 @@ class StartController < ApplicationController
  
     public_destroy = PublicActivity::Activity.order('created_at DESC').limit(300).where(:key => "follow.destroy")
     public_array_all = PublicActivity::Activity.order('created_at DESC').limit(300)
-    public_want_to_part =  PublicActivity::Activity.order('created_at DESC').where('key = ?', "wanto_participate").limit(100)
-    public_accepted =  PublicActivity::Activity.order('created_at DESC').where('key = ?', "accepted").limit(100)
+    public_want_to_part =  PublicActivity::Activity.order('created_at DESC').where('events.key = ?', "wanto_participate").limit(100)
+    public_accepted =  PublicActivity::Activity.order('created_at DESC').where('events.key = ?', "accepted").limit(100)
     
     public_array = (public_array_all - public_destroy - public_want_to_part - public_accepted).delete_if {|x| x.trackable == nil}
     @events = Kaminari.paginate_array(public_array).page(params[:page]).per(5) 

@@ -25,6 +25,8 @@
  *= require jquery.fancybox
  *= require validationEngine.jquery
  *= require gritter
+ *= require ns-default
+ *= require ns-style-growl
  *= require_tree ./css/
  *= require style
  *= require_tree .

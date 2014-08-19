@@ -42,6 +42,11 @@
 //= require jquery.validationEngine
 //= require mustache.min
 //= require private_pub
+//= require modernizr.custom
+//= require classie
+
+
+
 
 
 

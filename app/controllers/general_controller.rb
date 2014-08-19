@@ -209,7 +209,7 @@ class GeneralController < ApplicationController
     
     @activity = Activity.find(params[:id])
     @useraccepted = User.find(@activity.user_id)
-    @para1= 'Hey '+@useraccepted.username+'. You are invited to my activity <b>'+'<a href="/activity/'+@activity.id.to_s+'">'+ @activity.title+'</a></b>. Please check it out and let me know what you think! </br> </br>'+'<a href="/activity/'+@activity.id.to_s+'">'+'<img src="'+@activity.avatar.url(:supermini)+'"></a>'
+    @para1= 'Hey It\'s me '+@useraccepted.username+'. You are invited to my activity <b>'+'<a href="http://woomatch.com/activity/'+@activity.id.to_s+'">'+ @activity.title+'</a></b>. Please check it out and let me know what you think! </br> </br>'+'<a href="http://woomatch.com/activity/'+@activity.id.to_s+'">'+'<img src="'+@activity.avatar.url(:supermini)+'"></a>'
      @following = params[:role_ids]
      @following.each do |f|
        
@@ -221,9 +221,9 @@ class GeneralController < ApplicationController
        @dialog = (conv_check_1 & conv_check_2).first
 
        if @dialog.nil? or !@dialog.is_participant?(current_user)
-          current_user.send_message(@user_receiver, @para1, 'VIP Invitation', sanitize_text = false, attachment = nil)
+          current_user.send_message(@user_receiver, @para1, 'VIP Invitation')
        else
-          current_user.reply_to_conversation(@dialog, @para1, sanitize_text = false, attachment = nil)
+          current_user.reply_to_conversation(@dialog, @para1)
        end
        
        
@@ -236,11 +236,11 @@ class GeneralController < ApplicationController
   
   def notification
     
-    @Private_activity_one = PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND owner_type = 'User' AND key = 'wanto_participate' AND notif = 'on'", current_user)
+    @Private_activity_one = PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND events.owner_type = 'User' AND events.key = 'wanto_participate' AND events.notif = 'on'", current_user)
    
     @Private_activity_two = PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND trackable_type = 'Follow' AND notif = 'on'", current_user)
     
-    @Private_activity_three =  PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND owner_type = 'User' AND key = 'accepted' AND notif = 'on'", current_user)
+    @Private_activity_three =  PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND owner_type = 'User' AND events.key = 'accepted' AND notif = 'on'", current_user)
      
     @Private_total =  @Private_activity_one +  @Private_activity_two + @Private_activity_three
 #    @notif = Notif.last(6)
@@ -259,11 +259,11 @@ class GeneralController < ApplicationController
     @public_id = params[:id]
     @notif_reset = PublicActivity::Activity.find(@public_id).update_attribute(:notif, "off")
     
-        @Private_activity_one = PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND owner_type = 'User' AND key = 'wanto_participate' AND notif = 'on'", current_user)
+        @Private_activity_one = PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND owner_type = 'User' AND events.key = 'wanto_participate' AND notif = 'on'", current_user)
 
         @Private_activity_two = PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND trackable_type = 'Follow' AND notif = 'on'", current_user)
 
-        @Private_activity_three =  PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND owner_type = 'User' AND key = 'accepted' AND notif = 'on'", current_user)
+        @Private_activity_three =  PublicActivity::Activity.order('created_at DESC').where("events.recipient_id = ? AND owner_type = 'User' AND events.key = 'accepted' AND notif = 'on'", current_user)
 
         @Private_total =  @Private_activity_one +  @Private_activity_two + @Private_activity_three
     #    @notif = Notif.last(6)
