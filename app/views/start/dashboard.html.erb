@@ -119,6 +119,12 @@
 	<div class='mypanel'>	
 		<div class= "wrapper-box">
            <div class="right-panel2">
+				<!-- Elastislide Carousel -->
+				<ul id="carousel" class="elastislide-list">
+					<li><a href="#"><img src="images/small/1.jpg" alt="image01" /></a></li>
+
+				</ul>
+				<!-- End Elastislide Carousel -->
 					
 			<% @events.each do |activity| %>
 			
@@ -160,5 +166,11 @@ $('#myModal').modal().css(
                   return window.pageYOffset-($(this).height() / 2 );
               }
           });
+</script>
+
+<script type="text/javascript">
+	
+	$( '#carousel' ).elastislide();
+	
 </script>
 

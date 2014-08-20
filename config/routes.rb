@@ -65,6 +65,7 @@ post "general/followall/:id", to: 'general#followall'
   get 'conversation/myoutbox'  
   post 'conversation', to: 'conversation#trash', as: :trash 
   post 'conversation/sendmail/:id', to: 'conversation#sendmail'
+  post 'conversation/sendmail2/:id', to: 'conversation#sendmail2'
   get "/contacts/failure" => "invites#failure"
   
 #profile

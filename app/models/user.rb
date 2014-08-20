@@ -109,6 +109,7 @@ PROFILE_COMPLETENESS = %w[username dob location status about web]
                                 userfollowme:active,
                                 acceptme:active,
                                 partime:active,
+                                alertwoo:active,
                                 dob:Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y'),                        
                                 password:Devise.friendly_token[0,20]
              )

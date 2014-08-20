@@ -24,10 +24,11 @@ before_filter :get_mailbox
        current_user.reply_to_conversation(@dialog, @para1, sanitize_text = false, attachment = nil )
     end
 
-
+  
      render :js => "window.location = '/conversation/myinbox'"
     
   end
+  
   
   
   def myinbox

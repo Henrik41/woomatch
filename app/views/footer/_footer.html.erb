@@ -239,7 +239,7 @@
 } )( window );
 </script>
 
-<% if current_user.alertwoo %>
+
 <script>
 $(document).ready(function() {
 
@@ -248,10 +248,12 @@ $(document).ready(function() {
 					var notification = new NotificationFx({
 						
 						<% if user_signed_in? %>
+							<% if current_user.alertwoo %>
 						message : '<p style="font-size:15px; font-weight:bold;  margin-bottom:5px;"><%= @notifuser.username %> just sent a <a href="/notif/index" class= "btn btn-red">Wooshout!</a> </p> <span style= "font-size:15px; font-weight:bold; display-inline;"><%= image_tag(@notifuser.avatar.url(:supermini), :height =>'40', :width => '40') %> &nbsp; <b><%= @notif[0..26] %> ...</b></span>'
+							<% end %>
 						<% else %>
-											message : '<p style="font-size:15px; font-weight:bold;  margin-bottom:5px;"><%= @notifuser.username %> just sent a <a class= "btn btn-red sys_show_popup_login">Wooshout!</a> </p> <span style= "font-size:15px; font-weight:bold; display-inline;"><%= image_tag(@notifuser.avatar.url(:supermini), :height =>'40', :width => '40') %> &nbsp; <b><%= @notif[0..26] %> ...</b></span>'	
-						<% end %>
+											message : '<p style="font-size:15px; font-weight:bold;  margin-bottom:5px;"><%= @notifuser.username %> just sent a <a class= "btn btn-red sys_show_popup_login">Wooshout!</a> </p> <span style= "font-size:15px; font-weight:bold; display-inline;"><%= image_tag(@notifuser.avatar.url(:supermini), :height =>'40', :width => '40') %> &nbsp; <b><%= @notif[0..26] %> ...</b></span>'
+					    <% end %>
 						,
 						layout : 'growl',
 						effect : 'slide',
@@ -261,7 +263,6 @@ $(document).ready(function() {
 				
 		
 								});
-	
+
 
 </script>
-<% end %>
