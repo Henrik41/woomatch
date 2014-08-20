@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   around_filter :user_time_zone, if: :current_user
   before_filter :messages_count, if: :current_user
   before_filter :notif_count, if: :current_user
-  before_filter :notif, if: :current_user
+  before_filter :notif
   before_filter :user_activity
   
 

@@ -26,6 +26,7 @@
  *= require validationEngine.jquery
  *= require gritter
  *= require ns-default
+ *= require slick
  *= require ns-style-growl
  *= require_tree ./css/
  *= require style

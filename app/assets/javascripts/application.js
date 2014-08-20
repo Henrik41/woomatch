@@ -44,6 +44,7 @@
 //= require private_pub
 //= require modernizr.custom
 //= require classie
+//= require slick
 
 
 
