@@ -56,9 +56,9 @@ gem "friendly_id", "~> 4.0.10"
 gem 'sitemap_generator'
 gem 'meta-tags'
 gem 'private_pub'
-gem 'flexslider'
+gem 'flexslider', :git => 'https://github.com/constantm/Flexslider-2-Rails-Gem.git'
 group :development do
-  gem 'better_errors'
+  gem 'better_errors', '1.1.0'
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'sqlite3'
