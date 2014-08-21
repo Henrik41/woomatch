@@ -150,7 +150,7 @@
 							<a href="/profile/<%=activity.owner.id %>"> <%= image_tag activity.owner.avatar.url(:supermini) %> </a>
 					
     	        		</div>
-				    	 
+				    	 	<%= render_activities (activity) %> 
 			    </div>	
 					
 			 <% end %>
