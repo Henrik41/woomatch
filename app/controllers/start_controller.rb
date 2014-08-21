@@ -4,6 +4,7 @@ class StartController < ApplicationController
    
   def index   
      @activity = Activity.near([@result.latitude,@result.longitude],200).find(:all, :conditions => ['ending >= ?', DateTime.now]).last(4)    
+     @selected_user = User.find(:all, :order => "id desc", :limit => 24).reverse  
   end
   
   def dashboard        
@@ -12,7 +13,7 @@ class StartController < ApplicationController
         @user.location = @loc
         @user.save
       end
-      @selected_activities = Activity.find(:all, :order => "id desc", :limit => 12).reverse
+      @selected_activities = Activity.find(:all, :order => "id desc", :limit => 24).reverse
      
       @allfollow = @user.following_by_type('Activity') 
       @myact =  @user.activities    

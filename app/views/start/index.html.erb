@@ -46,7 +46,35 @@
 		</div>
     </div><!--end: #home-slider -->
     <div class="home-popular-project">
+	
         <div class="container_12">
+
+				<center> 	 <p class="description_usagers">Here are the most recent members...Joins now!</p></center> 
+
+							<div class="flexslider">
+
+							  <ul class="slides">	
+								<% @selected_user.each do |a| %>
+
+							    <li>
+	<a  class="sys_show_popup_login">
+									<div class="grid-block-container">
+
+								    	<div class="grid-block fade">
+									<div class="caption">
+						           	<h3><%= a.username %></h3>
+									<p>	<%= a.location[0..10]%></p>	                
+
+						            </div>
+							   <%= image_tag(a.avatar.url(:mini)) %> 
+							</div></div></a>
+							    </li>
+								<% end %>
+							    <!-- items mirrored twice, total of 12 -->
+							  </ul>
+					
+</div>
+	
             <div class="grid_12 wrap-title">
 	
                 <h2 class="common-title">Popular in <div id= "location_main" style = "display:inline;"><%= @loc %> </div><div id="location_change" style = "display:inline;"></div>
@@ -103,7 +131,10 @@
 	
 <center> <a  class="btn btn-green sys_show_popup_login">View More Things To Do In Your Area</a> </center>
 </br>
+
          </div>
+
+	
 
        </div>
     </div><!--end: .home-popular-project -->
@@ -154,8 +185,9 @@
                 <a class="btn bigger btn-red" href="#">Learn more</a>
             </div>
             <div class="clear"></div>
-        </div>
-    </div><!--end: .additional-info-line -->
+	     </div>
+	    </div><!--end: .additional-info-line -->
+		
 <%= render 'footer/footer'%>
 
 	<div id="demo-form2" class="demo-description" style="display: none; z-index:9999;">
@@ -199,4 +231,48 @@
 <%= js add_gritter("Hey! Carla just added an activity. Come and join her now.", :title => "Notification!", :image => '/assets/ex/th-119x119-2.jpg' ) %>
 
 !-->
+
+<script>
+	
+	$(window).load(function() {
+	  $('.flexslider').flexslider({
+	    animation: "slide",
+	    animationLoop: false,
+	    itemWidth: 120
+	
+	  
+	  });
+	});
+	
+</script>
+
+<script>
+$(document).ready(function() {
+	$('.standard').hover(
+		function(){
+			$(this).find('.caption').show();
+		},
+		function(){
+			$(this).find('.caption').hide();
+		}
+	);
+	$('.fade').hover(
+		function(){
+			$(this).find('.caption').fadeIn(250);
+		},
+		function(){
+			$(this).find('.caption').fadeOut(250);
+		}
+	);
+	$('.slide').hover(
+		function(){
+			$(this).find('.caption').slideDown(250);
+		},
+		function(){
+			$(this).find('.caption').slideUp(250);
+		}
+	);
+});
+</script>
+
 
