@@ -14,6 +14,7 @@
 //= require script
 //= require jquery-1.9.1.min
 //= require jquery_ujs
+//= require jquery.flexslider
 //= require address_picker-rails
 //= require md_slider.min
 //= require detect_timezone
@@ -45,6 +46,7 @@
 //= require modernizr.custom
 //= require classie
 //= require slick
+
 
 
 

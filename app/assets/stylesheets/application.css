@@ -27,6 +27,7 @@
  *= require gritter
  *= require ns-default
  *= require slick
+ *= require flexslider.css
  *= require ns-style-growl
  *= require_tree ./css/
  *= require style

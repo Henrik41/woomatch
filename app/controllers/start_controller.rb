@@ -12,6 +12,7 @@ class StartController < ApplicationController
         @user.location = @loc
         @user.save
       end
+      @selected_activities = Activity.find(:all, :order => "id desc", :limit => 12).reverse
      
       @allfollow = @user.following_by_type('Activity') 
       @myact =  @user.activities    
