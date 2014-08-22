@@ -10,4 +10,11 @@ CarrierWave.configure do |config|
     secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     
      }
+     
+     if Rails.env.development?
+       CarrierWave.configure do |config|
+         config.storage = :file
+       end
+     end
+  
 end

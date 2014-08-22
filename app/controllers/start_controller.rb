@@ -27,7 +27,20 @@ class StartController < ApplicationController
     end
  
       
+    @peoplevisitingme = Visit.where(:visitable_id => current_user, :visitable_type => "User")
 
+      unless @peoplevisitingme[0].nil?
+
+     @myvisitor = @peoplevisitingme[0].visit_details.pluck(:ip_address)
+     @myvisit = User.find_all_by_id(@myvisitor).last(9)
+
+      else
+
+      @myvisit = nil
+
+      end
+   
+   
     @useronline = User.online.find(:all, :limit => 9)
     @loc = @user.location
     @interestcount = @user.userinterests.find(:all).count
@@ -41,7 +54,7 @@ class StartController < ApplicationController
     public_accepted =  PublicActivity::Activity.order('created_at DESC').where('events.key = ?', "accepted").limit(100)
     
     public_array = (public_array_all - public_destroy - public_want_to_part - public_accepted).delete_if {|x| x.trackable == nil}
-    @events = Kaminari.paginate_array(public_array).page(params[:page]).per(5) 
+    @events = Kaminari.paginate_array(public_array).page(params[:page]).per(10) 
   end
 
   

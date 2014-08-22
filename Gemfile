@@ -40,6 +40,7 @@ gem "nested_form"
 gem "omnicontacts"
 gem "localtunnel"
 gem 'carrierwave'
+gem 'carrierwave-imageoptimizer'
 gem 'mini_magick' 
 gem 'mailboxer', '~>  0.11.0'
 gem 'omniauth'
@@ -57,6 +58,7 @@ gem 'sitemap_generator'
 gem 'meta-tags'
 gem 'private_pub'
 gem 'flexslider', :git => 'https://github.com/constantm/Flexslider-2-Rails-Gem.git'
+
 group :development do
   gem 'better_errors', '1.1.0'
   gem 'binding_of_caller'

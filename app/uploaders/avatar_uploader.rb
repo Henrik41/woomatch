@@ -2,13 +2,13 @@
 
 class AvatarUploader < CarrierWave::Uploader::Base
   
-
+include CarrierWave::ImageOptimizer
    #Include RMagick or MiniMagick support:
   #include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
   process :auto_orient # this should go before all other "process" steps
-
+   process :optimize
   def auto_orient
     manipulate! do |image|
       image.tap(&:auto_orient)
