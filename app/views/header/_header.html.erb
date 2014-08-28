@@ -99,56 +99,51 @@
 
 <% else %>
 
-    <header id="header">
+    <header id="header2">
 	  <div class="wrap-top-menu">
    <i id="sys_btn_toggle_search" class="icon iBtnRed make-right"></i>
 </div>
          <div class="container_12 clearfix">
             <div class="grid_12 header-content">
                 <div id="sys_header_right" class="header-right">
+
                     <div class="account-panel">
-                        <a href="#" class="btn btn-red sys_show_popup_login">Promote Your Activity</a>
-                        <a href="#" class="btn btn-black sys_show_popup_login">Login</a>
+						
+                        <a href="#" class="btn btn-red sys_show_popup_login">Login</a>
+
                     </div>
-<div class="form-search">
-	<div class="form">
+				</div>
 
-		<%=	form_tag( {:action=> 'searchactivities', :controller =>'/search'}, :id =>'sys_txt_keyword', :class => 'txt-keyword')  do %>
-		<%= text_field_tag :search, '', :size => '16', :placeholder => 'Search Activities' %> 
-	
-
-
-		
-					           <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
-	                            <button class="btn-reset-keyword" type="reset"><i class="icon iXHover"></i></button>
-					
-				<% end %>
-					
-					</div>
-                   
-                    </div>
-                </div>
              	<div class="header-left">
 	                <h1 id="logo">
 	                  <a href="/"><%= image_tag 'logo.png' %> </a>
 	                </h1>
+	 			</div>
+	
+					<div class="form-search2">
+						<div class="form">
 
-	            </div>
+							<%=	form_tag( {:action=> 'searchactivities', :controller =>'/search'}, :id =>'sys_txt_keyword', :class => 'txt-keyword')  do %>
+							<%= text_field_tag :search, '', :size => '16', :placeholder => 'Search Activities' %> 
+
+
+
+
+										           <button class="btn-search" type="reset"><i class="icon iMagnifier"></i></button>
+						                            <button class="btn-reset-keyword2" type="reset"><i class="icon iXHover"></i></button>
+
+									<% end %>
+
+
+
+					                   
+					       </div>
+	                </div>
 
                     <div class="main-nav clearfix">
-                        <div class="nav-item">
-                            <a href="#" class="nav-title2">Discover</a>
-                            <p class="rs nav-description">Great Activities</p>
-                        </div>
+                   
                         <span class="sep"></span>
-                        <div class="nav-item">
-								<%=  link_to_modal "Promote", "#demo-form2", :class=>"nav-title" %>
-
-		
-			
-                            
-                            <p class="rs nav-description">Your Activity</p>
-                        </div>
+                     
                     </div>
                 </div>
             </div>
@@ -207,19 +202,7 @@ $(function() {
 	});
 	</script>
 	
-<script type="text/javascript">
-	$(function(){
-		// Init Plugin
 
-		$(".nav-title2").videopopup({
-			'videoid' : '103572289',
-			'videoplayer' : 'vimeo', //options - youtube or vimeo
-			'autoplay' : 'true',// options - true or false
-			'width' : '900',
-			'height' : '510'
-		});
-	});
-</script>
 <script>
    $('.js-count').attr('data-count', <%= @notif_count %>).html(<%= @notif_count %>).end()
 </script>

@@ -1,79 +1,175 @@
+<% %>
 <div id="wrapper">
 	
 <%= render 'header/header' %>
 
-    <div id="home-slider">
-        <div class="md-slide-items md-slider" id="md-slider-1" data-thumb-width="105" data-thumb-height="70">
-			<div class="md-slide-item slide-0" data-timeout="6000">
-				<div class="md-mainimg"> <%= image_tag "ex/th-slide0.jpg" %> </div>
-				<div class="md-objects">
-					<div class="md-object rs slide-title" data-x="20" data-y="38" data-width="480" data-height="30" data-start="700" data-stop="5500" data-easein="random" data-easeout="keep">
-						<p>Are You Looking For Something To Do?</p>
-					</div>
-					<div class="md-object rs slide-description" data-x="20" data-y="160" data-width="480" data-height="90" data-start="1400" data-stop="7500" data-easein="random" data-easeout="keep">
-						<p>WooMatch is all about connecting people in real life. Find activities with one or many members. Connect with new interesting people everyday.</p>
-					</div>
-					<div class="md-object rs" data-x="20" data-y="260" data-width="120" data-height="23" data-padding-top="9" data-padding-bottom="7" data-padding-left="10" data-padding-right="10" data-start="1800" data-stop="7500" data-easein="random" data-easeout="keep">
-						<a href="#" class="btn btn-gray">Learn more</a>
-					</div>
-					<div class="md-object" data-x="495" data-y="0" data-width="612" data-height="365" data-start="1800" data-stop="7500" data-easein="fadeInRight" data-easeout="keep" style=""> <%= (image_tag "ex/th-slide-man.png", :size => "612x365") %> </div>
-				</div>
-			</div>
-			<div class="md-slide-item slide-1" data-timeout="6000">
-				<div class="md-mainimg"><%= image_tag 'ex/th-slide1.jpg' %> </div>
-				<div class="md-objects">
-					<div class="md-object rs slide-title" data-x="20" data-y="188" data-width="390" data-height="30" data-start="700" data-stop="5500" data-easein="random" data-easeout="random">
-						<p>Meet Real People</p>
-					</div>
-					<div class="md-object rs slide-description2" data-x="20" data-y="250" data-width="390" data-height="100" data-start="1400" data-stop="4500" data-easein="random" data-easeout="random">
-						<p>Find people in your area that wants to go out and meet new people</p>
-					</div>
-					<div class="md-object" data-x="454" data-y="44" data-width="327" data-height="268" data-start="1000" data-stop="5500" data-easein="random" data-easeout="random" style=""><%= (image_tag "ex/slide1_1.png", :size => "327x268") %></div>
-					<div class="md-object" data-x="628" data-y="142" data-width="298" data-height="176" data-start="1600" data-stop="5100" data-easein="random" data-easeout="random" style=""><%= (image_tag "ex/slide1_2.png", :size => "298x176") %> </div>
-					<div class="md-object" data-x="837" data-y="169" data-width="119" data-height="149" data-start="2200" data-stop="4800" data-easein="random" data-easeout="random" style=""><%= (image_tag "ex/slide1_3.png", :size => "119x149") %></div>
-					<div class="md-object" data-x="809" data-y="208" data-width="59" data-height="114" data-start="2800" data-stop="4500" data-easein="random" data-easeout="random" style=""><%= (image_tag "ex/slide1_4.png", :size => "59x114") %></div>
-				</div>
-			</div>
-			<div class="md-slide-item slide-2" data-timeout="4000">
-				<div class="md-mainimg"><%= (image_tag "ex/th-slide2.jpg") %></div>
-				<div class="md-objects">
-					<div class="md-object slide-with-background" data-x="20" data-y="58" data-width="500" data-height="170" data-padding-top="30" data-padding-bottom="30" data-padding-left="35" data-padding-right="35" data-start="300" data-stop="3600" data-easein="random" data-easeout="keep">
-						<h2 class="rs slide-title">Start Going Out Today</h2>
-						<p class="rs slide-description2">You need to meet one person or a group to do something? Woomatch will help you find common interest </p>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div id="home-slider3">
+  <img src="/assets/landing_page2.png" height="500" width="1280"  style="opacity:0.9;filter:alpha(opacity=50);position:relative;"></img>
+
+<div id="text-position">
+	 <p class="description_usagers" style="color:#fff;font-weight: bold;font-size: 200%">FIND ACTIVITIES NEAR YOU</p>
+	</div>
+	
+	<div id="text-position2">
+<ul>
+		<div class="box-white2b">
+	<li style="list-style-image: url('/assets/Check.png');">
+ 
+	<p class="description_one" style="font-weight: bold;font-size: 200%"> Browse our members activities</p>
+
+	</li>
+	<li style="list-style-image: url('/assets/Check.png');">
+	<p class="description_one" style="font-weight: bold;font-size: 200%;"> Share your activity </p></li>
+	<li style="list-style-image: url('/assets/Check.png');"><p class="description_one" style="font-weight: bold;font-size: 200%"> Go out and make friends </p></li>
+	</div>
+
+	</ul>
+</div>	
+	
+	
+
+		
+<div id="box-sign2">
+  	<div class="form login-form">
+
+		<%= form_for(resource, :html => {:id => "form_id"}, :as => resource_name, :url => registration_path(resource_name))  do |f| %>
+		  <%= devise_error_messages! %>
+
+	  
+	        <div class="box-white2">
+	            <h4 class="rs title-box">
+		
+					       <div class="ribbon-wrapper-green"><div class="ribbon-green">FREE!</div></div>
+		
+			<%= link_to "Connect With Facebook", user_omniauth_authorize_path(:facebook),  :class => 'btn btn-blue12 btn-submit'  %> 
+			
+	     <h2> Register and Have Fun! </h2>
+	            <div class="form-action">
+		
+	                <label for="txt_name">
+		 <%= f.text_field :username,  :class => "span2 validate[required,minSize[4],maxSize[20]] text-input txt fill-width",:id => "txt_name",  :placeholder => "User name" %>
+
+	                </label>
+	               
+	                    <div class="col">
+	                        <label for="txt_email">
+
+							  <%= f.email_field :email, :class => "span2 validate[required,custom[email]] text-input txt fill-width", :id => "txt_email", :placeholder => "E-mail" %>
+
+	                        </label>
+	                  
+							<label for="txt_re_email"> I am a:
+	                          	<%= f.radio_button :sex, "Male"  %> <%= image_tag '/assets/male.png', :height => 20 %>        
+								<%= f.radio_button :sex, "Female" %> <%= image_tag '/assets/female.png', :height => 10 %>        
+	                        </label>
+</br>
+	<%=  f.hidden_field :location, :value => @loc  %>
+	<%= f.hidden_field :nomail, :value => 1 %>
+	<%= f.hidden_field :followme, :value => 1 %>
+	<%= f.hidden_field :userfollowme, :value => 1 %>
+	<%= f.hidden_field :acceptme, :value => 1 %>
+	<%= f.hidden_field :partime, :value => 1 %>
+	<%= f.hidden_field :alertwoo, :value => 1 %>
+
+
+	                    </div>
+
+	                    <div class="col">
+
+	                        <label for="txt_password">
+
+
+
+							  <%= f.password_field :password,  :class => "span2 validate[required] text-input txt fill-width",  :id => "txt_password", :placeholder => "Enter password" %>
+
+	                        </label>
+
+					
+	                    </div>
+	              
+	                <p class="rs pb10">By signing up, you agree to our <a href="#" class="fc-orange">terms of use</a> and <a href="#" class="fc-orange">privacy policy</a>.</p>
+	               
+<p>
+	 <%= f.submit "Sign up", :class => "btn btn-red12 btn-submit"  %> 
+	</p>
+	  </div> 
+	               
+	            </div>
+	        </div>
+	<% end %>
+	</div>
+
+	
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+	    $("#form_id").validationEngine();
+	});
+	</script>
+
+</div>
+
     </div><!--end: #home-slider -->
+<div class="clear"></div>
+</br>
+</br>
+<div class="container_12d">
+	<div class="grid_4">
+		
+	
+			
+			<%= image_tag '/assets/wooipad.png' %>
+		
+	</div>
+		<div class="grid_1"></div>
+	<div class="grid_7" style="float:right;">
+		</br>
+		</br>
+			<h1> Browse Members Activities Near you </h1>
+			<ul>
+				<li style="list-style-image: url('/assets/Check.png');"> <h3> Woomatch is all about connecting people </h3> </li>
+				<li style="list-style-image: url('/assets/Check.png');"> <h3> Make Friends and share your interests </h3> </li>
+				<li style="list-style-image: url('/assets/Check.png');"> <h3> Meet real people with similar interests in real life </h3> </li>
+			</ul>
+	</div>
+	
+
+</div>
+<div class="clear"></div>
+<div class="container_12d">
+	<div class="grid_7">
+		
+		</br>
+		</br>
+			<h1> Post Your Activity and Interests </h1>
+			<ul>
+				<li style="list-style-image: url('/assets/Check.png');"> <h3> Connect with people with similar interests </h3> </li>
+				<li style="list-style-image: url('/assets/Check.png');"> <h3> Invite members to join your activity and follow you </h3> </li>
+				<li style="list-style-image: url('/assets/Check.png');"> <h3> Find Friend for Sports, Restaurants, travels and lots more.  </h3> </li>
+			</ul>
+			
+		
+		
+	</div>
+		<div class="grid_1"></div>
+	<div class="grid_4" style="float:right;">
+			</br>
+			</br>
+		<div class="nav-title2">	<%= image_tag '/assets/video.png' %></div>
+	</div>
+	
+
+</div>
+
+
+
+<div class="clear"></div>
+</br>
+</br>
     <div class="home-popular-project">
 	
         <div class="container_12">
 
-				<center> 	 <p class="description_usagers">Here are the most recent members...Joins now!</p></center> 
-
-							<div class="flexslider">
-
-							  <ul class="slides">	
-								<% @selected_user.each do |a| %>
-
-							    <li>
-	<a  class="sys_show_popup_login">
-									<div class="grid-block-container">
-
-								    	<div class="grid-block fade">
-									<div class="caption">
-						           	<h3><%= a.username %></h3>
-									<p>	<%= a.location[0..10]%></p>	                
-
-						            </div>
-							   <%= image_tag(a.avatar.url(:mini)) %> 
-							</div></div></a>
-							    </li>
-								<% end %>
-							    <!-- items mirrored twice, total of 12 -->
-							  </ul>
-					
-</div>
 	
             <div class="grid_12 wrap-title">
 	
@@ -203,34 +299,21 @@
 <div class="popup-common" id="sys_popup_common">
     <div class="overlay-bl-bg"></div>
     <div class="container_12 pop-content">
-        <div class="grid_12 wrap-btn-close ta-r">
-            <i class="icon iBigX closePopup"></i>
-        </div>
-        <div class="grid_6 prefix_1">
-<%= render "devise/registrations/new" %>
-      </div>
-        <div class="grid_4">
+       
+ <div class="grid_6">       
             <div class="form login-form">
 	<%= render "devise/sessions/new" %>
-            
+</div>            
             </div>
-        </div>
+   			 <div class="grid_1 wrap-btn-close ta-r">
+		            <i class="icon iBigX closePopup"></i>
+		        </div>
+
         <div class="clear"></div>
     </div>
 </div>
 
-<!--
 
- <%= js add_gritter( "Hey! John just added an activity. Come and join him now.", :title => "Notification!", :image => '/assets/ex/th-119x119-1.jpg',  :time => 4000 ) %>
-
-<%= js extend_gritter :position => :bottom_right, :fade_in_speed => "medium" %>
-
-
-
-<div class-"gritter_action"><div>
-<%= js add_gritter("Hey! Carla just added an activity. Come and join her now.", :title => "Notification!", :image => '/assets/ex/th-119x119-2.jpg' ) %>
-
-!-->
 
 <script>
 	
@@ -277,4 +360,16 @@ $(document).ready(function() {
 });
 </script>
 
+<script type="text/javascript">
+	$(function(){
+		// Init Plugin
 
+		$(".nav-title2").videopopup({
+			'videoid' : '103572289',
+			'videoplayer' : 'vimeo', //options - youtube or vimeo
+			'autoplay' : 'true',// options - true or false
+			'width' : '900',
+			'height' : '510'
+		});
+	});
+</script>

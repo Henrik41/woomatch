@@ -7,13 +7,19 @@
             <p class="rs">+1 (800) 555-5555 </p>
         </div><!--end: .contact-info -->
         <div class="grid_3 recent-tweets">
-            <h3 class="rs title">Recent Tweets</h3>
-            <div class="lst-tweets" id="sys_lst_tweets">
-                <p class="rs ta-c fc-white">
-                    loading Twitter <br />
-                    <%= image_tag "ajax-loader.gif" %>
-                </p>
-            </div>
+            <h3 class="rs title">Connect</h3>
+          
+   <a href="https://plus.google.com/111830894057840760120" rel="publisher"><%= image_tag ('/assets/14_google.png') %> </a>
+            
+		   <a href="https://www.facebook.com/woomatch" rel="publisher"><%= image_tag ('/assets/02_facebook.png') %> </a>      
+           
+		   <a href="https://www.twitter.com" rel="publisher"><%= image_tag ('/assets/01_twitter.png') %> </a>
+		
+		  <a href="https://www.youtube.com/watch?v=WePo5I_0CcQ" rel="publisher"><%= image_tag ('/assets/03_youtube.png') %> </a>
+		
+		<a href="http://vimeo.com/103572289" rel="publisher"><%= image_tag ('/assets/09_vimeo.png') %> </a>
+			<a href="http://flickr.com" rel="publisher"><%= image_tag ('/assets/16_flickr.png') %> </a>
+       
         </div><!--end: .recent-tweets -->
         <div class="clear clear-2col"></div>
         <div class="grid_3 email-newsletter">
@@ -249,18 +255,17 @@ $(document).ready(function() {
 						
 						<% if user_signed_in? %>
 							<% if current_user.alertwoo %>
-						message : '<p style="font-size:15px; font-weight:bold;  margin-bottom:5px;"><%= @notifuser.username %> just sent a <a href="/notif/index" class= "btn btn-red">Wooshout!</a> </p> <span style= "font-size:15px; font-weight:bold; display-inline;"><%= image_tag(@notifuser.avatar.url(:supermini), :height =>'40', :width => '40') %> &nbsp; <b><%= @notif[0..26] %> ...</b></span>'
+						message : '<p style="font-size:15px; font-weight:bold;  margin-bottom:5px;"><%= @notifuser.username %> just sent a <a href="/notif/index" class= "btn btn-red">Wooshout!</a> </p> <span style= "font-size:15px; font-weight:bold; display-inline;"><%= image_tag(@notifuser.avatar.url(:supermini), :height =>'40', :width => '40') %> &nbsp; <b><%= @notif[0..26] %> ...</b></span>',
 							<% end %>
-						<% else %>
-											message : '<p style="font-size:15px; font-weight:bold;  margin-bottom:5px;"><%= @notifuser.username %> just sent a <a class= "btn btn-red sys_show_popup_login">Wooshout!</a> </p> <span style= "font-size:15px; font-weight:bold; display-inline;"><%= image_tag(@notifuser.avatar.url(:supermini), :height =>'40', :width => '40') %> &nbsp; <b><%= @notif[0..26] %> ...</b></span>'
-					    <% end %>
-						,
+
+					 
+						
 						layout : 'growl',
 						effect : 'slide',
 						type : 'notice'}); 
 						notification.show()
 
-				
+				   <% end %>
 		
 								});
 

@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :userinterests, :dependent => :destroy
   has_one :visit, :as => :visitable, :dependent => :destroy
   has_one :notif, :dependent => :destroy
-  has_many :albums
+  has_many :albums, :dependent => :destroy
   accepts_nested_attributes_for :userinterests, 
                                     :allow_destroy => true
 

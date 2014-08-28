@@ -36,7 +36,7 @@ class StartController < ApplicationController
 
       else
 
-      @myvisit = nil
+      @myvisit = []
 
       end
    
