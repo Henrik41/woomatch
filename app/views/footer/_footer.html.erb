@@ -13,7 +13,7 @@
             
 		   <a href="https://www.facebook.com/woomatch" rel="publisher"><%= image_tag ('/assets/02_facebook.png') %> </a>      
            
-		   <a href="https://www.twitter.com" rel="publisher"><%= image_tag ('/assets/01_twitter.png') %> </a>
+		   <a href="https://www.twitter.com/woomatch" rel="publisher"><%= image_tag ('/assets/01_twitter.png') %> </a>
 		
 		  <a href="https://www.youtube.com/watch?v=WePo5I_0CcQ" rel="publisher"><%= image_tag ('/assets/03_youtube.png') %> </a>
 		
@@ -42,18 +42,18 @@
             <h3 class="rs title">Discover &amp; Promote new activities</h3>
             <div class="footer-menu">
                 <ul class="rs">
-                    <li><a class="be-fc-orange" href="#">What is WooMatch</a></li>
+                    <li><a class="be-fc-orange" href="/info/about">What is WooMatch</a></li>
                     <li><a class="be-fc-orange" href="#">Start an Activity</a></li>
                     <li><a class="be-fc-orange" href="#">Project Guidelines</a></li>
                     <li><a class="be-fc-orange" href="#">Press</a></li>
-                    <li><a class="be-fc-orange" href="#">Stats</a></li>
+                
                 </ul>
                 <ul class="rs">
                     <li><a class="be-fc-orange" href="#">Staff Picks</a></li>
                     <li><a class="be-fc-orange" href="#">Popular</a></li>
                     <li><a class="be-fc-orange" href="#">Recent</a></li>
 
-                    <li><a class="be-fc-orange" href="#">Most Credible Activities </a></li>
+                     </a></li>
                 </ul>
 
                 <div class="clear"></div>
@@ -256,15 +256,13 @@ $(document).ready(function() {
 						<% if user_signed_in? %>
 							<% if current_user.alertwoo %>
 						message : '<p style="font-size:15px; font-weight:bold;  margin-bottom:5px;"><%= @notifuser.username %> just sent a <a href="/notif/index" class= "btn btn-red">Wooshout!</a> </p> <span style= "font-size:15px; font-weight:bold; display-inline;"><%= image_tag(@notifuser.avatar.url(:supermini), :height =>'40', :width => '40') %> &nbsp; <b><%= @notif[0..26] %> ...</b></span>',
-							<% end %>
-
 					 
 						
 						layout : 'growl',
 						effect : 'slide',
 						type : 'notice'}); 
 						notification.show()
-
+						<% end %>
 				   <% end %>
 		
 								});

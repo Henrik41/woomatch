@@ -3,14 +3,15 @@
 	
 <%= render 'header/header' %>
 
-    <div id="home-slider3">
-  <img src="/assets/landing_page2.png" height="500" width="1280"  style="opacity:0.9;filter:alpha(opacity=50);position:relative;"></img>
+
+<img src="/assets/landing_page2.png" height="500" width="100%"  style="opacity:0.9;filter:alpha(opacity=50);position:relative;"></img>
+
 
 <div id="text-position">
 	 <p class="description_usagers" style="color:#fff;font-weight: bold;font-size: 200%">FIND ACTIVITIES NEAR YOU</p>
-	</div>
+</div>
 	
-	<div id="text-position2">
+<div id="text-position2">
 <ul>
 		<div class="box-white2b">
 	<li style="list-style-image: url('/assets/Check.png');">
@@ -21,7 +22,7 @@
 	<li style="list-style-image: url('/assets/Check.png');">
 	<p class="description_one" style="font-weight: bold;font-size: 200%;"> Share your activity </p></li>
 	<li style="list-style-image: url('/assets/Check.png');"><p class="description_one" style="font-weight: bold;font-size: 200%"> Go out and make friends </p></li>
-	</div>
+		</div>
 
 	</ul>
 </div>	
@@ -59,7 +60,7 @@
 	                        </label>
 	                  
 							<label for="txt_re_email"> I am a:
-	                          	<%= f.radio_button :sex, "Male"  %> <%= image_tag '/assets/male.png', :height => 20 %>        
+	                          	<%= f.radio_button :sex, "Male", :class => "span2 validate[required]"%> <%= image_tag '/assets/male.png', :height => 20 %>        
 								<%= f.radio_button :sex, "Female" %> <%= image_tag '/assets/female.png', :height => 10 %>        
 	                        </label>
 </br>
@@ -109,15 +110,12 @@
 
 </div>
 
-    </div><!--end: #home-slider -->
+ 
 <div class="clear"></div>
 </br>
 </br>
 <div class="container_12d">
-	<div class="grid_4">
-		
-	
-			
+	<div class="grid_4">			
 			<%= image_tag '/assets/wooipad.png' %>
 		
 	</div>
@@ -166,19 +164,19 @@
 <div class="clear"></div>
 </br>
 </br>
-    <div class="home-popular-project">
-	
-        <div class="container_12">
+<div class="home-popular-project">
+<div class="container_12">
 
+<div class="grid_12 wrap-title">
 	
-            <div class="grid_12 wrap-title">
-	
-                <h2 class="common-title">Popular in <div id= "location_main" style = "display:inline;"><%= @loc %> </div><div id="location_change" style = "display:inline;"></div>
+     </br>           <h2 class="common-title">Popular in <div id= "location_main" style = "display:inline;"><%= @loc %> </div><div id="location_change" style = "display:inline;"></div>
 	<!-- Time: <%= @timenowuser %> --> </h2>
+	
+		 <a class="be-fc-orange" href="category.html"> <h3>Recent Registered Activities: &nbsp;&nbsp;&nbsp; <%= render 'start/counter' %></a></h3>
+		
     <div class="form-search2">
 	<div class="form2">
 		
-
 
 
 
@@ -204,16 +202,15 @@
 
 </br>
 </div>
-    </div>
 
-                <a class="be-fc-orange" href="category.html"> <h3>Recent Registered Activities: &nbsp;&nbsp;&nbsp; <%= render 'start/counter' %></a></h3>
 
+               
             </div>
 
-            <div class="clear"></div>
+<div class="clear"></div>
 			
 
-            <div class="lst-popular-project clearfix">
+<div class="lst-popular-project clearfix">
 
 	<div id ="thepartial">
 		
@@ -223,17 +220,17 @@
 
 
 	</div>
-		<div id="select_button"></div>
+<div id="select_button"></div>
 	
 <center> <a  class="btn btn-green sys_show_popup_login">View More Things To Do In Your Area</a> </center>
 </br>
 
-         </div>
+</div>
 
 	
 
-       </div>
-    </div><!--end: .home-popular-project -->
+</div> <!-- container_12-->
+</div><!--end: .home-popular-project -->
     <div class="home-discover-friends">
         <div class="container_12">
             <div class="row-friends">
@@ -283,7 +280,7 @@
             <div class="clear"></div>
 	     </div>
 	    </div><!--end: .additional-info-line -->
-		
+	</div>	
 <%= render 'footer/footer'%>
 
 	<div id="demo-form2" class="demo-description" style="display: none; z-index:9999;">
@@ -294,7 +291,7 @@
 
 	</div>
 
-</div>
+
 
 <div class="popup-common" id="sys_popup_common">
     <div class="overlay-bl-bg"></div>
@@ -304,14 +301,14 @@
             <div class="form login-form">
 	<%= render "devise/sessions/new" %>
 </div>            
-            </div>
+            
    			 <div class="grid_1 wrap-btn-close ta-r">
 		            <i class="icon iBigX closePopup"></i>
-		        </div>
+		     </div>
 
         <div class="clear"></div>
-    </div>
-</div>
+    
+</div><!--wrapper-->
 
 
 
