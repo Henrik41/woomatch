@@ -1,10 +1,9 @@
-<% %>
-<div id="wrapper">
+
 	
 <%= render 'header/header' %>
 
 
-<img src="/assets/landing_page2.png" height="500" width="100%"  style="opacity:0.9;filter:alpha(opacity=50);position:relative;"></img>
+<img src="/assets/landing_page2.png" height="100%" width="100%"  style="opacity:0.9;filter:alpha(opacity=50);position:relative;"></img>
 
 
 <div id="text-position">
@@ -14,11 +13,10 @@
 <div id="text-position2">
 <ul>
 		<div class="box-white2b">
-	<li style="list-style-image: url('/assets/Check.png');">
- 
+	<li style="list-style-image: url('/assets/Check.png');"> 
 	<p class="description_one" style="font-weight: bold;font-size: 200%"> Browse our members activities</p>
-
 	</li>
+	
 	<li style="list-style-image: url('/assets/Check.png');">
 	<p class="description_one" style="font-weight: bold;font-size: 200%;"> Share your activity </p></li>
 	<li style="list-style-image: url('/assets/Check.png');"><p class="description_one" style="font-weight: bold;font-size: 200%"> Go out and make friends </p></li>
@@ -37,7 +35,7 @@
 		  <%= devise_error_messages! %>
 
 	  
-	        <div class="box-white2">
+	        <div class="box-white2x">
 	            <h4 class="rs title-box">
 		
 					       <div class="ribbon-wrapper-green"><div class="ribbon-green">FREE!</div></div>
@@ -281,23 +279,18 @@
 	     </div>
 	    </div><!--end: .additional-info-line -->
 	</div>	
-<%= render 'footer/footer'%>
-
-	<div id="demo-form2" class="demo-description" style="display: none; z-index:9999;">
-		
-
-	<h2>	This is the text to promote your activity </h2>
 	
+<%= render 'footer/footer' %>
 
+	<div id="demo-form2" class="demo-description" style="display: none; z-index:9999;">		
+	<h2>	This is the text to promote your activity </h2>	
 	</div>
-
-
 
 <div class="popup-common" id="sys_popup_common">
     <div class="overlay-bl-bg"></div>
     <div class="container_12 pop-content">
        
- <div class="grid_6">       
+<div class="grid_6">       
             <div class="form login-form">
 	<%= render "devise/sessions/new" %>
 </div>            
@@ -308,7 +301,6 @@
 
         <div class="clear"></div>
     
-</div><!--wrapper-->
 
 
 
