@@ -123,6 +123,7 @@ Licensed under GPL and MIT.
     margin-right: auto;
     width: 1100px;
 }
+
 .container_12b{
     margin-left: auto;
     margin-right: auto;
@@ -426,7 +427,7 @@ font-weight: 700;
 font-size: 1.077em;
 text-transform: uppercase;
 height: 60px;
-width: 370px;
+width: 100%;
 color: #FFF;
    background: #ec5843; /* Old browsers */
    background: -moz-linear-gradient(top,  #ec5843 0%, #e84837 100%); /* FF3.6+ */
@@ -2391,18 +2392,18 @@ right: 150px;
 
 #box-sign2{
 position:absolute;
-top: 20%;
+top: 150px;
 left: 60%;
 }
 
 #text-position{
 position:absolute;
-top: 20%;
+top: 150px;
 left: 11%;
 }
 #text-position2{
 position:absolute;
-top: 30%;
+top: 210px;
 left: 8%;
 }
 
