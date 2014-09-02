@@ -140,7 +140,7 @@ Licensed under GPL and MIT.
  overflow-y: auto;
 }
 .container_12d{
-	background-coolor: white;
+	background-color: white;
     margin-left: auto;
     margin-right: auto;
     width: 1100px;
@@ -1953,6 +1953,8 @@ height: 42px;
 
 /* 9.	Header
 --------------------------------------------------------------------------------*/
+
+
 #header2{
 
 
@@ -2528,6 +2530,17 @@ left: 8%;
     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.1) inset;
     -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1) inset;
 }
+.home-popular-project2{
+    padding-top: 10px;
+	padding-bottom: 10px;
+    background: #f0f0f0;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) inset;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.1) inset;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1) inset;
+}
+
 .home-popular-project .wrap-title{
     position: relative;
    
@@ -3752,6 +3765,7 @@ height: 50%;
 .show-notifications {
   position: relative;
 }
+.js-notifications{z-index: 10000;}
 .show-notifications:hover #icon-bell,
 .show-notifications:focus #icon-bell,
 .show-notifications.active #icon-bell {
@@ -4198,4 +4212,31 @@ height: 40px;
 			  right: 0;
 			}
 			
-			
+
+			/* 12.	menu bar css
+			--------------------------------------------------------------------------------*/			
+
+			.sky-mega-menu li:hover > a,
+			.sky-mega-menu li.current > a {
+				background: #2a70e8;
+				color: #fff;
+			}
+
+
+			/**/
+			/* forms */
+			/**/
+			.sky-mega-menu form .input:hover input,
+			.sky-mega-menu form .textarea:hover textarea {
+				border-color: #94b7f3;
+			}
+			.sky-mega-menu form .button {
+				background-color: #2a70e8;	
+			}
+			.sky-mega-menu form .input input:focus,
+			.sky-mega-menu form .textarea textarea:focus {
+				border-color: #2a70e8;
+			}
+			.colorme{
+			background-color: #eeee;
+			}

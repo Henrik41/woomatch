@@ -27,7 +27,19 @@
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="http://www.woomatch.com"/>
 <meta property="fb:moderator" content="516849445076378" />
-<meta name="viewport" content="user-scalable=no, initial-scale=0, maximum-scale=0, width=device-width">
+
+<!-- in head -->
+<meta id="viewport" name='viewport'>
+<script>
+    (function(doc) {
+        var viewport = document.getElementById('viewport');
+        if ( navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
+            doc.getElementById("viewport").setAttribute("content", "initial-scale=0.28");
+        } else if ( navigator.userAgent.match(/iPad/i) ) {
+            doc.getElementById("viewport").setAttribute("content", "initial-scale=0.7");
+        }
+    }(document));
+</script>
 </head>
 <body>
 

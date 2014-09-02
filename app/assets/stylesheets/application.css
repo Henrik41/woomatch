@@ -28,6 +28,8 @@
  *= require ns-default
  *= require slick
  *= require flexslider.css
+ *= require font-awesome
+ *= require sky-mega-menu
  *= require ns-style-growl
  *= require_tree ./css/
  *= require style
