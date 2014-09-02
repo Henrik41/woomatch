@@ -58,6 +58,7 @@ gem 'sitemap_generator'
 gem 'meta-tags'
 gem 'private_pub'
 gem 'flexslider', :git => 'https://github.com/constantm/Flexslider-2-Rails-Gem.git'
+gem "font-awesome-rails" 
 
 group :development do
   gem 'better_errors', '1.1.0'
