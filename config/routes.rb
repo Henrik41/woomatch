@@ -73,7 +73,8 @@ post "general/followall/:id", to: 'general#followall'
   get 'profile/edit/:id', to: 'profile#edit'
   get "profile/edit", to: 'profile#edit', as: 'profilepage'
   get '/profile/:id', to: 'profile#show'
-  put "profile/update"
+  put 'profile/update'
+  put 'profile/updatepic'
   
 
 # Follow

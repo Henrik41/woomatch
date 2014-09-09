@@ -32,10 +32,7 @@ before_filter :get_mailbox
   
   
   def myinbox
-  
-
-    
-    @conversations =  Kaminari.paginate_array(@mailbox.inbox.all).page(params[:page]).per(5)
+      @conversations =  Kaminari.paginate_array(@mailbox.inbox.all).page(params[:page]).per(5)
     @messages_count = @mailbox.inbox({:read => false}).count
     if current_user.nearbys
       @checkuser = current_user.nearbys(300,:order => :created_at).last(3)
@@ -63,6 +60,7 @@ before_filter :get_mailbox
     end
   end
   def show
+
      @conversation2 =  @mailbox.conversations.find(params[:id])
      @con = @mailbox.conversations.find(params[:id]).messages
      @conversation = Kaminari.paginate_array(@con).page(params[:page]).per(6)

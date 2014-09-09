@@ -125,6 +125,44 @@ class ProfileController < ApplicationController
     end
   end
   
+  def updatepic
+    @user = User.find(current_user)
+    @interestcount = @user.userinterests.find(:all).count
+    @activitiescount = @user.activities.where(:user_id => @user.id).count
+    @completion = @user.completion
+    @useronline = User.online.find(:all, :limit => 9)
+    @activity = @user.activities.all
+        @result = request.location    
+        if @result
+        @loc = @result.data['city'].to_s + ', ' + @result.data['region_name'].to_s
+        mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)
+        @activitygrid = Activity.near(@loc, 200).last(7)
+        else
+         mytimezone = NearestTimeZone.to(@result.latitude,@result.longitude)  
+        @activitygrid = Activity.find(:all).last(4)
+      end
+      
+
+       
+       Time.zone = mytimezone
+       @mytime = Time.zone.now
+       
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        @user.realage = @user.age.to_i
+        @user.save
+       
+        format.html { redirect_to '/conversation/myinbox', notice: 'Profile was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  
+  
   def follow
     @user = User.find(params[:id])
 
