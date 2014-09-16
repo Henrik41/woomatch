@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
   validates_length_of :web, :minimum => 0, :maximum => 45, :allow_blank => true
     
   after_validation :geocode, :if => :location_changed?
+  after_create :inform_others
   
   scope :online, lambda{ where("updated_at > ?", 1000.minutes.ago) }
   
@@ -111,9 +112,12 @@ PROFILE_COMPLETENESS = %w[username dob location status about web]
                                 acceptme:active,
                                 partime:active,
                                 alertwoo:active,
+                                nomailreg:active,
                                 dob:Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y'),                        
                                 password:Devise.friendly_token[0,20]
              )
+             
+    
          
            
          end    end
@@ -140,4 +144,15 @@ PROFILE_COMPLETENESS = %w[username dob location status about web]
          end
      end
      
+     def inform_others
+       usernear = User.near([self.latitude,self.longitude])
+       usernear.each do |u|
+         if u.nomailreg == true
+           if u != self  
+             UserMailer.delay(run_at: 3.hours.from_now).usernearme(self,u)
+           end
+         end
+       end       
+     end
+      
 end

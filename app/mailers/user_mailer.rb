@@ -61,6 +61,19 @@ class UserMailer < ActionMailer::Base
             :template_name => 'activitymod'  
                 )
     end
-  
+    
+    def usernearme(current_user,user)
+      @current_user = current_user
+      @username = user
+
+        mail(:to => user.email, 
+              :subject => "Someone near you just registered on Woomatch!",
+
+              :template_path => 'user_mailer',    
+              :template_name => 'usernearme'  
+                  )
+      end
+    
+   
 
 end
