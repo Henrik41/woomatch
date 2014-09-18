@@ -42,8 +42,8 @@
 	            <h4 class="rs title-box">
 		
 					       <div class="ribbon-wrapper-green"><div class="ribbon-green">FREE!</div></div>
-		
-			<%= link_to "Connect With Facebook", user_omniauth_authorize_path(:facebook),  :class => 'btn btn-blue12 btn-submit'  %> 
+	
+			<%= link_to (image_tag '/assets/signup_fb.png'), user_omniauth_authorize_path(:facebook)  %> 
 			
 	     <h2> Register and Have Fun! </h2>
 	            <div class="form-action">
@@ -72,6 +72,8 @@
 	<%= f.hidden_field :acceptme, :value => 1 %>
 	<%= f.hidden_field :partime, :value => 1 %>
 	<%= f.hidden_field :alertwoo, :value => 1 %>
+	
+		<%= f.hidden_field :nomailreg, :value => 1 %>
 
 
 	                    </div>

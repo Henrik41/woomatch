@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :location, :realage, :dob, :age, :sex, :status, :about, :web, :email, :password, :password_confirmation, :time_zone, :avatar, :remote_avatar_url, :userinterests_attributes
   attr_accessible :longitude, :latitude
-  attr_accessible :provider, :uid, :name, :completion, :nomail, :followme, :userfollowme, :acceptme, :partime, :alertwoo
+  attr_accessible :provider, :uid, :name, :completion, :nomail, :followme, :userfollowme, :acceptme, :partime, :alertwoo, :nomailreg
   attr_accessible :body, :conversation_id
  
   geocoded_by :location
