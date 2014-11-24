@@ -1,15 +1,17 @@
 	<div id="wrapper">
 <%= render "header/header" %>
-<%= render 'activities/navbar' %>	
+<%= render 'activities/navbar' %>
+	
          <div class="clear"></div>
 
-		  <div class="home-popular-project">
+		  	<div class="home-popular-project">
 		        <div class="container_12">
 		            <div class="grid_12 wrap-title">
 
 
 
-				  <h2 class="common-title"> <%= @userview.username.capitalize %>'s Profile</h2></div>
+				  <h2 class="common-title"> <%= @userview.username.capitalize %>'s Profile</h2>
+				    </div>
 
 		            <div class="clear"></div>
 		            <div class="lst-popular-project clearfix">
@@ -19,18 +21,18 @@
 		                            <div class="content-info-short clearfix">
 
 		      				       		         
-													<% if @userview.avatar? %>
-											<a class="fancybox" rel="group" href='<%= @userview.avatar.url%>' title = '<%= @userview.username %>' %>	<%= image_tag @userview.avatar.url(:medium) %>
-													<%else%>
+<% if @userview.avatar? %>
+<a class="fancybox" rel="group" href='<%= @userview.avatar.url%>' title = '<%= @userview.username %>' %>	<%= image_tag @userview.avatar.url(:big) %>
+<%else%>
 <%= image_tag '/assets/ex/blank.jpg' %>
 <%end%>
-		</div>
-		</div>
+									</div>
+								</div>
 
 
 
 
-                        <div class="bottom-project-info clearfix">       
+<div class="bottom-project-info clearfix">       
 <% if current_user.id == @userview.id %>
 <% else%>
 
@@ -120,17 +122,17 @@
 		  <%= @userview.status %></br>
 		                    
 		
-																				                            <div class="line-progress">
-																				                                <div class="bg-progress">
-
-																				                                </div>
-																				                            </div>
+																				                            
+<div class="line-progress">																				                           													
+<div class="bg-progress"></div> 
+																				                      
+</div>
 																											 Profile Completion
 														<%= @completion2 %> %									                            <div class="line-progress">
 																						                                <div class="bg-progress">
 																					                                    <span class="success" style="width: <%= @completion %>%;"></span>
 																						                                </div>
-																						                            </div>
+																						                            </div>  <!-- bottom clearfix -->
 																						                            <div class="group-fee clearfix">
 
 
@@ -148,19 +150,30 @@
 																						                                    <p class="rs lbl">Since</p>
 																						                                    <span class="val"><%=distance_of_time_in_words(@userview.created_at,Time.now)%></span>
 																						                                </div>
-																						                            </div>
+																						                            </div> 
 																						                        
 		
-		 </div>
+</div> <!-- project short -->
 		                    </div>
 
 							<%= render 'activities/myfriends'%>
 				
 
-		                </div><!--end: .grid_3 > .project-short-->
+		             </div><!--end: .grid_3 > .project-short-->
 
 
-		                <div class="grid_6">
+<div class="grid_6">
+			<div class="project-tab-detail tabbable accordion">
+							<ul class="nav nav-tabs clearfix">
+							 	<li class="active"><a href="#">About Me</a></li>			
+							    <li><a href="#" class="be-fc-orange">My Album</a></li>
+						    	<li> <a href="#" class="be-fc-orange">Dare to Ask</a></li>
+							</ul>
+							
+			<div class="tab-content"> 
+							 	<div>
+				
+							<div class="tab-pane accordion-content active">
 		                    <div class="project-short sml-thumb">
 
 
@@ -210,25 +223,58 @@
 			                                    <span class="val"><%=distance_of_time_in_words(@userview.created_at,Time.now)%></span>
 			                                </div>
 			                            </div>
-			                        </div>
-			             
-             </div>
-		                </div><!--end: .grid_3 > .project-short-->
+			                </div>
+					
+							</div>            	 
+							
+								</div>
+			
+								<div>
+								<div class="tab-pane accordion-content">
+									</br></br>
+									<center>
+								<% @myalbumpics.each do |p| %>
+							<a class="fancybox" rel="group" href='<%= p.avatar.url%>' title = '<%= @userview.username %>' %>	<%= image_tag p.avatar.url(:grid) %></a>
+								<%end%>
+								</br></br>
+								</center>
+								</div>
+								
+									<div class="tab-pane accordion-content">
+									Questions
+									</div>
+									
+								</div>
+			</div> <!-- tab content -->
+             		
+			</div>
+</div>
+
+
+
+
+
+</div> <!--end: .grid_6 -->
+		             
+				
+					
 		               	<div class="clear clear-2col"></div>
+		
 		         	<% @activitygrid.each do |a| %>
 						 <%= render :partial => "/start/grid2", :locals => {:a => a} %> 
 						<% end %>
-
-						</div>
-
-
-		</div>
+</br>
+						</div> 
+	 				</div>
+</br>
+				</div>
 		        </div>
-		 
-		</div>
-		   </div><!--end: .home-popular-project -->
+		    
+			</div>
 
+		   
 
+	<div class="clear"></div>
 
 
 <%= render 'footer/footer'%>

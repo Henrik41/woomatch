@@ -8,6 +8,8 @@ class ProfileController < ApplicationController
    @interestcount = @user.userinterests.find(:all).count
    @activitiescount = @user.activities.where(:user_id => @user.id).count
    @completion = @user.completion 
+    @albums = @user.albums.all
+     @album = @user.albums.new
    
    if request.location == nil
       @loc = 'Paris, France'  
@@ -48,6 +50,8 @@ class ProfileController < ApplicationController
     
     @userview = User.find(params[:id])
     
+        @myalbumpics = @userview.albums.all
+ 
     Visit.track(@userview,current_user)
     @interestcount = @userview.userinterests.find(:all).count
     @activitiescount = @userview.activities.where(:user_id => @userview.id).count
@@ -172,10 +176,10 @@ class ProfileController < ApplicationController
       else
         current_user.follow(@user)
         
-      if @user.userfollowme
+          if @user.userfollowme
         UserMailer.userfollowme(current_user,@user).deliver
-      else
-      end
+          else
+          end
       
         flash[:notice] = "You are now following #{@user.username}."
         redirect_to :back

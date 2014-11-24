@@ -42,7 +42,13 @@
 </div></p>
                             <p class="rs project-location">
                                 <i class="icon iLocation"></i>
-                                <%= f.location[0..20] %>  &nbsp; &nbsp;&nbsp;</br> <%= f.distance_from(@loc).round(1)%>&nbsp;miles
+
+                                <%= f.location[0..20] %>  &nbsp; &nbsp;&nbsp;</br> 
+<% if f.distance_from(@loc).nil? %>
+N/A&nbsp;miles
+<% else %>
+<%= f.distance_from(@loc).round(1)%>&nbsp;miles
+<% end %>
                             </p>
                         </div>
                     </div>

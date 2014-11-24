@@ -49,7 +49,7 @@ class AlbumsController < ApplicationController
     
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice: '@user.albums was successfully created.' }
+        format.html { redirect_to '/profile/edit', notice: '@user.albums was successfully created.' }
         format.json { render json: @album, status: :created, location: @album }
       else
         format.html { render action: "new" }

@@ -95,7 +95,7 @@
 								                            </div>
 								                        </div>
 								                    </div>
-
+													<%= render 'albums/index'%>
 													<%= render 'activities/myfriends'%>			
 
 								                </div><!--end: .grid_3 > .project-short-->
@@ -231,9 +231,16 @@
 												        </div>
 								    </div><!--end: .home-popular-project -->
 <%= render 'footer/footer'%>
+
+
 								
 <%end%>
+	<div id="demo-form" class="demo-description" style="display: none; ">
 
+
+<%= render 'albums/new' %>
+		
+		</div>
 <script type="text/javascript">
     AddressPickerRails.Pickers.applyOnReady();
 </script>

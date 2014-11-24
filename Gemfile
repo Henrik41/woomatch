@@ -59,7 +59,6 @@ gem 'meta-tags'
 gem 'private_pub'
 gem 'flexslider', :git => 'https://github.com/constantm/Flexslider-2-Rails-Gem.git'
 
-
 group :development do
   gem 'better_errors', '1.1.0'
   gem 'binding_of_caller'

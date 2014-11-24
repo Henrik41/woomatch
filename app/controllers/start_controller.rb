@@ -3,7 +3,9 @@ class StartController < ApplicationController
   before_filter :get_location, :get_time
    
   def index   
+   
      @activity = Activity.near([@result.latitude,@result.longitude],200).find(:all, :conditions => ['ending >= ?', DateTime.now]).last(4)    
+
      @selected_user = User.find(:all, :order => "id desc", :limit => 24).reverse  
   end
   
@@ -73,7 +75,8 @@ class StartController < ApplicationController
 private
   
   def get_location
-    if request.location.nil?     
+    if request.location.nil? 
+
       @loc =  "Manhattan, New York, USA"
       @mytimezone = "America/New_York"
     else
