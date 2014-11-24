@@ -53,7 +53,7 @@
 																<h3>My Picture:</h3>
 								      				         
 																<% if f.object.avatar? %>
-														 <div id="mypic">	<%= image_tag f.object.avatar.url(:medium) %></div>
+														 <div id="mypic">	<%= image_tag f.object.avatar.url(:big) %></div>
 																<%else%>
        <a class="thumb-avatar" href="#"><img src="/assets/ex/blank.jpg" width="250" height="350"alt="$USER_NAME"/></a>
 <%end%>

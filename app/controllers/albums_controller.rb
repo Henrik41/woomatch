@@ -81,7 +81,7 @@ class AlbumsController < ApplicationController
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to albums_url }
+      format.html { redirect_to '/profile/edit' }
       format.json { head :no_content }
     end
   end

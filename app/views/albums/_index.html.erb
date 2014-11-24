@@ -9,7 +9,7 @@
 							              
 							<% if u.avatar? %>
 						<div class="small_images">
-							<%= link_to (image_tag (u.avatar.url(:supermini)), :width => '75', :height => '75', :class => 'onbottom'), :controller => 'profile', :action => 'show', :id => u.id %> 
+							<%= image_tag (u.avatar.url(:supermini)), :width => '75', :height => '75', :class => 'onbottom' %> 
 							
 							<%= link_to 'Remove', u, method: :delete, data: { confirm: 'Are you sure?' } %>
 							
@@ -19,7 +19,7 @@
 							</div>
 							<% else %>
 								<div class="small_images">
-							<%= link_to (image_tag '/assets/ex/blankmini2.jpg', :width => '75', :height => '75',:class => 'onbottom'), :controller => 'profile', :action => 'show', :id => u.id  %>
+							<%= image_tag '/assets/ex/blankmini2.jpg', :width => '75', :height => '75',:class => 'onbottom' %>
 						
 									</div>
 							<% end%>
@@ -30,9 +30,12 @@
 								
 </div>
 							</div></br>	
+							<% if @albums.count >= 6 %>
+							<%=  link_to_modal "You cannot add more pics", "#demo-form-nomore", :class=>"btn btn-blue" %>
+							<% else %>
 							
 								<%=  link_to_modal "Add a picture", "#demo-form", :class=>"btn btn-blue" %>
-								
+							<% end %>	
 								
 						
 							</div>
