@@ -8,8 +8,9 @@ class ProfileController < ApplicationController
    @interestcount = @user.userinterests.find(:all).count
    @activitiescount = @user.activities.where(:user_id => @user.id).count
    @completion = @user.completion 
-    @albums = @user.albums.all
-     @album = @user.albums.new
+   
+   @album = @user.albums.new
+   @albums = @user.albums.all
    
    if request.location == nil
       @loc = 'Paris, France'  
@@ -47,10 +48,10 @@ class ProfileController < ApplicationController
     @loc = @user.location
  
     @completion = @user.completion
-    
+      @question_set = @user.dares.all
     @userview = User.find(params[:id])
-    
-        @myalbumpics = @userview.albums.all
+    @dare = @user.dares.new
+    @myalbumpics = @userview.albums.all
  
     Visit.track(@userview,current_user)
     @interestcount = @userview.userinterests.find(:all).count
@@ -114,6 +115,7 @@ class ProfileController < ApplicationController
        
        Time.zone = mytimezone
        @mytime = Time.zone.now
+       
        
     respond_to do |format|
       if @user.update_attributes(params[:user])

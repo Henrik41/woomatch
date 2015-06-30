@@ -1,5 +1,10 @@
 Woo::Application.routes.draw do
 
+ 
+
+  resources :dares
+
+
   get "notif/index"
   post "notif/create"
 
@@ -94,8 +99,15 @@ post "general/followall/:id", to: 'general#followall'
 #starting page
   get "start/index"
   get "start/dashboard"
+  get "start/dashboard2"
   get "start/dashboard/:id" => "start#dashboard"
+  
+  post "yactivities/yesbutton"
+  post "yactivities/nobutton"
 
+   get "yactivities/home"
+   get "yactivities/home/:id" => "yactivities#home"
+     resources :yactivities 
 #to check
   get "/activities/back_to_edit" 
   #get emails from gmail/others

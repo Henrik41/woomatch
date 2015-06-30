@@ -10,10 +10,13 @@ class User < ActiveRecord::Base
          :validatable, :email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
   devise :omniauthable, :omniauth_providers => [:facebook]
   has_many :activities, :dependent => :destroy
+  has_many :dares, :dependent => :destroy
   has_many :userinterests, :dependent => :destroy
+  has_many :interestanswers, :dependent => :destroy
   has_one :visit, :as => :visitable, :dependent => :destroy
   has_one :notif, :dependent => :destroy
   has_many :albums, :dependent => :destroy
+  
   accepts_nested_attributes_for :userinterests, 
                                     :allow_destroy => true
 

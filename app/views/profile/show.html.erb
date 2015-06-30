@@ -242,7 +242,15 @@
 								
 									<div class="tab-pane accordion-content">
 										</br></br>
-										<center> <h3> This Feature is coming soon </h3> </center>
+										
+										<center><h1> Feature to come soon </h1></center>
+									<!-- <center>	<%=  link_to_modal "ASK A QUESTION", "#demo-form-question", :class=>"btn btn-green" %> </center>
+										</br>
+										<% @question_set.each do |q| %>
+										<h3> <b> <i> <%= q.question %> </i></b></h3>
+										 <%= q.answer %>
+										</br>
+										<% end %> -->
 									</div>
 									
 								</div>
@@ -252,7 +260,10 @@
 </div>
 
 
-
+<div id="demo-form-question" style="display: none;">
+	<%= render '/dares/new' %>
+	
+</div>
 
 
 </div> <!--end: .grid_6 -->

@@ -12,6 +12,19 @@
 							<a href="#"><%= image_tag('/assets/logowoo2.png') %></i></a>
 					</li>
 					
+				
+					<!-- home -->
+					<li class ="<%= controller.class == YactivitiesController  and controller.action_name == 'home' ? 'current' : '' %>">
+							<a href="/yactivities/home"><i class="fa fa-home"></i> &nbsp;Home&nbsp;&nbsp;&nbsp;&nbsp; </a>
+					</li>
+					<!--/ home -->
+					
+				
+					<!-- home -->
+					<li class ="<%= controller.class == StartController  and controller.action_name == 'dashboard' ? 'current' : '' %>">
+							<a href="/start/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
+					</li>
+					<!--/ home -->
 					
 				<!-- wooshout -->
 					 <li class ="<%= controller.class == NotifController and controller.action_name == 'index' ? 'current' : '' %>">
@@ -19,11 +32,6 @@
 				</li>
 				<!--/ wooshout -->
 				
-					<!-- home -->
-					<li class ="<%= controller.class == StartController  and controller.action_name == 'dashboard' ? 'current' : '' %>">
-							<a href="/start/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
-					</li>
-					<!--/ home -->
 				
 							<!-- My Activities -->
 						  <li class ="<%= controller.class == ActivitiesController and controller.action_name == 'myactivities' ? 'current' : '' %>"><a href="/activities/myactivities" title="My activities">
@@ -56,11 +64,11 @@
 										<!--/ Search -->
 										
 										
-												<!-- about -->
+												<!-- about 
 												<li aria-haspopup="true">
 													<a href="/info/about"><i class="fa fa-star"></i>About us</a>
 												</li>
-												<!--/ about -->
+												 about -->
 															
 			</ul>
 			<!--/ mega menu -->

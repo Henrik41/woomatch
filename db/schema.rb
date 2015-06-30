@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140916033928) do
+ActiveRecord::Schema.define(:version => 20150628222821) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -82,6 +82,15 @@ ActiveRecord::Schema.define(:version => 20140916033928) do
     t.datetime "updated_at",                 :null => false
   end
 
+  create_table "dares", :force => true do |t|
+    t.string   "question"
+    t.string   "answer"
+    t.integer  "user_id"
+    t.boolean  "priv"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0, :null => false
     t.integer  "attempts",   :default => 0, :null => false
@@ -128,6 +137,15 @@ ActiveRecord::Schema.define(:version => 20140916033928) do
 
   add_index "follows", ["followable_id", "followable_type"], :name => "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], :name => "fk_follows"
+
+  create_table "interestanswers", :force => true do |t|
+    t.integer  "yactivity_id"
+    t.string   "name"
+    t.boolean  "answer"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
+  end
 
   create_table "interests", :force => true do |t|
     t.integer  "activity_id"
@@ -266,5 +284,13 @@ ActiveRecord::Schema.define(:version => 20140916033928) do
   add_index "votes", ["votable_id", "votable_type"], :name => "index_votes_on_votable_id_and_votable_type"
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], :name => "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   add_index "votes", ["voter_id", "voter_type"], :name => "index_votes_on_voter_id_and_voter_type"
+
+  create_table "yactivities", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "avatar"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

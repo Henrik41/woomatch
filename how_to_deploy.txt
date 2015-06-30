@@ -64,3 +64,23 @@ when cap deploy:cold...
 5. kill all Unicorn
 6. redemarer unicorn
 
+
+ssh bill@173.255.237.221
+ps aux | grep unicorn
+cd /home/bill/apps/woomatch/current
+bundle exec unicorn_rails -c config/unicorn.rb -D -E production
+bundle exec rake log:clear
+RAILS_ENV=production script/delayed_job restart
+bundle exec rake jobs:clear RAILS_ENV=production
+bundle exec rake assets:precompile RAILS_ENV=production
+
+bundle exec rake sitemap:refresh
+bundle exec rake sitemap:refresh RAILS_ENV=production
+RAILS_ENV=production bundle exec rackup private_pub.ru -s thin -E production
+
+Rails 4.0.3
+ruby 1.9.3p392
+
+
+
+

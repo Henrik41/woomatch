@@ -75,6 +75,13 @@
   overflow-y: auto;
 }
 
+.modal-body h2{
+   color: white;
+}
+.modal-body h4{
+   color: white;
+}
+
 .modal-form {
   margin-bottom: 0;
 }
