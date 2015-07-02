@@ -122,7 +122,7 @@ class ProfileController < ApplicationController
         @user.realage = @user.age.to_i
         @user.save
        
-        format.html { redirect_to '/start/dashboard', notice: 'Profile was successfully updated.' }
+        format.html { redirect_to '/yactivities/home', notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

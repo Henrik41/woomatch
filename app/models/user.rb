@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
        
   validates_presence_of  :username
   validates_length_of :username, :minimum => 1, :maximum => 40
-  validates_length_of :about, :minimum => 0, :maximum => 300, :allow_blank => true
+  validates_length_of :about, :minimum => 0, :maximum => 1300, :allow_blank => true
   validates_length_of :web, :minimum => 0, :maximum => 45, :allow_blank => true
     
   after_validation :geocode, :if => :location_changed?

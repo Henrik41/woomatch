@@ -5,7 +5,7 @@ class YactivitiesController < InheritedResources::Base
   
   def home    
     
-      @activitynow  = Kaminari.paginate_array(Interestanswer.where(:answer => true)).page(params[:page]).per(9)
+      @activitynow  = Kaminari.paginate_array(Interestanswer.where(:answer => true).reverse).page(params[:page]).per(9)
    
            
       @user = current_user

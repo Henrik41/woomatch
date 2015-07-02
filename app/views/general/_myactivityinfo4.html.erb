@@ -26,7 +26,7 @@
                            
                   
 			                            <p class="rs project-location">
-					    	       <%= form_tag({:controller => 'yactivities', :action => 'yesbutton', :id => a.id }) do %>
+					    	       <%= form_tag({:controller => 'yactivities', :action => 'yesbutton', :id =>  Yactivity.find(a.yactivity_id).id }) do %>
  
 
 					    	            <%= submit_tag 'Woo... I like it too!',  :class=>"btn btn-green12" %>
@@ -36,7 +36,7 @@
 			
 			                            </p>
 			                        </div>
-						   	<% Interestanswer.where(:answer=>true, :name => Yactivity.find(a.yactivity_id).name).limit(7).each do |u| %>
+						   	<% Interestanswer.where(:answer=>true, :name => Yactivity.find(a.yactivity_id).name).limit(6).each do |u| %>
 		
 							 <%= link_to (image_tag User.find(u.user_id).avatar.url(:supermini),:class => 'img-circle', :height =>'30', :width => '30'), {:controller => 'profile', :action => 'show', :id => u.user_id } %>
 							 <% end %>
@@ -95,10 +95,10 @@
 
 
 
-							<% if current_user.following?(a) %>
-							<div class="btn btn-red"> <%= link_to "Unfollow", unfollow_profile_path(a.id) %> </div>
+							<% if current_user.following?(User.find(a.user_id)) %>
+							<div class="btn btn-red"> <%= link_to "Unfollow", unfollow_profile_path(a.user_id) %> </div>
 							<% else %>		
-							<div class="btn btn-red"> <%= link_to "Follow", follow_profile_path(a.id) %> </div>
+							<div class="btn btn-red"> <%= link_to "Follow", follow_profile_path(a.user_id) %> </div>
 							<% end %>
 					
 							</br>
