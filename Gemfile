@@ -24,6 +24,7 @@ group :assets do
 
 end
 
+gem 'mysql2', '~> 0.3.17'
 gem 'carrierwave-aws'
 gem "gritter", "1.0.3"
 gem 'public_activity'
@@ -76,7 +77,7 @@ end
 # gem 'jbuilder'
 
 group :production, :test do
-  gem 'mysql2', '~> 0.3.17'
+
 end
 
 # Use unicorn as the app server
