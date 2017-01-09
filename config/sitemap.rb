@@ -12,7 +12,7 @@ SitemapGenerator::Sitemap.create do
   # Links are added to the Sitemap in the order they are specified.
   #
   # Usage: add(path, options={})
-  #        (default options are used if you don't specify)
+  #        (default options are used if you don't sitemapspecify)
   #
   # Defaults: :priority => 0.5, :changefreq => 'weekly',
   #           :lastmod => Time.now, :host => default_host

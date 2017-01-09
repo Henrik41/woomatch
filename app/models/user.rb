@@ -102,6 +102,8 @@ PROFILE_COMPLETENESS = %w[username dob location status about web]
          else
          active = true       
          emptyst= "".to_s  
+         
+         
          user = User.create!( username:auth.extra.raw_info.first_name,
                                 email:auth.info.email,
                                 remote_avatar_url:auth.info.image.gsub('http://','https://').to_s.split("?")[0]+"?type=large",
@@ -120,7 +122,7 @@ PROFILE_COMPLETENESS = %w[username dob location status about web]
                                 password:Devise.friendly_token[0,20]
              )
              
-    
+          
          
            
          end    end
