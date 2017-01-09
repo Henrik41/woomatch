@@ -218,7 +218,6 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql2 (0.3.16)
     nearest_time_zone (0.0.2)
       andand
       kdtree
@@ -389,3 +388,6 @@ DEPENDENCIES
   thin
   uglifier (>= 1.0.3)
   unicorn
+
+BUNDLED WITH
+   1.11.2
