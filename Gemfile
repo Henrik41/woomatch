@@ -76,7 +76,7 @@ end
 # gem 'jbuilder'
 
 group :production, :test do
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.3.17'
 end
 
 # Use unicorn as the app server
