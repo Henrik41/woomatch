@@ -373,7 +373,7 @@ DEPENDENCIES
   meta-tags
   meta_request
   mini_magick
-  mysql2
+  mysql2 (~> 0.3.17)
   nearest_time_zone
   nested_form
   omniauth
