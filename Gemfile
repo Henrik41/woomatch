@@ -77,6 +77,7 @@ end
 
 group :production, :test do
   gem 'mysql2', '~> 0.3.17'
+  gem 'activerecord-mysql2-adapter'
 end
 
 # Use unicorn as the app server
