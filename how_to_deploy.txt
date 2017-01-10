@@ -81,6 +81,12 @@ RAILS_ENV=production bundle exec rackup private_pub.ru -s thin -E production
 Rails 4.0.3
 ruby 1.9.3p392
 
+git add .
+git commit -m "this is my commit"
+git push origin master
+
+cap deploy
+
 
 
 
