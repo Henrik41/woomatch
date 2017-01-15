@@ -184,7 +184,7 @@ match '/users/:id' => 'profile#show', :via => [:get], :as => "user"
   #       get 'recent', :on => :collection
   #     end
   #   end
-   root :to => "yactivities#home"
+   root :to => "start#index"
   # Sample resource route within a namespace:
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
