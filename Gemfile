@@ -24,7 +24,7 @@ group :assets do
 
 end
 
-gem 'eventmachine', "1.0.4"
+
 gem 'carrierwave-aws'
 gem "gritter", "1.0.3"
 gem 'public_activity'
