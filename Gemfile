@@ -24,6 +24,7 @@ group :assets do
 
 end
 
+gem 'json', '1.8.3'
 gem 'carrierwave-aws'
 gem "gritter", "1.0.3"
 gem 'public_activity'
