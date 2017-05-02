@@ -2,15 +2,15 @@ require "bundler/capistrano"
 require 'capistrano/maintenance'
 
 
-server "173.255.237.221", :web, :app, :db, primary: true
+server "45.79.135.198", :web, :app, :db, primary: true
 
 
 
 
 set :bundle_flags, "--deployment --quiet --binstubs"
 set :application, "woomatch"
-set :user, "bill"
-set :deploy_to, "/home/bill/apps/#{application}"
+set :user, "bob"
+set :deploy_to, "/home/bob/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 set :test_log, "log/capistrano-unit-test.log"
